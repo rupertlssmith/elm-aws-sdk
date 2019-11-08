@@ -49,6 +49,16 @@ type IntError
     | AboveRange
 
 
+intErrorToString : IntError -> String
+intErrorToString err =
+    case err of
+        BelowRange ->
+            "Too low."
+
+        AboveRange ->
+            "Too high."
+
+
 gt : Int -> Int -> Result IntError Int
 gt bound val =
     if bound <= val then
@@ -75,6 +85,19 @@ type StringError
     = TooShort
     | TooLong
     | NotMatchingRegex
+
+
+stringErrorToString : StringError -> String
+stringErrorToString err =
+    case err of
+        TooShort ->
+            "Too short."
+
+        TooLong ->
+            "Too long."
+
+        NotMatchingRegex ->
+            "Not matching regex."
 
 
 minLength : Int -> String -> Result StringError String

@@ -5,7 +5,7 @@ import AWS.Core.Http
 import AWS.Core.Service
 import Codec exposing (Codec)
 import Enum exposing (Enum)
-import Guarded exposing (Guarded)
+import Guarded exposing (Guarded, IntError, StringError)
 
 
 {-| Configuration for this service. -}
@@ -316,7 +316,7 @@ type AmazonResourceName
     = AmazonResourceName String
 
 
-amazonResourceName : Guarded AmazonResourceName
+amazonResourceName : Guarded String AmazonResourceName StringError
 amazonResourceName =
     let
         guardFn val =
@@ -427,7 +427,7 @@ type DatabaseString
     = DatabaseString String
 
 
-databaseString : Guarded DatabaseString
+databaseString : Guarded String DatabaseString StringError
 databaseString =
     let
         guardFn val =
@@ -467,7 +467,7 @@ type DescriptionString
     = DescriptionString String
 
 
-descriptionString : Guarded DescriptionString
+descriptionString : Guarded String DescriptionString StringError
 descriptionString =
     let
         guardFn val =
@@ -510,7 +510,7 @@ type ErrorCode
     = ErrorCode String
 
 
-errorCode : Guarded ErrorCode
+errorCode : Guarded String ErrorCode StringError
 errorCode =
     let
         guardFn val =
@@ -562,7 +562,7 @@ type IdempotencyToken
     = IdempotencyToken String
 
 
-idempotencyToken : Guarded IdempotencyToken
+idempotencyToken : Guarded String IdempotencyToken StringError
 idempotencyToken =
     let
         guardFn val =
@@ -618,7 +618,7 @@ type MaxNamedQueriesCount
     = MaxNamedQueriesCount Int
 
 
-maxNamedQueriesCount : Guarded MaxNamedQueriesCount
+maxNamedQueriesCount : Guarded Int MaxNamedQueriesCount IntError
 maxNamedQueriesCount =
     let
         guardFn val =
@@ -634,7 +634,7 @@ type MaxQueryExecutionsCount
     = MaxQueryExecutionsCount Int
 
 
-maxQueryExecutionsCount : Guarded MaxQueryExecutionsCount
+maxQueryExecutionsCount : Guarded Int MaxQueryExecutionsCount IntError
 maxQueryExecutionsCount =
     let
         guardFn val =
@@ -650,7 +650,7 @@ type MaxQueryResults
     = MaxQueryResults Int
 
 
-maxQueryResults : Guarded MaxQueryResults
+maxQueryResults : Guarded Int MaxQueryResults IntError
 maxQueryResults =
     let
         guardFn val =
@@ -666,7 +666,7 @@ type MaxTagsCount
     = MaxTagsCount Int
 
 
-maxTagsCount : Guarded MaxTagsCount
+maxTagsCount : Guarded Int MaxTagsCount IntError
 maxTagsCount =
     let
         guardFn val =
@@ -682,7 +682,7 @@ type MaxWorkGroupsCount
     = MaxWorkGroupsCount Int
 
 
-maxWorkGroupsCount : Guarded MaxWorkGroupsCount
+maxWorkGroupsCount : Guarded Int MaxWorkGroupsCount IntError
 maxWorkGroupsCount =
     let
         guardFn val =
@@ -698,7 +698,7 @@ type NameString
     = NameString String
 
 
-nameString : Guarded NameString
+nameString : Guarded String NameString StringError
 nameString =
     let
         guardFn val =
@@ -808,7 +808,7 @@ type QueryString
     = QueryString String
 
 
-queryString : Guarded QueryString
+queryString : Guarded String QueryString StringError
 queryString =
     let
         guardFn val =
@@ -904,7 +904,7 @@ type TagKey
     = TagKey String
 
 
-tagKey : Guarded TagKey
+tagKey : Guarded String TagKey StringError
 tagKey =
     let
         guardFn val =
@@ -936,7 +936,7 @@ type TagValue
     = TagValue String
 
 
-tagValue : Guarded TagValue
+tagValue : Guarded String TagValue StringError
 tagValue =
     let
         guardFn val =
@@ -952,7 +952,7 @@ type Token
     = Token String
 
 
-token : Guarded Token
+token : Guarded String Token StringError
 token =
     let
         guardFn val =
@@ -1030,7 +1030,7 @@ type WorkGroupDescriptionString
     = WorkGroupDescriptionString String
 
 
-workGroupDescriptionString : Guarded WorkGroupDescriptionString
+workGroupDescriptionString : Guarded String WorkGroupDescriptionString StringError
 workGroupDescriptionString =
     let
         guardFn val =
@@ -1046,7 +1046,7 @@ type WorkGroupName
     = WorkGroupName String
 
 
-workGroupName : Guarded WorkGroupName
+workGroupName : Guarded String WorkGroupName StringError
 workGroupName =
     let
         guardFn val =
