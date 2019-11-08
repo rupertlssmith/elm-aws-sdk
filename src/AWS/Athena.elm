@@ -357,7 +357,7 @@ type alias BytesScannedCutoffValue =
 
 
 type alias ColumnInfo =
-    { type : String
+    { type_ : String
     , tableName : String
     , schemaName : String
     , scale : Int
@@ -892,7 +892,7 @@ type alias StopQueryExecutionOutput =
     {}
 
 
-type alias String =
+type alias String_ =
     String
 
 
@@ -1115,10 +1115,10 @@ workGroupsListCodec =
 workGroupSummaryCodec : Codec WorkGroupSummary
 workGroupSummaryCodec =
     Codec.object WorkGroupSummary
-        |> Codec.field "state" .state workGroupStateCodec
-        |> Codec.field "name" .name workGroupNameCodec
-        |> Codec.field "description" .description workGroupDescriptionStringCodec
-        |> Codec.field "creationTime" .creationTime dateCodec
+        |> Codec.field "State" .state workGroupStateCodec
+        |> Codec.field "Name" .name workGroupNameCodec
+        |> Codec.field "Description" .description workGroupDescriptionStringCodec
+        |> Codec.field "CreationTime" .creationTime dateCodec
         |> Codec.buildObject
 
 
@@ -1144,11 +1144,11 @@ workGroupDescriptionStringCodec =
 workGroupConfigurationUpdatesCodec : Codec WorkGroupConfigurationUpdates
 workGroupConfigurationUpdatesCodec =
     Codec.object WorkGroupConfigurationUpdates
-        |> Codec.field "resultConfigurationUpdates" .resultConfigurationUpdates resultConfigurationUpdatesCodec
-        |> Codec.field "removeBytesScannedCutoffPerQuery" .removeBytesScannedCutoffPerQuery Codec.bool
-        |> Codec.field "publishCloudWatchMetricsEnabled" .publishCloudWatchMetricsEnabled Codec.bool
-        |> Codec.field "enforceWorkGroupConfiguration" .enforceWorkGroupConfiguration Codec.bool
-        |> Codec.field "bytesScannedCutoffPerQuery" .bytesScannedCutoffPerQuery Codec.int
+        |> Codec.field "ResultConfigurationUpdates" .resultConfigurationUpdates resultConfigurationUpdatesCodec
+        |> Codec.field "RemoveBytesScannedCutoffPerQuery" .removeBytesScannedCutoffPerQuery Codec.bool
+        |> Codec.field "PublishCloudWatchMetricsEnabled" .publishCloudWatchMetricsEnabled Codec.bool
+        |> Codec.field "EnforceWorkGroupConfiguration" .enforceWorkGroupConfiguration Codec.bool
+        |> Codec.field "BytesScannedCutoffPerQuery" .bytesScannedCutoffPerQuery Codec.int
         |> Codec.buildObject
 
 
@@ -1156,10 +1156,10 @@ workGroupConfigurationUpdatesCodec =
 workGroupConfigurationCodec : Codec WorkGroupConfiguration
 workGroupConfigurationCodec =
     Codec.object WorkGroupConfiguration
-        |> Codec.field "resultConfiguration" .resultConfiguration resultConfigurationCodec
-        |> Codec.field "publishCloudWatchMetricsEnabled" .publishCloudWatchMetricsEnabled Codec.bool
-        |> Codec.field "enforceWorkGroupConfiguration" .enforceWorkGroupConfiguration Codec.bool
-        |> Codec.field "bytesScannedCutoffPerQuery" .bytesScannedCutoffPerQuery Codec.int
+        |> Codec.field "ResultConfiguration" .resultConfiguration resultConfigurationCodec
+        |> Codec.field "PublishCloudWatchMetricsEnabled" .publishCloudWatchMetricsEnabled Codec.bool
+        |> Codec.field "EnforceWorkGroupConfiguration" .enforceWorkGroupConfiguration Codec.bool
+        |> Codec.field "BytesScannedCutoffPerQuery" .bytesScannedCutoffPerQuery Codec.int
         |> Codec.buildObject
 
 
@@ -1167,11 +1167,11 @@ workGroupConfigurationCodec =
 workGroupCodec : Codec WorkGroup
 workGroupCodec =
     Codec.object WorkGroup
-        |> Codec.field "state" .state workGroupStateCodec
-        |> Codec.field "name" .name workGroupNameCodec
-        |> Codec.field "description" .description workGroupDescriptionStringCodec
-        |> Codec.field "creationTime" .creationTime dateCodec
-        |> Codec.field "configuration" .configuration workGroupConfigurationCodec
+        |> Codec.field "State" .state workGroupStateCodec
+        |> Codec.field "Name" .name workGroupNameCodec
+        |> Codec.field "Description" .description workGroupDescriptionStringCodec
+        |> Codec.field "CreationTime" .creationTime dateCodec
+        |> Codec.field "Configuration" .configuration workGroupConfigurationCodec
         |> Codec.buildObject
 
 
@@ -1185,10 +1185,10 @@ updateWorkGroupOutputCodec =
 updateWorkGroupInputCodec : Codec UpdateWorkGroupInput
 updateWorkGroupInputCodec =
     Codec.object UpdateWorkGroupInput
-        |> Codec.field "workGroup" .workGroup workGroupNameCodec
-        |> Codec.field "state" .state workGroupStateCodec
-        |> Codec.field "description" .description workGroupDescriptionStringCodec
-        |> Codec.field "configurationUpdates" .configurationUpdates workGroupConfigurationUpdatesCodec
+        |> Codec.field "WorkGroup" .workGroup workGroupNameCodec
+        |> Codec.field "State" .state workGroupStateCodec
+        |> Codec.field "Description" .description workGroupDescriptionStringCodec
+        |> Codec.field "ConfigurationUpdates" .configurationUpdates workGroupConfigurationUpdatesCodec
         |> Codec.buildObject
 
 
@@ -1202,8 +1202,8 @@ untagResourceOutputCodec =
 untagResourceInputCodec : Codec UntagResourceInput
 untagResourceInputCodec =
     Codec.object UntagResourceInput
-        |> Codec.field "tagKeys" .tagKeys tagKeyListCodec
-        |> Codec.field "resourceArn" .resourceArn amazonResourceNameCodec
+        |> Codec.field "TagKeys" .tagKeys tagKeyListCodec
+        |> Codec.field "ResourceARN" .resourceArn amazonResourceNameCodec
         |> Codec.buildObject
 
 
@@ -1217,9 +1217,9 @@ unprocessedQueryExecutionIdListCodec =
 unprocessedQueryExecutionIdCodec : Codec UnprocessedQueryExecutionId
 unprocessedQueryExecutionIdCodec =
     Codec.object UnprocessedQueryExecutionId
-        |> Codec.field "queryExecutionId" .queryExecutionId Codec.string
-        |> Codec.field "errorMessage" .errorMessage Codec.string
-        |> Codec.field "errorCode" .errorCode errorCodeCodec
+        |> Codec.field "QueryExecutionId" .queryExecutionId Codec.string
+        |> Codec.field "ErrorMessage" .errorMessage Codec.string
+        |> Codec.field "ErrorCode" .errorCode errorCodeCodec
         |> Codec.buildObject
 
 
@@ -1233,9 +1233,9 @@ unprocessedNamedQueryIdListCodec =
 unprocessedNamedQueryIdCodec : Codec UnprocessedNamedQueryId
 unprocessedNamedQueryIdCodec =
     Codec.object UnprocessedNamedQueryId
-        |> Codec.field "namedQueryId" .namedQueryId Codec.string
-        |> Codec.field "errorMessage" .errorMessage Codec.string
-        |> Codec.field "errorCode" .errorCode errorCodeCodec
+        |> Codec.field "NamedQueryId" .namedQueryId Codec.string
+        |> Codec.field "ErrorMessage" .errorMessage Codec.string
+        |> Codec.field "ErrorCode" .errorCode errorCodeCodec
         |> Codec.buildObject
 
 
@@ -1261,8 +1261,8 @@ tagResourceOutputCodec =
 tagResourceInputCodec : Codec TagResourceInput
 tagResourceInputCodec =
     Codec.object TagResourceInput
-        |> Codec.field "tags" .tags tagListCodec
-        |> Codec.field "resourceArn" .resourceArn amazonResourceNameCodec
+        |> Codec.field "Tags" .tags tagListCodec
+        |> Codec.field "ResourceARN" .resourceArn amazonResourceNameCodec
         |> Codec.buildObject
 
 
@@ -1288,13 +1288,13 @@ tagKeyCodec =
 tagCodec : Codec Tag
 tagCodec =
     Codec.object Tag
-        |> Codec.field "value" .value tagValueCodec
-        |> Codec.field "key" .key tagKeyCodec
+        |> Codec.field "Value" .value tagValueCodec
+        |> Codec.field "Key" .key tagKeyCodec
         |> Codec.buildObject
 
 
-{-| Codec for String. -}
-stringCodec : Codec String
+{-| Codec for String_. -}
+stringCodec : Codec String_
 stringCodec =
     Codec.string
 
@@ -1309,7 +1309,7 @@ stopQueryExecutionOutputCodec =
 stopQueryExecutionInputCodec : Codec StopQueryExecutionInput
 stopQueryExecutionInputCodec =
     Codec.object StopQueryExecutionInput
-        |> Codec.field "queryExecutionId" .queryExecutionId Codec.string
+        |> Codec.field "QueryExecutionId" .queryExecutionId Codec.string
         |> Codec.buildObject
 
 
@@ -1323,7 +1323,7 @@ statementTypeCodec =
 startQueryExecutionOutputCodec : Codec StartQueryExecutionOutput
 startQueryExecutionOutputCodec =
     Codec.object StartQueryExecutionOutput
-        |> Codec.field "queryExecutionId" .queryExecutionId Codec.string
+        |> Codec.field "QueryExecutionId" .queryExecutionId Codec.string
         |> Codec.buildObject
 
 
@@ -1331,11 +1331,11 @@ startQueryExecutionOutputCodec =
 startQueryExecutionInputCodec : Codec StartQueryExecutionInput
 startQueryExecutionInputCodec =
     Codec.object StartQueryExecutionInput
-        |> Codec.field "workGroup" .workGroup workGroupNameCodec
-        |> Codec.field "resultConfiguration" .resultConfiguration resultConfigurationCodec
-        |> Codec.field "queryString" .queryString queryStringCodec
-        |> Codec.field "queryExecutionContext" .queryExecutionContext queryExecutionContextCodec
-        |> Codec.field "clientRequestToken" .clientRequestToken idempotencyTokenCodec
+        |> Codec.field "WorkGroup" .workGroup workGroupNameCodec
+        |> Codec.field "ResultConfiguration" .resultConfiguration resultConfigurationCodec
+        |> Codec.field "QueryString" .queryString queryStringCodec
+        |> Codec.field "QueryExecutionContext" .queryExecutionContext queryExecutionContextCodec
+        |> Codec.field "ClientRequestToken" .clientRequestToken idempotencyTokenCodec
         |> Codec.buildObject
 
 
@@ -1348,21 +1348,21 @@ rowListCodec =
 {-| Codec for Row. -}
 rowCodec : Codec Row
 rowCodec =
-    Codec.object Row |> Codec.field "data" .data datumListCodec |> Codec.buildObject
+    Codec.object Row |> Codec.field "Data" .data datumListCodec |> Codec.buildObject
 
 
 {-| Codec for ResultSetMetadata. -}
 resultSetMetadataCodec : Codec ResultSetMetadata
 resultSetMetadataCodec =
-    Codec.object ResultSetMetadata |> Codec.field "columnInfo" .columnInfo columnInfoListCodec |> Codec.buildObject
+    Codec.object ResultSetMetadata |> Codec.field "ColumnInfo" .columnInfo columnInfoListCodec |> Codec.buildObject
 
 
 {-| Codec for ResultSet. -}
 resultSetCodec : Codec ResultSet
 resultSetCodec =
     Codec.object ResultSet
-        |> Codec.field "rows" .rows rowListCodec
-        |> Codec.field "resultSetMetadata" .resultSetMetadata resultSetMetadataCodec
+        |> Codec.field "Rows" .rows rowListCodec
+        |> Codec.field "ResultSetMetadata" .resultSetMetadata resultSetMetadataCodec
         |> Codec.buildObject
 
 
@@ -1370,10 +1370,10 @@ resultSetCodec =
 resultConfigurationUpdatesCodec : Codec ResultConfigurationUpdates
 resultConfigurationUpdatesCodec =
     Codec.object ResultConfigurationUpdates
-        |> Codec.field "removeOutputLocation" .removeOutputLocation Codec.bool
-        |> Codec.field "removeEncryptionConfiguration" .removeEncryptionConfiguration Codec.bool
-        |> Codec.field "outputLocation" .outputLocation Codec.string
-        |> Codec.field "encryptionConfiguration" .encryptionConfiguration encryptionConfigurationCodec
+        |> Codec.field "RemoveOutputLocation" .removeOutputLocation Codec.bool
+        |> Codec.field "RemoveEncryptionConfiguration" .removeEncryptionConfiguration Codec.bool
+        |> Codec.field "OutputLocation" .outputLocation Codec.string
+        |> Codec.field "EncryptionConfiguration" .encryptionConfiguration encryptionConfigurationCodec
         |> Codec.buildObject
 
 
@@ -1381,8 +1381,8 @@ resultConfigurationUpdatesCodec =
 resultConfigurationCodec : Codec ResultConfiguration
 resultConfigurationCodec =
     Codec.object ResultConfiguration
-        |> Codec.field "outputLocation" .outputLocation Codec.string
-        |> Codec.field "encryptionConfiguration" .encryptionConfiguration encryptionConfigurationCodec
+        |> Codec.field "OutputLocation" .outputLocation Codec.string
+        |> Codec.field "EncryptionConfiguration" .encryptionConfiguration encryptionConfigurationCodec
         |> Codec.buildObject
 
 
@@ -1396,10 +1396,10 @@ queryStringCodec =
 queryExecutionStatusCodec : Codec QueryExecutionStatus
 queryExecutionStatusCodec =
     Codec.object QueryExecutionStatus
-        |> Codec.field "submissionDateTime" .submissionDateTime dateCodec
-        |> Codec.field "stateChangeReason" .stateChangeReason Codec.string
-        |> Codec.field "state" .state queryExecutionStateCodec
-        |> Codec.field "completionDateTime" .completionDateTime dateCodec
+        |> Codec.field "SubmissionDateTime" .submissionDateTime dateCodec
+        |> Codec.field "StateChangeReason" .stateChangeReason Codec.string
+        |> Codec.field "State" .state queryExecutionStateCodec
+        |> Codec.field "CompletionDateTime" .completionDateTime dateCodec
         |> Codec.buildObject
 
 
@@ -1407,8 +1407,8 @@ queryExecutionStatusCodec =
 queryExecutionStatisticsCodec : Codec QueryExecutionStatistics
 queryExecutionStatisticsCodec =
     Codec.object QueryExecutionStatistics
-        |> Codec.field "engineExecutionTimeInMillis" .engineExecutionTimeInMillis Codec.int
-        |> Codec.field "dataScannedInBytes" .dataScannedInBytes Codec.int
+        |> Codec.field "EngineExecutionTimeInMillis" .engineExecutionTimeInMillis Codec.int
+        |> Codec.field "DataScannedInBytes" .dataScannedInBytes Codec.int
         |> Codec.buildObject
 
 
@@ -1439,21 +1439,21 @@ queryExecutionIdCodec =
 {-| Codec for QueryExecutionContext. -}
 queryExecutionContextCodec : Codec QueryExecutionContext
 queryExecutionContextCodec =
-    Codec.object QueryExecutionContext |> Codec.field "database" .database databaseStringCodec |> Codec.buildObject
+    Codec.object QueryExecutionContext |> Codec.field "Database" .database databaseStringCodec |> Codec.buildObject
 
 
 {-| Codec for QueryExecution. -}
 queryExecutionCodec : Codec QueryExecution
 queryExecutionCodec =
     Codec.object QueryExecution
-        |> Codec.field "workGroup" .workGroup workGroupNameCodec
-        |> Codec.field "status" .status queryExecutionStatusCodec
-        |> Codec.field "statistics" .statistics queryExecutionStatisticsCodec
-        |> Codec.field "statementType" .statementType statementTypeCodec
-        |> Codec.field "resultConfiguration" .resultConfiguration resultConfigurationCodec
-        |> Codec.field "queryExecutionId" .queryExecutionId Codec.string
-        |> Codec.field "queryExecutionContext" .queryExecutionContext queryExecutionContextCodec
-        |> Codec.field "query" .query queryStringCodec
+        |> Codec.field "WorkGroup" .workGroup workGroupNameCodec
+        |> Codec.field "Status" .status queryExecutionStatusCodec
+        |> Codec.field "Statistics" .statistics queryExecutionStatisticsCodec
+        |> Codec.field "StatementType" .statementType statementTypeCodec
+        |> Codec.field "ResultConfiguration" .resultConfiguration resultConfigurationCodec
+        |> Codec.field "QueryExecutionId" .queryExecutionId Codec.string
+        |> Codec.field "QueryExecutionContext" .queryExecutionContext queryExecutionContextCodec
+        |> Codec.field "Query" .query queryStringCodec
         |> Codec.buildObject
 
 
@@ -1479,12 +1479,12 @@ namedQueryIdCodec =
 namedQueryCodec : Codec NamedQuery
 namedQueryCodec =
     Codec.object NamedQuery
-        |> Codec.field "workGroup" .workGroup workGroupNameCodec
-        |> Codec.field "queryString" .queryString queryStringCodec
-        |> Codec.field "namedQueryId" .namedQueryId Codec.string
-        |> Codec.field "name" .name nameStringCodec
-        |> Codec.field "description" .description descriptionStringCodec
-        |> Codec.field "database" .database databaseStringCodec
+        |> Codec.field "WorkGroup" .workGroup workGroupNameCodec
+        |> Codec.field "QueryString" .queryString queryStringCodec
+        |> Codec.field "NamedQueryId" .namedQueryId Codec.string
+        |> Codec.field "Name" .name nameStringCodec
+        |> Codec.field "Description" .description descriptionStringCodec
+        |> Codec.field "Database" .database databaseStringCodec
         |> Codec.buildObject
 
 
@@ -1534,8 +1534,8 @@ longCodec =
 listWorkGroupsOutputCodec : Codec ListWorkGroupsOutput
 listWorkGroupsOutputCodec =
     Codec.object ListWorkGroupsOutput
-        |> Codec.field "workGroups" .workGroups workGroupsListCodec
-        |> Codec.field "nextToken" .nextToken tokenCodec
+        |> Codec.field "WorkGroups" .workGroups workGroupsListCodec
+        |> Codec.field "NextToken" .nextToken tokenCodec
         |> Codec.buildObject
 
 
@@ -1543,8 +1543,8 @@ listWorkGroupsOutputCodec =
 listWorkGroupsInputCodec : Codec ListWorkGroupsInput
 listWorkGroupsInputCodec =
     Codec.object ListWorkGroupsInput
-        |> Codec.field "nextToken" .nextToken tokenCodec
-        |> Codec.field "maxResults" .maxResults maxWorkGroupsCountCodec
+        |> Codec.field "NextToken" .nextToken tokenCodec
+        |> Codec.field "MaxResults" .maxResults maxWorkGroupsCountCodec
         |> Codec.buildObject
 
 
@@ -1552,8 +1552,8 @@ listWorkGroupsInputCodec =
 listTagsForResourceOutputCodec : Codec ListTagsForResourceOutput
 listTagsForResourceOutputCodec =
     Codec.object ListTagsForResourceOutput
-        |> Codec.field "tags" .tags tagListCodec
-        |> Codec.field "nextToken" .nextToken tokenCodec
+        |> Codec.field "Tags" .tags tagListCodec
+        |> Codec.field "NextToken" .nextToken tokenCodec
         |> Codec.buildObject
 
 
@@ -1561,9 +1561,9 @@ listTagsForResourceOutputCodec =
 listTagsForResourceInputCodec : Codec ListTagsForResourceInput
 listTagsForResourceInputCodec =
     Codec.object ListTagsForResourceInput
-        |> Codec.field "resourceArn" .resourceArn amazonResourceNameCodec
-        |> Codec.field "nextToken" .nextToken tokenCodec
-        |> Codec.field "maxResults" .maxResults maxTagsCountCodec
+        |> Codec.field "ResourceARN" .resourceArn amazonResourceNameCodec
+        |> Codec.field "NextToken" .nextToken tokenCodec
+        |> Codec.field "MaxResults" .maxResults maxTagsCountCodec
         |> Codec.buildObject
 
 
@@ -1571,8 +1571,8 @@ listTagsForResourceInputCodec =
 listQueryExecutionsOutputCodec : Codec ListQueryExecutionsOutput
 listQueryExecutionsOutputCodec =
     Codec.object ListQueryExecutionsOutput
-        |> Codec.field "queryExecutionIds" .queryExecutionIds queryExecutionIdListCodec
-        |> Codec.field "nextToken" .nextToken tokenCodec
+        |> Codec.field "QueryExecutionIds" .queryExecutionIds queryExecutionIdListCodec
+        |> Codec.field "NextToken" .nextToken tokenCodec
         |> Codec.buildObject
 
 
@@ -1580,9 +1580,9 @@ listQueryExecutionsOutputCodec =
 listQueryExecutionsInputCodec : Codec ListQueryExecutionsInput
 listQueryExecutionsInputCodec =
     Codec.object ListQueryExecutionsInput
-        |> Codec.field "workGroup" .workGroup workGroupNameCodec
-        |> Codec.field "nextToken" .nextToken tokenCodec
-        |> Codec.field "maxResults" .maxResults maxQueryExecutionsCountCodec
+        |> Codec.field "WorkGroup" .workGroup workGroupNameCodec
+        |> Codec.field "NextToken" .nextToken tokenCodec
+        |> Codec.field "MaxResults" .maxResults maxQueryExecutionsCountCodec
         |> Codec.buildObject
 
 
@@ -1590,8 +1590,8 @@ listQueryExecutionsInputCodec =
 listNamedQueriesOutputCodec : Codec ListNamedQueriesOutput
 listNamedQueriesOutputCodec =
     Codec.object ListNamedQueriesOutput
-        |> Codec.field "nextToken" .nextToken tokenCodec
-        |> Codec.field "namedQueryIds" .namedQueryIds namedQueryIdListCodec
+        |> Codec.field "NextToken" .nextToken tokenCodec
+        |> Codec.field "NamedQueryIds" .namedQueryIds namedQueryIdListCodec
         |> Codec.buildObject
 
 
@@ -1599,9 +1599,9 @@ listNamedQueriesOutputCodec =
 listNamedQueriesInputCodec : Codec ListNamedQueriesInput
 listNamedQueriesInputCodec =
     Codec.object ListNamedQueriesInput
-        |> Codec.field "workGroup" .workGroup workGroupNameCodec
-        |> Codec.field "nextToken" .nextToken tokenCodec
-        |> Codec.field "maxResults" .maxResults maxNamedQueriesCountCodec
+        |> Codec.field "WorkGroup" .workGroup workGroupNameCodec
+        |> Codec.field "NextToken" .nextToken tokenCodec
+        |> Codec.field "MaxResults" .maxResults maxNamedQueriesCountCodec
         |> Codec.buildObject
 
 
@@ -1620,22 +1620,22 @@ idempotencyTokenCodec =
 {-| Codec for GetWorkGroupOutput. -}
 getWorkGroupOutputCodec : Codec GetWorkGroupOutput
 getWorkGroupOutputCodec =
-    Codec.object GetWorkGroupOutput |> Codec.field "workGroup" .workGroup workGroupCodec |> Codec.buildObject
+    Codec.object GetWorkGroupOutput |> Codec.field "WorkGroup" .workGroup workGroupCodec |> Codec.buildObject
 
 
 {-| Codec for GetWorkGroupInput. -}
 getWorkGroupInputCodec : Codec GetWorkGroupInput
 getWorkGroupInputCodec =
-    Codec.object GetWorkGroupInput |> Codec.field "workGroup" .workGroup workGroupNameCodec |> Codec.buildObject
+    Codec.object GetWorkGroupInput |> Codec.field "WorkGroup" .workGroup workGroupNameCodec |> Codec.buildObject
 
 
 {-| Codec for GetQueryResultsOutput. -}
 getQueryResultsOutputCodec : Codec GetQueryResultsOutput
 getQueryResultsOutputCodec =
     Codec.object GetQueryResultsOutput
-        |> Codec.field "updateCount" .updateCount Codec.int
-        |> Codec.field "resultSet" .resultSet resultSetCodec
-        |> Codec.field "nextToken" .nextToken tokenCodec
+        |> Codec.field "UpdateCount" .updateCount Codec.int
+        |> Codec.field "ResultSet" .resultSet resultSetCodec
+        |> Codec.field "NextToken" .nextToken tokenCodec
         |> Codec.buildObject
 
 
@@ -1643,9 +1643,9 @@ getQueryResultsOutputCodec =
 getQueryResultsInputCodec : Codec GetQueryResultsInput
 getQueryResultsInputCodec =
     Codec.object GetQueryResultsInput
-        |> Codec.field "queryExecutionId" .queryExecutionId Codec.string
-        |> Codec.field "nextToken" .nextToken tokenCodec
-        |> Codec.field "maxResults" .maxResults maxQueryResultsCodec
+        |> Codec.field "QueryExecutionId" .queryExecutionId Codec.string
+        |> Codec.field "NextToken" .nextToken tokenCodec
+        |> Codec.field "MaxResults" .maxResults maxQueryResultsCodec
         |> Codec.buildObject
 
 
@@ -1653,7 +1653,7 @@ getQueryResultsInputCodec =
 getQueryExecutionOutputCodec : Codec GetQueryExecutionOutput
 getQueryExecutionOutputCodec =
     Codec.object GetQueryExecutionOutput
-        |> Codec.field "queryExecution" .queryExecution queryExecutionCodec
+        |> Codec.field "QueryExecution" .queryExecution queryExecutionCodec
         |> Codec.buildObject
 
 
@@ -1661,20 +1661,20 @@ getQueryExecutionOutputCodec =
 getQueryExecutionInputCodec : Codec GetQueryExecutionInput
 getQueryExecutionInputCodec =
     Codec.object GetQueryExecutionInput
-        |> Codec.field "queryExecutionId" .queryExecutionId Codec.string
+        |> Codec.field "QueryExecutionId" .queryExecutionId Codec.string
         |> Codec.buildObject
 
 
 {-| Codec for GetNamedQueryOutput. -}
 getNamedQueryOutputCodec : Codec GetNamedQueryOutput
 getNamedQueryOutputCodec =
-    Codec.object GetNamedQueryOutput |> Codec.field "namedQuery" .namedQuery namedQueryCodec |> Codec.buildObject
+    Codec.object GetNamedQueryOutput |> Codec.field "NamedQuery" .namedQuery namedQueryCodec |> Codec.buildObject
 
 
 {-| Codec for GetNamedQueryInput. -}
 getNamedQueryInputCodec : Codec GetNamedQueryInput
 getNamedQueryInputCodec =
-    Codec.object GetNamedQueryInput |> Codec.field "namedQueryId" .namedQueryId Codec.string |> Codec.buildObject
+    Codec.object GetNamedQueryInput |> Codec.field "NamedQueryId" .namedQueryId Codec.string |> Codec.buildObject
 
 
 {-| Codec for ErrorMessage. -}
@@ -1699,8 +1699,8 @@ encryptionOptionCodec =
 encryptionConfigurationCodec : Codec EncryptionConfiguration
 encryptionConfigurationCodec =
     Codec.object EncryptionConfiguration
-        |> Codec.field "kmsKey" .kmsKey Codec.string
-        |> Codec.field "encryptionOption" .encryptionOption encryptionOptionCodec
+        |> Codec.field "KmsKey" .kmsKey Codec.string
+        |> Codec.field "EncryptionOption" .encryptionOption encryptionOptionCodec
         |> Codec.buildObject
 
 
@@ -1720,8 +1720,8 @@ deleteWorkGroupOutputCodec =
 deleteWorkGroupInputCodec : Codec DeleteWorkGroupInput
 deleteWorkGroupInputCodec =
     Codec.object DeleteWorkGroupInput
-        |> Codec.field "workGroup" .workGroup workGroupNameCodec
-        |> Codec.field "recursiveDeleteOption" .recursiveDeleteOption Codec.bool
+        |> Codec.field "WorkGroup" .workGroup workGroupNameCodec
+        |> Codec.field "RecursiveDeleteOption" .recursiveDeleteOption Codec.bool
         |> Codec.buildObject
 
 
@@ -1734,13 +1734,13 @@ deleteNamedQueryOutputCodec =
 {-| Codec for DeleteNamedQueryInput. -}
 deleteNamedQueryInputCodec : Codec DeleteNamedQueryInput
 deleteNamedQueryInputCodec =
-    Codec.object DeleteNamedQueryInput |> Codec.field "namedQueryId" .namedQueryId Codec.string |> Codec.buildObject
+    Codec.object DeleteNamedQueryInput |> Codec.field "NamedQueryId" .namedQueryId Codec.string |> Codec.buildObject
 
 
 {-| Codec for Datum. -}
 datumCodec : Codec Datum
 datumCodec =
-    Codec.object Datum |> Codec.field "varCharValue" .varCharValue Codec.string |> Codec.buildObject
+    Codec.object Datum |> Codec.field "VarCharValue" .varCharValue Codec.string |> Codec.buildObject
 
 
 {-| Codec for Date. -}
@@ -1765,29 +1765,29 @@ createWorkGroupOutputCodec =
 createWorkGroupInputCodec : Codec CreateWorkGroupInput
 createWorkGroupInputCodec =
     Codec.object CreateWorkGroupInput
-        |> Codec.field "tags" .tags tagListCodec
-        |> Codec.field "name" .name workGroupNameCodec
-        |> Codec.field "description" .description workGroupDescriptionStringCodec
-        |> Codec.field "configuration" .configuration workGroupConfigurationCodec
+        |> Codec.field "Tags" .tags tagListCodec
+        |> Codec.field "Name" .name workGroupNameCodec
+        |> Codec.field "Description" .description workGroupDescriptionStringCodec
+        |> Codec.field "Configuration" .configuration workGroupConfigurationCodec
         |> Codec.buildObject
 
 
 {-| Codec for CreateNamedQueryOutput. -}
 createNamedQueryOutputCodec : Codec CreateNamedQueryOutput
 createNamedQueryOutputCodec =
-    Codec.object CreateNamedQueryOutput |> Codec.field "namedQueryId" .namedQueryId Codec.string |> Codec.buildObject
+    Codec.object CreateNamedQueryOutput |> Codec.field "NamedQueryId" .namedQueryId Codec.string |> Codec.buildObject
 
 
 {-| Codec for CreateNamedQueryInput. -}
 createNamedQueryInputCodec : Codec CreateNamedQueryInput
 createNamedQueryInputCodec =
     Codec.object CreateNamedQueryInput
-        |> Codec.field "workGroup" .workGroup workGroupNameCodec
-        |> Codec.field "queryString" .queryString queryStringCodec
-        |> Codec.field "name" .name nameStringCodec
-        |> Codec.field "description" .description descriptionStringCodec
-        |> Codec.field "database" .database databaseStringCodec
-        |> Codec.field "clientRequestToken" .clientRequestToken idempotencyTokenCodec
+        |> Codec.field "WorkGroup" .workGroup workGroupNameCodec
+        |> Codec.field "QueryString" .queryString queryStringCodec
+        |> Codec.field "Name" .name nameStringCodec
+        |> Codec.field "Description" .description descriptionStringCodec
+        |> Codec.field "Database" .database databaseStringCodec
+        |> Codec.field "ClientRequestToken" .clientRequestToken idempotencyTokenCodec
         |> Codec.buildObject
 
 
@@ -1807,16 +1807,16 @@ columnInfoListCodec =
 columnInfoCodec : Codec ColumnInfo
 columnInfoCodec =
     Codec.object ColumnInfo
-        |> Codec.field "type" .type Codec.string
-        |> Codec.field "tableName" .tableName Codec.string
-        |> Codec.field "schemaName" .schemaName Codec.string
-        |> Codec.field "scale" .scale Codec.int
-        |> Codec.field "precision" .precision Codec.int
-        |> Codec.field "nullable" .nullable columnNullableCodec
-        |> Codec.field "name" .name Codec.string
-        |> Codec.field "label" .label Codec.string
-        |> Codec.field "catalogName" .catalogName Codec.string
-        |> Codec.field "caseSensitive" .caseSensitive Codec.bool
+        |> Codec.field "Type" .type_ Codec.string
+        |> Codec.field "TableName" .tableName Codec.string
+        |> Codec.field "SchemaName" .schemaName Codec.string
+        |> Codec.field "Scale" .scale Codec.int
+        |> Codec.field "Precision" .precision Codec.int
+        |> Codec.field "Nullable" .nullable columnNullableCodec
+        |> Codec.field "Name" .name Codec.string
+        |> Codec.field "Label" .label Codec.string
+        |> Codec.field "CatalogName" .catalogName Codec.string
+        |> Codec.field "CaseSensitive" .caseSensitive Codec.bool
         |> Codec.buildObject
 
 
@@ -1842,8 +1842,8 @@ booleanCodec =
 batchGetQueryExecutionOutputCodec : Codec BatchGetQueryExecutionOutput
 batchGetQueryExecutionOutputCodec =
     Codec.object BatchGetQueryExecutionOutput
-        |> Codec.field "unprocessedQueryExecutionIds" .unprocessedQueryExecutionIds unprocessedQueryExecutionIdListCodec
-        |> Codec.field "queryExecutions" .queryExecutions queryExecutionListCodec
+        |> Codec.field "UnprocessedQueryExecutionIds" .unprocessedQueryExecutionIds unprocessedQueryExecutionIdListCodec
+        |> Codec.field "QueryExecutions" .queryExecutions queryExecutionListCodec
         |> Codec.buildObject
 
 
@@ -1851,7 +1851,7 @@ batchGetQueryExecutionOutputCodec =
 batchGetQueryExecutionInputCodec : Codec BatchGetQueryExecutionInput
 batchGetQueryExecutionInputCodec =
     Codec.object BatchGetQueryExecutionInput
-        |> Codec.field "queryExecutionIds" .queryExecutionIds queryExecutionIdListCodec
+        |> Codec.field "QueryExecutionIds" .queryExecutionIds queryExecutionIdListCodec
         |> Codec.buildObject
 
 
@@ -1859,8 +1859,8 @@ batchGetQueryExecutionInputCodec =
 batchGetNamedQueryOutputCodec : Codec BatchGetNamedQueryOutput
 batchGetNamedQueryOutputCodec =
     Codec.object BatchGetNamedQueryOutput
-        |> Codec.field "unprocessedNamedQueryIds" .unprocessedNamedQueryIds unprocessedNamedQueryIdListCodec
-        |> Codec.field "namedQueries" .namedQueries namedQueryListCodec
+        |> Codec.field "UnprocessedNamedQueryIds" .unprocessedNamedQueryIds unprocessedNamedQueryIdListCodec
+        |> Codec.field "NamedQueries" .namedQueries namedQueryListCodec
         |> Codec.buildObject
 
 
@@ -1868,7 +1868,7 @@ batchGetNamedQueryOutputCodec =
 batchGetNamedQueryInputCodec : Codec BatchGetNamedQueryInput
 batchGetNamedQueryInputCodec =
     Codec.object BatchGetNamedQueryInput
-        |> Codec.field "namedQueryIds" .namedQueryIds namedQueryIdListCodec
+        |> Codec.field "NamedQueryIds" .namedQueryIds namedQueryIdListCodec
         |> Codec.buildObject
 
 
