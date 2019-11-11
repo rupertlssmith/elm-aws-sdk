@@ -6,6 +6,8 @@ import AWS.Core.Service
 import Codec exposing (Codec)
 import Enum exposing (Enum)
 import Guarded exposing (Guarded, IntError, StringError)
+import Json.Decode exposing (Decoder)
+import Json.Encode exposing (Value)
 
 
 {-| Configuration for this service. -}
@@ -320,12 +322,12 @@ amazonResourceName : Guarded String AmazonResourceName StringError
 amazonResourceName =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 1011)
+            Guarded.minLength 1 val |> Result.andThen Guarded.maxLength 1011 |> Result.andThen AmazonResourceName
 
         unboxFn (AmazonResourceName val) =
             val
     in
-    Guarded.make guardFn Guarded.intErrorToString unboxFn
+    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
 
 
 type alias BatchGetNamedQueryInput =
@@ -431,12 +433,12 @@ databaseString : Guarded String DatabaseString StringError
 databaseString =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 255)
+            Guarded.minLength 1 val |> Result.andThen Guarded.maxLength 255 |> Result.andThen DatabaseString
 
         unboxFn (DatabaseString val) =
             val
     in
-    Guarded.make guardFn Guarded.intErrorToString unboxFn
+    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
 
 
 type alias Date =
@@ -471,12 +473,12 @@ descriptionString : Guarded String DescriptionString StringError
 descriptionString =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 1024)
+            Guarded.minLength 1 val |> Result.andThen Guarded.maxLength 1024 |> Result.andThen DescriptionString
 
         unboxFn (DescriptionString val) =
             val
     in
-    Guarded.make guardFn Guarded.intErrorToString unboxFn
+    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
 
 
 type alias EncryptionConfiguration =
@@ -514,12 +516,12 @@ errorCode : Guarded String ErrorCode StringError
 errorCode =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 256)
+            Guarded.minLength 1 val |> Result.andThen Guarded.maxLength 256 |> Result.andThen ErrorCode
 
         unboxFn (ErrorCode val) =
             val
     in
-    Guarded.make guardFn Guarded.intErrorToString unboxFn
+    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
 
 
 type alias ErrorMessage =
@@ -566,12 +568,12 @@ idempotencyToken : Guarded String IdempotencyToken StringError
 idempotencyToken =
     let
         guardFn val =
-            Guarded.minLength 32 val |> Result.andThen (Guarded.maxLength 128)
+            Guarded.minLength 32 val |> Result.andThen Guarded.maxLength 128 |> Result.andThen IdempotencyToken
 
         unboxFn (IdempotencyToken val) =
             val
     in
-    Guarded.make guardFn Guarded.intErrorToString unboxFn
+    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
 
 
 type alias Integer =
@@ -622,12 +624,12 @@ maxNamedQueriesCount : Guarded Int MaxNamedQueriesCount IntError
 maxNamedQueriesCount =
     let
         guardFn val =
-            Guarded.gt 0 val |> Result.andThen (Guarded.lt 50)
+            Guarded.gt 0 val |> Result.andThen Guarded.lt 50 |> Result.andThen MaxNamedQueriesCount
 
         unboxFn (MaxNamedQueriesCount val) =
             val
     in
-    Guarded.make guardFn Guarded.intErrorToString unboxFn
+    Guarded.make Json.Decode.int Json.Encode.int guardFn Guarded.intErrorToString unboxFn
 
 
 type MaxQueryExecutionsCount
@@ -638,12 +640,12 @@ maxQueryExecutionsCount : Guarded Int MaxQueryExecutionsCount IntError
 maxQueryExecutionsCount =
     let
         guardFn val =
-            Guarded.gt 0 val |> Result.andThen (Guarded.lt 50)
+            Guarded.gt 0 val |> Result.andThen Guarded.lt 50 |> Result.andThen MaxQueryExecutionsCount
 
         unboxFn (MaxQueryExecutionsCount val) =
             val
     in
-    Guarded.make guardFn Guarded.intErrorToString unboxFn
+    Guarded.make Json.Decode.int Json.Encode.int guardFn Guarded.intErrorToString unboxFn
 
 
 type MaxQueryResults
@@ -654,12 +656,12 @@ maxQueryResults : Guarded Int MaxQueryResults IntError
 maxQueryResults =
     let
         guardFn val =
-            Guarded.gt 0 val |> Result.andThen (Guarded.lt 1000)
+            Guarded.gt 0 val |> Result.andThen Guarded.lt 1000 |> Result.andThen MaxQueryResults
 
         unboxFn (MaxQueryResults val) =
             val
     in
-    Guarded.make guardFn Guarded.intErrorToString unboxFn
+    Guarded.make Json.Decode.int Json.Encode.int guardFn Guarded.intErrorToString unboxFn
 
 
 type MaxTagsCount
@@ -670,12 +672,12 @@ maxTagsCount : Guarded Int MaxTagsCount IntError
 maxTagsCount =
     let
         guardFn val =
-            Guarded.gt 75 val
+            Guarded.gt 75 val |> Result.andThen MaxTagsCount
 
         unboxFn (MaxTagsCount val) =
             val
     in
-    Guarded.make guardFn Guarded.intErrorToString unboxFn
+    Guarded.make Json.Decode.int Json.Encode.int guardFn Guarded.intErrorToString unboxFn
 
 
 type MaxWorkGroupsCount
@@ -686,12 +688,12 @@ maxWorkGroupsCount : Guarded Int MaxWorkGroupsCount IntError
 maxWorkGroupsCount =
     let
         guardFn val =
-            Guarded.gt 1 val |> Result.andThen (Guarded.lt 50)
+            Guarded.gt 1 val |> Result.andThen Guarded.lt 50 |> Result.andThen MaxWorkGroupsCount
 
         unboxFn (MaxWorkGroupsCount val) =
             val
     in
-    Guarded.make guardFn Guarded.intErrorToString unboxFn
+    Guarded.make Json.Decode.int Json.Encode.int guardFn Guarded.intErrorToString unboxFn
 
 
 type NameString
@@ -702,12 +704,12 @@ nameString : Guarded String NameString StringError
 nameString =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 128)
+            Guarded.minLength 1 val |> Result.andThen Guarded.maxLength 128 |> Result.andThen NameString
 
         unboxFn (NameString val) =
             val
     in
-    Guarded.make guardFn Guarded.intErrorToString unboxFn
+    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
 
 
 type alias NamedQuery =
@@ -812,12 +814,12 @@ queryString : Guarded String QueryString StringError
 queryString =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 262144)
+            Guarded.minLength 1 val |> Result.andThen Guarded.maxLength 262144 |> Result.andThen QueryString
 
         unboxFn (QueryString val) =
             val
     in
-    Guarded.make guardFn Guarded.intErrorToString unboxFn
+    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
 
 
 type alias ResultConfiguration =
@@ -908,12 +910,12 @@ tagKey : Guarded String TagKey StringError
 tagKey =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 128)
+            Guarded.minLength 1 val |> Result.andThen Guarded.maxLength 128 |> Result.andThen TagKey
 
         unboxFn (TagKey val) =
             val
     in
-    Guarded.make guardFn Guarded.intErrorToString unboxFn
+    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
 
 
 type alias TagKeyList =
@@ -940,12 +942,12 @@ tagValue : Guarded String TagValue StringError
 tagValue =
     let
         guardFn val =
-            Guarded.minLength 0 val |> Result.andThen (Guarded.maxLength 256)
+            Guarded.minLength 0 val |> Result.andThen Guarded.maxLength 256 |> Result.andThen TagValue
 
         unboxFn (TagValue val) =
             val
     in
-    Guarded.make guardFn Guarded.intErrorToString unboxFn
+    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
 
 
 type Token
@@ -956,12 +958,12 @@ token : Guarded String Token StringError
 token =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 1024)
+            Guarded.minLength 1 val |> Result.andThen Guarded.maxLength 1024 |> Result.andThen Token
 
         unboxFn (Token val) =
             val
     in
-    Guarded.make guardFn Guarded.intErrorToString unboxFn
+    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
 
 
 type alias UnprocessedNamedQueryId =
@@ -1034,12 +1036,13 @@ workGroupDescriptionString : Guarded String WorkGroupDescriptionString StringErr
 workGroupDescriptionString =
     let
         guardFn val =
-            Guarded.minLength 0 val |> Result.andThen (Guarded.maxLength 1024)
+            Guarded.minLength 0 val
+                |> Result.andThen Guarded.maxLength 1024 |> Result.andThen WorkGroupDescriptionString
 
         unboxFn (WorkGroupDescriptionString val) =
             val
     in
-    Guarded.make guardFn Guarded.intErrorToString unboxFn
+    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
 
 
 type WorkGroupName
@@ -1050,12 +1053,12 @@ workGroupName : Guarded String WorkGroupName StringError
 workGroupName =
     let
         guardFn val =
-            Guarded.regexMatch "[a-zA-z0-9._-]{1,128}" val
+            Guarded.regexMatch "[a-zA-z0-9._-]{1,128}" val |> Result.andThen WorkGroupName
 
         unboxFn (WorkGroupName val) =
             val
     in
-    Guarded.make guardFn Guarded.intErrorToString unboxFn
+    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
 
 
 type WorkGroupState
