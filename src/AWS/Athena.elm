@@ -26,7 +26,7 @@ updateWorkGroup req =
         responseDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "UpdateWorkGroup"
-                (AWS.Core.Decode.ResultDecoder "UpdateWorkGroupOutput" Codec.decoder updateWorkGroupOutputCodec)
+                (AWS.Core.Decode.ResultDecoder "UpdateWorkGroupOutput" (Codec.decoder updateWorkGroupOutputCodec))
     in
     AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
 
@@ -41,7 +41,7 @@ untagResource req =
         responseDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "UntagResource"
-                (AWS.Core.Decode.ResultDecoder "UntagResourceOutput" Codec.decoder untagResourceOutputCodec)
+                (AWS.Core.Decode.ResultDecoder "UntagResourceOutput" (Codec.decoder untagResourceOutputCodec))
     in
     AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
 
@@ -56,7 +56,7 @@ tagResource req =
         responseDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "TagResource"
-                (AWS.Core.Decode.ResultDecoder "TagResourceOutput" Codec.decoder tagResourceOutputCodec)
+                (AWS.Core.Decode.ResultDecoder "TagResourceOutput" (Codec.decoder tagResourceOutputCodec))
     in
     AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
 
@@ -72,7 +72,7 @@ stopQueryExecution req =
         responseDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "StopQueryExecution"
-                (AWS.Core.Decode.ResultDecoder "StopQueryExecutionOutput" Codec.decoder stopQueryExecutionOutputCodec)
+                (AWS.Core.Decode.ResultDecoder "StopQueryExecutionOutput" (Codec.decoder stopQueryExecutionOutputCodec))
     in
     AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
 
@@ -88,7 +88,10 @@ startQueryExecution req =
         responseDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "StartQueryExecution"
-                (AWS.Core.Decode.ResultDecoder "StartQueryExecutionOutput" Codec.decoder startQueryExecutionOutputCodec)
+                (AWS.Core.Decode.ResultDecoder
+                    "StartQueryExecutionOutput"
+                    (Codec.decoder startQueryExecutionOutputCodec)
+                )
     in
     AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
 
@@ -103,7 +106,7 @@ listWorkGroups req =
         responseDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListWorkGroups"
-                (AWS.Core.Decode.ResultDecoder "ListWorkGroupsOutput" Codec.decoder listWorkGroupsOutputCodec)
+                (AWS.Core.Decode.ResultDecoder "ListWorkGroupsOutput" (Codec.decoder listWorkGroupsOutputCodec))
     in
     AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
 
@@ -119,7 +122,10 @@ listTagsForResource req =
         responseDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListTagsForResource"
-                (AWS.Core.Decode.ResultDecoder "ListTagsForResourceOutput" Codec.decoder listTagsForResourceOutputCodec)
+                (AWS.Core.Decode.ResultDecoder
+                    "ListTagsForResourceOutput"
+                    (Codec.decoder listTagsForResourceOutputCodec)
+                )
     in
     AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
 
@@ -135,7 +141,10 @@ listQueryExecutions req =
         responseDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListQueryExecutions"
-                (AWS.Core.Decode.ResultDecoder "ListQueryExecutionsOutput" Codec.decoder listQueryExecutionsOutputCodec)
+                (AWS.Core.Decode.ResultDecoder
+                    "ListQueryExecutionsOutput"
+                    (Codec.decoder listQueryExecutionsOutputCodec)
+                )
     in
     AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
 
@@ -151,7 +160,7 @@ listNamedQueries req =
         responseDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListNamedQueries"
-                (AWS.Core.Decode.ResultDecoder "ListNamedQueriesOutput" Codec.decoder listNamedQueriesOutputCodec)
+                (AWS.Core.Decode.ResultDecoder "ListNamedQueriesOutput" (Codec.decoder listNamedQueriesOutputCodec))
     in
     AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
 
@@ -166,7 +175,7 @@ getWorkGroup req =
         responseDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "GetWorkGroup"
-                (AWS.Core.Decode.ResultDecoder "GetWorkGroupOutput" Codec.decoder getWorkGroupOutputCodec)
+                (AWS.Core.Decode.ResultDecoder "GetWorkGroupOutput" (Codec.decoder getWorkGroupOutputCodec))
     in
     AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
 
@@ -181,7 +190,7 @@ getQueryResults req =
         responseDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "GetQueryResults"
-                (AWS.Core.Decode.ResultDecoder "GetQueryResultsOutput" Codec.decoder getQueryResultsOutputCodec)
+                (AWS.Core.Decode.ResultDecoder "GetQueryResultsOutput" (Codec.decoder getQueryResultsOutputCodec))
     in
     AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
 
@@ -197,7 +206,7 @@ getQueryExecution req =
         responseDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "GetQueryExecution"
-                (AWS.Core.Decode.ResultDecoder "GetQueryExecutionOutput" Codec.decoder getQueryExecutionOutputCodec)
+                (AWS.Core.Decode.ResultDecoder "GetQueryExecutionOutput" (Codec.decoder getQueryExecutionOutputCodec))
     in
     AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
 
@@ -212,7 +221,7 @@ getNamedQuery req =
         responseDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "GetNamedQuery"
-                (AWS.Core.Decode.ResultDecoder "GetNamedQueryOutput" Codec.decoder getNamedQueryOutputCodec)
+                (AWS.Core.Decode.ResultDecoder "GetNamedQueryOutput" (Codec.decoder getNamedQueryOutputCodec))
     in
     AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
 
@@ -227,7 +236,7 @@ deleteWorkGroup req =
         responseDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "DeleteWorkGroup"
-                (AWS.Core.Decode.ResultDecoder "DeleteWorkGroupOutput" Codec.decoder deleteWorkGroupOutputCodec)
+                (AWS.Core.Decode.ResultDecoder "DeleteWorkGroupOutput" (Codec.decoder deleteWorkGroupOutputCodec))
     in
     AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
 
@@ -243,7 +252,7 @@ deleteNamedQuery req =
         responseDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "DeleteNamedQuery"
-                (AWS.Core.Decode.ResultDecoder "DeleteNamedQueryOutput" Codec.decoder deleteNamedQueryOutputCodec)
+                (AWS.Core.Decode.ResultDecoder "DeleteNamedQueryOutput" (Codec.decoder deleteNamedQueryOutputCodec))
     in
     AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
 
@@ -258,7 +267,7 @@ createWorkGroup req =
         responseDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "CreateWorkGroup"
-                (AWS.Core.Decode.ResultDecoder "CreateWorkGroupOutput" Codec.decoder createWorkGroupOutputCodec)
+                (AWS.Core.Decode.ResultDecoder "CreateWorkGroupOutput" (Codec.decoder createWorkGroupOutputCodec))
     in
     AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
 
@@ -274,7 +283,7 @@ createNamedQuery req =
         responseDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "CreateNamedQuery"
-                (AWS.Core.Decode.ResultDecoder "CreateNamedQueryOutput" Codec.decoder createNamedQueryOutputCodec)
+                (AWS.Core.Decode.ResultDecoder "CreateNamedQueryOutput" (Codec.decoder createNamedQueryOutputCodec))
     in
     AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
 
@@ -292,7 +301,7 @@ batchGetQueryExecution req =
                 "BatchGetQueryExecution"
                 (AWS.Core.Decode.ResultDecoder
                     "BatchGetQueryExecutionOutput"
-                    Codec.decoder batchGetQueryExecutionOutputCodec
+                    (Codec.decoder batchGetQueryExecutionOutputCodec)
                 )
     in
     AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
@@ -309,7 +318,7 @@ batchGetNamedQuery req =
         responseDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "BatchGetNamedQuery"
-                (AWS.Core.Decode.ResultDecoder "BatchGetNamedQueryOutput" Codec.decoder batchGetNamedQueryOutputCodec)
+                (AWS.Core.Decode.ResultDecoder "BatchGetNamedQueryOutput" (Codec.decoder batchGetNamedQueryOutputCodec))
     in
     AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
 
