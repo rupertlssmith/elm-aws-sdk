@@ -322,7 +322,7 @@ amazonResourceName : Guarded String AmazonResourceName StringError
 amazonResourceName =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen Guarded.maxLength 1011 |> Result.andThen AmazonResourceName
+            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 1011) |> Result.map AmazonResourceName
 
         unboxFn (AmazonResourceName val) =
             val
@@ -433,7 +433,7 @@ databaseString : Guarded String DatabaseString StringError
 databaseString =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen Guarded.maxLength 255 |> Result.andThen DatabaseString
+            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 255) |> Result.map DatabaseString
 
         unboxFn (DatabaseString val) =
             val
@@ -473,7 +473,7 @@ descriptionString : Guarded String DescriptionString StringError
 descriptionString =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen Guarded.maxLength 1024 |> Result.andThen DescriptionString
+            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 1024) |> Result.map DescriptionString
 
         unboxFn (DescriptionString val) =
             val
@@ -516,7 +516,7 @@ errorCode : Guarded String ErrorCode StringError
 errorCode =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen Guarded.maxLength 256 |> Result.andThen ErrorCode
+            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 256) |> Result.map ErrorCode
 
         unboxFn (ErrorCode val) =
             val
@@ -568,7 +568,7 @@ idempotencyToken : Guarded String IdempotencyToken StringError
 idempotencyToken =
     let
         guardFn val =
-            Guarded.minLength 32 val |> Result.andThen Guarded.maxLength 128 |> Result.andThen IdempotencyToken
+            Guarded.minLength 32 val |> Result.andThen (Guarded.maxLength 128) |> Result.map IdempotencyToken
 
         unboxFn (IdempotencyToken val) =
             val
@@ -624,7 +624,7 @@ maxNamedQueriesCount : Guarded Int MaxNamedQueriesCount IntError
 maxNamedQueriesCount =
     let
         guardFn val =
-            Guarded.gt 0 val |> Result.andThen Guarded.lt 50 |> Result.andThen MaxNamedQueriesCount
+            Guarded.gt 0 val |> Result.andThen (Guarded.lt 50) |> Result.map MaxNamedQueriesCount
 
         unboxFn (MaxNamedQueriesCount val) =
             val
@@ -640,7 +640,7 @@ maxQueryExecutionsCount : Guarded Int MaxQueryExecutionsCount IntError
 maxQueryExecutionsCount =
     let
         guardFn val =
-            Guarded.gt 0 val |> Result.andThen Guarded.lt 50 |> Result.andThen MaxQueryExecutionsCount
+            Guarded.gt 0 val |> Result.andThen (Guarded.lt 50) |> Result.map MaxQueryExecutionsCount
 
         unboxFn (MaxQueryExecutionsCount val) =
             val
@@ -656,7 +656,7 @@ maxQueryResults : Guarded Int MaxQueryResults IntError
 maxQueryResults =
     let
         guardFn val =
-            Guarded.gt 0 val |> Result.andThen Guarded.lt 1000 |> Result.andThen MaxQueryResults
+            Guarded.gt 0 val |> Result.andThen (Guarded.lt 1000) |> Result.map MaxQueryResults
 
         unboxFn (MaxQueryResults val) =
             val
@@ -672,7 +672,7 @@ maxTagsCount : Guarded Int MaxTagsCount IntError
 maxTagsCount =
     let
         guardFn val =
-            Guarded.gt 75 val |> Result.andThen MaxTagsCount
+            Guarded.gt 75 val |> Result.map MaxTagsCount
 
         unboxFn (MaxTagsCount val) =
             val
@@ -688,7 +688,7 @@ maxWorkGroupsCount : Guarded Int MaxWorkGroupsCount IntError
 maxWorkGroupsCount =
     let
         guardFn val =
-            Guarded.gt 1 val |> Result.andThen Guarded.lt 50 |> Result.andThen MaxWorkGroupsCount
+            Guarded.gt 1 val |> Result.andThen (Guarded.lt 50) |> Result.map MaxWorkGroupsCount
 
         unboxFn (MaxWorkGroupsCount val) =
             val
@@ -704,7 +704,7 @@ nameString : Guarded String NameString StringError
 nameString =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen Guarded.maxLength 128 |> Result.andThen NameString
+            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 128) |> Result.map NameString
 
         unboxFn (NameString val) =
             val
@@ -814,7 +814,7 @@ queryString : Guarded String QueryString StringError
 queryString =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen Guarded.maxLength 262144 |> Result.andThen QueryString
+            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 262144) |> Result.map QueryString
 
         unboxFn (QueryString val) =
             val
@@ -910,7 +910,7 @@ tagKey : Guarded String TagKey StringError
 tagKey =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen Guarded.maxLength 128 |> Result.andThen TagKey
+            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 128) |> Result.map TagKey
 
         unboxFn (TagKey val) =
             val
@@ -942,7 +942,7 @@ tagValue : Guarded String TagValue StringError
 tagValue =
     let
         guardFn val =
-            Guarded.minLength 0 val |> Result.andThen Guarded.maxLength 256 |> Result.andThen TagValue
+            Guarded.minLength 0 val |> Result.andThen (Guarded.maxLength 256) |> Result.map TagValue
 
         unboxFn (TagValue val) =
             val
@@ -958,7 +958,7 @@ token : Guarded String Token StringError
 token =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen Guarded.maxLength 1024 |> Result.andThen Token
+            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 1024) |> Result.map Token
 
         unboxFn (Token val) =
             val
@@ -1036,8 +1036,7 @@ workGroupDescriptionString : Guarded String WorkGroupDescriptionString StringErr
 workGroupDescriptionString =
     let
         guardFn val =
-            Guarded.minLength 0 val
-                |> Result.andThen Guarded.maxLength 1024 |> Result.andThen WorkGroupDescriptionString
+            Guarded.minLength 0 val |> Result.andThen (Guarded.maxLength 1024) |> Result.map WorkGroupDescriptionString
 
         unboxFn (WorkGroupDescriptionString val) =
             val
@@ -1053,7 +1052,7 @@ workGroupName : Guarded String WorkGroupName StringError
 workGroupName =
     let
         guardFn val =
-            Guarded.regexMatch "[a-zA-z0-9._-]{1,128}" val |> Result.andThen WorkGroupName
+            Guarded.regexMatch "[a-zA-z0-9._-]{1,128}" val |> Result.map WorkGroupName
 
         unboxFn (WorkGroupName val) =
             val
