@@ -10,8 +10,8 @@ type Guarded i a e
 
 
 make : (i -> Result e a) -> Decoder i -> (i -> Value) -> (e -> String) -> (a -> i) -> Guarded i a e
-make =
-    Guarded
+make guardFn dec enc errorToStringFn unboxFn =
+    Guarded guardFn dec enc errorToStringFn unboxFn
 
 
 build : Guarded i a e -> i -> Result e a
