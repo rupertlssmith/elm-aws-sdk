@@ -629,7 +629,7 @@ maxNamedQueriesCount =
         unboxFn (MaxNamedQueriesCount val) =
             val
     in
-    Guarded.make Json.Decode.int Json.Encode.int guardFn Guarded.intErrorToString unboxFn
+    Guarded.make guardFn Json.Decode.int Json.Encode.int Guarded.intErrorToString unboxFn
 
 
 type MaxQueryExecutionsCount
@@ -645,7 +645,7 @@ maxQueryExecutionsCount =
         unboxFn (MaxQueryExecutionsCount val) =
             val
     in
-    Guarded.make Json.Decode.int Json.Encode.int guardFn Guarded.intErrorToString unboxFn
+    Guarded.make guardFn Json.Decode.int Json.Encode.int Guarded.intErrorToString unboxFn
 
 
 type MaxQueryResults
@@ -661,7 +661,7 @@ maxQueryResults =
         unboxFn (MaxQueryResults val) =
             val
     in
-    Guarded.make Json.Decode.int Json.Encode.int guardFn Guarded.intErrorToString unboxFn
+    Guarded.make guardFn Json.Decode.int Json.Encode.int Guarded.intErrorToString unboxFn
 
 
 type MaxTagsCount
@@ -677,7 +677,7 @@ maxTagsCount =
         unboxFn (MaxTagsCount val) =
             val
     in
-    Guarded.make Json.Decode.int Json.Encode.int guardFn Guarded.intErrorToString unboxFn
+    Guarded.make guardFn Json.Decode.int Json.Encode.int Guarded.intErrorToString unboxFn
 
 
 type MaxWorkGroupsCount
@@ -693,7 +693,7 @@ maxWorkGroupsCount =
         unboxFn (MaxWorkGroupsCount val) =
             val
     in
-    Guarded.make Json.Decode.int Json.Encode.int guardFn Guarded.intErrorToString unboxFn
+    Guarded.make guardFn Json.Decode.int Json.Encode.int Guarded.intErrorToString unboxFn
 
 
 type NameString
