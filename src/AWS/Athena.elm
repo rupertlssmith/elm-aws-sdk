@@ -13,7 +13,11 @@ import Json.Encode exposing (Value)
 {-| Configuration for this service. -}
 service : AWS.Core.Service.Service
 service =
-    AWS.Core.Service.defineGlobal "athena" "2017-05-18" AWS.Core.Service.json AWS.Core.Service.signV4
+    let
+        optionsFn =
+            AWS.Core.Service.setJsonVersion "1.1" >> AWS.Core.Service.setTargetPrefix "AmazonAthena"
+    in
+    AWS.Core.Service.defineGlobal "athena" "2017-05-18" AWS.Core.Service.json AWS.Core.Service.signV4 optionsFn
 
 
 {-| AWS Endpoint. -}
