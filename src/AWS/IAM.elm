@@ -2701,6 +2701,10 @@ type alias ErrorDetails =
     { message : String, code : String }
 
 
+type alias EvalDecisionDetailsType =
+    Dict EvalDecisionSourceType PolicyEvaluationDecisionType
+
+
 type EvalDecisionSourceType
     = EvalDecisionSourceType String
 
@@ -8010,6 +8014,12 @@ evaluationResultCodec =
 evalDecisionSourceTypeCodec : Codec EvalDecisionSourceType
 evalDecisionSourceTypeCodec =
     Codec.build (Guarded.encoder evalDecisionSourceType) (Guarded.decoder evalDecisionSourceType)
+
+
+{-| Codec for EvalDecisionDetailsType. -}
+evalDecisionDetailsTypeCodec : Codec EvalDecisionDetailsType
+evalDecisionDetailsTypeCodec =
+    Codec.dict policyEvaluationDecisionTypeCodec
 
 
 {-| Codec for ErrorDetails. -}

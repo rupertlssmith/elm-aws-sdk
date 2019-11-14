@@ -683,6 +683,10 @@ additionalVersion =
     Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
 
 
+type alias AdditionalVersionWeights =
+    Dict AdditionalVersion Float
+
+
 type Alias
     = Alias String
 
@@ -884,6 +888,10 @@ environmentVariableName =
 
 type alias EnvironmentVariableValue =
     String
+
+
+type alias EnvironmentVariables =
+    Dict EnvironmentVariableName String
 
 
 type alias EventSourceMappingConfiguration =
@@ -2896,6 +2904,12 @@ eventSourceMappingConfigurationCodec =
         |> Codec.buildObject
 
 
+{-| Codec for EnvironmentVariables. -}
+environmentVariablesCodec : Codec EnvironmentVariables
+environmentVariablesCodec =
+    Codec.dict Codec.string
+
+
 {-| Codec for EnvironmentVariableValue. -}
 environmentVariableValueCodec : Codec EnvironmentVariableValue
 environmentVariableValueCodec =
@@ -3108,6 +3122,12 @@ aliasConfigurationCodec =
 aliasCodec : Codec Alias
 aliasCodec =
     Codec.build (Guarded.encoder alias_) (Guarded.decoder alias_)
+
+
+{-| Codec for AdditionalVersionWeights. -}
+additionalVersionWeightsCodec : Codec AdditionalVersionWeights
+additionalVersionWeightsCodec =
+    Codec.dict Codec.float
 
 
 {-| Codec for AdditionalVersion. -}

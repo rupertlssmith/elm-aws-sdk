@@ -633,6 +633,10 @@ type alias AttributeDefinitions =
     List AttributeDefinition
 
 
+type alias AttributeMap =
+    Dict AttributeName AttributeValue
+
+
 type AttributeName
     = AttributeName String
 
@@ -651,6 +655,10 @@ attributeName =
 
 type alias AttributeNameList =
     List AttributeName
+
+
+type alias AttributeUpdates =
+    Dict AttributeName AttributeValueUpdate
 
 
 type alias AttributeValueList =
@@ -926,6 +934,14 @@ type alias BatchGetItemOutput =
     }
 
 
+type alias BatchGetRequestMap =
+    Dict TableName KeysAndAttributes
+
+
+type alias BatchGetResponseMap =
+    Dict TableName ItemList
+
+
 type alias BatchWriteItemInput =
     { returnItemCollectionMetrics : ReturnItemCollectionMetrics
     , returnConsumedCapacity : ReturnConsumedCapacity
@@ -938,6 +954,10 @@ type alias BatchWriteItemOutput =
     , itemCollectionMetrics : ItemCollectionMetricsPerTable
     , consumedCapacity : ConsumedCapacityMultiple
     }
+
+
+type alias BatchWriteItemRequestMap =
+    Dict TableName WriteRequests
 
 
 type BillingMode
@@ -1338,6 +1358,10 @@ type alias Endpoints =
     List Endpoint
 
 
+type alias ExpectedAttributeMap =
+    Dict AttributeName ExpectedAttributeValue
+
+
 type alias ExpectedAttributeValue =
     { value : AttributeValue
     , exists : Bool
@@ -1360,6 +1384,10 @@ type alias ExpressionAttributeValueMap =
 
 type alias ExpressionAttributeValueVariable =
     String
+
+
+type alias FilterConditionMap =
+    Dict AttributeName Condition
 
 
 type alias Get =
@@ -1549,12 +1577,20 @@ type alias IntegerObject =
     Int
 
 
+type alias ItemCollectionKeyAttributeMap =
+    Dict AttributeName AttributeValue
+
+
 type alias ItemCollectionMetrics =
     { sizeEstimateRangeGb : ItemCollectionSizeEstimateRange, itemCollectionKey : ItemCollectionKeyAttributeMap }
 
 
 type alias ItemCollectionMetricsMultiple =
     List ItemCollectionMetrics
+
+
+type alias ItemCollectionMetricsPerTable =
+    Dict TableName ItemCollectionMetricsMultiple
 
 
 type alias ItemCollectionSizeEstimateBound =
@@ -1587,6 +1623,14 @@ type alias KmsmasterKeyArn =
 
 type alias KmsmasterKeyId =
     String
+
+
+type alias Key =
+    Dict AttributeName AttributeValue
+
+
+type alias KeyConditions =
+    Dict AttributeName Condition
 
 
 type alias KeyExpression =
@@ -1739,6 +1783,10 @@ type alias LocalSecondaryIndexes =
 
 type alias Long =
     Int
+
+
+type alias MapAttributeValue =
+    Dict AttributeName AttributeValue
 
 
 type alias NextTokenString =
@@ -1897,6 +1945,10 @@ type alias PutItemInput =
     , conditionalOperator : ConditionalOperator
     , conditionExpression : String
     }
+
+
+type alias PutItemInputAttributeMap =
+    Dict AttributeName AttributeValue
 
 
 type alias PutItemOutput =
@@ -2311,6 +2363,10 @@ scanTotalSegments =
             val
     in
     Guarded.make guardFn Json.Decode.int Json.Encode.int Guarded.intErrorToString unboxFn
+
+
+type alias SecondaryIndexesCapacityMap =
+    Dict IndexName Capacity
 
 
 type Select
@@ -3257,6 +3313,12 @@ selectCodec =
     Codec.build (Enum.encoder select) (Enum.decoder select)
 
 
+{-| Codec for SecondaryIndexesCapacityMap. -}
+secondaryIndexesCapacityMapCodec : Codec SecondaryIndexesCapacityMap
+secondaryIndexesCapacityMapCodec =
+    Codec.dict capacityCodec
+
+
 {-| Codec for ScanTotalSegments. -}
 scanTotalSegmentsCodec : Codec ScanTotalSegments
 scanTotalSegmentsCodec =
@@ -3631,6 +3693,12 @@ putItemOutputCodec =
         |> Codec.buildObject
 
 
+{-| Codec for PutItemInputAttributeMap. -}
+putItemInputAttributeMapCodec : Codec PutItemInputAttributeMap
+putItemInputAttributeMapCodec =
+    Codec.dict attributeValueCodec
+
+
 {-| Codec for PutItemInput. -}
 putItemInputCodec : Codec PutItemInput
 putItemInputCodec =
@@ -3782,6 +3850,12 @@ nonKeyAttributeNameCodec =
 nextTokenStringCodec : Codec NextTokenString
 nextTokenStringCodec =
     Codec.string
+
+
+{-| Codec for MapAttributeValue. -}
+mapAttributeValueCodec : Codec MapAttributeValue
+mapAttributeValueCodec =
+    Codec.dict attributeValueCodec
 
 
 {-| Codec for Long. -}
@@ -3981,6 +4055,18 @@ keyExpressionCodec =
     Codec.string
 
 
+{-| Codec for KeyConditions. -}
+keyConditionsCodec : Codec KeyConditions
+keyConditionsCodec =
+    Codec.dict conditionCodec
+
+
+{-| Codec for Key. -}
+keyCodec : Codec Key
+keyCodec =
+    Codec.dict attributeValueCodec
+
+
 {-| Codec for KmsmasterKeyId. -}
 kmsmasterKeyIdCodec : Codec KmsmasterKeyId
 kmsmasterKeyIdCodec =
@@ -4029,6 +4115,12 @@ itemCollectionSizeEstimateBoundCodec =
     Codec.float
 
 
+{-| Codec for ItemCollectionMetricsPerTable. -}
+itemCollectionMetricsPerTableCodec : Codec ItemCollectionMetricsPerTable
+itemCollectionMetricsPerTableCodec =
+    Codec.dict itemCollectionMetricsMultipleCodec
+
+
 {-| Codec for ItemCollectionMetricsMultiple. -}
 itemCollectionMetricsMultipleCodec : Codec ItemCollectionMetricsMultiple
 itemCollectionMetricsMultipleCodec =
@@ -4042,6 +4134,12 @@ itemCollectionMetricsCodec =
         |> Codec.field "SizeEstimateRangeGB" .sizeEstimateRangeGb itemCollectionSizeEstimateRangeCodec
         |> Codec.field "ItemCollectionKey" .itemCollectionKey itemCollectionKeyAttributeMapCodec
         |> Codec.buildObject
+
+
+{-| Codec for ItemCollectionKeyAttributeMap. -}
+itemCollectionKeyAttributeMapCodec : Codec ItemCollectionKeyAttributeMap
+itemCollectionKeyAttributeMapCodec =
+    Codec.dict attributeValueCodec
 
 
 {-| Codec for IntegerObject. -}
@@ -4232,6 +4330,12 @@ getCodec =
         |> Codec.buildObject
 
 
+{-| Codec for FilterConditionMap. -}
+filterConditionMapCodec : Codec FilterConditionMap
+filterConditionMapCodec =
+    Codec.dict conditionCodec
+
+
 {-| Codec for ExpressionAttributeValueVariable. -}
 expressionAttributeValueVariableCodec : Codec ExpressionAttributeValueVariable
 expressionAttributeValueVariableCodec =
@@ -4265,6 +4369,12 @@ expectedAttributeValueCodec =
         |> Codec.field "ComparisonOperator" .comparisonOperator comparisonOperatorCodec
         |> Codec.field "AttributeValueList" .attributeValueList attributeValueListCodec
         |> Codec.buildObject
+
+
+{-| Codec for ExpectedAttributeMap. -}
+expectedAttributeMapCodec : Codec ExpectedAttributeMap
+expectedAttributeMapCodec =
+    Codec.dict expectedAttributeValueCodec
 
 
 {-| Codec for Endpoints. -}
@@ -4715,6 +4825,12 @@ billingModeCodec =
     Codec.build (Enum.encoder billingMode) (Enum.decoder billingMode)
 
 
+{-| Codec for BatchWriteItemRequestMap. -}
+batchWriteItemRequestMapCodec : Codec BatchWriteItemRequestMap
+batchWriteItemRequestMapCodec =
+    Codec.dict writeRequestsCodec
+
+
 {-| Codec for BatchWriteItemOutput. -}
 batchWriteItemOutputCodec : Codec BatchWriteItemOutput
 batchWriteItemOutputCodec =
@@ -4733,6 +4849,18 @@ batchWriteItemInputCodec =
         |> Codec.field "ReturnConsumedCapacity" .returnConsumedCapacity returnConsumedCapacityCodec
         |> Codec.field "RequestItems" .requestItems batchWriteItemRequestMapCodec
         |> Codec.buildObject
+
+
+{-| Codec for BatchGetResponseMap. -}
+batchGetResponseMapCodec : Codec BatchGetResponseMap
+batchGetResponseMapCodec =
+    Codec.dict itemListCodec
+
+
+{-| Codec for BatchGetRequestMap. -}
+batchGetRequestMapCodec : Codec BatchGetRequestMap
+batchGetRequestMapCodec =
+    Codec.dict keysAndAttributesCodec
 
 
 {-| Codec for BatchGetItemOutput. -}
@@ -4960,6 +5088,12 @@ attributeValueListCodec =
     Codec.list attributeValueCodec
 
 
+{-| Codec for AttributeUpdates. -}
+attributeUpdatesCodec : Codec AttributeUpdates
+attributeUpdatesCodec =
+    Codec.dict attributeValueUpdateCodec
+
+
 {-| Codec for AttributeNameList. -}
 attributeNameListCodec : Codec AttributeNameList
 attributeNameListCodec =
@@ -4970,6 +5104,12 @@ attributeNameListCodec =
 attributeNameCodec : Codec AttributeName
 attributeNameCodec =
     Codec.build (Guarded.encoder attributeName) (Guarded.decoder attributeName)
+
+
+{-| Codec for AttributeMap. -}
+attributeMapCodec : Codec AttributeMap
+attributeMapCodec =
+    Codec.dict attributeValueCodec
 
 
 {-| Codec for AttributeDefinitions. -}
