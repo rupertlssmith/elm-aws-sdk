@@ -30,7 +30,7 @@ uploadSigningCertificate req =
         jsonBody =
             req |> Codec.encoder uploadSigningCertificateRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "UploadSigningCertificate"
                 (AWS.Core.Decode.ResultDecoder
@@ -38,7 +38,7 @@ uploadSigningCertificate req =
                     (Codec.decoder uploadSigningCertificateResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -50,7 +50,7 @@ uploadServerCertificate req =
         jsonBody =
             req |> Codec.encoder uploadServerCertificateRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "UploadServerCertificate"
                 (AWS.Core.Decode.ResultDecoder
@@ -58,7 +58,7 @@ uploadServerCertificate req =
                     (Codec.decoder uploadServerCertificateResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -69,7 +69,7 @@ uploadSshpublicKey req =
         jsonBody =
             req |> Codec.encoder uploadSshpublicKeyRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "UploadSshpublicKey"
                 (AWS.Core.Decode.ResultDecoder
@@ -77,7 +77,73 @@ uploadSshpublicKey req =
                     (Codec.decoder uploadSshpublicKeyResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+updateUser : UpdateUserRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+updateUser req =
+    let
+        jsonBody =
+            req |> Codec.encoder updateUserRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "UpdateUser" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+updateSigningCertificate : UpdateSigningCertificateRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+updateSigningCertificate req =
+    let
+        jsonBody =
+            req |> Codec.encoder updateSigningCertificateRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "UpdateSigningCertificate" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+updateServiceSpecificCredential :
+    UpdateServiceSpecificCredentialRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+updateServiceSpecificCredential req =
+    let
+        jsonBody =
+            req |> Codec.encoder updateServiceSpecificCredentialRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "UpdateServiceSpecificCredential" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+updateServerCertificate : UpdateServerCertificateRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+updateServerCertificate req =
+    let
+        jsonBody =
+            req |> Codec.encoder updateServerCertificateRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "UpdateServerCertificate" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+updateSshpublicKey : UpdateSshpublicKeyRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+updateSshpublicKey req =
+    let
+        jsonBody =
+            req |> Codec.encoder updateSshpublicKeyRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "UpdateSshpublicKey" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -88,7 +154,7 @@ updateSamlprovider req =
         jsonBody =
             req |> Codec.encoder updateSamlproviderRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "UpdateSamlprovider"
                 (AWS.Core.Decode.ResultDecoder
@@ -96,7 +162,7 @@ updateSamlprovider req =
                     (Codec.decoder updateSamlproviderResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -108,7 +174,7 @@ updateRoleDescription req =
         jsonBody =
             req |> Codec.encoder updateRoleDescriptionRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "UpdateRoleDescription"
                 (AWS.Core.Decode.ResultDecoder
@@ -116,7 +182,7 @@ updateRoleDescription req =
                     (Codec.decoder updateRoleDescriptionResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -126,12 +192,146 @@ updateRole req =
         jsonBody =
             req |> Codec.encoder updateRoleRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "UpdateRole"
                 (AWS.Core.Decode.ResultDecoder "UpdateRoleResponse" (Codec.decoder updateRoleResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+updateOpenIdconnectProviderThumbprint :
+    UpdateOpenIdconnectProviderThumbprintRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+updateOpenIdconnectProviderThumbprint req =
+    let
+        jsonBody =
+            req |> Codec.encoder updateOpenIdconnectProviderThumbprintRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder
+                "UpdateOpenIdconnectProviderThumbprint"
+                (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+updateLoginProfile : UpdateLoginProfileRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+updateLoginProfile req =
+    let
+        jsonBody =
+            req |> Codec.encoder updateLoginProfileRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "UpdateLoginProfile" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+updateGroup : UpdateGroupRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+updateGroup req =
+    let
+        jsonBody =
+            req |> Codec.encoder updateGroupRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "UpdateGroup" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+updateAssumeRolePolicy : UpdateAssumeRolePolicyRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+updateAssumeRolePolicy req =
+    let
+        jsonBody =
+            req |> Codec.encoder updateAssumeRolePolicyRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "UpdateAssumeRolePolicy" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+updateAccountPasswordPolicy :
+    UpdateAccountPasswordPolicyRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+updateAccountPasswordPolicy req =
+    let
+        jsonBody =
+            req |> Codec.encoder updateAccountPasswordPolicyRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "UpdateAccountPasswordPolicy" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+updateAccessKey : UpdateAccessKeyRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+updateAccessKey req =
+    let
+        jsonBody =
+            req |> Codec.encoder updateAccessKeyRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "UpdateAccessKey" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+untagUser : UntagUserRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+untagUser req =
+    let
+        jsonBody =
+            req |> Codec.encoder untagUserRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "UntagUser" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+untagRole : UntagRoleRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+untagRole req =
+    let
+        jsonBody =
+            req |> Codec.encoder untagRoleRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "UntagRole" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+tagUser : TagUserRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+tagUser req =
+    let
+        jsonBody =
+            req |> Codec.encoder tagUserRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "TagUser" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+tagRole : TagRoleRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+tagRole req =
+    let
+        jsonBody =
+            req |> Codec.encoder tagRoleRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "TagRole" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -142,12 +342,12 @@ simulatePrincipalPolicy req =
         jsonBody =
             req |> Codec.encoder simulatePrincipalPolicyRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "SimulatePrincipalPolicy"
                 (AWS.Core.Decode.ResultDecoder "SimulatePolicyResponse" (Codec.decoder simulatePolicyResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -158,12 +358,52 @@ simulateCustomPolicy req =
         jsonBody =
             req |> Codec.encoder simulateCustomPolicyRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "SimulateCustomPolicy"
                 (AWS.Core.Decode.ResultDecoder "SimulatePolicyResponse" (Codec.decoder simulatePolicyResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+setSecurityTokenServicePreferences :
+    SetSecurityTokenServicePreferencesRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+setSecurityTokenServicePreferences req =
+    let
+        jsonBody =
+            req |> Codec.encoder setSecurityTokenServicePreferencesRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "SetSecurityTokenServicePreferences" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+setDefaultPolicyVersion : SetDefaultPolicyVersionRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+setDefaultPolicyVersion req =
+    let
+        jsonBody =
+            req |> Codec.encoder setDefaultPolicyVersionRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "SetDefaultPolicyVersion" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+resyncMfadevice : ResyncMfadeviceRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+resyncMfadevice req =
+    let
+        jsonBody =
+            req |> Codec.encoder resyncMfadeviceRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "ResyncMfadevice" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -175,7 +415,7 @@ resetServiceSpecificCredential req =
         jsonBody =
             req |> Codec.encoder resetServiceSpecificCredentialRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ResetServiceSpecificCredential"
                 (AWS.Core.Decode.ResultDecoder
@@ -183,7 +423,117 @@ resetServiceSpecificCredential req =
                     (Codec.decoder resetServiceSpecificCredentialResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+removeUserFromGroup : RemoveUserFromGroupRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+removeUserFromGroup req =
+    let
+        jsonBody =
+            req |> Codec.encoder removeUserFromGroupRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "RemoveUserFromGroup" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+removeRoleFromInstanceProfile :
+    RemoveRoleFromInstanceProfileRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+removeRoleFromInstanceProfile req =
+    let
+        jsonBody =
+            req |> Codec.encoder removeRoleFromInstanceProfileRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "RemoveRoleFromInstanceProfile" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+removeClientIdfromOpenIdconnectProvider :
+    RemoveClientIdfromOpenIdconnectProviderRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+removeClientIdfromOpenIdconnectProvider req =
+    let
+        jsonBody =
+            req |> Codec.encoder removeClientIdfromOpenIdconnectProviderRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder
+                "RemoveClientIdfromOpenIdconnectProvider"
+                (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+putUserPolicy : PutUserPolicyRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+putUserPolicy req =
+    let
+        jsonBody =
+            req |> Codec.encoder putUserPolicyRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "PutUserPolicy" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+putUserPermissionsBoundary :
+    PutUserPermissionsBoundaryRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+putUserPermissionsBoundary req =
+    let
+        jsonBody =
+            req |> Codec.encoder putUserPermissionsBoundaryRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "PutUserPermissionsBoundary" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+putRolePolicy : PutRolePolicyRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+putRolePolicy req =
+    let
+        jsonBody =
+            req |> Codec.encoder putRolePolicyRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "PutRolePolicy" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+putRolePermissionsBoundary :
+    PutRolePermissionsBoundaryRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+putRolePermissionsBoundary req =
+    let
+        jsonBody =
+            req |> Codec.encoder putRolePermissionsBoundaryRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "PutRolePermissionsBoundary" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+putGroupPolicy : PutGroupPolicyRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+putGroupPolicy req =
+    let
+        jsonBody =
+            req |> Codec.encoder putGroupPolicyRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "PutGroupPolicy" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -195,7 +545,7 @@ listVirtualMfadevices req =
         jsonBody =
             req |> Codec.encoder listVirtualMfadevicesRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListVirtualMfadevices"
                 (AWS.Core.Decode.ResultDecoder
@@ -203,7 +553,7 @@ listVirtualMfadevices req =
                     (Codec.decoder listVirtualMfadevicesResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -213,12 +563,12 @@ listUsers req =
         jsonBody =
             req |> Codec.encoder listUsersRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListUsers"
                 (AWS.Core.Decode.ResultDecoder "ListUsersResponse" (Codec.decoder listUsersResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -228,12 +578,12 @@ listUserTags req =
         jsonBody =
             req |> Codec.encoder listUserTagsRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListUserTags"
                 (AWS.Core.Decode.ResultDecoder "ListUserTagsResponse" (Codec.decoder listUserTagsResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -244,12 +594,12 @@ listUserPolicies req =
         jsonBody =
             req |> Codec.encoder listUserPoliciesRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListUserPolicies"
                 (AWS.Core.Decode.ResultDecoder "ListUserPoliciesResponse" (Codec.decoder listUserPoliciesResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -261,7 +611,7 @@ listSigningCertificates req =
         jsonBody =
             req |> Codec.encoder listSigningCertificatesRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListSigningCertificates"
                 (AWS.Core.Decode.ResultDecoder
@@ -269,7 +619,7 @@ listSigningCertificates req =
                     (Codec.decoder listSigningCertificatesResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -281,7 +631,7 @@ listServiceSpecificCredentials req =
         jsonBody =
             req |> Codec.encoder listServiceSpecificCredentialsRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListServiceSpecificCredentials"
                 (AWS.Core.Decode.ResultDecoder
@@ -289,7 +639,7 @@ listServiceSpecificCredentials req =
                     (Codec.decoder listServiceSpecificCredentialsResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -301,7 +651,7 @@ listServerCertificates req =
         jsonBody =
             req |> Codec.encoder listServerCertificatesRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListServerCertificates"
                 (AWS.Core.Decode.ResultDecoder
@@ -309,7 +659,7 @@ listServerCertificates req =
                     (Codec.decoder listServerCertificatesResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -320,7 +670,7 @@ listSshpublicKeys req =
         jsonBody =
             req |> Codec.encoder listSshpublicKeysRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListSshpublicKeys"
                 (AWS.Core.Decode.ResultDecoder
@@ -328,7 +678,7 @@ listSshpublicKeys req =
                     (Codec.decoder listSshpublicKeysResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -339,7 +689,7 @@ listSamlproviders req =
         jsonBody =
             req |> Codec.encoder listSamlprovidersRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListSamlproviders"
                 (AWS.Core.Decode.ResultDecoder
@@ -347,7 +697,7 @@ listSamlproviders req =
                     (Codec.decoder listSamlprovidersResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -357,12 +707,12 @@ listRoles req =
         jsonBody =
             req |> Codec.encoder listRolesRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListRoles"
                 (AWS.Core.Decode.ResultDecoder "ListRolesResponse" (Codec.decoder listRolesResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -372,12 +722,12 @@ listRoleTags req =
         jsonBody =
             req |> Codec.encoder listRoleTagsRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListRoleTags"
                 (AWS.Core.Decode.ResultDecoder "ListRoleTagsResponse" (Codec.decoder listRoleTagsResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -388,12 +738,12 @@ listRolePolicies req =
         jsonBody =
             req |> Codec.encoder listRolePoliciesRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListRolePolicies"
                 (AWS.Core.Decode.ResultDecoder "ListRolePoliciesResponse" (Codec.decoder listRolePoliciesResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -404,7 +754,7 @@ listPolicyVersions req =
         jsonBody =
             req |> Codec.encoder listPolicyVersionsRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListPolicyVersions"
                 (AWS.Core.Decode.ResultDecoder
@@ -412,7 +762,7 @@ listPolicyVersions req =
                     (Codec.decoder listPolicyVersionsResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -424,7 +774,7 @@ listPoliciesGrantingServiceAccess req =
         jsonBody =
             req |> Codec.encoder listPoliciesGrantingServiceAccessRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListPoliciesGrantingServiceAccess"
                 (AWS.Core.Decode.ResultDecoder
@@ -432,7 +782,7 @@ listPoliciesGrantingServiceAccess req =
                     (Codec.decoder listPoliciesGrantingServiceAccessResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -442,12 +792,12 @@ listPolicies req =
         jsonBody =
             req |> Codec.encoder listPoliciesRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListPolicies"
                 (AWS.Core.Decode.ResultDecoder "ListPoliciesResponse" (Codec.decoder listPoliciesResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -459,7 +809,7 @@ listOpenIdconnectProviders req =
         jsonBody =
             req |> Codec.encoder listOpenIdconnectProvidersRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListOpenIdconnectProviders"
                 (AWS.Core.Decode.ResultDecoder
@@ -467,7 +817,7 @@ listOpenIdconnectProviders req =
                     (Codec.decoder listOpenIdconnectProvidersResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -477,12 +827,12 @@ listMfadevices req =
         jsonBody =
             req |> Codec.encoder listMfadevicesRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListMfadevices"
                 (AWS.Core.Decode.ResultDecoder "ListMFADevicesResponse" (Codec.decoder listMfadevicesResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -494,7 +844,7 @@ listInstanceProfilesForRole req =
         jsonBody =
             req |> Codec.encoder listInstanceProfilesForRoleRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListInstanceProfilesForRole"
                 (AWS.Core.Decode.ResultDecoder
@@ -502,7 +852,7 @@ listInstanceProfilesForRole req =
                     (Codec.decoder listInstanceProfilesForRoleResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -513,7 +863,7 @@ listInstanceProfiles req =
         jsonBody =
             req |> Codec.encoder listInstanceProfilesRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListInstanceProfiles"
                 (AWS.Core.Decode.ResultDecoder
@@ -521,7 +871,7 @@ listInstanceProfiles req =
                     (Codec.decoder listInstanceProfilesResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -532,7 +882,7 @@ listGroupsForUser req =
         jsonBody =
             req |> Codec.encoder listGroupsForUserRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListGroupsForUser"
                 (AWS.Core.Decode.ResultDecoder
@@ -540,7 +890,7 @@ listGroupsForUser req =
                     (Codec.decoder listGroupsForUserResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -550,12 +900,12 @@ listGroups req =
         jsonBody =
             req |> Codec.encoder listGroupsRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListGroups"
                 (AWS.Core.Decode.ResultDecoder "ListGroupsResponse" (Codec.decoder listGroupsResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -566,7 +916,7 @@ listGroupPolicies req =
         jsonBody =
             req |> Codec.encoder listGroupPoliciesRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListGroupPolicies"
                 (AWS.Core.Decode.ResultDecoder
@@ -574,7 +924,7 @@ listGroupPolicies req =
                     (Codec.decoder listGroupPoliciesResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -586,7 +936,7 @@ listEntitiesForPolicy req =
         jsonBody =
             req |> Codec.encoder listEntitiesForPolicyRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListEntitiesForPolicy"
                 (AWS.Core.Decode.ResultDecoder
@@ -594,7 +944,7 @@ listEntitiesForPolicy req =
                     (Codec.decoder listEntitiesForPolicyResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -606,7 +956,7 @@ listAttachedUserPolicies req =
         jsonBody =
             req |> Codec.encoder listAttachedUserPoliciesRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListAttachedUserPolicies"
                 (AWS.Core.Decode.ResultDecoder
@@ -614,7 +964,7 @@ listAttachedUserPolicies req =
                     (Codec.decoder listAttachedUserPoliciesResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -626,7 +976,7 @@ listAttachedRolePolicies req =
         jsonBody =
             req |> Codec.encoder listAttachedRolePoliciesRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListAttachedRolePolicies"
                 (AWS.Core.Decode.ResultDecoder
@@ -634,7 +984,7 @@ listAttachedRolePolicies req =
                     (Codec.decoder listAttachedRolePoliciesResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -646,7 +996,7 @@ listAttachedGroupPolicies req =
         jsonBody =
             req |> Codec.encoder listAttachedGroupPoliciesRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListAttachedGroupPolicies"
                 (AWS.Core.Decode.ResultDecoder
@@ -654,7 +1004,7 @@ listAttachedGroupPolicies req =
                     (Codec.decoder listAttachedGroupPoliciesResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -665,7 +1015,7 @@ listAccountAliases req =
         jsonBody =
             req |> Codec.encoder listAccountAliasesRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListAccountAliases"
                 (AWS.Core.Decode.ResultDecoder
@@ -673,7 +1023,7 @@ listAccountAliases req =
                     (Codec.decoder listAccountAliasesResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -683,12 +1033,12 @@ listAccessKeys req =
         jsonBody =
             req |> Codec.encoder listAccessKeysRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListAccessKeys"
                 (AWS.Core.Decode.ResultDecoder "ListAccessKeysResponse" (Codec.decoder listAccessKeysResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -698,12 +1048,12 @@ getUserPolicy req =
         jsonBody =
             req |> Codec.encoder getUserPolicyRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "GetUserPolicy"
                 (AWS.Core.Decode.ResultDecoder "GetUserPolicyResponse" (Codec.decoder getUserPolicyResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -713,12 +1063,12 @@ getUser req =
         jsonBody =
             req |> Codec.encoder getUserRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "GetUser"
                 (AWS.Core.Decode.ResultDecoder "GetUserResponse" (Codec.decoder getUserResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -730,7 +1080,7 @@ getServiceLinkedRoleDeletionStatus req =
         jsonBody =
             req |> Codec.encoder getServiceLinkedRoleDeletionStatusRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "GetServiceLinkedRoleDeletionStatus"
                 (AWS.Core.Decode.ResultDecoder
@@ -738,7 +1088,7 @@ getServiceLinkedRoleDeletionStatus req =
                     (Codec.decoder getServiceLinkedRoleDeletionStatusResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -750,7 +1100,7 @@ getServiceLastAccessedDetailsWithEntities req =
         jsonBody =
             req |> Codec.encoder getServiceLastAccessedDetailsWithEntitiesRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "GetServiceLastAccessedDetailsWithEntities"
                 (AWS.Core.Decode.ResultDecoder
@@ -758,7 +1108,7 @@ getServiceLastAccessedDetailsWithEntities req =
                     (Codec.decoder getServiceLastAccessedDetailsWithEntitiesResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -770,7 +1120,7 @@ getServiceLastAccessedDetails req =
         jsonBody =
             req |> Codec.encoder getServiceLastAccessedDetailsRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "GetServiceLastAccessedDetails"
                 (AWS.Core.Decode.ResultDecoder
@@ -778,7 +1128,7 @@ getServiceLastAccessedDetails req =
                     (Codec.decoder getServiceLastAccessedDetailsResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -789,7 +1139,7 @@ getServerCertificate req =
         jsonBody =
             req |> Codec.encoder getServerCertificateRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "GetServerCertificate"
                 (AWS.Core.Decode.ResultDecoder
@@ -797,7 +1147,7 @@ getServerCertificate req =
                     (Codec.decoder getServerCertificateResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -808,12 +1158,12 @@ getSshpublicKey req =
         jsonBody =
             req |> Codec.encoder getSshpublicKeyRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "GetSshpublicKey"
                 (AWS.Core.Decode.ResultDecoder "GetSSHPublicKeyResponse" (Codec.decoder getSshpublicKeyResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -824,12 +1174,12 @@ getSamlprovider req =
         jsonBody =
             req |> Codec.encoder getSamlproviderRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "GetSamlprovider"
                 (AWS.Core.Decode.ResultDecoder "GetSAMLProviderResponse" (Codec.decoder getSamlproviderResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -839,12 +1189,12 @@ getRolePolicy req =
         jsonBody =
             req |> Codec.encoder getRolePolicyRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "GetRolePolicy"
                 (AWS.Core.Decode.ResultDecoder "GetRolePolicyResponse" (Codec.decoder getRolePolicyResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -854,12 +1204,12 @@ getRole req =
         jsonBody =
             req |> Codec.encoder getRoleRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "GetRole"
                 (AWS.Core.Decode.ResultDecoder "GetRoleResponse" (Codec.decoder getRoleResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -870,12 +1220,12 @@ getPolicyVersion req =
         jsonBody =
             req |> Codec.encoder getPolicyVersionRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "GetPolicyVersion"
                 (AWS.Core.Decode.ResultDecoder "GetPolicyVersionResponse" (Codec.decoder getPolicyVersionResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -885,12 +1235,12 @@ getPolicy req =
         jsonBody =
             req |> Codec.encoder getPolicyRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "GetPolicy"
                 (AWS.Core.Decode.ResultDecoder "GetPolicyResponse" (Codec.decoder getPolicyResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -902,7 +1252,7 @@ getOrganizationsAccessReport req =
         jsonBody =
             req |> Codec.encoder getOrganizationsAccessReportRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "GetOrganizationsAccessReport"
                 (AWS.Core.Decode.ResultDecoder
@@ -910,7 +1260,7 @@ getOrganizationsAccessReport req =
                     (Codec.decoder getOrganizationsAccessReportResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -922,7 +1272,7 @@ getOpenIdconnectProvider req =
         jsonBody =
             req |> Codec.encoder getOpenIdconnectProviderRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "GetOpenIdconnectProvider"
                 (AWS.Core.Decode.ResultDecoder
@@ -930,7 +1280,7 @@ getOpenIdconnectProvider req =
                     (Codec.decoder getOpenIdconnectProviderResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -941,12 +1291,12 @@ getLoginProfile req =
         jsonBody =
             req |> Codec.encoder getLoginProfileRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "GetLoginProfile"
                 (AWS.Core.Decode.ResultDecoder "GetLoginProfileResponse" (Codec.decoder getLoginProfileResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -957,7 +1307,7 @@ getInstanceProfile req =
         jsonBody =
             req |> Codec.encoder getInstanceProfileRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "GetInstanceProfile"
                 (AWS.Core.Decode.ResultDecoder
@@ -965,7 +1315,7 @@ getInstanceProfile req =
                     (Codec.decoder getInstanceProfileResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -975,12 +1325,12 @@ getGroupPolicy req =
         jsonBody =
             req |> Codec.encoder getGroupPolicyRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "GetGroupPolicy"
                 (AWS.Core.Decode.ResultDecoder "GetGroupPolicyResponse" (Codec.decoder getGroupPolicyResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -990,12 +1340,12 @@ getGroup req =
         jsonBody =
             req |> Codec.encoder getGroupRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "GetGroup"
                 (AWS.Core.Decode.ResultDecoder "GetGroupResponse" (Codec.decoder getGroupResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1007,7 +1357,7 @@ getContextKeysForPrincipalPolicy req =
         jsonBody =
             req |> Codec.encoder getContextKeysForPrincipalPolicyRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "GetContextKeysForPrincipalPolicy"
                 (AWS.Core.Decode.ResultDecoder
@@ -1015,7 +1365,7 @@ getContextKeysForPrincipalPolicy req =
                     (Codec.decoder getContextKeysForPolicyResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1027,7 +1377,7 @@ getContextKeysForCustomPolicy req =
         jsonBody =
             req |> Codec.encoder getContextKeysForCustomPolicyRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "GetContextKeysForCustomPolicy"
                 (AWS.Core.Decode.ResultDecoder
@@ -1035,7 +1385,7 @@ getContextKeysForCustomPolicy req =
                     (Codec.decoder getContextKeysForPolicyResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1047,7 +1397,7 @@ getAccountAuthorizationDetails req =
         jsonBody =
             req |> Codec.encoder getAccountAuthorizationDetailsRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "GetAccountAuthorizationDetails"
                 (AWS.Core.Decode.ResultDecoder
@@ -1055,7 +1405,7 @@ getAccountAuthorizationDetails req =
                     (Codec.decoder getAccountAuthorizationDetailsResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1066,7 +1416,7 @@ getAccessKeyLastUsed req =
         jsonBody =
             req |> Codec.encoder getAccessKeyLastUsedRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "GetAccessKeyLastUsed"
                 (AWS.Core.Decode.ResultDecoder
@@ -1074,7 +1424,7 @@ getAccessKeyLastUsed req =
                     (Codec.decoder getAccessKeyLastUsedResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1086,7 +1436,7 @@ generateServiceLastAccessedDetails req =
         jsonBody =
             req |> Codec.encoder generateServiceLastAccessedDetailsRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "GenerateServiceLastAccessedDetails"
                 (AWS.Core.Decode.ResultDecoder
@@ -1094,7 +1444,7 @@ generateServiceLastAccessedDetails req =
                     (Codec.decoder generateServiceLastAccessedDetailsResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1106,7 +1456,7 @@ generateOrganizationsAccessReport req =
         jsonBody =
             req |> Codec.encoder generateOrganizationsAccessReportRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "GenerateOrganizationsAccessReport"
                 (AWS.Core.Decode.ResultDecoder
@@ -1114,7 +1464,139 @@ generateOrganizationsAccessReport req =
                     (Codec.decoder generateOrganizationsAccessReportResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+enableMfadevice : EnableMfadeviceRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+enableMfadevice req =
+    let
+        jsonBody =
+            req |> Codec.encoder enableMfadeviceRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "EnableMfadevice" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+detachUserPolicy : DetachUserPolicyRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+detachUserPolicy req =
+    let
+        jsonBody =
+            req |> Codec.encoder detachUserPolicyRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "DetachUserPolicy" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+detachRolePolicy : DetachRolePolicyRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+detachRolePolicy req =
+    let
+        jsonBody =
+            req |> Codec.encoder detachRolePolicyRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "DetachRolePolicy" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+detachGroupPolicy : DetachGroupPolicyRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+detachGroupPolicy req =
+    let
+        jsonBody =
+            req |> Codec.encoder detachGroupPolicyRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "DetachGroupPolicy" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+deleteVirtualMfadevice : DeleteVirtualMfadeviceRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+deleteVirtualMfadevice req =
+    let
+        jsonBody =
+            req |> Codec.encoder deleteVirtualMfadeviceRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "DeleteVirtualMfadevice" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+deleteUserPolicy : DeleteUserPolicyRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+deleteUserPolicy req =
+    let
+        jsonBody =
+            req |> Codec.encoder deleteUserPolicyRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "DeleteUserPolicy" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+deleteUserPermissionsBoundary :
+    DeleteUserPermissionsBoundaryRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+deleteUserPermissionsBoundary req =
+    let
+        jsonBody =
+            req |> Codec.encoder deleteUserPermissionsBoundaryRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "DeleteUserPermissionsBoundary" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+deleteUser : DeleteUserRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+deleteUser req =
+    let
+        jsonBody =
+            req |> Codec.encoder deleteUserRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "DeleteUser" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+deleteSigningCertificate : DeleteSigningCertificateRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+deleteSigningCertificate req =
+    let
+        jsonBody =
+            req |> Codec.encoder deleteSigningCertificateRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "DeleteSigningCertificate" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+deleteServiceSpecificCredential :
+    DeleteServiceSpecificCredentialRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+deleteServiceSpecificCredential req =
+    let
+        jsonBody =
+            req |> Codec.encoder deleteServiceSpecificCredentialRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "DeleteServiceSpecificCredential" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1126,7 +1608,7 @@ deleteServiceLinkedRole req =
         jsonBody =
             req |> Codec.encoder deleteServiceLinkedRoleRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "DeleteServiceLinkedRole"
                 (AWS.Core.Decode.ResultDecoder
@@ -1134,7 +1616,217 @@ deleteServiceLinkedRole req =
                     (Codec.decoder deleteServiceLinkedRoleResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+deleteServerCertificate : DeleteServerCertificateRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+deleteServerCertificate req =
+    let
+        jsonBody =
+            req |> Codec.encoder deleteServerCertificateRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "DeleteServerCertificate" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+deleteSshpublicKey : DeleteSshpublicKeyRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+deleteSshpublicKey req =
+    let
+        jsonBody =
+            req |> Codec.encoder deleteSshpublicKeyRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "DeleteSshpublicKey" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+deleteSamlprovider : DeleteSamlproviderRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+deleteSamlprovider req =
+    let
+        jsonBody =
+            req |> Codec.encoder deleteSamlproviderRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "DeleteSamlprovider" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+deleteRolePolicy : DeleteRolePolicyRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+deleteRolePolicy req =
+    let
+        jsonBody =
+            req |> Codec.encoder deleteRolePolicyRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "DeleteRolePolicy" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+deleteRolePermissionsBoundary :
+    DeleteRolePermissionsBoundaryRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+deleteRolePermissionsBoundary req =
+    let
+        jsonBody =
+            req |> Codec.encoder deleteRolePermissionsBoundaryRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "DeleteRolePermissionsBoundary" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+deleteRole : DeleteRoleRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+deleteRole req =
+    let
+        jsonBody =
+            req |> Codec.encoder deleteRoleRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "DeleteRole" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+deletePolicyVersion : DeletePolicyVersionRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+deletePolicyVersion req =
+    let
+        jsonBody =
+            req |> Codec.encoder deletePolicyVersionRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "DeletePolicyVersion" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+deletePolicy : DeletePolicyRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+deletePolicy req =
+    let
+        jsonBody =
+            req |> Codec.encoder deletePolicyRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "DeletePolicy" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+deleteOpenIdconnectProvider :
+    DeleteOpenIdconnectProviderRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+deleteOpenIdconnectProvider req =
+    let
+        jsonBody =
+            req |> Codec.encoder deleteOpenIdconnectProviderRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "DeleteOpenIdconnectProvider" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+deleteLoginProfile : DeleteLoginProfileRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+deleteLoginProfile req =
+    let
+        jsonBody =
+            req |> Codec.encoder deleteLoginProfileRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "DeleteLoginProfile" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+deleteInstanceProfile : DeleteInstanceProfileRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+deleteInstanceProfile req =
+    let
+        jsonBody =
+            req |> Codec.encoder deleteInstanceProfileRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "DeleteInstanceProfile" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+deleteGroupPolicy : DeleteGroupPolicyRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+deleteGroupPolicy req =
+    let
+        jsonBody =
+            req |> Codec.encoder deleteGroupPolicyRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "DeleteGroupPolicy" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+deleteGroup : DeleteGroupRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+deleteGroup req =
+    let
+        jsonBody =
+            req |> Codec.encoder deleteGroupRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "DeleteGroup" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+deleteAccountAlias : DeleteAccountAliasRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+deleteAccountAlias req =
+    let
+        jsonBody =
+            req |> Codec.encoder deleteAccountAliasRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "DeleteAccountAlias" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+deleteAccessKey : DeleteAccessKeyRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+deleteAccessKey req =
+    let
+        jsonBody =
+            req |> Codec.encoder deleteAccessKeyRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "DeleteAccessKey" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+deactivateMfadevice : DeactivateMfadeviceRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+deactivateMfadevice req =
+    let
+        jsonBody =
+            req |> Codec.encoder deactivateMfadeviceRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "DeactivateMfadevice" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1146,7 +1838,7 @@ createVirtualMfadevice req =
         jsonBody =
             req |> Codec.encoder createVirtualMfadeviceRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "CreateVirtualMfadevice"
                 (AWS.Core.Decode.ResultDecoder
@@ -1154,7 +1846,7 @@ createVirtualMfadevice req =
                     (Codec.decoder createVirtualMfadeviceResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1164,12 +1856,12 @@ createUser req =
         jsonBody =
             req |> Codec.encoder createUserRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "CreateUser"
                 (AWS.Core.Decode.ResultDecoder "CreateUserResponse" (Codec.decoder createUserResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1181,7 +1873,7 @@ createServiceSpecificCredential req =
         jsonBody =
             req |> Codec.encoder createServiceSpecificCredentialRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "CreateServiceSpecificCredential"
                 (AWS.Core.Decode.ResultDecoder
@@ -1189,7 +1881,7 @@ createServiceSpecificCredential req =
                     (Codec.decoder createServiceSpecificCredentialResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1201,7 +1893,7 @@ createServiceLinkedRole req =
         jsonBody =
             req |> Codec.encoder createServiceLinkedRoleRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "CreateServiceLinkedRole"
                 (AWS.Core.Decode.ResultDecoder
@@ -1209,7 +1901,7 @@ createServiceLinkedRole req =
                     (Codec.decoder createServiceLinkedRoleResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1220,7 +1912,7 @@ createSamlprovider req =
         jsonBody =
             req |> Codec.encoder createSamlproviderRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "CreateSamlprovider"
                 (AWS.Core.Decode.ResultDecoder
@@ -1228,7 +1920,7 @@ createSamlprovider req =
                     (Codec.decoder createSamlproviderResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1238,12 +1930,12 @@ createRole req =
         jsonBody =
             req |> Codec.encoder createRoleRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "CreateRole"
                 (AWS.Core.Decode.ResultDecoder "CreateRoleResponse" (Codec.decoder createRoleResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1254,7 +1946,7 @@ createPolicyVersion req =
         jsonBody =
             req |> Codec.encoder createPolicyVersionRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "CreatePolicyVersion"
                 (AWS.Core.Decode.ResultDecoder
@@ -1262,7 +1954,7 @@ createPolicyVersion req =
                     (Codec.decoder createPolicyVersionResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1272,12 +1964,12 @@ createPolicy req =
         jsonBody =
             req |> Codec.encoder createPolicyRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "CreatePolicy"
                 (AWS.Core.Decode.ResultDecoder "CreatePolicyResponse" (Codec.decoder createPolicyResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1289,7 +1981,7 @@ createOpenIdconnectProvider req =
         jsonBody =
             req |> Codec.encoder createOpenIdconnectProviderRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "CreateOpenIdconnectProvider"
                 (AWS.Core.Decode.ResultDecoder
@@ -1297,7 +1989,7 @@ createOpenIdconnectProvider req =
                     (Codec.decoder createOpenIdconnectProviderResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1308,7 +2000,7 @@ createLoginProfile req =
         jsonBody =
             req |> Codec.encoder createLoginProfileRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "CreateLoginProfile"
                 (AWS.Core.Decode.ResultDecoder
@@ -1316,7 +2008,7 @@ createLoginProfile req =
                     (Codec.decoder createLoginProfileResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1328,7 +2020,7 @@ createInstanceProfile req =
         jsonBody =
             req |> Codec.encoder createInstanceProfileRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "CreateInstanceProfile"
                 (AWS.Core.Decode.ResultDecoder
@@ -1336,7 +2028,7 @@ createInstanceProfile req =
                     (Codec.decoder createInstanceProfileResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1346,12 +2038,25 @@ createGroup req =
         jsonBody =
             req |> Codec.encoder createGroupRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "CreateGroup"
                 (AWS.Core.Decode.ResultDecoder "CreateGroupResponse" (Codec.decoder createGroupResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+createAccountAlias : CreateAccountAliasRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+createAccountAlias req =
+    let
+        jsonBody =
+            req |> Codec.encoder createAccountAliasRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "CreateAccountAlias" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1362,12 +2067,104 @@ createAccessKey req =
         jsonBody =
             req |> Codec.encoder createAccessKeyRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "CreateAccessKey"
                 (AWS.Core.Decode.ResultDecoder "CreateAccessKeyResponse" (Codec.decoder createAccessKeyResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+changePassword : ChangePasswordRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+changePassword req =
+    let
+        jsonBody =
+            req |> Codec.encoder changePasswordRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "ChangePassword" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+attachUserPolicy : AttachUserPolicyRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+attachUserPolicy req =
+    let
+        jsonBody =
+            req |> Codec.encoder attachUserPolicyRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "AttachUserPolicy" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+attachRolePolicy : AttachRolePolicyRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+attachRolePolicy req =
+    let
+        jsonBody =
+            req |> Codec.encoder attachRolePolicyRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "AttachRolePolicy" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+attachGroupPolicy : AttachGroupPolicyRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+attachGroupPolicy req =
+    let
+        jsonBody =
+            req |> Codec.encoder attachGroupPolicyRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "AttachGroupPolicy" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+addUserToGroup : AddUserToGroupRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+addUserToGroup req =
+    let
+        jsonBody =
+            req |> Codec.encoder addUserToGroupRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "AddUserToGroup" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+addRoleToInstanceProfile : AddRoleToInstanceProfileRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+addRoleToInstanceProfile req =
+    let
+        jsonBody =
+            req |> Codec.encoder addRoleToInstanceProfileRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "AddRoleToInstanceProfile" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+addClientIdtoOpenIdconnectProvider :
+    AddClientIdtoOpenIdconnectProviderRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+addClientIdtoOpenIdconnectProvider req =
+    let
+        jsonBody =
+            req |> Codec.encoder addClientIdtoOpenIdconnectProviderRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "AddClientIdtoOpenIdconnectProvider" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 type alias AccessDetail =

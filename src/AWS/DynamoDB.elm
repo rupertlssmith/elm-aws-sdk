@@ -29,12 +29,12 @@ updateTimeToLive req =
         jsonBody =
             req |> Codec.encoder updateTimeToLiveInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "UpdateTimeToLive"
                 (AWS.Core.Decode.ResultDecoder "UpdateTimeToLiveOutput" (Codec.decoder updateTimeToLiveOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -44,12 +44,12 @@ updateTable req =
         jsonBody =
             req |> Codec.encoder updateTableInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "UpdateTable"
                 (AWS.Core.Decode.ResultDecoder "UpdateTableOutput" (Codec.decoder updateTableOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -59,12 +59,12 @@ updateItem req =
         jsonBody =
             req |> Codec.encoder updateItemInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "UpdateItem"
                 (AWS.Core.Decode.ResultDecoder "UpdateItemOutput" (Codec.decoder updateItemOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -76,7 +76,7 @@ updateGlobalTableSettings req =
         jsonBody =
             req |> Codec.encoder updateGlobalTableSettingsInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "UpdateGlobalTableSettings"
                 (AWS.Core.Decode.ResultDecoder
@@ -84,7 +84,7 @@ updateGlobalTableSettings req =
                     (Codec.decoder updateGlobalTableSettingsOutputCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -95,12 +95,12 @@ updateGlobalTable req =
         jsonBody =
             req |> Codec.encoder updateGlobalTableInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "UpdateGlobalTable"
                 (AWS.Core.Decode.ResultDecoder "UpdateGlobalTableOutput" (Codec.decoder updateGlobalTableOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -112,7 +112,7 @@ updateContinuousBackups req =
         jsonBody =
             req |> Codec.encoder updateContinuousBackupsInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "UpdateContinuousBackups"
                 (AWS.Core.Decode.ResultDecoder
@@ -120,7 +120,20 @@ updateContinuousBackups req =
                     (Codec.decoder updateContinuousBackupsOutputCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+untagResource : UntagResourceInput -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+untagResource req =
+    let
+        jsonBody =
+            req |> Codec.encoder untagResourceInputCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "UntagResource" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -131,12 +144,12 @@ transactWriteItems req =
         jsonBody =
             req |> Codec.encoder transactWriteItemsInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "TransactWriteItems"
                 (AWS.Core.Decode.ResultDecoder "TransactWriteItemsOutput" (Codec.decoder transactWriteItemsOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -147,12 +160,25 @@ transactGetItems req =
         jsonBody =
             req |> Codec.encoder transactGetItemsInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "TransactGetItems"
                 (AWS.Core.Decode.ResultDecoder "TransactGetItemsOutput" (Codec.decoder transactGetItemsOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+tagResource : TagResourceInput -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+tagResource req =
+    let
+        jsonBody =
+            req |> Codec.encoder tagResourceInputCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "TagResource" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -162,12 +188,12 @@ scan req =
         jsonBody =
             req |> Codec.encoder scanInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "Scan"
                 (AWS.Core.Decode.ResultDecoder "ScanOutput" (Codec.decoder scanOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -179,7 +205,7 @@ restoreTableToPointInTime req =
         jsonBody =
             req |> Codec.encoder restoreTableToPointInTimeInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "RestoreTableToPointInTime"
                 (AWS.Core.Decode.ResultDecoder
@@ -187,7 +213,7 @@ restoreTableToPointInTime req =
                     (Codec.decoder restoreTableToPointInTimeOutputCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -198,7 +224,7 @@ restoreTableFromBackup req =
         jsonBody =
             req |> Codec.encoder restoreTableFromBackupInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "RestoreTableFromBackup"
                 (AWS.Core.Decode.ResultDecoder
@@ -206,7 +232,7 @@ restoreTableFromBackup req =
                     (Codec.decoder restoreTableFromBackupOutputCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -216,12 +242,12 @@ query req =
         jsonBody =
             req |> Codec.encoder queryInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "Query"
                 (AWS.Core.Decode.ResultDecoder "QueryOutput" (Codec.decoder queryOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -231,12 +257,12 @@ putItem req =
         jsonBody =
             req |> Codec.encoder putItemInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "PutItem"
                 (AWS.Core.Decode.ResultDecoder "PutItemOutput" (Codec.decoder putItemOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -247,12 +273,12 @@ listTagsOfResource req =
         jsonBody =
             req |> Codec.encoder listTagsOfResourceInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListTagsOfResource"
                 (AWS.Core.Decode.ResultDecoder "ListTagsOfResourceOutput" (Codec.decoder listTagsOfResourceOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -262,12 +288,12 @@ listTables req =
         jsonBody =
             req |> Codec.encoder listTablesInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListTables"
                 (AWS.Core.Decode.ResultDecoder "ListTablesOutput" (Codec.decoder listTablesOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -278,12 +304,12 @@ listGlobalTables req =
         jsonBody =
             req |> Codec.encoder listGlobalTablesInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListGlobalTables"
                 (AWS.Core.Decode.ResultDecoder "ListGlobalTablesOutput" (Codec.decoder listGlobalTablesOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -293,12 +319,12 @@ listBackups req =
         jsonBody =
             req |> Codec.encoder listBackupsInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "ListBackups"
                 (AWS.Core.Decode.ResultDecoder "ListBackupsOutput" (Codec.decoder listBackupsOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -308,12 +334,12 @@ getItem req =
         jsonBody =
             req |> Codec.encoder getItemInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "GetItem"
                 (AWS.Core.Decode.ResultDecoder "GetItemOutput" (Codec.decoder getItemOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -324,12 +350,12 @@ describeTimeToLive req =
         jsonBody =
             req |> Codec.encoder describeTimeToLiveInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "DescribeTimeToLive"
                 (AWS.Core.Decode.ResultDecoder "DescribeTimeToLiveOutput" (Codec.decoder describeTimeToLiveOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -339,12 +365,12 @@ describeTable req =
         jsonBody =
             req |> Codec.encoder describeTableInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "DescribeTable"
                 (AWS.Core.Decode.ResultDecoder "DescribeTableOutput" (Codec.decoder describeTableOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -354,12 +380,12 @@ describeLimits req =
         jsonBody =
             req |> Codec.encoder describeLimitsInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "DescribeLimits"
                 (AWS.Core.Decode.ResultDecoder "DescribeLimitsOutput" (Codec.decoder describeLimitsOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -371,7 +397,7 @@ describeGlobalTableSettings req =
         jsonBody =
             req |> Codec.encoder describeGlobalTableSettingsInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "DescribeGlobalTableSettings"
                 (AWS.Core.Decode.ResultDecoder
@@ -379,7 +405,7 @@ describeGlobalTableSettings req =
                     (Codec.decoder describeGlobalTableSettingsOutputCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -390,7 +416,7 @@ describeGlobalTable req =
         jsonBody =
             req |> Codec.encoder describeGlobalTableInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "DescribeGlobalTable"
                 (AWS.Core.Decode.ResultDecoder
@@ -398,7 +424,7 @@ describeGlobalTable req =
                     (Codec.decoder describeGlobalTableOutputCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -409,7 +435,7 @@ describeEndpoints req =
         jsonBody =
             req |> Codec.encoder describeEndpointsRequestCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "DescribeEndpoints"
                 (AWS.Core.Decode.ResultDecoder
@@ -417,7 +443,7 @@ describeEndpoints req =
                     (Codec.decoder describeEndpointsResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -429,7 +455,7 @@ describeContinuousBackups req =
         jsonBody =
             req |> Codec.encoder describeContinuousBackupsInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "DescribeContinuousBackups"
                 (AWS.Core.Decode.ResultDecoder
@@ -437,7 +463,7 @@ describeContinuousBackups req =
                     (Codec.decoder describeContinuousBackupsOutputCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -447,12 +473,12 @@ describeBackup req =
         jsonBody =
             req |> Codec.encoder describeBackupInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "DescribeBackup"
                 (AWS.Core.Decode.ResultDecoder "DescribeBackupOutput" (Codec.decoder describeBackupOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -462,12 +488,12 @@ deleteTable req =
         jsonBody =
             req |> Codec.encoder deleteTableInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "DeleteTable"
                 (AWS.Core.Decode.ResultDecoder "DeleteTableOutput" (Codec.decoder deleteTableOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -477,12 +503,12 @@ deleteItem req =
         jsonBody =
             req |> Codec.encoder deleteItemInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "DeleteItem"
                 (AWS.Core.Decode.ResultDecoder "DeleteItemOutput" (Codec.decoder deleteItemOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -492,12 +518,12 @@ deleteBackup req =
         jsonBody =
             req |> Codec.encoder deleteBackupInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "DeleteBackup"
                 (AWS.Core.Decode.ResultDecoder "DeleteBackupOutput" (Codec.decoder deleteBackupOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -507,12 +533,12 @@ createTable req =
         jsonBody =
             req |> Codec.encoder createTableInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "CreateTable"
                 (AWS.Core.Decode.ResultDecoder "CreateTableOutput" (Codec.decoder createTableOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -523,12 +549,12 @@ createGlobalTable req =
         jsonBody =
             req |> Codec.encoder createGlobalTableInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "CreateGlobalTable"
                 (AWS.Core.Decode.ResultDecoder "CreateGlobalTableOutput" (Codec.decoder createGlobalTableOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -538,12 +564,12 @@ createBackup req =
         jsonBody =
             req |> Codec.encoder createBackupInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "CreateBackup"
                 (AWS.Core.Decode.ResultDecoder "CreateBackupOutput" (Codec.decoder createBackupOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -553,12 +579,12 @@ batchWriteItem req =
         jsonBody =
             req |> Codec.encoder batchWriteItemInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "BatchWriteItem"
                 (AWS.Core.Decode.ResultDecoder "BatchWriteItemOutput" (Codec.decoder batchWriteItemOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -568,12 +594,12 @@ batchGetItem req =
         jsonBody =
             req |> Codec.encoder batchGetItemInputCodec |> AWS.Core.Http.jsonBody
 
-        responseDecoder =
+        wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder
                 "BatchGetItem"
                 (AWS.Core.Decode.ResultDecoder "BatchGetItemOutput" (Codec.decoder batchGetItemOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody responseDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 type AttributeAction
