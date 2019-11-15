@@ -1350,7 +1350,7 @@ getGroup req =
 
 {-| AWS Endpoint. -}
 getCredentialReport : AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper GetCredentialReportResponse)
-getCredentialReport req =
+getCredentialReport =
     let
         jsonBody =
             AWS.Core.Http.emptyBody
@@ -1408,7 +1408,7 @@ getContextKeysForCustomPolicy req =
 
 {-| AWS Endpoint. -}
 getAccountSummary : AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper GetAccountSummaryResponse)
-getAccountSummary req =
+getAccountSummary =
     let
         jsonBody =
             AWS.Core.Http.emptyBody
@@ -1426,7 +1426,7 @@ getAccountSummary req =
 
 {-| AWS Endpoint. -}
 getAccountPasswordPolicy : AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper GetAccountPasswordPolicyResponse)
-getAccountPasswordPolicy req =
+getAccountPasswordPolicy =
     let
         jsonBody =
             AWS.Core.Http.emptyBody
@@ -1523,7 +1523,7 @@ generateOrganizationsAccessReport req =
 
 {-| AWS Endpoint. -}
 generateCredentialReport : AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper GenerateCredentialReportResponse)
-generateCredentialReport req =
+generateCredentialReport =
     let
         jsonBody =
             AWS.Core.Http.emptyBody
@@ -1864,7 +1864,7 @@ deleteGroup req =
 
 {-| AWS Endpoint. -}
 deleteAccountPasswordPolicy : AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
-deleteAccountPasswordPolicy req =
+deleteAccountPasswordPolicy =
     let
         jsonBody =
             AWS.Core.Http.emptyBody
