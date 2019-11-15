@@ -720,7 +720,8 @@ additionalVersion =
     let
         guardFn val =
             Guarded.minLength 1 val
-                |> Result.andThen Guarded.maxLength 1024 |> Result.andThen (Guarded.regexMatch "[0-9]+")
+                |> Result.andThen (Guarded.maxLength 1024)
+                |> Result.andThen (Guarded.regexMatch "[0-9]+")
                 |> Result.map AdditionalVersion
 
         unboxFn (AdditionalVersion val) =
@@ -742,8 +743,8 @@ alias_ =
     let
         guardFn val =
             Guarded.minLength 1 val
-                |> Result.andThen
-                    Guarded.maxLength 128 |> Result.andThen (Guarded.regexMatch "(?!^[0-9]+$)([a-zA-Z0-9-_]+)")
+                |> Result.andThen (Guarded.maxLength 128)
+                |> Result.andThen (Guarded.regexMatch "(?!^[0-9]+$)([a-zA-Z0-9-_]+)")
                 |> Result.map Alias
 
         unboxFn (Alias val) =
@@ -996,7 +997,8 @@ eventSourceToken =
     let
         guardFn val =
             Guarded.minLength 0 val
-                |> Result.andThen Guarded.maxLength 256 |> Result.andThen (Guarded.regexMatch "[a-zA-Z0-9._\\-]+")
+                |> Result.andThen (Guarded.maxLength 256)
+                |> Result.andThen (Guarded.regexMatch "[a-zA-Z0-9._\\-]+")
                 |> Result.map EventSourceToken
 
         unboxFn (EventSourceToken val) =
@@ -1069,12 +1071,11 @@ functionName =
     let
         guardFn val =
             Guarded.minLength 1 val
+                |> Result.andThen (Guarded.maxLength 140)
                 |> Result.andThen
-                    Guarded.maxLength 140
-                        |> Result.andThen
-                            (Guarded.regexMatch
-                                "(arn:(aws[a-zA-Z-]*)?:lambda:)?([a-z]{2}(-gov)?-[a-z]+-\\d{1}:)?(\\d{12}:)?(function:)?([a-zA-Z0-9-_]+)(:(\\$LATEST|[a-zA-Z0-9-_]+))?"
-                            )
+                    (Guarded.regexMatch
+                        "(arn:(aws[a-zA-Z-]*)?:lambda:)?([a-z]{2}(-gov)?-[a-z]+-\\d{1}:)?(\\d{12}:)?(function:)?([a-zA-Z0-9-_]+)(:(\\$LATEST|[a-zA-Z0-9-_]+))?"
+                    )
                 |> Result.map FunctionName
 
         unboxFn (FunctionName val) =
@@ -1260,10 +1261,9 @@ layerArn =
     let
         guardFn val =
             Guarded.minLength 1 val
+                |> Result.andThen (Guarded.maxLength 140)
                 |> Result.andThen
-                    Guarded.maxLength 140
-                        |> Result.andThen
-                            (Guarded.regexMatch "arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+")
+                    (Guarded.regexMatch "arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+")
                 |> Result.map LayerArn
 
         unboxFn (LayerArn val) =
@@ -1285,12 +1285,11 @@ layerName =
     let
         guardFn val =
             Guarded.minLength 1 val
+                |> Result.andThen (Guarded.maxLength 140)
                 |> Result.andThen
-                    Guarded.maxLength 140
-                        |> Result.andThen
-                            (Guarded.regexMatch
-                                "(arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+)|[a-zA-Z0-9-_]+"
-                            )
+                    (Guarded.regexMatch
+                        "(arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+)|[a-zA-Z0-9-_]+"
+                    )
                 |> Result.map LayerName
 
         unboxFn (LayerName val) =
@@ -1341,12 +1340,9 @@ layerVersionArn =
     let
         guardFn val =
             Guarded.minLength 1 val
+                |> Result.andThen (Guarded.maxLength 140)
                 |> Result.andThen
-                    Guarded.maxLength 140
-                        |> Result.andThen
-                            (Guarded.regexMatch
-                                "arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+:[0-9]+"
-                            )
+                    (Guarded.regexMatch "arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+:[0-9]+")
                 |> Result.map LayerVersionArn
 
         unboxFn (LayerVersionArn val) =
@@ -1580,12 +1576,11 @@ namespacedFunctionName =
     let
         guardFn val =
             Guarded.minLength 1 val
+                |> Result.andThen (Guarded.maxLength 170)
                 |> Result.andThen
-                    Guarded.maxLength 170
-                        |> Result.andThen
-                            (Guarded.regexMatch
-                                "(arn:(aws[a-zA-Z-]*)?:lambda:)?([a-z]{2}(-gov)?-[a-z]+-\\d{1}:)?(\\d{12}:)?(function:)?([a-zA-Z0-9-_\\.]+)(:(\\$LATEST|[a-zA-Z0-9-_]+))?"
-                            )
+                    (Guarded.regexMatch
+                        "(arn:(aws[a-zA-Z-]*)?:lambda:)?([a-z]{2}(-gov)?-[a-z]+-\\d{1}:)?(\\d{12}:)?(function:)?([a-zA-Z0-9-_\\.]+)(:(\\$LATEST|[a-zA-Z0-9-_]+))?"
+                    )
                 |> Result.map NamespacedFunctionName
 
         unboxFn (NamespacedFunctionName val) =
@@ -1603,7 +1598,8 @@ namespacedStatementId =
     let
         guardFn val =
             Guarded.minLength 1 val
-                |> Result.andThen Guarded.maxLength 100 |> Result.andThen (Guarded.regexMatch "([a-zA-Z0-9-_.]+)")
+                |> Result.andThen (Guarded.maxLength 100)
+                |> Result.andThen (Guarded.regexMatch "([a-zA-Z0-9-_.]+)")
                 |> Result.map NamespacedStatementId
 
         unboxFn (NamespacedStatementId val) =
@@ -1682,7 +1678,8 @@ qualifier =
     let
         guardFn val =
             Guarded.minLength 1 val
-                |> Result.andThen Guarded.maxLength 128 |> Result.andThen (Guarded.regexMatch "(|[a-zA-Z0-9$_-]+)")
+                |> Result.andThen (Guarded.maxLength 128)
+                |> Result.andThen (Guarded.regexMatch "(|[a-zA-Z0-9$_-]+)")
                 |> Result.map Qualifier
 
         unboxFn (Qualifier val) =
@@ -1848,8 +1845,8 @@ s3Bucket =
     let
         guardFn val =
             Guarded.minLength 3 val
-                |> Result.andThen
-                    Guarded.maxLength 63 |> Result.andThen (Guarded.regexMatch "^[0-9A-Za-z\\.\\-_]*(?<!\\.)$")
+                |> Result.andThen (Guarded.maxLength 63)
+                |> Result.andThen (Guarded.regexMatch "^[0-9A-Za-z\\.\\-_]*(?<!\\.)$")
                 |> Result.map S3Bucket
 
         unboxFn (S3Bucket val) =
@@ -1927,7 +1924,8 @@ statementId =
     let
         guardFn val =
             Guarded.minLength 1 val
-                |> Result.andThen Guarded.maxLength 100 |> Result.andThen (Guarded.regexMatch "([a-zA-Z0-9-_]+)")
+                |> Result.andThen (Guarded.maxLength 100)
+                |> Result.andThen (Guarded.regexMatch "([a-zA-Z0-9-_]+)")
                 |> Result.map StatementId
 
         unboxFn (StatementId val) =
@@ -2088,7 +2086,8 @@ version =
     let
         guardFn val =
             Guarded.minLength 1 val
-                |> Result.andThen Guarded.maxLength 1024 |> Result.andThen (Guarded.regexMatch "(\\$LATEST|[0-9]+)")
+                |> Result.andThen (Guarded.maxLength 1024)
+                |> Result.andThen (Guarded.regexMatch "(\\$LATEST|[0-9]+)")
                 |> Result.map Version
 
         unboxFn (Version val) =

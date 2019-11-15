@@ -3827,7 +3827,8 @@ samlproviderNameType =
     let
         guardFn val =
             Guarded.minLength 1 val
-                |> Result.andThen Guarded.maxLength 128 |> Result.andThen (Guarded.regexMatch "[\\w._-]+")
+                |> Result.andThen (Guarded.maxLength 128)
+                |> Result.andThen (Guarded.regexMatch "[\\w._-]+")
                 |> Result.map SamlproviderNameType
 
         unboxFn (SamlproviderNameType val) =
@@ -4144,7 +4145,8 @@ accessKeyIdType =
     let
         guardFn val =
             Guarded.minLength 16 val
-                |> Result.andThen Guarded.maxLength 128 |> Result.andThen (Guarded.regexMatch "[\\w]+")
+                |> Result.andThen (Guarded.maxLength 128)
+                |> Result.andThen (Guarded.regexMatch "[\\w]+")
                 |> Result.map AccessKeyIdType
 
         unboxFn (AccessKeyIdType val) =
@@ -4174,9 +4176,8 @@ accountAliasType =
     let
         guardFn val =
             Guarded.minLength 3 val
-                |> Result.andThen
-                    Guarded.maxLength 63
-                        |> Result.andThen (Guarded.regexMatch "^[a-z0-9](([a-z0-9]|-(?!-))*[a-z0-9])?$")
+                |> Result.andThen (Guarded.maxLength 63)
+                |> Result.andThen (Guarded.regexMatch "^[a-z0-9](([a-z0-9]|-(?!-))*[a-z0-9])?$")
                 |> Result.map AccountAliasType
 
         unboxFn (AccountAliasType val) =
@@ -4241,7 +4242,8 @@ authenticationCodeType =
     let
         guardFn val =
             Guarded.minLength 6 val
-                |> Result.andThen Guarded.maxLength 6 |> Result.andThen (Guarded.regexMatch "[\\d]+")
+                |> Result.andThen (Guarded.maxLength 6)
+                |> Result.andThen (Guarded.regexMatch "[\\d]+")
                 |> Result.map AuthenticationCodeType
 
         unboxFn (AuthenticationCodeType val) =
@@ -4267,9 +4269,8 @@ certificateBodyType =
     let
         guardFn val =
             Guarded.minLength 1 val
-                |> Result.andThen
-                    Guarded.maxLength 16384
-                        |> Result.andThen (Guarded.regexMatch "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+")
+                |> Result.andThen (Guarded.maxLength 16384)
+                |> Result.andThen (Guarded.regexMatch "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+")
                 |> Result.map CertificateBodyType
 
         unboxFn (CertificateBodyType val) =
@@ -4287,9 +4288,8 @@ certificateChainType =
     let
         guardFn val =
             Guarded.minLength 1 val
-                |> Result.andThen
-                    Guarded.maxLength 2097152
-                        |> Result.andThen (Guarded.regexMatch "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+")
+                |> Result.andThen (Guarded.maxLength 2097152)
+                |> Result.andThen (Guarded.regexMatch "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+")
                 |> Result.map CertificateChainType
 
         unboxFn (CertificateChainType val) =
@@ -4307,7 +4307,8 @@ certificateIdType =
     let
         guardFn val =
             Guarded.minLength 24 val
-                |> Result.andThen Guarded.maxLength 128 |> Result.andThen (Guarded.regexMatch "[\\w]+")
+                |> Result.andThen (Guarded.maxLength 128)
+                |> Result.andThen (Guarded.regexMatch "[\\w]+")
                 |> Result.map CertificateIdType
 
         unboxFn (CertificateIdType val) =
@@ -4349,7 +4350,8 @@ customSuffixType =
     let
         guardFn val =
             Guarded.minLength 1 val
-                |> Result.andThen Guarded.maxLength 64 |> Result.andThen (Guarded.regexMatch "[\\w+=,.@-]+")
+                |> Result.andThen (Guarded.maxLength 64)
+                |> Result.andThen (Guarded.regexMatch "[\\w+=,.@-]+")
                 |> Result.map CustomSuffixType
 
         unboxFn (CustomSuffixType val) =
@@ -4398,7 +4400,8 @@ entityNameType =
     let
         guardFn val =
             Guarded.minLength 1 val
-                |> Result.andThen Guarded.maxLength 128 |> Result.andThen (Guarded.regexMatch "[\\w+=,.@-]+")
+                |> Result.andThen (Guarded.maxLength 128)
+                |> Result.andThen (Guarded.regexMatch "[\\w+=,.@-]+")
                 |> Result.map EntityNameType
 
         unboxFn (EntityNameType val) =
@@ -4416,7 +4419,8 @@ existingUserNameType =
     let
         guardFn val =
             Guarded.minLength 1 val
-                |> Result.andThen Guarded.maxLength 128 |> Result.andThen (Guarded.regexMatch "[\\w+=,.@-]+")
+                |> Result.andThen (Guarded.maxLength 128)
+                |> Result.andThen (Guarded.regexMatch "[\\w+=,.@-]+")
                 |> Result.map ExistingUserNameType
 
         unboxFn (ExistingUserNameType val) =
@@ -4465,7 +4469,8 @@ groupNameType =
     let
         guardFn val =
             Guarded.minLength 1 val
-                |> Result.andThen Guarded.maxLength 128 |> Result.andThen (Guarded.regexMatch "[\\w+=,.@-]+")
+                |> Result.andThen (Guarded.maxLength 128)
+                |> Result.andThen (Guarded.regexMatch "[\\w+=,.@-]+")
                 |> Result.map GroupNameType
 
         unboxFn (GroupNameType val) =
@@ -4483,7 +4488,8 @@ idType =
     let
         guardFn val =
             Guarded.minLength 16 val
-                |> Result.andThen Guarded.maxLength 128 |> Result.andThen (Guarded.regexMatch "[\\w]+")
+                |> Result.andThen (Guarded.maxLength 128)
+                |> Result.andThen (Guarded.regexMatch "[\\w]+")
                 |> Result.map IdType
 
         unboxFn (IdType val) =
@@ -4505,7 +4511,8 @@ instanceProfileNameType =
     let
         guardFn val =
             Guarded.minLength 1 val
-                |> Result.andThen Guarded.maxLength 128 |> Result.andThen (Guarded.regexMatch "[\\w+=,.@-]+")
+                |> Result.andThen (Guarded.maxLength 128)
+                |> Result.andThen (Guarded.regexMatch "[\\w+=,.@-]+")
                 |> Result.map InstanceProfileNameType
 
         unboxFn (InstanceProfileNameType val) =
@@ -4570,7 +4577,8 @@ markerType =
     let
         guardFn val =
             Guarded.minLength 1 val
-                |> Result.andThen Guarded.maxLength 320 |> Result.andThen (Guarded.regexMatch "[\\u0020-\\u00FF]+")
+                |> Result.andThen (Guarded.maxLength 320)
+                |> Result.andThen (Guarded.regexMatch "[\\u0020-\\u00FF]+")
                 |> Result.map MarkerType
 
         unboxFn (MarkerType val) =
@@ -4640,9 +4648,8 @@ organizationsEntityPathType =
     let
         guardFn val =
             Guarded.minLength 19 val
-                |> Result.andThen
-                    Guarded.maxLength 427
-                        |> Result.andThen (Guarded.regexMatch "^o-[0-9a-z]{10,32}\\/r-[0-9a-z]{4,32}[0-9a-z-\\/]*")
+                |> Result.andThen (Guarded.maxLength 427)
+                |> Result.andThen (Guarded.regexMatch "^o-[0-9a-z]{10,32}\\/r-[0-9a-z]{4,32}[0-9a-z-\\/]*")
                 |> Result.map OrganizationsEntityPathType
 
         unboxFn (OrganizationsEntityPathType val) =
@@ -4692,9 +4699,8 @@ passwordType =
     let
         guardFn val =
             Guarded.minLength 1 val
-                |> Result.andThen
-                    Guarded.maxLength 128
-                        |> Result.andThen (Guarded.regexMatch "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+")
+                |> Result.andThen (Guarded.maxLength 128)
+                |> Result.andThen (Guarded.regexMatch "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+")
                 |> Result.map PasswordType
 
         unboxFn (PasswordType val) =
@@ -4712,8 +4718,8 @@ pathPrefixType =
     let
         guardFn val =
             Guarded.minLength 1 val
-                |> Result.andThen
-                    Guarded.maxLength 512 |> Result.andThen (Guarded.regexMatch "\\u002F[\\u0021-\\u007F]*")
+                |> Result.andThen (Guarded.maxLength 512)
+                |> Result.andThen (Guarded.regexMatch "\\u002F[\\u0021-\\u007F]*")
                 |> Result.map PathPrefixType
 
         unboxFn (PathPrefixType val) =
@@ -4731,9 +4737,8 @@ pathType =
     let
         guardFn val =
             Guarded.minLength 1 val
-                |> Result.andThen
-                    Guarded.maxLength 512
-                        |> Result.andThen (Guarded.regexMatch "(\\u002F)|(\\u002F[\\u0021-\\u007F]+\\u002F)")
+                |> Result.andThen (Guarded.maxLength 512)
+                |> Result.andThen (Guarded.regexMatch "(\\u002F)|(\\u002F[\\u0021-\\u007F]+\\u002F)")
                 |> Result.map PathType
 
         unboxFn (PathType val) =
@@ -4771,9 +4776,8 @@ policyDocumentType =
     let
         guardFn val =
             Guarded.minLength 1 val
-                |> Result.andThen
-                    Guarded.maxLength 131072
-                        |> Result.andThen (Guarded.regexMatch "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+")
+                |> Result.andThen (Guarded.maxLength 131072)
+                |> Result.andThen (Guarded.regexMatch "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+")
                 |> Result.map PolicyDocumentType
 
         unboxFn (PolicyDocumentType val) =
@@ -4807,7 +4811,8 @@ policyNameType =
     let
         guardFn val =
             Guarded.minLength 1 val
-                |> Result.andThen Guarded.maxLength 128 |> Result.andThen (Guarded.regexMatch "[\\w+=,.@-]+")
+                |> Result.andThen (Guarded.maxLength 128)
+                |> Result.andThen (Guarded.regexMatch "[\\w+=,.@-]+")
                 |> Result.map PolicyNameType
 
         unboxFn (PolicyNameType val) =
@@ -4848,8 +4853,8 @@ policyPathType =
     let
         guardFn val =
             Guarded.minLength 1 val
-                |> Result.andThen
-                    Guarded.maxLength 512 |> Result.andThen (Guarded.regexMatch "((/[A-Za-z0-9\\.,\\+@=_-]+)*)/")
+                |> Result.andThen (Guarded.maxLength 512)
+                |> Result.andThen (Guarded.regexMatch "((/[A-Za-z0-9\\.,\\+@=_-]+)*)/")
                 |> Result.map PolicyPathType
 
         unboxFn (PolicyPathType val) =
@@ -4925,9 +4930,8 @@ privateKeyType =
     let
         guardFn val =
             Guarded.minLength 1 val
-                |> Result.andThen
-                    Guarded.maxLength 16384
-                        |> Result.andThen (Guarded.regexMatch "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+")
+                |> Result.andThen (Guarded.maxLength 16384)
+                |> Result.andThen (Guarded.regexMatch "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+")
                 |> Result.map PrivateKeyType
 
         unboxFn (PrivateKeyType val) =
@@ -4945,7 +4949,8 @@ publicKeyFingerprintType =
     let
         guardFn val =
             Guarded.minLength 48 val
-                |> Result.andThen Guarded.maxLength 48 |> Result.andThen (Guarded.regexMatch "[:\\w]+")
+                |> Result.andThen (Guarded.maxLength 48)
+                |> Result.andThen (Guarded.regexMatch "[:\\w]+")
                 |> Result.map PublicKeyFingerprintType
 
         unboxFn (PublicKeyFingerprintType val) =
@@ -4963,7 +4968,8 @@ publicKeyIdType =
     let
         guardFn val =
             Guarded.minLength 20 val
-                |> Result.andThen Guarded.maxLength 128 |> Result.andThen (Guarded.regexMatch "[\\w]+")
+                |> Result.andThen (Guarded.maxLength 128)
+                |> Result.andThen (Guarded.regexMatch "[\\w]+")
                 |> Result.map PublicKeyIdType
 
         unboxFn (PublicKeyIdType val) =
@@ -4981,9 +4987,8 @@ publicKeyMaterialType =
     let
         guardFn val =
             Guarded.minLength 1 val
-                |> Result.andThen
-                    Guarded.maxLength 16384
-                        |> Result.andThen (Guarded.regexMatch "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+")
+                |> Result.andThen (Guarded.maxLength 16384)
+                |> Result.andThen (Guarded.regexMatch "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+")
                 |> Result.map PublicKeyMaterialType
 
         unboxFn (PublicKeyMaterialType val) =
@@ -5047,7 +5052,8 @@ roleNameType =
     let
         guardFn val =
             Guarded.minLength 1 val
-                |> Result.andThen Guarded.maxLength 64 |> Result.andThen (Guarded.regexMatch "[\\w+=,.@-]+")
+                |> Result.andThen (Guarded.maxLength 64)
+                |> Result.andThen (Guarded.regexMatch "[\\w+=,.@-]+")
                 |> Result.map RoleNameType
 
         unboxFn (RoleNameType val) =
@@ -5065,7 +5071,8 @@ serialNumberType =
     let
         guardFn val =
             Guarded.minLength 9 val
-                |> Result.andThen Guarded.maxLength 256 |> Result.andThen (Guarded.regexMatch "[\\w+=/:,.@-]+")
+                |> Result.andThen (Guarded.maxLength 256)
+                |> Result.andThen (Guarded.regexMatch "[\\w+=/:,.@-]+")
                 |> Result.map SerialNumberType
 
         unboxFn (SerialNumberType val) =
@@ -5087,7 +5094,8 @@ serverCertificateNameType =
     let
         guardFn val =
             Guarded.minLength 1 val
-                |> Result.andThen Guarded.maxLength 128 |> Result.andThen (Guarded.regexMatch "[\\w+=,.@-]+")
+                |> Result.andThen (Guarded.maxLength 128)
+                |> Result.andThen (Guarded.regexMatch "[\\w+=,.@-]+")
                 |> Result.map ServerCertificateNameType
 
         unboxFn (ServerCertificateNameType val) =
@@ -5117,7 +5125,8 @@ serviceNamespaceType =
     let
         guardFn val =
             Guarded.minLength 1 val
-                |> Result.andThen Guarded.maxLength 64 |> Result.andThen (Guarded.regexMatch "[\\w-]*")
+                |> Result.andThen (Guarded.maxLength 64)
+                |> Result.andThen (Guarded.regexMatch "[\\w-]*")
                 |> Result.map ServiceNamespaceType
 
         unboxFn (ServiceNamespaceType val) =
@@ -5139,7 +5148,8 @@ serviceSpecificCredentialId =
     let
         guardFn val =
             Guarded.minLength 20 val
-                |> Result.andThen Guarded.maxLength 128 |> Result.andThen (Guarded.regexMatch "[\\w]+")
+                |> Result.andThen (Guarded.maxLength 128)
+                |> Result.andThen (Guarded.regexMatch "[\\w]+")
                 |> Result.map ServiceSpecificCredentialId
 
         unboxFn (ServiceSpecificCredentialId val) =
@@ -5157,7 +5167,8 @@ serviceUserName =
     let
         guardFn val =
             Guarded.minLength 17 val
-                |> Result.andThen Guarded.maxLength 200 |> Result.andThen (Guarded.regexMatch "[\\w+=,.@-]+")
+                |> Result.andThen (Guarded.maxLength 200)
+                |> Result.andThen (Guarded.regexMatch "[\\w+=,.@-]+")
                 |> Result.map ServiceUserName
 
         unboxFn (ServiceUserName val) =
@@ -5382,8 +5393,8 @@ tagKeyType =
     let
         guardFn val =
             Guarded.minLength 1 val
-                |> Result.andThen
-                    Guarded.maxLength 128 |> Result.andThen (Guarded.regexMatch "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]+")
+                |> Result.andThen (Guarded.maxLength 128)
+                |> Result.andThen (Guarded.regexMatch "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]+")
                 |> Result.map TagKeyType
 
         unboxFn (TagKeyType val) =
@@ -5405,8 +5416,8 @@ tagValueType =
     let
         guardFn val =
             Guarded.minLength 0 val
-                |> Result.andThen
-                    Guarded.maxLength 256 |> Result.andThen (Guarded.regexMatch "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*")
+                |> Result.andThen (Guarded.maxLength 256)
+                |> Result.andThen (Guarded.regexMatch "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*")
                 |> Result.map TagValueType
 
         unboxFn (TagValueType val) =
@@ -5452,7 +5463,8 @@ userNameType =
     let
         guardFn val =
             Guarded.minLength 1 val
-                |> Result.andThen Guarded.maxLength 64 |> Result.andThen (Guarded.regexMatch "[\\w+=,.@-]+")
+                |> Result.andThen (Guarded.maxLength 64)
+                |> Result.andThen (Guarded.regexMatch "[\\w+=,.@-]+")
                 |> Result.map UserNameType
 
         unboxFn (UserNameType val) =

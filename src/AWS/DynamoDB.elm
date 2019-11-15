@@ -702,7 +702,8 @@ autoScalingPolicyName =
     let
         guardFn val =
             Guarded.minLength 1 val
-                |> Result.andThen Guarded.maxLength 256 |> Result.andThen (Guarded.regexMatch "\\p{Print}+")
+                |> Result.andThen (Guarded.maxLength 256)
+                |> Result.andThen (Guarded.regexMatch "\\p{Print}+")
                 |> Result.map AutoScalingPolicyName
 
         unboxFn (AutoScalingPolicyName val) =
@@ -726,12 +727,9 @@ autoScalingRoleArn =
     let
         guardFn val =
             Guarded.minLength 1 val
+                |> Result.andThen (Guarded.maxLength 1600)
                 |> Result.andThen
-                    Guarded.maxLength 1600
-                        |> Result.andThen
-                            (Guarded.regexMatch
-                                "[\\u0020-\\uD7FF\\uE000-\\uFFFD\\uD800\\uDC00-\\uDBFF\\uDFFF\\r\\n\\t]*"
-                            )
+                    (Guarded.regexMatch "[\\u0020-\\uD7FF\\uE000-\\uFFFD\\uD800\\uDC00-\\uDBFF\\uDFFF\\r\\n\\t]*")
                 |> Result.map AutoScalingRoleArn
 
         unboxFn (AutoScalingRoleArn val) =
@@ -817,7 +815,8 @@ backupName =
     let
         guardFn val =
             Guarded.minLength 3 val
-                |> Result.andThen Guarded.maxLength 255 |> Result.andThen (Guarded.regexMatch "[a-zA-Z0-9_.-]+")
+                |> Result.andThen (Guarded.maxLength 255)
+                |> Result.andThen (Guarded.regexMatch "[a-zA-Z0-9_.-]+")
                 |> Result.map BackupName
 
         unboxFn (BackupName val) =
@@ -1555,7 +1554,8 @@ indexName =
     let
         guardFn val =
             Guarded.minLength 3 val
-                |> Result.andThen Guarded.maxLength 255 |> Result.andThen (Guarded.regexMatch "[a-zA-Z0-9_.-]+")
+                |> Result.andThen (Guarded.maxLength 255)
+                |> Result.andThen (Guarded.regexMatch "[a-zA-Z0-9_.-]+")
                 |> Result.map IndexName
 
         unboxFn (IndexName val) =
@@ -2558,7 +2558,8 @@ tableName =
     let
         guardFn val =
             Guarded.minLength 3 val
-                |> Result.andThen Guarded.maxLength 255 |> Result.andThen (Guarded.regexMatch "[a-zA-Z0-9_.-]+")
+                |> Result.andThen (Guarded.maxLength 255)
+                |> Result.andThen (Guarded.regexMatch "[a-zA-Z0-9_.-]+")
                 |> Result.map TableName
 
         unboxFn (TableName val) =
