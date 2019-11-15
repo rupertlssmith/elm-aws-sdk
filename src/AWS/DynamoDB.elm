@@ -661,6 +661,20 @@ type alias AttributeUpdates =
     Dict AttributeName AttributeValueUpdate
 
 
+type alias AttributeValue =
+    { ss : StringSetAttributeValue
+    , s : String
+    , null : Bool
+    , ns : NumberSetAttributeValue
+    , n : String
+    , m : MapAttributeValue
+    , l : ListAttributeValue
+    , bs : BinarySetAttributeValue
+    , bool : Bool
+    , b : String
+    }
+
+
 type alias AttributeValueList =
     List AttributeValue
 
@@ -981,6 +995,14 @@ billingMode =
 
 type alias BillingModeSummary =
     { lastUpdateToPayPerRequestDateTime : Date, billingMode : BillingMode }
+
+
+type alias BinaryAttributeValue =
+    String
+
+
+type alias BinarySetAttributeValue =
+    List String
 
 
 type alias BooleanAttributeValue =
@@ -4810,6 +4832,18 @@ booleanAttributeValueCodec =
     Codec.bool
 
 
+{-| Codec for BinarySetAttributeValue. -}
+binarySetAttributeValueCodec : Codec BinarySetAttributeValue
+binarySetAttributeValueCodec =
+    Codec.list Codec.string
+
+
+{-| Codec for BinaryAttributeValue. -}
+binaryAttributeValueCodec : Codec BinaryAttributeValue
+binaryAttributeValueCodec =
+    Codec.string
+
+
 {-| Codec for BillingModeSummary. -}
 billingModeSummaryCodec : Codec BillingModeSummary
 billingModeSummaryCodec =
@@ -5086,6 +5120,23 @@ attributeValueUpdateCodec =
 attributeValueListCodec : Codec AttributeValueList
 attributeValueListCodec =
     Codec.list attributeValueCodec
+
+
+{-| Codec for AttributeValue. -}
+attributeValueCodec : Codec AttributeValue
+attributeValueCodec =
+    Codec.object AttributeValue
+        |> Codec.field "SS" .ss stringSetAttributeValueCodec
+        |> Codec.field "S" .s Codec.string
+        |> Codec.field "NULL" .null Codec.bool
+        |> Codec.field "NS" .ns numberSetAttributeValueCodec
+        |> Codec.field "N" .n Codec.string
+        |> Codec.field "M" .m mapAttributeValueCodec
+        |> Codec.field "L" .l listAttributeValueCodec
+        |> Codec.field "BS" .bs binarySetAttributeValueCodec
+        |> Codec.field "BOOL" .bool Codec.bool
+        |> Codec.field "B" .b Codec.string
+        |> Codec.buildObject
 
 
 {-| Codec for AttributeUpdates. -}

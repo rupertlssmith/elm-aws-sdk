@@ -38,6 +38,22 @@ updateFunctionConfiguration req =
 
 
 {-| AWS Endpoint. -}
+updateFunctionCode :
+    UpdateFunctionCodeRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper FunctionConfiguration)
+updateFunctionCode req =
+    let
+        jsonBody =
+            req |> Codec.encoder updateFunctionCodeRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder
+                "UpdateFunctionCode"
+                (AWS.Core.Decode.ResultDecoder "FunctionConfiguration" (Codec.decoder functionConfigurationCodec))
+    in
+    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
 updateEventSourceMapping :
     UpdateEventSourceMappingRequest
     -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper EventSourceMappingConfiguration)
@@ -292,6 +308,36 @@ listAliases req =
                 (AWS.Core.Decode.ResultDecoder "ListAliasesResponse" (Codec.decoder listAliasesResponseCodec))
     in
     AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+invokeAsync : InvokeAsyncRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper InvokeAsyncResponse)
+invokeAsync req =
+    let
+        jsonBody =
+            req |> Codec.encoder invokeAsyncRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder
+                "InvokeAsync"
+                (AWS.Core.Decode.ResultDecoder "InvokeAsyncResponse" (Codec.decoder invokeAsyncResponseCodec))
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+invoke : InvocationRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper InvocationResponse)
+invoke req =
+    let
+        jsonBody =
+            req |> Codec.encoder invocationRequestCodec |> AWS.Core.Http.jsonBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder
+                "Invoke"
+                (AWS.Core.Decode.ResultDecoder "InvocationResponse" (Codec.decoder invocationResponseCodec))
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -759,6 +805,14 @@ batchSize =
     Guarded.make guardFn Json.Decode.int Json.Encode.int Guarded.intErrorToString unboxFn
 
 
+type alias Blob =
+    String
+
+
+type alias BlobStream =
+    String
+
+
 type alias Boolean =
     Bool
 
@@ -970,6 +1024,10 @@ functionArn =
     Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
 
 
+type alias FunctionCode =
+    { zipFile : String, s3ObjectVersion : S3ObjectVersion, s3Key : S3Key, s3Bucket : S3Bucket }
+
+
 type alias FunctionCodeLocation =
     { repositoryType : String, location : String }
 
@@ -1128,6 +1186,20 @@ type alias Integer =
     Int
 
 
+type alias InvocationRequest =
+    { qualifier : Qualifier
+    , payload : String
+    , logType : LogType
+    , invocationType : InvocationType
+    , functionName : NamespacedFunctionName
+    , clientContext : String
+    }
+
+
+type alias InvocationResponse =
+    { statusCode : Int, payload : String, logResult : String, functionError : String, executedVersion : Version }
+
+
 type InvocationType
     = InvocationTypeEvent
     | InvocationTypeRequestResponse
@@ -1149,6 +1221,10 @@ invocationType =
                 InvocationTypeDryRun ->
                     "DryRun"
         )
+
+
+type alias InvokeAsyncRequest =
+    { invokeArgs : String, functionName : NamespacedFunctionName }
 
 
 type alias InvokeAsyncResponse =
@@ -1277,6 +1353,10 @@ layerVersionArn =
             val
     in
     Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+
+
+type alias LayerVersionContentInput =
+    { zipFile : String, s3ObjectVersion : S3ObjectVersion, s3Key : S3Key, s3Bucket : S3Bucket }
 
 
 type alias LayerVersionContentOutput =
@@ -1969,6 +2049,18 @@ type alias UpdateEventSourceMappingRequest =
     { uuid : String, functionName : FunctionName, enabled : Bool, batchSize : BatchSize }
 
 
+type alias UpdateFunctionCodeRequest =
+    { zipFile : String
+    , s3ObjectVersion : S3ObjectVersion
+    , s3Key : S3Key
+    , s3Bucket : S3Bucket
+    , revisionId : String
+    , publish : Bool
+    , functionName : FunctionName
+    , dryRun : Bool
+    }
+
+
 type alias UpdateFunctionConfigurationRequest =
     { vpcConfig : VpcConfig
     , tracingConfig : TracingConfig
@@ -2076,6 +2168,21 @@ updateFunctionConfigurationRequestCodec =
         |> Codec.field "Environment" .environment environmentCodec
         |> Codec.field "Description" .description descriptionCodec
         |> Codec.field "DeadLetterConfig" .deadLetterConfig deadLetterConfigCodec
+        |> Codec.buildObject
+
+
+{-| Codec for UpdateFunctionCodeRequest. -}
+updateFunctionCodeRequestCodec : Codec UpdateFunctionCodeRequest
+updateFunctionCodeRequestCodec =
+    Codec.object UpdateFunctionCodeRequest
+        |> Codec.field "ZipFile" .zipFile Codec.string
+        |> Codec.field "S3ObjectVersion" .s3ObjectVersion s3ObjectVersionCodec
+        |> Codec.field "S3Key" .s3Key s3KeyCodec
+        |> Codec.field "S3Bucket" .s3Bucket s3BucketCodec
+        |> Codec.field "RevisionId" .revisionId Codec.string
+        |> Codec.field "Publish" .publish Codec.bool
+        |> Codec.field "FunctionName" .functionName functionNameCodec
+        |> Codec.field "DryRun" .dryRun Codec.bool
         |> Codec.buildObject
 
 
@@ -2605,6 +2712,17 @@ layerVersionContentOutputCodec =
         |> Codec.buildObject
 
 
+{-| Codec for LayerVersionContentInput. -}
+layerVersionContentInputCodec : Codec LayerVersionContentInput
+layerVersionContentInputCodec =
+    Codec.object LayerVersionContentInput
+        |> Codec.field "ZipFile" .zipFile Codec.string
+        |> Codec.field "S3ObjectVersion" .s3ObjectVersion s3ObjectVersionCodec
+        |> Codec.field "S3Key" .s3Key s3KeyCodec
+        |> Codec.field "S3Bucket" .s3Bucket s3BucketCodec
+        |> Codec.buildObject
+
+
 {-| Codec for LayerVersionArn. -}
 layerVersionArnCodec : Codec LayerVersionArn
 layerVersionArnCodec =
@@ -2662,10 +2780,44 @@ invokeAsyncResponseCodec =
     Codec.object InvokeAsyncResponse |> Codec.field "Status" .status Codec.int |> Codec.buildObject
 
 
+{-| Codec for InvokeAsyncRequest. -}
+invokeAsyncRequestCodec : Codec InvokeAsyncRequest
+invokeAsyncRequestCodec =
+    Codec.object InvokeAsyncRequest
+        |> Codec.field "InvokeArgs" .invokeArgs Codec.string
+        |> Codec.field "FunctionName" .functionName namespacedFunctionNameCodec
+        |> Codec.buildObject
+
+
 {-| Codec for InvocationType. -}
 invocationTypeCodec : Codec InvocationType
 invocationTypeCodec =
     Codec.build (Enum.encoder invocationType) (Enum.decoder invocationType)
+
+
+{-| Codec for InvocationResponse. -}
+invocationResponseCodec : Codec InvocationResponse
+invocationResponseCodec =
+    Codec.object InvocationResponse
+        |> Codec.field "StatusCode" .statusCode Codec.int
+        |> Codec.field "Payload" .payload Codec.string
+        |> Codec.field "LogResult" .logResult Codec.string
+        |> Codec.field "FunctionError" .functionError Codec.string
+        |> Codec.field "ExecutedVersion" .executedVersion versionCodec
+        |> Codec.buildObject
+
+
+{-| Codec for InvocationRequest. -}
+invocationRequestCodec : Codec InvocationRequest
+invocationRequestCodec =
+    Codec.object InvocationRequest
+        |> Codec.field "Qualifier" .qualifier qualifierCodec
+        |> Codec.field "Payload" .payload Codec.string
+        |> Codec.field "LogType" .logType logTypeCodec
+        |> Codec.field "InvocationType" .invocationType invocationTypeCodec
+        |> Codec.field "FunctionName" .functionName namespacedFunctionNameCodec
+        |> Codec.field "ClientContext" .clientContext Codec.string
+        |> Codec.buildObject
 
 
 {-| Codec for Integer. -}
@@ -2862,6 +3014,17 @@ functionCodeLocationCodec =
     Codec.object FunctionCodeLocation
         |> Codec.field "RepositoryType" .repositoryType Codec.string
         |> Codec.field "Location" .location Codec.string
+        |> Codec.buildObject
+
+
+{-| Codec for FunctionCode. -}
+functionCodeCodec : Codec FunctionCode
+functionCodeCodec =
+    Codec.object FunctionCode
+        |> Codec.field "ZipFile" .zipFile Codec.string
+        |> Codec.field "S3ObjectVersion" .s3ObjectVersion s3ObjectVersionCodec
+        |> Codec.field "S3Key" .s3Key s3KeyCodec
+        |> Codec.field "S3Bucket" .s3Bucket s3BucketCodec
         |> Codec.buildObject
 
 
@@ -3077,6 +3240,18 @@ compatibleRuntimesCodec =
 booleanCodec : Codec Boolean
 booleanCodec =
     Codec.bool
+
+
+{-| Codec for BlobStream. -}
+blobStreamCodec : Codec BlobStream
+blobStreamCodec =
+    Codec.string
+
+
+{-| Codec for Blob. -}
+blobCodec : Codec Blob
+blobCodec =
+    Codec.string
 
 
 {-| Codec for BatchSize. -}

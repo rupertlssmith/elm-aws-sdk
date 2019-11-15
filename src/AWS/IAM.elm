@@ -1349,6 +1349,24 @@ getGroup req =
 
 
 {-| AWS Endpoint. -}
+getCredentialReport : AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper GetCredentialReportResponse)
+getCredentialReport req =
+    let
+        jsonBody =
+            AWS.Core.Http.emptyBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder
+                "GetCredentialReport"
+                (AWS.Core.Decode.ResultDecoder
+                    "GetCredentialReportResponse"
+                    (Codec.decoder getCredentialReportResponseCodec)
+                )
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
 getContextKeysForPrincipalPolicy :
     GetContextKeysForPrincipalPolicyRequest
     -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper GetContextKeysForPolicyResponse)
@@ -1383,6 +1401,42 @@ getContextKeysForCustomPolicy req =
                 (AWS.Core.Decode.ResultDecoder
                     "GetContextKeysForPolicyResponse"
                     (Codec.decoder getContextKeysForPolicyResponseCodec)
+                )
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+getAccountSummary : AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper GetAccountSummaryResponse)
+getAccountSummary req =
+    let
+        jsonBody =
+            AWS.Core.Http.emptyBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder
+                "GetAccountSummary"
+                (AWS.Core.Decode.ResultDecoder
+                    "GetAccountSummaryResponse"
+                    (Codec.decoder getAccountSummaryResponseCodec)
+                )
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+getAccountPasswordPolicy : AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper GetAccountPasswordPolicyResponse)
+getAccountPasswordPolicy req =
+    let
+        jsonBody =
+            AWS.Core.Http.emptyBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder
+                "GetAccountPasswordPolicy"
+                (AWS.Core.Decode.ResultDecoder
+                    "GetAccountPasswordPolicyResponse"
+                    (Codec.decoder getAccountPasswordPolicyResponseCodec)
                 )
     in
     AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
@@ -1462,6 +1516,24 @@ generateOrganizationsAccessReport req =
                 (AWS.Core.Decode.ResultDecoder
                     "GenerateOrganizationsAccessReportResponse"
                     (Codec.decoder generateOrganizationsAccessReportResponseCodec)
+                )
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+generateCredentialReport : AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper GenerateCredentialReportResponse)
+generateCredentialReport req =
+    let
+        jsonBody =
+            AWS.Core.Http.emptyBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder
+                "GenerateCredentialReport"
+                (AWS.Core.Decode.ResultDecoder
+                    "GenerateCredentialReportResponse"
+                    (Codec.decoder generateCredentialReportResponseCodec)
                 )
     in
     AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
@@ -1786,6 +1858,19 @@ deleteGroup req =
 
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "DeleteGroup" (AWS.Core.Decode.FixedResult ())
+    in
+    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+
+
+{-| AWS Endpoint. -}
+deleteAccountPasswordPolicy : AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ())
+deleteAccountPasswordPolicy req =
+    let
+        jsonBody =
+            AWS.Core.Http.emptyBody
+
+        wrappedDecoder =
+            AWS.Core.Decode.responseWrapperDecoder "DeleteAccountPasswordPolicy" (AWS.Core.Decode.FixedResult ())
     in
     AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
@@ -2252,6 +2337,10 @@ type alias AttachedPermissionsBoundary =
 
 type alias AttachedPolicy =
     { policyName : PolicyNameType, policyArn : ArnType }
+
+
+type alias BootstrapDatum =
+    String
 
 
 type alias ChangePasswordRequest =
@@ -2797,6 +2886,10 @@ type alias GetContextKeysForPolicyResponse =
 
 type alias GetContextKeysForPrincipalPolicyRequest =
     { policySourceArn : ArnType, policyInputList : SimulationPolicyListType }
+
+
+type alias GetCredentialReportResponse =
+    { reportFormat : ReportFormatType, generatedTime : DateType, content : String }
 
 
 type alias GetGroupPolicyRequest =
@@ -3551,6 +3644,10 @@ type alias RemoveUserFromGroupRequest =
     { userName : ExistingUserNameType, groupName : GroupNameType }
 
 
+type alias ReportContentType =
+    String
+
+
 type ReportFormatType
     = ReportFormatTypeTextCsv
 
@@ -4026,6 +4123,15 @@ type alias UserDetail =
     , createDate : DateType
     , attachedManagedPolicies : AttachedPoliciesListType
     , arn : ArnType
+    }
+
+
+type alias VirtualMfadevice =
+    { user : User
+    , serialNumber : SerialNumberType
+    , qrcodePng : String
+    , enableDate : DateType
+    , base32StringSeed : String
     }
 
 
@@ -5965,6 +6071,18 @@ accessKeyIdTypeCodec =
     Codec.build (Guarded.encoder accessKeyIdType) (Guarded.decoder accessKeyIdType)
 
 
+{-| Codec for VirtualMfadevice. -}
+virtualMfadeviceCodec : Codec VirtualMfadevice
+virtualMfadeviceCodec =
+    Codec.object VirtualMfadevice
+        |> Codec.field "User" .user userCodec
+        |> Codec.field "SerialNumber" .serialNumber serialNumberTypeCodec
+        |> Codec.field "QRCodePNG" .qrcodePng Codec.string
+        |> Codec.field "EnableDate" .enableDate dateTypeCodec
+        |> Codec.field "Base32StringSeed" .base32StringSeed Codec.string
+        |> Codec.buildObject
+
+
 {-| Codec for UserDetail. -}
 userDetailCodec : Codec UserDetail
 userDetailCodec =
@@ -6617,6 +6735,12 @@ reportStateDescriptionTypeCodec =
 reportFormatTypeCodec : Codec ReportFormatType
 reportFormatTypeCodec =
     Codec.build (Enum.encoder reportFormatType) (Enum.decoder reportFormatType)
+
+
+{-| Codec for ReportContentType. -}
+reportContentTypeCodec : Codec ReportContentType
+reportContentTypeCodec =
+    Codec.string
 
 
 {-| Codec for RemoveUserFromGroupRequest. -}
@@ -7868,6 +7992,16 @@ getGroupPolicyRequestCodec =
         |> Codec.buildObject
 
 
+{-| Codec for GetCredentialReportResponse. -}
+getCredentialReportResponseCodec : Codec GetCredentialReportResponse
+getCredentialReportResponseCodec =
+    Codec.object GetCredentialReportResponse
+        |> Codec.field "ReportFormat" .reportFormat reportFormatTypeCodec
+        |> Codec.field "GeneratedTime" .generatedTime dateTypeCodec
+        |> Codec.field "Content" .content Codec.string
+        |> Codec.buildObject
+
+
 {-| Codec for GetContextKeysForPrincipalPolicyRequest. -}
 getContextKeysForPrincipalPolicyRequestCodec : Codec GetContextKeysForPrincipalPolicyRequest
 getContextKeysForPrincipalPolicyRequestCodec =
@@ -8596,6 +8730,12 @@ changePasswordRequestCodec =
         |> Codec.field "OldPassword" .oldPassword passwordTypeCodec
         |> Codec.field "NewPassword" .newPassword passwordTypeCodec
         |> Codec.buildObject
+
+
+{-| Codec for BootstrapDatum. -}
+bootstrapDatumCodec : Codec BootstrapDatum
+bootstrapDatumCodec =
+    Codec.string
 
 
 {-| Codec for AttachedPolicy. -}
