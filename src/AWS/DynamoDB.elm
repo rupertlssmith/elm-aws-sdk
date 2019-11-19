@@ -6,9 +6,9 @@ import AWS.Core.Service
 import Codec exposing (Codec)
 import Dict exposing (Dict)
 import Enum exposing (Enum)
-import Guarded exposing (Guarded, IntError, StringError)
 import Json.Decode exposing (Decoder)
 import Json.Encode exposing (Value)
+import Refined exposing (IntError, Refined, StringError)
 
 
 {-| Configuration for this service. -}
@@ -610,7 +610,7 @@ type AttributeAction
 
 attributeAction : Enum AttributeAction
 attributeAction =
-    Enum.make
+    Enum.define
         [ AttributeActionAdd, AttributeActionPut, AttributeActionDelete ]
         (\val ->
             case val of
@@ -641,16 +641,16 @@ type AttributeName
     = AttributeName String
 
 
-attributeName : Guarded String AttributeName StringError
+attributeName : Refined String AttributeName StringError
 attributeName =
     let
         guardFn val =
-            Guarded.maxLength 65535 val |> Result.map AttributeName
+            Refined.maxLength 65535 val |> Result.map AttributeName
 
         unboxFn (AttributeName val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias AttributeNameList =
@@ -697,19 +697,19 @@ type AutoScalingPolicyName
     = AutoScalingPolicyName String
 
 
-autoScalingPolicyName : Guarded String AutoScalingPolicyName StringError
+autoScalingPolicyName : Refined String AutoScalingPolicyName StringError
 autoScalingPolicyName =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 256)
-                |> Result.andThen (Guarded.regexMatch "\\p{Print}+")
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 256)
+                |> Result.andThen (Refined.regexMatch "\\p{Print}+")
                 |> Result.map AutoScalingPolicyName
 
         unboxFn (AutoScalingPolicyName val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias AutoScalingPolicyUpdate =
@@ -722,20 +722,20 @@ type AutoScalingRoleArn
     = AutoScalingRoleArn String
 
 
-autoScalingRoleArn : Guarded String AutoScalingRoleArn StringError
+autoScalingRoleArn : Refined String AutoScalingRoleArn StringError
 autoScalingRoleArn =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 1600)
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 1600)
                 |> Result.andThen
-                    (Guarded.regexMatch "[\\u0020-\\uD7FF\\uE000-\\uFFFD\\uD800\\uDC00-\\uDBFF\\uDFFF\\r\\n\\t]*")
+                    (Refined.regexMatch "[\\u0020-\\uD7FF\\uE000-\\uFFFD\\uD800\\uDC00-\\uDBFF\\uDFFF\\r\\n\\t]*")
                 |> Result.map AutoScalingRoleArn
 
         unboxFn (AutoScalingRoleArn val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias AutoScalingSettingsDescription =
@@ -772,16 +772,16 @@ type BackupArn
     = BackupArn String
 
 
-backupArn : Guarded String BackupArn StringError
+backupArn : Refined String BackupArn StringError
 backupArn =
     let
         guardFn val =
-            Guarded.minLength 37 val |> Result.andThen (Guarded.maxLength 1024) |> Result.map BackupArn
+            Refined.minLength 37 val |> Result.andThen (Refined.maxLength 1024) |> Result.map BackupArn
 
         unboxFn (BackupArn val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias BackupCreationDateTime =
@@ -810,19 +810,19 @@ type BackupName
     = BackupName String
 
 
-backupName : Guarded String BackupName StringError
+backupName : Refined String BackupName StringError
 backupName =
     let
         guardFn val =
-            Guarded.minLength 3 val
-                |> Result.andThen (Guarded.maxLength 255)
-                |> Result.andThen (Guarded.regexMatch "[a-zA-Z0-9_.-]+")
+            Refined.minLength 3 val
+                |> Result.andThen (Refined.maxLength 255)
+                |> Result.andThen (Refined.regexMatch "[a-zA-Z0-9_.-]+")
                 |> Result.map BackupName
 
         unboxFn (BackupName val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias BackupSizeBytes =
@@ -837,7 +837,7 @@ type BackupStatus
 
 backupStatus : Enum BackupStatus
 backupStatus =
-    Enum.make
+    Enum.define
         [ BackupStatusCreating, BackupStatusDeleted, BackupStatusAvailable ]
         (\val ->
             case val of
@@ -878,7 +878,7 @@ type BackupType
 
 backupType : Enum BackupType
 backupType =
-    Enum.make
+    Enum.define
         [ BackupTypeUser, BackupTypeSystem, BackupTypeAwsBackup ]
         (\val ->
             case val of
@@ -902,7 +902,7 @@ type BackupTypeFilter
 
 backupTypeFilter : Enum BackupTypeFilter
 backupTypeFilter =
-    Enum.make
+    Enum.define
         [ BackupTypeFilterUser, BackupTypeFilterSystem, BackupTypeFilterAwsBackup, BackupTypeFilterAll ]
         (\val ->
             case val of
@@ -924,16 +924,16 @@ type BackupsInputLimit
     = BackupsInputLimit Int
 
 
-backupsInputLimit : Guarded Int BackupsInputLimit IntError
+backupsInputLimit : Refined Int BackupsInputLimit IntError
 backupsInputLimit =
     let
         guardFn val =
-            Guarded.gt 1 val |> Result.andThen (Guarded.lt 100) |> Result.map BackupsInputLimit
+            Refined.gt 1 val |> Result.andThen (Refined.lt 100) |> Result.map BackupsInputLimit
 
         unboxFn (BackupsInputLimit val) =
             val
     in
-    Guarded.make guardFn Json.Decode.int Json.Encode.int Guarded.intErrorToString unboxFn
+    Refined.define guardFn Json.Decode.int Json.Encode.int Refined.intErrorToString unboxFn
 
 
 type alias BatchGetItemInput =
@@ -980,7 +980,7 @@ type BillingMode
 
 billingMode : Enum BillingMode
 billingMode =
-    Enum.make
+    Enum.define
         [ BillingModeProvisioned, BillingModePayPerRequest ]
         (\val ->
             case val of
@@ -1020,16 +1020,16 @@ type ClientRequestToken
     = ClientRequestToken String
 
 
-clientRequestToken : Guarded String ClientRequestToken StringError
+clientRequestToken : Refined String ClientRequestToken StringError
 clientRequestToken =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 36) |> Result.map ClientRequestToken
+            Refined.minLength 1 val |> Result.andThen (Refined.maxLength 36) |> Result.map ClientRequestToken
 
         unboxFn (ClientRequestToken val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type ComparisonOperator
@@ -1050,7 +1050,7 @@ type ComparisonOperator
 
 comparisonOperator : Enum ComparisonOperator
 comparisonOperator =
-    Enum.make
+    Enum.define
         [ ComparisonOperatorEq
         , ComparisonOperatorNe
         , ComparisonOperatorIn
@@ -1133,7 +1133,7 @@ type ConditionalOperator
 
 conditionalOperator : Enum ConditionalOperator
 conditionalOperator =
-    Enum.make
+    Enum.define
         [ ConditionalOperatorAnd, ConditionalOperatorOr ]
         (\val ->
             case val of
@@ -1181,7 +1181,7 @@ type ContinuousBackupsStatus
 
 continuousBackupsStatus : Enum ContinuousBackupsStatus
 continuousBackupsStatus =
-    Enum.make
+    Enum.define
         [ ContinuousBackupsStatusEnabled, ContinuousBackupsStatusDisabled ]
         (\val ->
             case val of
@@ -1527,7 +1527,7 @@ type GlobalTableStatus
 
 globalTableStatus : Enum GlobalTableStatus
 globalTableStatus =
-    Enum.make
+    Enum.define
         [ GlobalTableStatusCreating, GlobalTableStatusActive, GlobalTableStatusDeleting, GlobalTableStatusUpdating ]
         (\val ->
             case val of
@@ -1549,19 +1549,19 @@ type IndexName
     = IndexName String
 
 
-indexName : Guarded String IndexName StringError
+indexName : Refined String IndexName StringError
 indexName =
     let
         guardFn val =
-            Guarded.minLength 3 val
-                |> Result.andThen (Guarded.maxLength 255)
-                |> Result.andThen (Guarded.regexMatch "[a-zA-Z0-9_.-]+")
+            Refined.minLength 3 val
+                |> Result.andThen (Refined.maxLength 255)
+                |> Result.andThen (Refined.regexMatch "[a-zA-Z0-9_.-]+")
                 |> Result.map IndexName
 
         unboxFn (IndexName val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type IndexStatus
@@ -1573,7 +1573,7 @@ type IndexStatus
 
 indexStatus : Enum IndexStatus
 indexStatus =
-    Enum.make
+    Enum.define
         [ IndexStatusCreating, IndexStatusUpdating, IndexStatusDeleting, IndexStatusActive ]
         (\val ->
             case val of
@@ -1671,16 +1671,16 @@ type KeySchemaAttributeName
     = KeySchemaAttributeName String
 
 
-keySchemaAttributeName : Guarded String KeySchemaAttributeName StringError
+keySchemaAttributeName : Refined String KeySchemaAttributeName StringError
 keySchemaAttributeName =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 255) |> Result.map KeySchemaAttributeName
+            Refined.minLength 1 val |> Result.andThen (Refined.maxLength 255) |> Result.map KeySchemaAttributeName
 
         unboxFn (KeySchemaAttributeName val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias KeySchemaElement =
@@ -1694,7 +1694,7 @@ type KeyType
 
 keyType : Enum KeyType
 keyType =
-    Enum.make
+    Enum.define
         [ KeyTypeHash, KeyTypeRange ]
         (\val ->
             case val of
@@ -1749,16 +1749,16 @@ type ListTablesInputLimit
     = ListTablesInputLimit Int
 
 
-listTablesInputLimit : Guarded Int ListTablesInputLimit IntError
+listTablesInputLimit : Refined Int ListTablesInputLimit IntError
 listTablesInputLimit =
     let
         guardFn val =
-            Guarded.gt 1 val |> Result.andThen (Guarded.lt 100) |> Result.map ListTablesInputLimit
+            Refined.gt 1 val |> Result.andThen (Refined.lt 100) |> Result.map ListTablesInputLimit
 
         unboxFn (ListTablesInputLimit val) =
             val
     in
-    Guarded.make guardFn Json.Decode.int Json.Encode.int Guarded.intErrorToString unboxFn
+    Refined.define guardFn Json.Decode.int Json.Encode.int Refined.intErrorToString unboxFn
 
 
 type alias ListTablesOutput =
@@ -1819,16 +1819,16 @@ type NonKeyAttributeName
     = NonKeyAttributeName String
 
 
-nonKeyAttributeName : Guarded String NonKeyAttributeName StringError
+nonKeyAttributeName : Refined String NonKeyAttributeName StringError
 nonKeyAttributeName =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 255) |> Result.map NonKeyAttributeName
+            Refined.minLength 1 val |> Result.andThen (Refined.maxLength 255) |> Result.map NonKeyAttributeName
 
         unboxFn (NonKeyAttributeName val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias NonKeyAttributeNameList =
@@ -1869,7 +1869,7 @@ type PointInTimeRecoveryStatus
 
 pointInTimeRecoveryStatus : Enum PointInTimeRecoveryStatus
 pointInTimeRecoveryStatus =
-    Enum.make
+    Enum.define
         [ PointInTimeRecoveryStatusEnabled, PointInTimeRecoveryStatusDisabled ]
         (\val ->
             case val of
@@ -1885,16 +1885,16 @@ type PositiveIntegerObject
     = PositiveIntegerObject Int
 
 
-positiveIntegerObject : Guarded Int PositiveIntegerObject IntError
+positiveIntegerObject : Refined Int PositiveIntegerObject IntError
 positiveIntegerObject =
     let
         guardFn val =
-            Guarded.gt 1 val |> Result.map PositiveIntegerObject
+            Refined.gt 1 val |> Result.map PositiveIntegerObject
 
         unboxFn (PositiveIntegerObject val) =
             val
     in
-    Guarded.make guardFn Json.Decode.int Json.Encode.int Guarded.intErrorToString unboxFn
+    Refined.define guardFn Json.Decode.int Json.Encode.int Refined.intErrorToString unboxFn
 
 
 type alias PositiveLongObject =
@@ -1917,7 +1917,7 @@ type ProjectionType
 
 projectionType : Enum ProjectionType
 projectionType =
-    Enum.make
+    Enum.define
         [ ProjectionTypeAll, ProjectionTypeKeysOnly, ProjectionTypeInclude ]
         (\val ->
             case val of
@@ -2088,7 +2088,7 @@ type ReplicaStatus
 
 replicaStatus : Enum ReplicaStatus
 replicaStatus =
-    Enum.make
+    Enum.define
         [ ReplicaStatusCreating, ReplicaStatusUpdating, ReplicaStatusDeleting, ReplicaStatusActive ]
         (\val ->
             case val of
@@ -2118,16 +2118,16 @@ type ResourceArnString
     = ResourceArnString String
 
 
-resourceArnString : Guarded String ResourceArnString StringError
+resourceArnString : Refined String ResourceArnString StringError
 resourceArnString =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 1283) |> Result.map ResourceArnString
+            Refined.minLength 1 val |> Result.andThen (Refined.maxLength 1283) |> Result.map ResourceArnString
 
         unboxFn (ResourceArnString val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias RestoreInProgress =
@@ -2162,7 +2162,7 @@ type ReturnConsumedCapacity
 
 returnConsumedCapacity : Enum ReturnConsumedCapacity
 returnConsumedCapacity =
-    Enum.make
+    Enum.define
         [ ReturnConsumedCapacityIndexes, ReturnConsumedCapacityTotal, ReturnConsumedCapacityNone ]
         (\val ->
             case val of
@@ -2184,7 +2184,7 @@ type ReturnItemCollectionMetrics
 
 returnItemCollectionMetrics : Enum ReturnItemCollectionMetrics
 returnItemCollectionMetrics =
-    Enum.make
+    Enum.define
         [ ReturnItemCollectionMetricsSize, ReturnItemCollectionMetricsNone ]
         (\val ->
             case val of
@@ -2206,7 +2206,7 @@ type ReturnValue
 
 returnValue : Enum ReturnValue
 returnValue =
-    Enum.make
+    Enum.define
         [ ReturnValueNone, ReturnValueAllOld, ReturnValueUpdatedOld, ReturnValueAllNew, ReturnValueUpdatedNew ]
         (\val ->
             case val of
@@ -2234,7 +2234,7 @@ type ReturnValuesOnConditionCheckFailure
 
 returnValuesOnConditionCheckFailure : Enum ReturnValuesOnConditionCheckFailure
 returnValuesOnConditionCheckFailure =
-    Enum.make
+    Enum.define
         [ ReturnValuesOnConditionCheckFailureAllOld, ReturnValuesOnConditionCheckFailureNone ]
         (\val ->
             case val of
@@ -2268,7 +2268,7 @@ type Ssestatus
 
 ssestatus : Enum Ssestatus
 ssestatus =
-    Enum.make
+    Enum.define
         [ SsestatusEnabling, SsestatusEnabled, SsestatusDisabling, SsestatusDisabled, SsestatusUpdating ]
         (\val ->
             case val of
@@ -2296,7 +2296,7 @@ type Ssetype
 
 ssetype : Enum Ssetype
 ssetype =
-    Enum.make
+    Enum.define
         [ SsetypeAes256, SsetypeKms ]
         (\val ->
             case val of
@@ -2316,7 +2316,7 @@ type ScalarAttributeType
 
 scalarAttributeType : Enum ScalarAttributeType
 scalarAttributeType =
-    Enum.make
+    Enum.define
         [ ScalarAttributeTypeS, ScalarAttributeTypeN, ScalarAttributeTypeB ]
         (\val ->
             case val of
@@ -2359,32 +2359,32 @@ type ScanSegment
     = ScanSegment Int
 
 
-scanSegment : Guarded Int ScanSegment IntError
+scanSegment : Refined Int ScanSegment IntError
 scanSegment =
     let
         guardFn val =
-            Guarded.gt 0 val |> Result.andThen (Guarded.lt 999999) |> Result.map ScanSegment
+            Refined.gt 0 val |> Result.andThen (Refined.lt 999999) |> Result.map ScanSegment
 
         unboxFn (ScanSegment val) =
             val
     in
-    Guarded.make guardFn Json.Decode.int Json.Encode.int Guarded.intErrorToString unboxFn
+    Refined.define guardFn Json.Decode.int Json.Encode.int Refined.intErrorToString unboxFn
 
 
 type ScanTotalSegments
     = ScanTotalSegments Int
 
 
-scanTotalSegments : Guarded Int ScanTotalSegments IntError
+scanTotalSegments : Refined Int ScanTotalSegments IntError
 scanTotalSegments =
     let
         guardFn val =
-            Guarded.gt 1 val |> Result.andThen (Guarded.lt 1000000) |> Result.map ScanTotalSegments
+            Refined.gt 1 val |> Result.andThen (Refined.lt 1000000) |> Result.map ScanTotalSegments
 
         unboxFn (ScanTotalSegments val) =
             val
     in
-    Guarded.make guardFn Json.Decode.int Json.Encode.int Guarded.intErrorToString unboxFn
+    Refined.define guardFn Json.Decode.int Json.Encode.int Refined.intErrorToString unboxFn
 
 
 type alias SecondaryIndexesCapacityMap =
@@ -2400,7 +2400,7 @@ type Select
 
 select : Enum Select
 select =
-    Enum.make
+    Enum.define
         [ SelectAllAttributes, SelectAllProjectedAttributes, SelectSpecificAttributes, SelectCount ]
         (\val ->
             case val of
@@ -2444,16 +2444,16 @@ type StreamArn
     = StreamArn String
 
 
-streamArn : Guarded String StreamArn StringError
+streamArn : Refined String StreamArn StringError
 streamArn =
     let
         guardFn val =
-            Guarded.minLength 37 val |> Result.andThen (Guarded.maxLength 1024) |> Result.map StreamArn
+            Refined.minLength 37 val |> Result.andThen (Refined.maxLength 1024) |> Result.map StreamArn
 
         unboxFn (StreamArn val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias StreamEnabled =
@@ -2473,7 +2473,7 @@ type StreamViewType
 
 streamViewType : Enum StreamViewType
 streamViewType =
-    Enum.make
+    Enum.define
         [ StreamViewTypeNewImage, StreamViewTypeOldImage, StreamViewTypeNewAndOldImages, StreamViewTypeKeysOnly ]
         (\val ->
             case val of
@@ -2537,35 +2537,35 @@ type TableId
     = TableId String
 
 
-tableId : Guarded String TableId StringError
+tableId : Refined String TableId StringError
 tableId =
     let
         guardFn val =
-            Guarded.regexMatch "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}" val |> Result.map TableId
+            Refined.regexMatch "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}" val |> Result.map TableId
 
         unboxFn (TableId val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type TableName
     = TableName String
 
 
-tableName : Guarded String TableName StringError
+tableName : Refined String TableName StringError
 tableName =
     let
         guardFn val =
-            Guarded.minLength 3 val
-                |> Result.andThen (Guarded.maxLength 255)
-                |> Result.andThen (Guarded.regexMatch "[a-zA-Z0-9_.-]+")
+            Refined.minLength 3 val
+                |> Result.andThen (Refined.maxLength 255)
+                |> Result.andThen (Refined.regexMatch "[a-zA-Z0-9_.-]+")
                 |> Result.map TableName
 
         unboxFn (TableName val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias TableNameList =
@@ -2581,7 +2581,7 @@ type TableStatus
 
 tableStatus : Enum TableStatus
 tableStatus =
-    Enum.make
+    Enum.define
         [ TableStatusCreating, TableStatusUpdating, TableStatusDeleting, TableStatusActive ]
         (\val ->
             case val of
@@ -2611,16 +2611,16 @@ type TagKeyString
     = TagKeyString String
 
 
-tagKeyString : Guarded String TagKeyString StringError
+tagKeyString : Refined String TagKeyString StringError
 tagKeyString =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 128) |> Result.map TagKeyString
+            Refined.minLength 1 val |> Result.andThen (Refined.maxLength 128) |> Result.map TagKeyString
 
         unboxFn (TagKeyString val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias TagList =
@@ -2635,16 +2635,16 @@ type TagValueString
     = TagValueString String
 
 
-tagValueString : Guarded String TagValueString StringError
+tagValueString : Refined String TagValueString StringError
 tagValueString =
     let
         guardFn val =
-            Guarded.minLength 0 val |> Result.andThen (Guarded.maxLength 256) |> Result.map TagValueString
+            Refined.minLength 0 val |> Result.andThen (Refined.maxLength 256) |> Result.map TagValueString
 
         unboxFn (TagValueString val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias TimeRangeLowerBound =
@@ -2659,16 +2659,16 @@ type TimeToLiveAttributeName
     = TimeToLiveAttributeName String
 
 
-timeToLiveAttributeName : Guarded String TimeToLiveAttributeName StringError
+timeToLiveAttributeName : Refined String TimeToLiveAttributeName StringError
 timeToLiveAttributeName =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 255) |> Result.map TimeToLiveAttributeName
+            Refined.minLength 1 val |> Result.andThen (Refined.maxLength 255) |> Result.map TimeToLiveAttributeName
 
         unboxFn (TimeToLiveAttributeName val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias TimeToLiveDescription =
@@ -2692,7 +2692,7 @@ type TimeToLiveStatus
 
 timeToLiveStatus : Enum TimeToLiveStatus
 timeToLiveStatus =
-    Enum.make
+    Enum.define
         [ TimeToLiveStatusEnabling, TimeToLiveStatusDisabling, TimeToLiveStatusEnabled, TimeToLiveStatusDisabled ]
         (\val ->
             case val of
@@ -3139,7 +3139,7 @@ timeToLiveDescriptionCodec =
 {-| Codec for TimeToLiveAttributeName. -}
 timeToLiveAttributeNameCodec : Codec TimeToLiveAttributeName
 timeToLiveAttributeNameCodec =
-    Codec.build (Guarded.encoder timeToLiveAttributeName) (Guarded.decoder timeToLiveAttributeName)
+    Codec.build (Refined.encoder timeToLiveAttributeName) (Refined.decoder timeToLiveAttributeName)
 
 
 {-| Codec for TimeRangeUpperBound. -}
@@ -3157,7 +3157,7 @@ timeRangeLowerBoundCodec =
 {-| Codec for TagValueString. -}
 tagValueStringCodec : Codec TagValueString
 tagValueStringCodec =
-    Codec.build (Guarded.encoder tagValueString) (Guarded.decoder tagValueString)
+    Codec.build (Refined.encoder tagValueString) (Refined.decoder tagValueString)
 
 
 {-| Codec for TagResourceInput. -}
@@ -3178,7 +3178,7 @@ tagListCodec =
 {-| Codec for TagKeyString. -}
 tagKeyStringCodec : Codec TagKeyString
 tagKeyStringCodec =
-    Codec.build (Guarded.encoder tagKeyString) (Guarded.decoder tagKeyString)
+    Codec.build (Refined.encoder tagKeyString) (Refined.decoder tagKeyString)
 
 
 {-| Codec for TagKeyList. -}
@@ -3211,13 +3211,13 @@ tableNameListCodec =
 {-| Codec for TableName. -}
 tableNameCodec : Codec TableName
 tableNameCodec =
-    Codec.build (Guarded.encoder tableName) (Guarded.decoder tableName)
+    Codec.build (Refined.encoder tableName) (Refined.decoder tableName)
 
 
 {-| Codec for TableId. -}
 tableIdCodec : Codec TableId
 tableIdCodec =
-    Codec.build (Guarded.encoder tableId) (Guarded.decoder tableId)
+    Codec.build (Refined.encoder tableId) (Refined.decoder tableId)
 
 
 {-| Codec for TableDescription. -}
@@ -3299,7 +3299,7 @@ streamEnabledCodec =
 {-| Codec for StreamArn. -}
 streamArnCodec : Codec StreamArn
 streamArnCodec =
-    Codec.build (Guarded.encoder streamArn) (Guarded.decoder streamArn)
+    Codec.build (Refined.encoder streamArn) (Refined.decoder streamArn)
 
 
 {-| Codec for SourceTableFeatureDetails. -}
@@ -3345,13 +3345,13 @@ secondaryIndexesCapacityMapCodec =
 {-| Codec for ScanTotalSegments. -}
 scanTotalSegmentsCodec : Codec ScanTotalSegments
 scanTotalSegmentsCodec =
-    Codec.build (Guarded.encoder scanTotalSegments) (Guarded.decoder scanTotalSegments)
+    Codec.build (Refined.encoder scanTotalSegments) (Refined.decoder scanTotalSegments)
 
 
 {-| Codec for ScanSegment. -}
 scanSegmentCodec : Codec ScanSegment
 scanSegmentCodec =
-    Codec.build (Guarded.encoder scanSegment) (Guarded.decoder scanSegment)
+    Codec.build (Refined.encoder scanSegment) (Refined.decoder scanSegment)
 
 
 {-| Codec for ScanOutput. -}
@@ -3513,7 +3513,7 @@ restoreInProgressCodec =
 {-| Codec for ResourceArnString. -}
 resourceArnStringCodec : Codec ResourceArnString
 resourceArnStringCodec =
-    Codec.build (Guarded.encoder resourceArnString) (Guarded.decoder resourceArnString)
+    Codec.build (Refined.encoder resourceArnString) (Refined.decoder resourceArnString)
 
 
 {-| Codec for ReplicaUpdateList. -}
@@ -3806,7 +3806,7 @@ positiveLongObjectCodec =
 {-| Codec for PositiveIntegerObject. -}
 positiveIntegerObjectCodec : Codec PositiveIntegerObject
 positiveIntegerObjectCodec =
-    Codec.build (Guarded.encoder positiveIntegerObject) (Guarded.decoder positiveIntegerObject)
+    Codec.build (Refined.encoder positiveIntegerObject) (Refined.decoder positiveIntegerObject)
 
 
 {-| Codec for PointInTimeRecoveryStatus. -}
@@ -3866,7 +3866,7 @@ nonKeyAttributeNameListCodec =
 {-| Codec for NonKeyAttributeName. -}
 nonKeyAttributeNameCodec : Codec NonKeyAttributeName
 nonKeyAttributeNameCodec =
-    Codec.build (Guarded.encoder nonKeyAttributeName) (Guarded.decoder nonKeyAttributeName)
+    Codec.build (Refined.encoder nonKeyAttributeName) (Refined.decoder nonKeyAttributeName)
 
 
 {-| Codec for NextTokenString. -}
@@ -3968,7 +3968,7 @@ listTablesOutputCodec =
 {-| Codec for ListTablesInputLimit. -}
 listTablesInputLimitCodec : Codec ListTablesInputLimit
 listTablesInputLimitCodec =
-    Codec.build (Guarded.encoder listTablesInputLimit) (Guarded.decoder listTablesInputLimit)
+    Codec.build (Refined.encoder listTablesInputLimit) (Refined.decoder listTablesInputLimit)
 
 
 {-| Codec for ListTablesInput. -}
@@ -4057,7 +4057,7 @@ keySchemaElementCodec =
 {-| Codec for KeySchemaAttributeName. -}
 keySchemaAttributeNameCodec : Codec KeySchemaAttributeName
 keySchemaAttributeNameCodec =
-    Codec.build (Guarded.encoder keySchemaAttributeName) (Guarded.decoder keySchemaAttributeName)
+    Codec.build (Refined.encoder keySchemaAttributeName) (Refined.decoder keySchemaAttributeName)
 
 
 {-| Codec for KeySchema. -}
@@ -4186,7 +4186,7 @@ indexStatusCodec =
 {-| Codec for IndexName. -}
 indexNameCodec : Codec IndexName
 indexNameCodec =
-    Codec.build (Guarded.encoder indexName) (Guarded.decoder indexName)
+    Codec.build (Refined.encoder indexName) (Refined.decoder indexName)
 
 
 {-| Codec for GlobalTableStatus. -}
@@ -4808,7 +4808,7 @@ comparisonOperatorCodec =
 {-| Codec for ClientRequestToken. -}
 clientRequestTokenCodec : Codec ClientRequestToken
 clientRequestTokenCodec =
-    Codec.build (Guarded.encoder clientRequestToken) (Guarded.decoder clientRequestToken)
+    Codec.build (Refined.encoder clientRequestToken) (Refined.decoder clientRequestToken)
 
 
 {-| Codec for Capacity. -}
@@ -4920,7 +4920,7 @@ batchGetItemInputCodec =
 {-| Codec for BackupsInputLimit. -}
 backupsInputLimitCodec : Codec BackupsInputLimit
 backupsInputLimitCodec =
-    Codec.build (Guarded.encoder backupsInputLimit) (Guarded.decoder backupsInputLimit)
+    Codec.build (Refined.encoder backupsInputLimit) (Refined.decoder backupsInputLimit)
 
 
 {-| Codec for BackupTypeFilter. -}
@@ -4973,7 +4973,7 @@ backupSizeBytesCodec =
 {-| Codec for BackupName. -}
 backupNameCodec : Codec BackupName
 backupNameCodec =
-    Codec.build (Guarded.encoder backupName) (Guarded.decoder backupName)
+    Codec.build (Refined.encoder backupName) (Refined.decoder backupName)
 
 
 {-| Codec for BackupDetails. -}
@@ -5009,7 +5009,7 @@ backupCreationDateTimeCodec =
 {-| Codec for BackupArn. -}
 backupArnCodec : Codec BackupArn
 backupArnCodec =
-    Codec.build (Guarded.encoder backupArn) (Guarded.decoder backupArn)
+    Codec.build (Refined.encoder backupArn) (Refined.decoder backupArn)
 
 
 {-| Codec for Backfilling. -}
@@ -5069,7 +5069,7 @@ autoScalingSettingsDescriptionCodec =
 {-| Codec for AutoScalingRoleArn. -}
 autoScalingRoleArnCodec : Codec AutoScalingRoleArn
 autoScalingRoleArnCodec =
-    Codec.build (Guarded.encoder autoScalingRoleArn) (Guarded.decoder autoScalingRoleArn)
+    Codec.build (Refined.encoder autoScalingRoleArn) (Refined.decoder autoScalingRoleArn)
 
 
 {-| Codec for AutoScalingPolicyUpdate. -}
@@ -5087,7 +5087,7 @@ autoScalingPolicyUpdateCodec =
 {-| Codec for AutoScalingPolicyName. -}
 autoScalingPolicyNameCodec : Codec AutoScalingPolicyName
 autoScalingPolicyNameCodec =
-    Codec.build (Guarded.encoder autoScalingPolicyName) (Guarded.decoder autoScalingPolicyName)
+    Codec.build (Refined.encoder autoScalingPolicyName) (Refined.decoder autoScalingPolicyName)
 
 
 {-| Codec for AutoScalingPolicyDescriptionList. -}
@@ -5155,7 +5155,7 @@ attributeNameListCodec =
 {-| Codec for AttributeName. -}
 attributeNameCodec : Codec AttributeName
 attributeNameCodec =
-    Codec.build (Guarded.encoder attributeName) (Guarded.decoder attributeName)
+    Codec.build (Refined.encoder attributeName) (Refined.decoder attributeName)
 
 
 {-| Codec for AttributeMap. -}

@@ -6,9 +6,9 @@ import AWS.Core.Service
 import Codec exposing (Codec)
 import Dict exposing (Dict)
 import Enum exposing (Enum)
-import Guarded exposing (Guarded, IntError, StringError)
 import Json.Decode exposing (Decoder)
 import Json.Encode exposing (Value)
+import Refined exposing (IntError, Refined, StringError)
 
 
 {-| Configuration for this service. -}
@@ -667,16 +667,16 @@ type Action
     = Action String
 
 
-action : Guarded String Action StringError
+action : Refined String Action StringError
 action =
     let
         guardFn val =
-            Guarded.regexMatch "(lambda:[*]|lambda:[a-zA-Z]+|[*])" val |> Result.map Action
+            Refined.regexMatch "(lambda:[*]|lambda:[a-zA-Z]+|[*])" val |> Result.map Action
 
         unboxFn (Action val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias AddLayerVersionPermissionRequest =
@@ -715,19 +715,19 @@ type AdditionalVersion
     = AdditionalVersion String
 
 
-additionalVersion : Guarded String AdditionalVersion StringError
+additionalVersion : Refined String AdditionalVersion StringError
 additionalVersion =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 1024)
-                |> Result.andThen (Guarded.regexMatch "[0-9]+")
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 1024)
+                |> Result.andThen (Refined.regexMatch "[0-9]+")
                 |> Result.map AdditionalVersion
 
         unboxFn (AdditionalVersion val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias AdditionalVersionWeights =
@@ -738,19 +738,19 @@ type Alias
     = Alias String
 
 
-alias_ : Guarded String Alias StringError
+alias_ : Refined String Alias StringError
 alias_ =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 128)
-                |> Result.andThen (Guarded.regexMatch "(?!^[0-9]+$)([a-zA-Z0-9-_]+)")
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 128)
+                |> Result.andThen (Refined.regexMatch "(?!^[0-9]+$)([a-zA-Z0-9-_]+)")
                 |> Result.map Alias
 
         unboxFn (Alias val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias AliasConfiguration =
@@ -775,11 +775,11 @@ type Arn
     = Arn String
 
 
-arn : Guarded String Arn StringError
+arn : Refined String Arn StringError
 arn =
     let
         guardFn val =
-            Guarded.regexMatch
+            Refined.regexMatch
                 "arn:(aws[a-zA-Z0-9-]*):([a-zA-Z0-9\\-])+:([a-z]{2}(-gov)?-[a-z]+-\\d{1})?:(\\d{12})?:(.*)"
                 val
                 |> Result.map Arn
@@ -787,23 +787,23 @@ arn =
         unboxFn (Arn val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type BatchSize
     = BatchSize Int
 
 
-batchSize : Guarded Int BatchSize IntError
+batchSize : Refined Int BatchSize IntError
 batchSize =
     let
         guardFn val =
-            Guarded.gt 1 val |> Result.andThen (Guarded.lt 10000) |> Result.map BatchSize
+            Refined.gt 1 val |> Result.andThen (Refined.lt 10000) |> Result.map BatchSize
 
         unboxFn (BatchSize val) =
             val
     in
-    Guarded.make guardFn Json.Decode.int Json.Encode.int Guarded.intErrorToString unboxFn
+    Refined.define guardFn Json.Decode.int Json.Encode.int Refined.intErrorToString unboxFn
 
 
 type alias Blob =
@@ -897,16 +897,16 @@ type Description
     = Description String
 
 
-description : Guarded String Description StringError
+description : Refined String Description StringError
 description =
     let
         guardFn val =
-            Guarded.minLength 0 val |> Result.andThen (Guarded.maxLength 256) |> Result.map Description
+            Refined.minLength 0 val |> Result.andThen (Refined.maxLength 256) |> Result.map Description
 
         unboxFn (Description val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias Enabled =
@@ -929,16 +929,16 @@ type EnvironmentVariableName
     = EnvironmentVariableName String
 
 
-environmentVariableName : Guarded String EnvironmentVariableName StringError
+environmentVariableName : Refined String EnvironmentVariableName StringError
 environmentVariableName =
     let
         guardFn val =
-            Guarded.regexMatch "[a-zA-Z]([a-zA-Z0-9_])+" val |> Result.map EnvironmentVariableName
+            Refined.regexMatch "[a-zA-Z]([a-zA-Z0-9_])+" val |> Result.map EnvironmentVariableName
 
         unboxFn (EnvironmentVariableName val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias EnvironmentVariableValue =
@@ -973,7 +973,7 @@ type EventSourcePosition
 
 eventSourcePosition : Enum EventSourcePosition
 eventSourcePosition =
-    Enum.make
+    Enum.define
         [ EventSourcePositionTrimHorizon, EventSourcePositionLatest, EventSourcePositionAtTimestamp ]
         (\val ->
             case val of
@@ -992,30 +992,30 @@ type EventSourceToken
     = EventSourceToken String
 
 
-eventSourceToken : Guarded String EventSourceToken StringError
+eventSourceToken : Refined String EventSourceToken StringError
 eventSourceToken =
     let
         guardFn val =
-            Guarded.minLength 0 val
-                |> Result.andThen (Guarded.maxLength 256)
-                |> Result.andThen (Guarded.regexMatch "[a-zA-Z0-9._\\-]+")
+            Refined.minLength 0 val
+                |> Result.andThen (Refined.maxLength 256)
+                |> Result.andThen (Refined.regexMatch "[a-zA-Z0-9._\\-]+")
                 |> Result.map EventSourceToken
 
         unboxFn (EventSourceToken val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type FunctionArn
     = FunctionArn String
 
 
-functionArn : Guarded String FunctionArn StringError
+functionArn : Refined String FunctionArn StringError
 functionArn =
     let
         guardFn val =
-            Guarded.regexMatch
+            Refined.regexMatch
                 "arn:(aws[a-zA-Z-]*)?:lambda:[a-z]{2}(-gov)?-[a-z]+-\\d{1}:\\d{12}:function:[a-zA-Z0-9-_]+(:(\\$LATEST|[a-zA-Z0-9-_]+))?"
                 val
                 |> Result.map FunctionArn
@@ -1023,7 +1023,7 @@ functionArn =
         unboxFn (FunctionArn val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias FunctionCode =
@@ -1066,14 +1066,14 @@ type FunctionName
     = FunctionName String
 
 
-functionName : Guarded String FunctionName StringError
+functionName : Refined String FunctionName StringError
 functionName =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 140)
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 140)
                 |> Result.andThen
-                    (Guarded.regexMatch
+                    (Refined.regexMatch
                         "(arn:(aws[a-zA-Z-]*)?:lambda:)?([a-z]{2}(-gov)?-[a-z]+-\\d{1}:)?(\\d{12}:)?(function:)?([a-zA-Z0-9-_]+)(:(\\$LATEST|[a-zA-Z0-9-_]+))?"
                     )
                 |> Result.map FunctionName
@@ -1081,7 +1081,7 @@ functionName =
         unboxFn (FunctionName val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type FunctionVersion
@@ -1090,7 +1090,7 @@ type FunctionVersion
 
 functionVersion : Enum FunctionVersion
 functionVersion =
-    Enum.make
+    Enum.define
         [ FunctionVersionAll ]
         (\val ->
             case val of
@@ -1167,16 +1167,16 @@ type Handler
     = Handler String
 
 
-handler : Guarded String Handler StringError
+handler : Refined String Handler StringError
 handler =
     let
         guardFn val =
-            Guarded.maxLength 128 val |> Result.andThen (Guarded.regexMatch "[^\\s]+") |> Result.map Handler
+            Refined.maxLength 128 val |> Result.andThen (Refined.regexMatch "[^\\s]+") |> Result.map Handler
 
         unboxFn (Handler val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias HttpStatus =
@@ -1209,7 +1209,7 @@ type InvocationType
 
 invocationType : Enum InvocationType
 invocationType =
-    Enum.make
+    Enum.define
         [ InvocationTypeEvent, InvocationTypeRequestResponse, InvocationTypeDryRun ]
         (\val ->
             case val of
@@ -1236,16 +1236,16 @@ type KmskeyArn
     = KmskeyArn String
 
 
-kmskeyArn : Guarded String KmskeyArn StringError
+kmskeyArn : Refined String KmskeyArn StringError
 kmskeyArn =
     let
         guardFn val =
-            Guarded.regexMatch "(arn:(aws[a-zA-Z-]*)?:[a-z0-9-.]+:.*)|()" val |> Result.map KmskeyArn
+            Refined.regexMatch "(arn:(aws[a-zA-Z-]*)?:[a-z0-9-.]+:.*)|()" val |> Result.map KmskeyArn
 
         unboxFn (KmskeyArn val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias Layer =
@@ -1256,20 +1256,20 @@ type LayerArn
     = LayerArn String
 
 
-layerArn : Guarded String LayerArn StringError
+layerArn : Refined String LayerArn StringError
 layerArn =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 140)
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 140)
                 |> Result.andThen
-                    (Guarded.regexMatch "arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+")
+                    (Refined.regexMatch "arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+")
                 |> Result.map LayerArn
 
         unboxFn (LayerArn val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias LayerList =
@@ -1280,14 +1280,14 @@ type LayerName
     = LayerName String
 
 
-layerName : Guarded String LayerName StringError
+layerName : Refined String LayerName StringError
 layerName =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 140)
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 140)
                 |> Result.andThen
-                    (Guarded.regexMatch
+                    (Refined.regexMatch
                         "(arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+)|[a-zA-Z0-9-_]+"
                     )
                 |> Result.map LayerName
@@ -1295,60 +1295,60 @@ layerName =
         unboxFn (LayerName val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type LayerPermissionAllowedAction
     = LayerPermissionAllowedAction String
 
 
-layerPermissionAllowedAction : Guarded String LayerPermissionAllowedAction StringError
+layerPermissionAllowedAction : Refined String LayerPermissionAllowedAction StringError
 layerPermissionAllowedAction =
     let
         guardFn val =
-            Guarded.regexMatch "lambda:GetLayerVersion" val |> Result.map LayerPermissionAllowedAction
+            Refined.regexMatch "lambda:GetLayerVersion" val |> Result.map LayerPermissionAllowedAction
 
         unboxFn (LayerPermissionAllowedAction val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type LayerPermissionAllowedPrincipal
     = LayerPermissionAllowedPrincipal String
 
 
-layerPermissionAllowedPrincipal : Guarded String LayerPermissionAllowedPrincipal StringError
+layerPermissionAllowedPrincipal : Refined String LayerPermissionAllowedPrincipal StringError
 layerPermissionAllowedPrincipal =
     let
         guardFn val =
-            Guarded.regexMatch "\\d{12}|\\*|arn:(aws[a-zA-Z-]*):iam::\\d{12}:root" val
+            Refined.regexMatch "\\d{12}|\\*|arn:(aws[a-zA-Z-]*):iam::\\d{12}:root" val
                 |> Result.map LayerPermissionAllowedPrincipal
 
         unboxFn (LayerPermissionAllowedPrincipal val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type LayerVersionArn
     = LayerVersionArn String
 
 
-layerVersionArn : Guarded String LayerVersionArn StringError
+layerVersionArn : Refined String LayerVersionArn StringError
 layerVersionArn =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 140)
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 140)
                 |> Result.andThen
-                    (Guarded.regexMatch "arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+:[0-9]+")
+                    (Refined.regexMatch "arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+:[0-9]+")
                 |> Result.map LayerVersionArn
 
         unboxFn (LayerVersionArn val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias LayerVersionContentInput =
@@ -1393,16 +1393,16 @@ type LicenseInfo
     = LicenseInfo String
 
 
-licenseInfo : Guarded String LicenseInfo StringError
+licenseInfo : Refined String LicenseInfo StringError
 licenseInfo =
     let
         guardFn val =
-            Guarded.maxLength 512 val |> Result.map LicenseInfo
+            Refined.maxLength 512 val |> Result.map LicenseInfo
 
         unboxFn (LicenseInfo val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias ListAliasesRequest =
@@ -1468,7 +1468,7 @@ type LogType
 
 logType : Enum LogType
 logType =
-    Enum.make
+    Enum.define
         [ LogTypeNone, LogTypeTail ]
         (\val ->
             case val of
@@ -1488,75 +1488,75 @@ type MasterRegion
     = MasterRegion String
 
 
-masterRegion : Guarded String MasterRegion StringError
+masterRegion : Refined String MasterRegion StringError
 masterRegion =
     let
         guardFn val =
-            Guarded.regexMatch "ALL|[a-z]{2}(-gov)?-[a-z]+-\\d{1}" val |> Result.map MasterRegion
+            Refined.regexMatch "ALL|[a-z]{2}(-gov)?-[a-z]+-\\d{1}" val |> Result.map MasterRegion
 
         unboxFn (MasterRegion val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type MaxLayerListItems
     = MaxLayerListItems Int
 
 
-maxLayerListItems : Guarded Int MaxLayerListItems IntError
+maxLayerListItems : Refined Int MaxLayerListItems IntError
 maxLayerListItems =
     let
         guardFn val =
-            Guarded.gt 1 val |> Result.andThen (Guarded.lt 50) |> Result.map MaxLayerListItems
+            Refined.gt 1 val |> Result.andThen (Refined.lt 50) |> Result.map MaxLayerListItems
 
         unboxFn (MaxLayerListItems val) =
             val
     in
-    Guarded.make guardFn Json.Decode.int Json.Encode.int Guarded.intErrorToString unboxFn
+    Refined.define guardFn Json.Decode.int Json.Encode.int Refined.intErrorToString unboxFn
 
 
 type MaxListItems
     = MaxListItems Int
 
 
-maxListItems : Guarded Int MaxListItems IntError
+maxListItems : Refined Int MaxListItems IntError
 maxListItems =
     let
         guardFn val =
-            Guarded.gt 1 val |> Result.andThen (Guarded.lt 10000) |> Result.map MaxListItems
+            Refined.gt 1 val |> Result.andThen (Refined.lt 10000) |> Result.map MaxListItems
 
         unboxFn (MaxListItems val) =
             val
     in
-    Guarded.make guardFn Json.Decode.int Json.Encode.int Guarded.intErrorToString unboxFn
+    Refined.define guardFn Json.Decode.int Json.Encode.int Refined.intErrorToString unboxFn
 
 
 type MemorySize
     = MemorySize Int
 
 
-memorySize : Guarded Int MemorySize IntError
+memorySize : Refined Int MemorySize IntError
 memorySize =
     let
         guardFn val =
-            Guarded.gt 128 val |> Result.andThen (Guarded.lt 3008) |> Result.map MemorySize
+            Refined.gt 128 val |> Result.andThen (Refined.lt 3008) |> Result.map MemorySize
 
         unboxFn (MemorySize val) =
             val
     in
-    Guarded.make guardFn Json.Decode.int Json.Encode.int Guarded.intErrorToString unboxFn
+    Refined.define guardFn Json.Decode.int Json.Encode.int Refined.intErrorToString unboxFn
 
 
 type NameSpacedFunctionArn
     = NameSpacedFunctionArn String
 
 
-nameSpacedFunctionArn : Guarded String NameSpacedFunctionArn StringError
+nameSpacedFunctionArn : Refined String NameSpacedFunctionArn StringError
 nameSpacedFunctionArn =
     let
         guardFn val =
-            Guarded.regexMatch
+            Refined.regexMatch
                 "arn:(aws[a-zA-Z-]*)?:lambda:[a-z]{2}(-gov)?-[a-z]+-\\d{1}:\\d{12}:function:[a-zA-Z0-9-_\\.]+(:(\\$LATEST|[a-zA-Z0-9-_]+))?"
                 val
                 |> Result.map NameSpacedFunctionArn
@@ -1564,21 +1564,21 @@ nameSpacedFunctionArn =
         unboxFn (NameSpacedFunctionArn val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type NamespacedFunctionName
     = NamespacedFunctionName String
 
 
-namespacedFunctionName : Guarded String NamespacedFunctionName StringError
+namespacedFunctionName : Refined String NamespacedFunctionName StringError
 namespacedFunctionName =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 170)
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 170)
                 |> Result.andThen
-                    (Guarded.regexMatch
+                    (Refined.regexMatch
                         "(arn:(aws[a-zA-Z-]*)?:lambda:)?([a-z]{2}(-gov)?-[a-z]+-\\d{1}:)?(\\d{12}:)?(function:)?([a-zA-Z0-9-_\\.]+)(:(\\$LATEST|[a-zA-Z0-9-_]+))?"
                     )
                 |> Result.map NamespacedFunctionName
@@ -1586,58 +1586,58 @@ namespacedFunctionName =
         unboxFn (NamespacedFunctionName val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type NamespacedStatementId
     = NamespacedStatementId String
 
 
-namespacedStatementId : Guarded String NamespacedStatementId StringError
+namespacedStatementId : Refined String NamespacedStatementId StringError
 namespacedStatementId =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 100)
-                |> Result.andThen (Guarded.regexMatch "([a-zA-Z0-9-_.]+)")
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 100)
+                |> Result.andThen (Refined.regexMatch "([a-zA-Z0-9-_.]+)")
                 |> Result.map NamespacedStatementId
 
         unboxFn (NamespacedStatementId val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type OrganizationId
     = OrganizationId String
 
 
-organizationId : Guarded String OrganizationId StringError
+organizationId : Refined String OrganizationId StringError
 organizationId =
     let
         guardFn val =
-            Guarded.regexMatch "o-[a-z0-9]{10,32}" val |> Result.map OrganizationId
+            Refined.regexMatch "o-[a-z0-9]{10,32}" val |> Result.map OrganizationId
 
         unboxFn (OrganizationId val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type Principal
     = Principal String
 
 
-principal : Guarded String Principal StringError
+principal : Refined String Principal StringError
 principal =
     let
         guardFn val =
-            Guarded.regexMatch ".*" val |> Result.map Principal
+            Refined.regexMatch ".*" val |> Result.map Principal
 
         unboxFn (Principal val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias PublishLayerVersionRequest =
@@ -1673,19 +1673,19 @@ type Qualifier
     = Qualifier String
 
 
-qualifier : Guarded String Qualifier StringError
+qualifier : Refined String Qualifier StringError
 qualifier =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 128)
-                |> Result.andThen (Guarded.regexMatch "(|[a-zA-Z0-9$_-]+)")
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 128)
+                |> Result.andThen (Refined.regexMatch "(|[a-zA-Z0-9$_-]+)")
                 |> Result.map Qualifier
 
         unboxFn (Qualifier val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias RemoveLayerVersionPermissionRequest =
@@ -1700,49 +1700,49 @@ type ReservedConcurrentExecutions
     = ReservedConcurrentExecutions Int
 
 
-reservedConcurrentExecutions : Guarded Int ReservedConcurrentExecutions IntError
+reservedConcurrentExecutions : Refined Int ReservedConcurrentExecutions IntError
 reservedConcurrentExecutions =
     let
         guardFn val =
-            Guarded.gt 0 val |> Result.map ReservedConcurrentExecutions
+            Refined.gt 0 val |> Result.map ReservedConcurrentExecutions
 
         unboxFn (ReservedConcurrentExecutions val) =
             val
     in
-    Guarded.make guardFn Json.Decode.int Json.Encode.int Guarded.intErrorToString unboxFn
+    Refined.define guardFn Json.Decode.int Json.Encode.int Refined.intErrorToString unboxFn
 
 
 type ResourceArn
     = ResourceArn String
 
 
-resourceArn : Guarded String ResourceArn StringError
+resourceArn : Refined String ResourceArn StringError
 resourceArn =
     let
         guardFn val =
-            Guarded.regexMatch "(arn:(aws[a-zA-Z-]*)?:[a-z0-9-.]+:.*)|()" val |> Result.map ResourceArn
+            Refined.regexMatch "(arn:(aws[a-zA-Z-]*)?:[a-z0-9-.]+:.*)|()" val |> Result.map ResourceArn
 
         unboxFn (ResourceArn val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type RoleArn
     = RoleArn String
 
 
-roleArn : Guarded String RoleArn StringError
+roleArn : Refined String RoleArn StringError
 roleArn =
     let
         guardFn val =
-            Guarded.regexMatch "arn:(aws[a-zA-Z-]*)?:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+" val
+            Refined.regexMatch "arn:(aws[a-zA-Z-]*)?:iam::\\d{12}:role/?[a-zA-Z_0-9+=,.@\\-_/]+" val
                 |> Result.map RoleArn
 
         unboxFn (RoleArn val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type Runtime
@@ -1766,7 +1766,7 @@ type Runtime
 
 runtime : Enum Runtime
 runtime =
-    Enum.make
+    Enum.define
         [ RuntimeNodejs
         , RuntimeNodejs43
         , RuntimeNodejs610
@@ -1840,51 +1840,51 @@ type S3Bucket
     = S3Bucket String
 
 
-s3Bucket : Guarded String S3Bucket StringError
+s3Bucket : Refined String S3Bucket StringError
 s3Bucket =
     let
         guardFn val =
-            Guarded.minLength 3 val
-                |> Result.andThen (Guarded.maxLength 63)
-                |> Result.andThen (Guarded.regexMatch "^[0-9A-Za-z\\.\\-_]*(?<!\\.)$")
+            Refined.minLength 3 val
+                |> Result.andThen (Refined.maxLength 63)
+                |> Result.andThen (Refined.regexMatch "^[0-9A-Za-z\\.\\-_]*(?<!\\.)$")
                 |> Result.map S3Bucket
 
         unboxFn (S3Bucket val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type S3Key
     = S3Key String
 
 
-s3Key : Guarded String S3Key StringError
+s3Key : Refined String S3Key StringError
 s3Key =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 1024) |> Result.map S3Key
+            Refined.minLength 1 val |> Result.andThen (Refined.maxLength 1024) |> Result.map S3Key
 
         unboxFn (S3Key val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type S3ObjectVersion
     = S3ObjectVersion String
 
 
-s3ObjectVersion : Guarded String S3ObjectVersion StringError
+s3ObjectVersion : Refined String S3ObjectVersion StringError
 s3ObjectVersion =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 1024) |> Result.map S3ObjectVersion
+            Refined.minLength 1 val |> Result.andThen (Refined.maxLength 1024) |> Result.map S3ObjectVersion
 
         unboxFn (S3ObjectVersion val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias SecurityGroupId =
@@ -1903,35 +1903,35 @@ type SourceOwner
     = SourceOwner String
 
 
-sourceOwner : Guarded String SourceOwner StringError
+sourceOwner : Refined String SourceOwner StringError
 sourceOwner =
     let
         guardFn val =
-            Guarded.regexMatch "\\d{12}" val |> Result.map SourceOwner
+            Refined.regexMatch "\\d{12}" val |> Result.map SourceOwner
 
         unboxFn (SourceOwner val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type StatementId
     = StatementId String
 
 
-statementId : Guarded String StatementId StringError
+statementId : Refined String StatementId StringError
 statementId =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 100)
-                |> Result.andThen (Guarded.regexMatch "([a-zA-Z0-9-_]+)")
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 100)
+                |> Result.andThen (Refined.regexMatch "([a-zA-Z0-9-_]+)")
                 |> Result.map StatementId
 
         unboxFn (StatementId val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias String_ =
@@ -1970,16 +1970,16 @@ type Timeout
     = Timeout Int
 
 
-timeout : Guarded Int Timeout IntError
+timeout : Refined Int Timeout IntError
 timeout =
     let
         guardFn val =
-            Guarded.gt 1 val |> Result.map Timeout
+            Refined.gt 1 val |> Result.map Timeout
 
         unboxFn (Timeout val) =
             val
     in
-    Guarded.make guardFn Json.Decode.int Json.Encode.int Guarded.intErrorToString unboxFn
+    Refined.define guardFn Json.Decode.int Json.Encode.int Refined.intErrorToString unboxFn
 
 
 type alias Timestamp =
@@ -2001,7 +2001,7 @@ type TracingMode
 
 tracingMode : Enum TracingMode
 tracingMode =
-    Enum.make
+    Enum.define
         [ TracingModeActive, TracingModePassThrough ]
         (\val ->
             case val of
@@ -2017,16 +2017,16 @@ type UnreservedConcurrentExecutions
     = UnreservedConcurrentExecutions Int
 
 
-unreservedConcurrentExecutions : Guarded Int UnreservedConcurrentExecutions IntError
+unreservedConcurrentExecutions : Refined Int UnreservedConcurrentExecutions IntError
 unreservedConcurrentExecutions =
     let
         guardFn val =
-            Guarded.gt 0 val |> Result.map UnreservedConcurrentExecutions
+            Refined.gt 0 val |> Result.map UnreservedConcurrentExecutions
 
         unboxFn (UnreservedConcurrentExecutions val) =
             val
     in
-    Guarded.make guardFn Json.Decode.int Json.Encode.int Guarded.intErrorToString unboxFn
+    Refined.define guardFn Json.Decode.int Json.Encode.int Refined.intErrorToString unboxFn
 
 
 type alias UntagResourceRequest =
@@ -2081,19 +2081,19 @@ type Version
     = Version String
 
 
-version : Guarded String Version StringError
+version : Refined String Version StringError
 version =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 1024)
-                |> Result.andThen (Guarded.regexMatch "(\\$LATEST|[0-9]+)")
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 1024)
+                |> Result.andThen (Refined.regexMatch "(\\$LATEST|[0-9]+)")
                 |> Result.map Version
 
         unboxFn (Version val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias VpcConfig =
@@ -2146,7 +2146,7 @@ vpcConfigCodec =
 {-| Codec for Version. -}
 versionCodec : Codec Version
 versionCodec =
-    Codec.build (Guarded.encoder version) (Guarded.decoder version)
+    Codec.build (Refined.encoder version) (Refined.decoder version)
 
 
 {-| Codec for UpdateFunctionConfigurationRequest. -}
@@ -2221,7 +2221,7 @@ untagResourceRequestCodec =
 {-| Codec for UnreservedConcurrentExecutions. -}
 unreservedConcurrentExecutionsCodec : Codec UnreservedConcurrentExecutions
 unreservedConcurrentExecutionsCodec =
-    Codec.build (Guarded.encoder unreservedConcurrentExecutions) (Guarded.decoder unreservedConcurrentExecutions)
+    Codec.build (Refined.encoder unreservedConcurrentExecutions) (Refined.decoder unreservedConcurrentExecutions)
 
 
 {-| Codec for TracingMode. -}
@@ -2251,7 +2251,7 @@ timestampCodec =
 {-| Codec for Timeout. -}
 timeoutCodec : Codec Timeout
 timeoutCodec =
-    Codec.build (Guarded.encoder timeout) (Guarded.decoder timeout)
+    Codec.build (Refined.encoder timeout) (Refined.decoder timeout)
 
 
 {-| Codec for Tags. -}
@@ -2308,13 +2308,13 @@ stringCodec =
 {-| Codec for StatementId. -}
 statementIdCodec : Codec StatementId
 statementIdCodec =
-    Codec.build (Guarded.encoder statementId) (Guarded.decoder statementId)
+    Codec.build (Refined.encoder statementId) (Refined.decoder statementId)
 
 
 {-| Codec for SourceOwner. -}
 sourceOwnerCodec : Codec SourceOwner
 sourceOwnerCodec =
-    Codec.build (Guarded.encoder sourceOwner) (Guarded.decoder sourceOwner)
+    Codec.build (Refined.encoder sourceOwner) (Refined.decoder sourceOwner)
 
 
 {-| Codec for SensitiveString. -}
@@ -2338,19 +2338,19 @@ securityGroupIdCodec =
 {-| Codec for S3ObjectVersion. -}
 s3ObjectVersionCodec : Codec S3ObjectVersion
 s3ObjectVersionCodec =
-    Codec.build (Guarded.encoder s3ObjectVersion) (Guarded.decoder s3ObjectVersion)
+    Codec.build (Refined.encoder s3ObjectVersion) (Refined.decoder s3ObjectVersion)
 
 
 {-| Codec for S3Key. -}
 s3KeyCodec : Codec S3Key
 s3KeyCodec =
-    Codec.build (Guarded.encoder s3Key) (Guarded.decoder s3Key)
+    Codec.build (Refined.encoder s3Key) (Refined.decoder s3Key)
 
 
 {-| Codec for S3Bucket. -}
 s3BucketCodec : Codec S3Bucket
 s3BucketCodec =
-    Codec.build (Guarded.encoder s3Bucket) (Guarded.decoder s3Bucket)
+    Codec.build (Refined.encoder s3Bucket) (Refined.decoder s3Bucket)
 
 
 {-| Codec for Runtime. -}
@@ -2362,19 +2362,19 @@ runtimeCodec =
 {-| Codec for RoleArn. -}
 roleArnCodec : Codec RoleArn
 roleArnCodec =
-    Codec.build (Guarded.encoder roleArn) (Guarded.decoder roleArn)
+    Codec.build (Refined.encoder roleArn) (Refined.decoder roleArn)
 
 
 {-| Codec for ResourceArn. -}
 resourceArnCodec : Codec ResourceArn
 resourceArnCodec =
-    Codec.build (Guarded.encoder resourceArn) (Guarded.decoder resourceArn)
+    Codec.build (Refined.encoder resourceArn) (Refined.decoder resourceArn)
 
 
 {-| Codec for ReservedConcurrentExecutions. -}
 reservedConcurrentExecutionsCodec : Codec ReservedConcurrentExecutions
 reservedConcurrentExecutionsCodec =
-    Codec.build (Guarded.encoder reservedConcurrentExecutions) (Guarded.decoder reservedConcurrentExecutions)
+    Codec.build (Refined.encoder reservedConcurrentExecutions) (Refined.decoder reservedConcurrentExecutions)
 
 
 {-| Codec for RemovePermissionRequest. -}
@@ -2402,7 +2402,7 @@ removeLayerVersionPermissionRequestCodec =
 {-| Codec for Qualifier. -}
 qualifierCodec : Codec Qualifier
 qualifierCodec =
-    Codec.build (Guarded.encoder qualifier) (Guarded.decoder qualifier)
+    Codec.build (Refined.encoder qualifier) (Refined.decoder qualifier)
 
 
 {-| Codec for PutFunctionConcurrencyRequest. -}
@@ -2455,55 +2455,55 @@ publishLayerVersionRequestCodec =
 {-| Codec for Principal. -}
 principalCodec : Codec Principal
 principalCodec =
-    Codec.build (Guarded.encoder principal) (Guarded.decoder principal)
+    Codec.build (Refined.encoder principal) (Refined.decoder principal)
 
 
 {-| Codec for OrganizationId. -}
 organizationIdCodec : Codec OrganizationId
 organizationIdCodec =
-    Codec.build (Guarded.encoder organizationId) (Guarded.decoder organizationId)
+    Codec.build (Refined.encoder organizationId) (Refined.decoder organizationId)
 
 
 {-| Codec for NamespacedStatementId. -}
 namespacedStatementIdCodec : Codec NamespacedStatementId
 namespacedStatementIdCodec =
-    Codec.build (Guarded.encoder namespacedStatementId) (Guarded.decoder namespacedStatementId)
+    Codec.build (Refined.encoder namespacedStatementId) (Refined.decoder namespacedStatementId)
 
 
 {-| Codec for NamespacedFunctionName. -}
 namespacedFunctionNameCodec : Codec NamespacedFunctionName
 namespacedFunctionNameCodec =
-    Codec.build (Guarded.encoder namespacedFunctionName) (Guarded.decoder namespacedFunctionName)
+    Codec.build (Refined.encoder namespacedFunctionName) (Refined.decoder namespacedFunctionName)
 
 
 {-| Codec for NameSpacedFunctionArn. -}
 nameSpacedFunctionArnCodec : Codec NameSpacedFunctionArn
 nameSpacedFunctionArnCodec =
-    Codec.build (Guarded.encoder nameSpacedFunctionArn) (Guarded.decoder nameSpacedFunctionArn)
+    Codec.build (Refined.encoder nameSpacedFunctionArn) (Refined.decoder nameSpacedFunctionArn)
 
 
 {-| Codec for MemorySize. -}
 memorySizeCodec : Codec MemorySize
 memorySizeCodec =
-    Codec.build (Guarded.encoder memorySize) (Guarded.decoder memorySize)
+    Codec.build (Refined.encoder memorySize) (Refined.decoder memorySize)
 
 
 {-| Codec for MaxListItems. -}
 maxListItemsCodec : Codec MaxListItems
 maxListItemsCodec =
-    Codec.build (Guarded.encoder maxListItems) (Guarded.decoder maxListItems)
+    Codec.build (Refined.encoder maxListItems) (Refined.decoder maxListItems)
 
 
 {-| Codec for MaxLayerListItems. -}
 maxLayerListItemsCodec : Codec MaxLayerListItems
 maxLayerListItemsCodec =
-    Codec.build (Guarded.encoder maxLayerListItems) (Guarded.decoder maxLayerListItems)
+    Codec.build (Refined.encoder maxLayerListItems) (Refined.decoder maxLayerListItems)
 
 
 {-| Codec for MasterRegion. -}
 masterRegionCodec : Codec MasterRegion
 masterRegionCodec =
-    Codec.build (Guarded.encoder masterRegion) (Guarded.decoder masterRegion)
+    Codec.build (Refined.encoder masterRegion) (Refined.decoder masterRegion)
 
 
 {-| Codec for Long. -}
@@ -2651,7 +2651,7 @@ listAliasesRequestCodec =
 {-| Codec for LicenseInfo. -}
 licenseInfoCodec : Codec LicenseInfo
 licenseInfoCodec =
-    Codec.build (Guarded.encoder licenseInfo) (Guarded.decoder licenseInfo)
+    Codec.build (Refined.encoder licenseInfo) (Refined.decoder licenseInfo)
 
 
 {-| Codec for LayersReferenceList. -}
@@ -2725,25 +2725,25 @@ layerVersionContentInputCodec =
 {-| Codec for LayerVersionArn. -}
 layerVersionArnCodec : Codec LayerVersionArn
 layerVersionArnCodec =
-    Codec.build (Guarded.encoder layerVersionArn) (Guarded.decoder layerVersionArn)
+    Codec.build (Refined.encoder layerVersionArn) (Refined.decoder layerVersionArn)
 
 
 {-| Codec for LayerPermissionAllowedPrincipal. -}
 layerPermissionAllowedPrincipalCodec : Codec LayerPermissionAllowedPrincipal
 layerPermissionAllowedPrincipalCodec =
-    Codec.build (Guarded.encoder layerPermissionAllowedPrincipal) (Guarded.decoder layerPermissionAllowedPrincipal)
+    Codec.build (Refined.encoder layerPermissionAllowedPrincipal) (Refined.decoder layerPermissionAllowedPrincipal)
 
 
 {-| Codec for LayerPermissionAllowedAction. -}
 layerPermissionAllowedActionCodec : Codec LayerPermissionAllowedAction
 layerPermissionAllowedActionCodec =
-    Codec.build (Guarded.encoder layerPermissionAllowedAction) (Guarded.decoder layerPermissionAllowedAction)
+    Codec.build (Refined.encoder layerPermissionAllowedAction) (Refined.decoder layerPermissionAllowedAction)
 
 
 {-| Codec for LayerName. -}
 layerNameCodec : Codec LayerName
 layerNameCodec =
-    Codec.build (Guarded.encoder layerName) (Guarded.decoder layerName)
+    Codec.build (Refined.encoder layerName) (Refined.decoder layerName)
 
 
 {-| Codec for LayerList. -}
@@ -2755,7 +2755,7 @@ layerListCodec =
 {-| Codec for LayerArn. -}
 layerArnCodec : Codec LayerArn
 layerArnCodec =
-    Codec.build (Guarded.encoder layerArn) (Guarded.decoder layerArn)
+    Codec.build (Refined.encoder layerArn) (Refined.decoder layerArn)
 
 
 {-| Codec for Layer. -}
@@ -2770,7 +2770,7 @@ layerCodec =
 {-| Codec for KmskeyArn. -}
 kmskeyArnCodec : Codec KmskeyArn
 kmskeyArnCodec =
-    Codec.build (Guarded.encoder kmskeyArn) (Guarded.decoder kmskeyArn)
+    Codec.build (Refined.encoder kmskeyArn) (Refined.decoder kmskeyArn)
 
 
 {-| Codec for InvokeAsyncResponse. -}
@@ -2834,7 +2834,7 @@ httpStatusCodec =
 {-| Codec for Handler. -}
 handlerCodec : Codec Handler
 handlerCodec =
-    Codec.build (Guarded.encoder handler) (Guarded.decoder handler)
+    Codec.build (Refined.encoder handler) (Refined.decoder handler)
 
 
 {-| Codec for GetPolicyResponse. -}
@@ -2971,7 +2971,7 @@ functionVersionCodec =
 {-| Codec for FunctionName. -}
 functionNameCodec : Codec FunctionName
 functionNameCodec =
-    Codec.build (Guarded.encoder functionName) (Guarded.decoder functionName)
+    Codec.build (Refined.encoder functionName) (Refined.decoder functionName)
 
 
 {-| Codec for FunctionList. -}
@@ -3030,13 +3030,13 @@ functionCodeCodec =
 {-| Codec for FunctionArn. -}
 functionArnCodec : Codec FunctionArn
 functionArnCodec =
-    Codec.build (Guarded.encoder functionArn) (Guarded.decoder functionArn)
+    Codec.build (Refined.encoder functionArn) (Refined.decoder functionArn)
 
 
 {-| Codec for EventSourceToken. -}
 eventSourceTokenCodec : Codec EventSourceToken
 eventSourceTokenCodec =
-    Codec.build (Guarded.encoder eventSourceToken) (Guarded.decoder eventSourceToken)
+    Codec.build (Refined.encoder eventSourceToken) (Refined.decoder eventSourceToken)
 
 
 {-| Codec for EventSourcePosition. -}
@@ -3081,7 +3081,7 @@ environmentVariableValueCodec =
 {-| Codec for EnvironmentVariableName. -}
 environmentVariableNameCodec : Codec EnvironmentVariableName
 environmentVariableNameCodec =
-    Codec.build (Guarded.encoder environmentVariableName) (Guarded.decoder environmentVariableName)
+    Codec.build (Refined.encoder environmentVariableName) (Refined.decoder environmentVariableName)
 
 
 {-| Codec for EnvironmentResponse. -}
@@ -3117,7 +3117,7 @@ enabledCodec =
 {-| Codec for Description. -}
 descriptionCodec : Codec Description
 descriptionCodec =
-    Codec.build (Guarded.encoder description) (Guarded.decoder description)
+    Codec.build (Refined.encoder description) (Refined.decoder description)
 
 
 {-| Codec for DeleteLayerVersionRequest. -}
@@ -3256,13 +3256,13 @@ blobCodec =
 {-| Codec for BatchSize. -}
 batchSizeCodec : Codec BatchSize
 batchSizeCodec =
-    Codec.build (Guarded.encoder batchSize) (Guarded.decoder batchSize)
+    Codec.build (Refined.encoder batchSize) (Refined.decoder batchSize)
 
 
 {-| Codec for Arn. -}
 arnCodec : Codec Arn
 arnCodec =
-    Codec.build (Guarded.encoder arn) (Guarded.decoder arn)
+    Codec.build (Refined.encoder arn) (Refined.decoder arn)
 
 
 {-| Codec for AliasRoutingConfiguration. -}
@@ -3295,7 +3295,7 @@ aliasConfigurationCodec =
 {-| Codec for Alias. -}
 aliasCodec : Codec Alias
 aliasCodec =
-    Codec.build (Guarded.encoder alias_) (Guarded.decoder alias_)
+    Codec.build (Refined.encoder alias_) (Refined.decoder alias_)
 
 
 {-| Codec for AdditionalVersionWeights. -}
@@ -3307,7 +3307,7 @@ additionalVersionWeightsCodec =
 {-| Codec for AdditionalVersion. -}
 additionalVersionCodec : Codec AdditionalVersion
 additionalVersionCodec =
-    Codec.build (Guarded.encoder additionalVersion) (Guarded.decoder additionalVersion)
+    Codec.build (Refined.encoder additionalVersion) (Refined.decoder additionalVersion)
 
 
 {-| Codec for AddPermissionResponse. -}
@@ -3358,7 +3358,7 @@ addLayerVersionPermissionRequestCodec =
 {-| Codec for Action. -}
 actionCodec : Codec Action
 actionCodec =
-    Codec.build (Guarded.encoder action) (Guarded.decoder action)
+    Codec.build (Refined.encoder action) (Refined.decoder action)
 
 
 {-| Codec for AccountUsage. -}

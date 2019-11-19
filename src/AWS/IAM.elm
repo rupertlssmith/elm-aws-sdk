@@ -6,9 +6,9 @@ import AWS.Core.Service
 import Codec exposing (Codec)
 import Dict exposing (Dict)
 import Enum exposing (Enum)
-import Guarded exposing (Guarded, IntError, StringError)
 import Json.Decode exposing (Decoder)
 import Json.Encode exposing (Value)
+import Refined exposing (IntError, Refined, StringError)
 
 
 {-| Configuration for this service. -}
@@ -2291,16 +2291,16 @@ type ActionNameType
     = ActionNameType String
 
 
-actionNameType : Guarded String ActionNameType StringError
+actionNameType : Refined String ActionNameType StringError
 actionNameType =
     let
         guardFn val =
-            Guarded.minLength 3 val |> Result.andThen (Guarded.maxLength 128) |> Result.map ActionNameType
+            Refined.minLength 3 val |> Result.andThen (Refined.maxLength 128) |> Result.map ActionNameType
 
         unboxFn (ActionNameType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias AddClientIdtoOpenIdconnectProviderRequest =
@@ -2366,16 +2366,16 @@ type ContextKeyNameType
     = ContextKeyNameType String
 
 
-contextKeyNameType : Guarded String ContextKeyNameType StringError
+contextKeyNameType : Refined String ContextKeyNameType StringError
 contextKeyNameType =
     let
         guardFn val =
-            Guarded.minLength 5 val |> Result.andThen (Guarded.maxLength 256) |> Result.map ContextKeyNameType
+            Refined.minLength 5 val |> Result.andThen (Refined.maxLength 256) |> Result.map ContextKeyNameType
 
         unboxFn (ContextKeyNameType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias ContextKeyNamesResultListType =
@@ -2399,7 +2399,7 @@ type ContextKeyTypeEnum
 
 contextKeyTypeEnum : Enum ContextKeyTypeEnum
 contextKeyTypeEnum =
-    Enum.make
+    Enum.define
         [ ContextKeyTypeEnumString_
         , ContextKeyTypeEnumStringList
         , ContextKeyTypeEnumNumeric
@@ -2684,16 +2684,16 @@ type DeletionTaskIdType
     = DeletionTaskIdType String
 
 
-deletionTaskIdType : Guarded String DeletionTaskIdType StringError
+deletionTaskIdType : Refined String DeletionTaskIdType StringError
 deletionTaskIdType =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 1000) |> Result.map DeletionTaskIdType
+            Refined.minLength 1 val |> Result.andThen (Refined.maxLength 1000) |> Result.map DeletionTaskIdType
 
         unboxFn (DeletionTaskIdType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type DeletionTaskStatusType
@@ -2705,7 +2705,7 @@ type DeletionTaskStatusType
 
 deletionTaskStatusType : Enum DeletionTaskStatusType
 deletionTaskStatusType =
-    Enum.make
+    Enum.define
         [ DeletionTaskStatusTypeSucceeded
         , DeletionTaskStatusTypeInProgress
         , DeletionTaskStatusTypeFailed
@@ -2765,7 +2765,7 @@ type EntityType
 
 entityType : Enum EntityType
 entityType =
-    Enum.make
+    Enum.define
         [ EntityTypeUser, EntityTypeRole, EntityTypeGroup, EntityTypeLocalManagedPolicy, EntityTypeAwsmanagedPolicy ]
         (\val ->
             case val of
@@ -2798,16 +2798,16 @@ type EvalDecisionSourceType
     = EvalDecisionSourceType String
 
 
-evalDecisionSourceType : Guarded String EvalDecisionSourceType StringError
+evalDecisionSourceType : Refined String EvalDecisionSourceType StringError
 evalDecisionSourceType =
     let
         guardFn val =
-            Guarded.minLength 3 val |> Result.andThen (Guarded.maxLength 256) |> Result.map EvalDecisionSourceType
+            Refined.minLength 3 val |> Result.andThen (Refined.maxLength 256) |> Result.map EvalDecisionSourceType
 
         unboxFn (EvalDecisionSourceType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias EvaluationResult =
@@ -3380,16 +3380,16 @@ type OpenIdconnectProviderUrlType
     = OpenIdconnectProviderUrlType String
 
 
-openIdconnectProviderUrlType : Guarded String OpenIdconnectProviderUrlType StringError
+openIdconnectProviderUrlType : Refined String OpenIdconnectProviderUrlType StringError
 openIdconnectProviderUrlType =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 255) |> Result.map OpenIdconnectProviderUrlType
+            Refined.minLength 1 val |> Result.andThen (Refined.maxLength 255) |> Result.map OpenIdconnectProviderUrlType
 
         unboxFn (OpenIdconnectProviderUrlType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias OrganizationsDecisionDetail =
@@ -3416,7 +3416,7 @@ type PermissionsBoundaryAttachmentType
 
 permissionsBoundaryAttachmentType : Enum PermissionsBoundaryAttachmentType
 permissionsBoundaryAttachmentType =
-    Enum.make
+    Enum.define
         [ PermissionsBoundaryAttachmentTypePermissionsBoundaryPolicy ]
         (\val ->
             case val of
@@ -3452,7 +3452,7 @@ type PolicyEvaluationDecisionType
 
 policyEvaluationDecisionType : Enum PolicyEvaluationDecisionType
 policyEvaluationDecisionType =
-    Enum.make
+    Enum.define
         [ PolicyEvaluationDecisionTypeAllowed
         , PolicyEvaluationDecisionTypeExplicitDeny
         , PolicyEvaluationDecisionTypeImplicitDeny
@@ -3511,7 +3511,7 @@ type PolicySourceType
 
 policySourceType : Enum PolicySourceType
 policySourceType =
-    Enum.make
+    Enum.define
         [ PolicySourceTypeUser
         , PolicySourceTypeGroup
         , PolicySourceTypeRole
@@ -3552,7 +3552,7 @@ type PolicyUsageType
 
 policyUsageType : Enum PolicyUsageType
 policyUsageType =
-    Enum.make
+    Enum.define
         [ PolicyUsageTypePermissionsPolicy, PolicyUsageTypePermissionsBoundary ]
         (\val ->
             case val of
@@ -3604,32 +3604,32 @@ type ReasonType
     = ReasonType String
 
 
-reasonType : Guarded String ReasonType StringError
+reasonType : Refined String ReasonType StringError
 reasonType =
     let
         guardFn val =
-            Guarded.maxLength 1000 val |> Result.map ReasonType
+            Refined.maxLength 1000 val |> Result.map ReasonType
 
         unboxFn (ReasonType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type RegionNameType
     = RegionNameType String
 
 
-regionNameType : Guarded String RegionNameType StringError
+regionNameType : Refined String RegionNameType StringError
 regionNameType =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 100) |> Result.map RegionNameType
+            Refined.minLength 1 val |> Result.andThen (Refined.maxLength 100) |> Result.map RegionNameType
 
         unboxFn (RegionNameType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias RemoveClientIdfromOpenIdconnectProviderRequest =
@@ -3654,7 +3654,7 @@ type ReportFormatType
 
 reportFormatType : Enum ReportFormatType
 reportFormatType =
-    Enum.make
+    Enum.define
         [ ReportFormatTypeTextCsv ]
         (\val ->
             case val of
@@ -3675,7 +3675,7 @@ type ReportStateType
 
 reportStateType : Enum ReportStateType
 reportStateType =
-    Enum.make
+    Enum.define
         [ ReportStateTypeStarted, ReportStateTypeInprogress, ReportStateTypeComplete ]
         (\val ->
             case val of
@@ -3702,16 +3702,16 @@ type ResourceHandlingOptionType
     = ResourceHandlingOptionType String
 
 
-resourceHandlingOptionType : Guarded String ResourceHandlingOptionType StringError
+resourceHandlingOptionType : Refined String ResourceHandlingOptionType StringError
 resourceHandlingOptionType =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 64) |> Result.map ResourceHandlingOptionType
+            Refined.minLength 1 val |> Result.andThen (Refined.maxLength 64) |> Result.map ResourceHandlingOptionType
 
         unboxFn (ResourceHandlingOptionType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias ResourceNameListType =
@@ -3722,16 +3722,16 @@ type ResourceNameType
     = ResourceNameType String
 
 
-resourceNameType : Guarded String ResourceNameType StringError
+resourceNameType : Refined String ResourceNameType StringError
 resourceNameType =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 2048) |> Result.map ResourceNameType
+            Refined.minLength 1 val |> Result.andThen (Refined.maxLength 2048) |> Result.map ResourceNameType
 
         unboxFn (ResourceNameType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias ResourceSpecificResult =
@@ -3796,18 +3796,18 @@ type SamlmetadataDocumentType
     = SamlmetadataDocumentType String
 
 
-samlmetadataDocumentType : Guarded String SamlmetadataDocumentType StringError
+samlmetadataDocumentType : Refined String SamlmetadataDocumentType StringError
 samlmetadataDocumentType =
     let
         guardFn val =
-            Guarded.minLength 1000 val
-                |> Result.andThen (Guarded.maxLength 10000000)
+            Refined.minLength 1000 val
+                |> Result.andThen (Refined.maxLength 10000000)
                 |> Result.map SamlmetadataDocumentType
 
         unboxFn (SamlmetadataDocumentType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias SamlproviderListEntry =
@@ -3822,19 +3822,19 @@ type SamlproviderNameType
     = SamlproviderNameType String
 
 
-samlproviderNameType : Guarded String SamlproviderNameType StringError
+samlproviderNameType : Refined String SamlproviderNameType StringError
 samlproviderNameType =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 128)
-                |> Result.andThen (Guarded.regexMatch "[\\w._-]+")
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 128)
+                |> Result.andThen (Refined.regexMatch "[\\w._-]+")
                 |> Result.map SamlproviderNameType
 
         unboxFn (SamlproviderNameType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias SshpublicKey =
@@ -4140,19 +4140,19 @@ type AccessKeyIdType
     = AccessKeyIdType String
 
 
-accessKeyIdType : Guarded String AccessKeyIdType StringError
+accessKeyIdType : Refined String AccessKeyIdType StringError
 accessKeyIdType =
     let
         guardFn val =
-            Guarded.minLength 16 val
-                |> Result.andThen (Guarded.maxLength 128)
-                |> Result.andThen (Guarded.regexMatch "[\\w]+")
+            Refined.minLength 16 val
+                |> Result.andThen (Refined.maxLength 128)
+                |> Result.andThen (Refined.regexMatch "[\\w]+")
                 |> Result.map AccessKeyIdType
 
         unboxFn (AccessKeyIdType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias AccessKeyMetadataListType =
@@ -4171,35 +4171,35 @@ type AccountAliasType
     = AccountAliasType String
 
 
-accountAliasType : Guarded String AccountAliasType StringError
+accountAliasType : Refined String AccountAliasType StringError
 accountAliasType =
     let
         guardFn val =
-            Guarded.minLength 3 val
-                |> Result.andThen (Guarded.maxLength 63)
-                |> Result.andThen (Guarded.regexMatch "^[a-z0-9](([a-z0-9]|-(?!-))*[a-z0-9])?$")
+            Refined.minLength 3 val
+                |> Result.andThen (Refined.maxLength 63)
+                |> Result.andThen (Refined.regexMatch "^[a-z0-9](([a-z0-9]|-(?!-))*[a-z0-9])?$")
                 |> Result.map AccountAliasType
 
         unboxFn (AccountAliasType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type ArnType
     = ArnType String
 
 
-arnType : Guarded String ArnType StringError
+arnType : Refined String ArnType StringError
 arnType =
     let
         guardFn val =
-            Guarded.minLength 20 val |> Result.andThen (Guarded.maxLength 2048) |> Result.map ArnType
+            Refined.minLength 20 val |> Result.andThen (Refined.maxLength 2048) |> Result.map ArnType
 
         unboxFn (ArnType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type AssignmentStatusType
@@ -4210,7 +4210,7 @@ type AssignmentStatusType
 
 assignmentStatusType : Enum AssignmentStatusType
 assignmentStatusType =
-    Enum.make
+    Enum.define
         [ AssignmentStatusTypeAssigned, AssignmentStatusTypeUnassigned, AssignmentStatusTypeAny ]
         (\val ->
             case val of
@@ -4237,19 +4237,19 @@ type AuthenticationCodeType
     = AuthenticationCodeType String
 
 
-authenticationCodeType : Guarded String AuthenticationCodeType StringError
+authenticationCodeType : Refined String AuthenticationCodeType StringError
 authenticationCodeType =
     let
         guardFn val =
-            Guarded.minLength 6 val
-                |> Result.andThen (Guarded.maxLength 6)
-                |> Result.andThen (Guarded.regexMatch "[\\d]+")
+            Refined.minLength 6 val
+                |> Result.andThen (Refined.maxLength 6)
+                |> Result.andThen (Refined.regexMatch "[\\d]+")
                 |> Result.map AuthenticationCodeType
 
         unboxFn (AuthenticationCodeType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias BooleanObjectType =
@@ -4264,57 +4264,57 @@ type CertificateBodyType
     = CertificateBodyType String
 
 
-certificateBodyType : Guarded String CertificateBodyType StringError
+certificateBodyType : Refined String CertificateBodyType StringError
 certificateBodyType =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 16384)
-                |> Result.andThen (Guarded.regexMatch "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+")
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 16384)
+                |> Result.andThen (Refined.regexMatch "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+")
                 |> Result.map CertificateBodyType
 
         unboxFn (CertificateBodyType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type CertificateChainType
     = CertificateChainType String
 
 
-certificateChainType : Guarded String CertificateChainType StringError
+certificateChainType : Refined String CertificateChainType StringError
 certificateChainType =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 2097152)
-                |> Result.andThen (Guarded.regexMatch "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+")
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 2097152)
+                |> Result.andThen (Refined.regexMatch "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+")
                 |> Result.map CertificateChainType
 
         unboxFn (CertificateChainType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type CertificateIdType
     = CertificateIdType String
 
 
-certificateIdType : Guarded String CertificateIdType StringError
+certificateIdType : Refined String CertificateIdType StringError
 certificateIdType =
     let
         guardFn val =
-            Guarded.minLength 24 val
-                |> Result.andThen (Guarded.maxLength 128)
-                |> Result.andThen (Guarded.regexMatch "[\\w]+")
+            Refined.minLength 24 val
+                |> Result.andThen (Refined.maxLength 128)
+                |> Result.andThen (Refined.regexMatch "[\\w]+")
                 |> Result.map CertificateIdType
 
         unboxFn (CertificateIdType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias CertificateListType =
@@ -4329,35 +4329,35 @@ type ClientIdtype
     = ClientIdtype String
 
 
-clientIdtype : Guarded String ClientIdtype StringError
+clientIdtype : Refined String ClientIdtype StringError
 clientIdtype =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 255) |> Result.map ClientIdtype
+            Refined.minLength 1 val |> Result.andThen (Refined.maxLength 255) |> Result.map ClientIdtype
 
         unboxFn (ClientIdtype val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type CustomSuffixType
     = CustomSuffixType String
 
 
-customSuffixType : Guarded String CustomSuffixType StringError
+customSuffixType : Refined String CustomSuffixType StringError
 customSuffixType =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 64)
-                |> Result.andThen (Guarded.regexMatch "[\\w+=,.@-]+")
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 64)
+                |> Result.andThen (Refined.regexMatch "[\\w+=,.@-]+")
                 |> Result.map CustomSuffixType
 
         unboxFn (CustomSuffixType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias DateType =
@@ -4371,7 +4371,7 @@ type EncodingType
 
 encodingType : Enum EncodingType
 encodingType =
-    Enum.make
+    Enum.define
         [ EncodingTypeSsh, EncodingTypePem ]
         (\val ->
             case val of
@@ -4395,38 +4395,38 @@ type EntityNameType
     = EntityNameType String
 
 
-entityNameType : Guarded String EntityNameType StringError
+entityNameType : Refined String EntityNameType StringError
 entityNameType =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 128)
-                |> Result.andThen (Guarded.regexMatch "[\\w+=,.@-]+")
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 128)
+                |> Result.andThen (Refined.regexMatch "[\\w+=,.@-]+")
                 |> Result.map EntityNameType
 
         unboxFn (EntityNameType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type ExistingUserNameType
     = ExistingUserNameType String
 
 
-existingUserNameType : Guarded String ExistingUserNameType StringError
+existingUserNameType : Refined String ExistingUserNameType StringError
 existingUserNameType =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 128)
-                |> Result.andThen (Guarded.regexMatch "[\\w+=,.@-]+")
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 128)
+                |> Result.andThen (Refined.regexMatch "[\\w+=,.@-]+")
                 |> Result.map ExistingUserNameType
 
         unboxFn (ExistingUserNameType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type GlobalEndpointTokenVersion
@@ -4436,7 +4436,7 @@ type GlobalEndpointTokenVersion
 
 globalEndpointTokenVersion : Enum GlobalEndpointTokenVersion
 globalEndpointTokenVersion =
-    Enum.make
+    Enum.define
         [ GlobalEndpointTokenVersionV1Token, GlobalEndpointTokenVersionV2Token ]
         (\val ->
             case val of
@@ -4464,38 +4464,38 @@ type GroupNameType
     = GroupNameType String
 
 
-groupNameType : Guarded String GroupNameType StringError
+groupNameType : Refined String GroupNameType StringError
 groupNameType =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 128)
-                |> Result.andThen (Guarded.regexMatch "[\\w+=,.@-]+")
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 128)
+                |> Result.andThen (Refined.regexMatch "[\\w+=,.@-]+")
                 |> Result.map GroupNameType
 
         unboxFn (GroupNameType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type IdType
     = IdType String
 
 
-idType : Guarded String IdType StringError
+idType : Refined String IdType StringError
 idType =
     let
         guardFn val =
-            Guarded.minLength 16 val
-                |> Result.andThen (Guarded.maxLength 128)
-                |> Result.andThen (Guarded.regexMatch "[\\w]+")
+            Refined.minLength 16 val
+                |> Result.andThen (Refined.maxLength 128)
+                |> Result.andThen (Refined.regexMatch "[\\w]+")
                 |> Result.map IdType
 
         unboxFn (IdType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias InstanceProfileListType =
@@ -4506,19 +4506,19 @@ type InstanceProfileNameType
     = InstanceProfileNameType String
 
 
-instanceProfileNameType : Guarded String InstanceProfileNameType StringError
+instanceProfileNameType : Refined String InstanceProfileNameType StringError
 instanceProfileNameType =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 128)
-                |> Result.andThen (Guarded.regexMatch "[\\w+=,.@-]+")
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 128)
+                |> Result.andThen (Refined.regexMatch "[\\w+=,.@-]+")
                 |> Result.map InstanceProfileNameType
 
         unboxFn (InstanceProfileNameType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias IntegerType =
@@ -4529,16 +4529,16 @@ type JobIdtype
     = JobIdtype String
 
 
-jobIdtype : Guarded String JobIdtype StringError
+jobIdtype : Refined String JobIdtype StringError
 jobIdtype =
     let
         guardFn val =
-            Guarded.minLength 36 val |> Result.andThen (Guarded.maxLength 36) |> Result.map JobIdtype
+            Refined.minLength 36 val |> Result.andThen (Refined.maxLength 36) |> Result.map JobIdtype
 
         unboxFn (JobIdtype val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type JobStatusType
@@ -4549,7 +4549,7 @@ type JobStatusType
 
 jobStatusType : Enum JobStatusType
 jobStatusType =
-    Enum.make
+    Enum.define
         [ JobStatusTypeInProgress, JobStatusTypeCompleted, JobStatusTypeFailed ]
         (\val ->
             case val of
@@ -4572,51 +4572,51 @@ type MarkerType
     = MarkerType String
 
 
-markerType : Guarded String MarkerType StringError
+markerType : Refined String MarkerType StringError
 markerType =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 320)
-                |> Result.andThen (Guarded.regexMatch "[\\u0020-\\u00FF]+")
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 320)
+                |> Result.andThen (Refined.regexMatch "[\\u0020-\\u00FF]+")
                 |> Result.map MarkerType
 
         unboxFn (MarkerType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type MaxItemsType
     = MaxItemsType Int
 
 
-maxItemsType : Guarded Int MaxItemsType IntError
+maxItemsType : Refined Int MaxItemsType IntError
 maxItemsType =
     let
         guardFn val =
-            Guarded.gt 1 val |> Result.andThen (Guarded.lt 1000) |> Result.map MaxItemsType
+            Refined.gt 1 val |> Result.andThen (Refined.lt 1000) |> Result.map MaxItemsType
 
         unboxFn (MaxItemsType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.int Json.Encode.int Guarded.intErrorToString unboxFn
+    Refined.define guardFn Json.Decode.int Json.Encode.int Refined.intErrorToString unboxFn
 
 
 type MaxPasswordAgeType
     = MaxPasswordAgeType Int
 
 
-maxPasswordAgeType : Guarded Int MaxPasswordAgeType IntError
+maxPasswordAgeType : Refined Int MaxPasswordAgeType IntError
 maxPasswordAgeType =
     let
         guardFn val =
-            Guarded.gt 1 val |> Result.andThen (Guarded.lt 1095) |> Result.map MaxPasswordAgeType
+            Refined.gt 1 val |> Result.andThen (Refined.lt 1095) |> Result.map MaxPasswordAgeType
 
         unboxFn (MaxPasswordAgeType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.int Json.Encode.int Guarded.intErrorToString unboxFn
+    Refined.define guardFn Json.Decode.int Json.Encode.int Refined.intErrorToString unboxFn
 
 
 type alias MfaDeviceListType =
@@ -4627,140 +4627,140 @@ type MinimumPasswordLengthType
     = MinimumPasswordLengthType Int
 
 
-minimumPasswordLengthType : Guarded Int MinimumPasswordLengthType IntError
+minimumPasswordLengthType : Refined Int MinimumPasswordLengthType IntError
 minimumPasswordLengthType =
     let
         guardFn val =
-            Guarded.gt 6 val |> Result.andThen (Guarded.lt 128) |> Result.map MinimumPasswordLengthType
+            Refined.gt 6 val |> Result.andThen (Refined.lt 128) |> Result.map MinimumPasswordLengthType
 
         unboxFn (MinimumPasswordLengthType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.int Json.Encode.int Guarded.intErrorToString unboxFn
+    Refined.define guardFn Json.Decode.int Json.Encode.int Refined.intErrorToString unboxFn
 
 
 type OrganizationsEntityPathType
     = OrganizationsEntityPathType String
 
 
-organizationsEntityPathType : Guarded String OrganizationsEntityPathType StringError
+organizationsEntityPathType : Refined String OrganizationsEntityPathType StringError
 organizationsEntityPathType =
     let
         guardFn val =
-            Guarded.minLength 19 val
-                |> Result.andThen (Guarded.maxLength 427)
-                |> Result.andThen (Guarded.regexMatch "^o-[0-9a-z]{10,32}\\/r-[0-9a-z]{4,32}[0-9a-z-\\/]*")
+            Refined.minLength 19 val
+                |> Result.andThen (Refined.maxLength 427)
+                |> Result.andThen (Refined.regexMatch "^o-[0-9a-z]{10,32}\\/r-[0-9a-z]{4,32}[0-9a-z-\\/]*")
                 |> Result.map OrganizationsEntityPathType
 
         unboxFn (OrganizationsEntityPathType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type OrganizationsPolicyIdType
     = OrganizationsPolicyIdType String
 
 
-organizationsPolicyIdType : Guarded String OrganizationsPolicyIdType StringError
+organizationsPolicyIdType : Refined String OrganizationsPolicyIdType StringError
 organizationsPolicyIdType =
     let
         guardFn val =
-            Guarded.regexMatch "^p-[0-9a-zA-Z_]{8,128}$" val |> Result.map OrganizationsPolicyIdType
+            Refined.regexMatch "^p-[0-9a-zA-Z_]{8,128}$" val |> Result.map OrganizationsPolicyIdType
 
         unboxFn (OrganizationsPolicyIdType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type PasswordReusePreventionType
     = PasswordReusePreventionType Int
 
 
-passwordReusePreventionType : Guarded Int PasswordReusePreventionType IntError
+passwordReusePreventionType : Refined Int PasswordReusePreventionType IntError
 passwordReusePreventionType =
     let
         guardFn val =
-            Guarded.gt 1 val |> Result.andThen (Guarded.lt 24) |> Result.map PasswordReusePreventionType
+            Refined.gt 1 val |> Result.andThen (Refined.lt 24) |> Result.map PasswordReusePreventionType
 
         unboxFn (PasswordReusePreventionType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.int Json.Encode.int Guarded.intErrorToString unboxFn
+    Refined.define guardFn Json.Decode.int Json.Encode.int Refined.intErrorToString unboxFn
 
 
 type PasswordType
     = PasswordType String
 
 
-passwordType : Guarded String PasswordType StringError
+passwordType : Refined String PasswordType StringError
 passwordType =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 128)
-                |> Result.andThen (Guarded.regexMatch "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+")
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 128)
+                |> Result.andThen (Refined.regexMatch "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+")
                 |> Result.map PasswordType
 
         unboxFn (PasswordType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type PathPrefixType
     = PathPrefixType String
 
 
-pathPrefixType : Guarded String PathPrefixType StringError
+pathPrefixType : Refined String PathPrefixType StringError
 pathPrefixType =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 512)
-                |> Result.andThen (Guarded.regexMatch "\\u002F[\\u0021-\\u007F]*")
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 512)
+                |> Result.andThen (Refined.regexMatch "\\u002F[\\u0021-\\u007F]*")
                 |> Result.map PathPrefixType
 
         unboxFn (PathPrefixType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type PathType
     = PathType String
 
 
-pathType : Guarded String PathType StringError
+pathType : Refined String PathType StringError
 pathType =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 512)
-                |> Result.andThen (Guarded.regexMatch "(\\u002F)|(\\u002F[\\u0021-\\u007F]+\\u002F)")
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 512)
+                |> Result.andThen (Refined.regexMatch "(\\u002F)|(\\u002F[\\u0021-\\u007F]+\\u002F)")
                 |> Result.map PathType
 
         unboxFn (PathType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type PolicyDescriptionType
     = PolicyDescriptionType String
 
 
-policyDescriptionType : Guarded String PolicyDescriptionType StringError
+policyDescriptionType : Refined String PolicyDescriptionType StringError
 policyDescriptionType =
     let
         guardFn val =
-            Guarded.maxLength 1000 val |> Result.map PolicyDescriptionType
+            Refined.maxLength 1000 val |> Result.map PolicyDescriptionType
 
         unboxFn (PolicyDescriptionType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias PolicyDetailListType =
@@ -4771,19 +4771,19 @@ type PolicyDocumentType
     = PolicyDocumentType String
 
 
-policyDocumentType : Guarded String PolicyDocumentType StringError
+policyDocumentType : Refined String PolicyDocumentType StringError
 policyDocumentType =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 131072)
-                |> Result.andThen (Guarded.regexMatch "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+")
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 131072)
+                |> Result.andThen (Refined.regexMatch "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+")
                 |> Result.map PolicyDocumentType
 
         unboxFn (PolicyDocumentType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias PolicyDocumentVersionListType =
@@ -4806,19 +4806,19 @@ type PolicyNameType
     = PolicyNameType String
 
 
-policyNameType : Guarded String PolicyNameType StringError
+policyNameType : Refined String PolicyNameType StringError
 policyNameType =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 128)
-                |> Result.andThen (Guarded.regexMatch "[\\w+=,.@-]+")
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 128)
+                |> Result.andThen (Refined.regexMatch "[\\w+=,.@-]+")
                 |> Result.map PolicyNameType
 
         unboxFn (PolicyNameType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type PolicyOwnerEntityType
@@ -4829,7 +4829,7 @@ type PolicyOwnerEntityType
 
 policyOwnerEntityType : Enum PolicyOwnerEntityType
 policyOwnerEntityType =
-    Enum.make
+    Enum.define
         [ PolicyOwnerEntityTypeUser, PolicyOwnerEntityTypeRole, PolicyOwnerEntityTypeGroup ]
         (\val ->
             case val of
@@ -4848,19 +4848,19 @@ type PolicyPathType
     = PolicyPathType String
 
 
-policyPathType : Guarded String PolicyPathType StringError
+policyPathType : Refined String PolicyPathType StringError
 policyPathType =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 512)
-                |> Result.andThen (Guarded.regexMatch "((/[A-Za-z0-9\\.,\\+@=_-]+)*)/")
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 512)
+                |> Result.andThen (Refined.regexMatch "((/[A-Za-z0-9\\.,\\+@=_-]+)*)/")
                 |> Result.map PolicyPathType
 
         unboxFn (PolicyPathType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type PolicyScopeType
@@ -4871,7 +4871,7 @@ type PolicyScopeType
 
 policyScopeType : Enum PolicyScopeType
 policyScopeType =
-    Enum.make
+    Enum.define
         [ PolicyScopeTypeAll, PolicyScopeTypeAws, PolicyScopeTypeLocal ]
         (\val ->
             case val of
@@ -4893,7 +4893,7 @@ type PolicyType
 
 policyType : Enum PolicyType
 policyType =
-    Enum.make
+    Enum.define
         [ PolicyTypeInline, PolicyTypeManaged ]
         (\val ->
             case val of
@@ -4909,92 +4909,92 @@ type PolicyVersionIdType
     = PolicyVersionIdType String
 
 
-policyVersionIdType : Guarded String PolicyVersionIdType StringError
+policyVersionIdType : Refined String PolicyVersionIdType StringError
 policyVersionIdType =
     let
         guardFn val =
-            Guarded.regexMatch "v[1-9][0-9]*(\\.[A-Za-z0-9-]*)?" val |> Result.map PolicyVersionIdType
+            Refined.regexMatch "v[1-9][0-9]*(\\.[A-Za-z0-9-]*)?" val |> Result.map PolicyVersionIdType
 
         unboxFn (PolicyVersionIdType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type PrivateKeyType
     = PrivateKeyType String
 
 
-privateKeyType : Guarded String PrivateKeyType StringError
+privateKeyType : Refined String PrivateKeyType StringError
 privateKeyType =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 16384)
-                |> Result.andThen (Guarded.regexMatch "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+")
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 16384)
+                |> Result.andThen (Refined.regexMatch "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+")
                 |> Result.map PrivateKeyType
 
         unboxFn (PrivateKeyType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type PublicKeyFingerprintType
     = PublicKeyFingerprintType String
 
 
-publicKeyFingerprintType : Guarded String PublicKeyFingerprintType StringError
+publicKeyFingerprintType : Refined String PublicKeyFingerprintType StringError
 publicKeyFingerprintType =
     let
         guardFn val =
-            Guarded.minLength 48 val
-                |> Result.andThen (Guarded.maxLength 48)
-                |> Result.andThen (Guarded.regexMatch "[:\\w]+")
+            Refined.minLength 48 val
+                |> Result.andThen (Refined.maxLength 48)
+                |> Result.andThen (Refined.regexMatch "[:\\w]+")
                 |> Result.map PublicKeyFingerprintType
 
         unboxFn (PublicKeyFingerprintType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type PublicKeyIdType
     = PublicKeyIdType String
 
 
-publicKeyIdType : Guarded String PublicKeyIdType StringError
+publicKeyIdType : Refined String PublicKeyIdType StringError
 publicKeyIdType =
     let
         guardFn val =
-            Guarded.minLength 20 val
-                |> Result.andThen (Guarded.maxLength 128)
-                |> Result.andThen (Guarded.regexMatch "[\\w]+")
+            Refined.minLength 20 val
+                |> Result.andThen (Refined.maxLength 128)
+                |> Result.andThen (Refined.regexMatch "[\\w]+")
                 |> Result.map PublicKeyIdType
 
         unboxFn (PublicKeyIdType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type PublicKeyMaterialType
     = PublicKeyMaterialType String
 
 
-publicKeyMaterialType : Guarded String PublicKeyMaterialType StringError
+publicKeyMaterialType : Refined String PublicKeyMaterialType StringError
 publicKeyMaterialType =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 16384)
-                |> Result.andThen (Guarded.regexMatch "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+")
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 16384)
+                |> Result.andThen (Refined.regexMatch "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+")
                 |> Result.map PublicKeyMaterialType
 
         unboxFn (PublicKeyMaterialType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias ResponseMarkerType =
@@ -5005,18 +5005,18 @@ type RoleDescriptionType
     = RoleDescriptionType String
 
 
-roleDescriptionType : Guarded String RoleDescriptionType StringError
+roleDescriptionType : Refined String RoleDescriptionType StringError
 roleDescriptionType =
     let
         guardFn val =
-            Guarded.maxLength 1000 val
-                |> Result.andThen (Guarded.regexMatch "[\\p{L}\\p{M}\\p{Z}\\p{S}\\p{N}\\p{P}]*")
+            Refined.maxLength 1000 val
+                |> Result.andThen (Refined.regexMatch "[\\p{L}\\p{M}\\p{Z}\\p{S}\\p{N}\\p{P}]*")
                 |> Result.map RoleDescriptionType
 
         unboxFn (RoleDescriptionType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias RoleDetailListType =
@@ -5031,54 +5031,54 @@ type RoleMaxSessionDurationType
     = RoleMaxSessionDurationType Int
 
 
-roleMaxSessionDurationType : Guarded Int RoleMaxSessionDurationType IntError
+roleMaxSessionDurationType : Refined Int RoleMaxSessionDurationType IntError
 roleMaxSessionDurationType =
     let
         guardFn val =
-            Guarded.gt 3600 val |> Result.andThen (Guarded.lt 43200) |> Result.map RoleMaxSessionDurationType
+            Refined.gt 3600 val |> Result.andThen (Refined.lt 43200) |> Result.map RoleMaxSessionDurationType
 
         unboxFn (RoleMaxSessionDurationType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.int Json.Encode.int Guarded.intErrorToString unboxFn
+    Refined.define guardFn Json.Decode.int Json.Encode.int Refined.intErrorToString unboxFn
 
 
 type RoleNameType
     = RoleNameType String
 
 
-roleNameType : Guarded String RoleNameType StringError
+roleNameType : Refined String RoleNameType StringError
 roleNameType =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 64)
-                |> Result.andThen (Guarded.regexMatch "[\\w+=,.@-]+")
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 64)
+                |> Result.andThen (Refined.regexMatch "[\\w+=,.@-]+")
                 |> Result.map RoleNameType
 
         unboxFn (RoleNameType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type SerialNumberType
     = SerialNumberType String
 
 
-serialNumberType : Guarded String SerialNumberType StringError
+serialNumberType : Refined String SerialNumberType StringError
 serialNumberType =
     let
         guardFn val =
-            Guarded.minLength 9 val
-                |> Result.andThen (Guarded.maxLength 256)
-                |> Result.andThen (Guarded.regexMatch "[\\w+=/:,.@-]+")
+            Refined.minLength 9 val
+                |> Result.andThen (Refined.maxLength 256)
+                |> Result.andThen (Refined.regexMatch "[\\w+=/:,.@-]+")
                 |> Result.map SerialNumberType
 
         unboxFn (SerialNumberType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias ServerCertificateMetadataListType =
@@ -5089,19 +5089,19 @@ type ServerCertificateNameType
     = ServerCertificateNameType String
 
 
-serverCertificateNameType : Guarded String ServerCertificateNameType StringError
+serverCertificateNameType : Refined String ServerCertificateNameType StringError
 serverCertificateNameType =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 128)
-                |> Result.andThen (Guarded.regexMatch "[\\w+=,.@-]+")
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 128)
+                |> Result.andThen (Refined.regexMatch "[\\w+=,.@-]+")
                 |> Result.map ServerCertificateNameType
 
         unboxFn (ServerCertificateNameType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias ServiceName =
@@ -5120,19 +5120,19 @@ type ServiceNamespaceType
     = ServiceNamespaceType String
 
 
-serviceNamespaceType : Guarded String ServiceNamespaceType StringError
+serviceNamespaceType : Refined String ServiceNamespaceType StringError
 serviceNamespaceType =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 64)
-                |> Result.andThen (Guarded.regexMatch "[\\w-]*")
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 64)
+                |> Result.andThen (Refined.regexMatch "[\\w-]*")
                 |> Result.map ServiceNamespaceType
 
         unboxFn (ServiceNamespaceType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias ServicePassword =
@@ -5143,38 +5143,38 @@ type ServiceSpecificCredentialId
     = ServiceSpecificCredentialId String
 
 
-serviceSpecificCredentialId : Guarded String ServiceSpecificCredentialId StringError
+serviceSpecificCredentialId : Refined String ServiceSpecificCredentialId StringError
 serviceSpecificCredentialId =
     let
         guardFn val =
-            Guarded.minLength 20 val
-                |> Result.andThen (Guarded.maxLength 128)
-                |> Result.andThen (Guarded.regexMatch "[\\w]+")
+            Refined.minLength 20 val
+                |> Result.andThen (Refined.maxLength 128)
+                |> Result.andThen (Refined.regexMatch "[\\w]+")
                 |> Result.map ServiceSpecificCredentialId
 
         unboxFn (ServiceSpecificCredentialId val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type ServiceUserName
     = ServiceUserName String
 
 
-serviceUserName : Guarded String ServiceUserName StringError
+serviceUserName : Refined String ServiceUserName StringError
 serviceUserName =
     let
         guardFn val =
-            Guarded.minLength 17 val
-                |> Result.andThen (Guarded.maxLength 200)
-                |> Result.andThen (Guarded.regexMatch "[\\w+=,.@-]+")
+            Refined.minLength 17 val
+                |> Result.andThen (Refined.maxLength 200)
+                |> Result.andThen (Refined.regexMatch "[\\w+=,.@-]+")
                 |> Result.map ServiceUserName
 
         unboxFn (ServiceUserName val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type SortKeyType
@@ -5186,7 +5186,7 @@ type SortKeyType
 
 sortKeyType : Enum SortKeyType
 sortKeyType =
-    Enum.make
+    Enum.define
         [ SortKeyTypeServiceNamespaceAscending
         , SortKeyTypeServiceNamespaceDescending
         , SortKeyTypeLastAuthenticatedTimeAscending
@@ -5215,7 +5215,7 @@ type StatusType
 
 statusType : Enum StatusType
 statusType =
-    Enum.make
+    Enum.define
         [ StatusTypeActive, StatusTypeInactive ]
         (\val ->
             case val of
@@ -5262,7 +5262,7 @@ type SummaryKeyType
 
 summaryKeyType : Enum SummaryKeyType
 summaryKeyType =
-    Enum.make
+    Enum.define
         [ SummaryKeyTypeUsers
         , SummaryKeyTypeUsersQuota
         , SummaryKeyTypeGroups
@@ -5388,19 +5388,19 @@ type TagKeyType
     = TagKeyType String
 
 
-tagKeyType : Guarded String TagKeyType StringError
+tagKeyType : Refined String TagKeyType StringError
 tagKeyType =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 128)
-                |> Result.andThen (Guarded.regexMatch "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]+")
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 128)
+                |> Result.andThen (Refined.regexMatch "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]+")
                 |> Result.map TagKeyType
 
         unboxFn (TagKeyType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias TagListType =
@@ -5411,19 +5411,19 @@ type TagValueType
     = TagValueType String
 
 
-tagValueType : Guarded String TagValueType StringError
+tagValueType : Refined String TagValueType StringError
 tagValueType =
     let
         guardFn val =
-            Guarded.minLength 0 val
-                |> Result.andThen (Guarded.maxLength 256)
-                |> Result.andThen (Guarded.regexMatch "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*")
+            Refined.minLength 0 val
+                |> Result.andThen (Refined.maxLength 256)
+                |> Result.andThen (Refined.regexMatch "[\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*")
                 |> Result.map TagValueType
 
         unboxFn (TagValueType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias ThumbprintListType =
@@ -5434,16 +5434,16 @@ type ThumbprintType
     = ThumbprintType String
 
 
-thumbprintType : Guarded String ThumbprintType StringError
+thumbprintType : Refined String ThumbprintType StringError
 thumbprintType =
     let
         guardFn val =
-            Guarded.minLength 40 val |> Result.andThen (Guarded.maxLength 40) |> Result.map ThumbprintType
+            Refined.minLength 40 val |> Result.andThen (Refined.maxLength 40) |> Result.map ThumbprintType
 
         unboxFn (ThumbprintType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias UserDetailListType =
@@ -5458,19 +5458,19 @@ type UserNameType
     = UserNameType String
 
 
-userNameType : Guarded String UserNameType StringError
+userNameType : Refined String UserNameType StringError
 userNameType =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.maxLength 64)
-                |> Result.andThen (Guarded.regexMatch "[\\w+=,.@-]+")
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.maxLength 64)
+                |> Result.andThen (Refined.regexMatch "[\\w+=,.@-]+")
                 |> Result.map UserNameType
 
         unboxFn (UserNameType val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias VirtualMfadeviceListType =
@@ -5481,24 +5481,24 @@ type VirtualMfadeviceName
     = VirtualMfadeviceName String
 
 
-virtualMfadeviceName : Guarded String VirtualMfadeviceName StringError
+virtualMfadeviceName : Refined String VirtualMfadeviceName StringError
 virtualMfadeviceName =
     let
         guardFn val =
-            Guarded.minLength 1 val
-                |> Result.andThen (Guarded.regexMatch "[\\w+=,.@-]+")
+            Refined.minLength 1 val
+                |> Result.andThen (Refined.regexMatch "[\\w+=,.@-]+")
                 |> Result.map VirtualMfadeviceName
 
         unboxFn (VirtualMfadeviceName val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 {-| Codec for VirtualMfadeviceName. -}
 virtualMfadeviceNameCodec : Codec VirtualMfadeviceName
 virtualMfadeviceNameCodec =
-    Codec.build (Guarded.encoder virtualMfadeviceName) (Guarded.decoder virtualMfadeviceName)
+    Codec.build (Refined.encoder virtualMfadeviceName) (Refined.decoder virtualMfadeviceName)
 
 
 {-| Codec for VirtualMfadeviceListType. -}
@@ -5510,7 +5510,7 @@ virtualMfadeviceListTypeCodec =
 {-| Codec for UserNameType. -}
 userNameTypeCodec : Codec UserNameType
 userNameTypeCodec =
-    Codec.build (Guarded.encoder userNameType) (Guarded.decoder userNameType)
+    Codec.build (Refined.encoder userNameType) (Refined.decoder userNameType)
 
 
 {-| Codec for UserListType. -}
@@ -5528,7 +5528,7 @@ userDetailListTypeCodec =
 {-| Codec for ThumbprintType. -}
 thumbprintTypeCodec : Codec ThumbprintType
 thumbprintTypeCodec =
-    Codec.build (Guarded.encoder thumbprintType) (Guarded.decoder thumbprintType)
+    Codec.build (Refined.encoder thumbprintType) (Refined.decoder thumbprintType)
 
 
 {-| Codec for ThumbprintListType. -}
@@ -5540,7 +5540,7 @@ thumbprintListTypeCodec =
 {-| Codec for TagValueType. -}
 tagValueTypeCodec : Codec TagValueType
 tagValueTypeCodec =
-    Codec.build (Guarded.encoder tagValueType) (Guarded.decoder tagValueType)
+    Codec.build (Refined.encoder tagValueType) (Refined.decoder tagValueType)
 
 
 {-| Codec for TagListType. -}
@@ -5552,7 +5552,7 @@ tagListTypeCodec =
 {-| Codec for TagKeyType. -}
 tagKeyTypeCodec : Codec TagKeyType
 tagKeyTypeCodec =
-    Codec.build (Guarded.encoder tagKeyType) (Guarded.decoder tagKeyType)
+    Codec.build (Refined.encoder tagKeyType) (Refined.decoder tagKeyType)
 
 
 {-| Codec for TagKeyListType. -}
@@ -5600,13 +5600,13 @@ sortKeyTypeCodec =
 {-| Codec for ServiceUserName. -}
 serviceUserNameCodec : Codec ServiceUserName
 serviceUserNameCodec =
-    Codec.build (Guarded.encoder serviceUserName) (Guarded.decoder serviceUserName)
+    Codec.build (Refined.encoder serviceUserName) (Refined.decoder serviceUserName)
 
 
 {-| Codec for ServiceSpecificCredentialId. -}
 serviceSpecificCredentialIdCodec : Codec ServiceSpecificCredentialId
 serviceSpecificCredentialIdCodec =
-    Codec.build (Guarded.encoder serviceSpecificCredentialId) (Guarded.decoder serviceSpecificCredentialId)
+    Codec.build (Refined.encoder serviceSpecificCredentialId) (Refined.decoder serviceSpecificCredentialId)
 
 
 {-| Codec for ServicePassword. -}
@@ -5618,7 +5618,7 @@ servicePasswordCodec =
 {-| Codec for ServiceNamespaceType. -}
 serviceNamespaceTypeCodec : Codec ServiceNamespaceType
 serviceNamespaceTypeCodec =
-    Codec.build (Guarded.encoder serviceNamespaceType) (Guarded.decoder serviceNamespaceType)
+    Codec.build (Refined.encoder serviceNamespaceType) (Refined.decoder serviceNamespaceType)
 
 
 {-| Codec for ServiceNamespaceListType. -}
@@ -5642,7 +5642,7 @@ serviceNameCodec =
 {-| Codec for ServerCertificateNameType. -}
 serverCertificateNameTypeCodec : Codec ServerCertificateNameType
 serverCertificateNameTypeCodec =
-    Codec.build (Guarded.encoder serverCertificateNameType) (Guarded.decoder serverCertificateNameType)
+    Codec.build (Refined.encoder serverCertificateNameType) (Refined.decoder serverCertificateNameType)
 
 
 {-| Codec for ServerCertificateMetadataListType. -}
@@ -5654,19 +5654,19 @@ serverCertificateMetadataListTypeCodec =
 {-| Codec for SerialNumberType. -}
 serialNumberTypeCodec : Codec SerialNumberType
 serialNumberTypeCodec =
-    Codec.build (Guarded.encoder serialNumberType) (Guarded.decoder serialNumberType)
+    Codec.build (Refined.encoder serialNumberType) (Refined.decoder serialNumberType)
 
 
 {-| Codec for RoleNameType. -}
 roleNameTypeCodec : Codec RoleNameType
 roleNameTypeCodec =
-    Codec.build (Guarded.encoder roleNameType) (Guarded.decoder roleNameType)
+    Codec.build (Refined.encoder roleNameType) (Refined.decoder roleNameType)
 
 
 {-| Codec for RoleMaxSessionDurationType. -}
 roleMaxSessionDurationTypeCodec : Codec RoleMaxSessionDurationType
 roleMaxSessionDurationTypeCodec =
-    Codec.build (Guarded.encoder roleMaxSessionDurationType) (Guarded.decoder roleMaxSessionDurationType)
+    Codec.build (Refined.encoder roleMaxSessionDurationType) (Refined.decoder roleMaxSessionDurationType)
 
 
 {-| Codec for RoleListType. -}
@@ -5684,7 +5684,7 @@ roleDetailListTypeCodec =
 {-| Codec for RoleDescriptionType. -}
 roleDescriptionTypeCodec : Codec RoleDescriptionType
 roleDescriptionTypeCodec =
-    Codec.build (Guarded.encoder roleDescriptionType) (Guarded.decoder roleDescriptionType)
+    Codec.build (Refined.encoder roleDescriptionType) (Refined.decoder roleDescriptionType)
 
 
 {-| Codec for ResponseMarkerType. -}
@@ -5696,31 +5696,31 @@ responseMarkerTypeCodec =
 {-| Codec for PublicKeyMaterialType. -}
 publicKeyMaterialTypeCodec : Codec PublicKeyMaterialType
 publicKeyMaterialTypeCodec =
-    Codec.build (Guarded.encoder publicKeyMaterialType) (Guarded.decoder publicKeyMaterialType)
+    Codec.build (Refined.encoder publicKeyMaterialType) (Refined.decoder publicKeyMaterialType)
 
 
 {-| Codec for PublicKeyIdType. -}
 publicKeyIdTypeCodec : Codec PublicKeyIdType
 publicKeyIdTypeCodec =
-    Codec.build (Guarded.encoder publicKeyIdType) (Guarded.decoder publicKeyIdType)
+    Codec.build (Refined.encoder publicKeyIdType) (Refined.decoder publicKeyIdType)
 
 
 {-| Codec for PublicKeyFingerprintType. -}
 publicKeyFingerprintTypeCodec : Codec PublicKeyFingerprintType
 publicKeyFingerprintTypeCodec =
-    Codec.build (Guarded.encoder publicKeyFingerprintType) (Guarded.decoder publicKeyFingerprintType)
+    Codec.build (Refined.encoder publicKeyFingerprintType) (Refined.decoder publicKeyFingerprintType)
 
 
 {-| Codec for PrivateKeyType. -}
 privateKeyTypeCodec : Codec PrivateKeyType
 privateKeyTypeCodec =
-    Codec.build (Guarded.encoder privateKeyType) (Guarded.decoder privateKeyType)
+    Codec.build (Refined.encoder privateKeyType) (Refined.decoder privateKeyType)
 
 
 {-| Codec for PolicyVersionIdType. -}
 policyVersionIdTypeCodec : Codec PolicyVersionIdType
 policyVersionIdTypeCodec =
-    Codec.build (Guarded.encoder policyVersionIdType) (Guarded.decoder policyVersionIdType)
+    Codec.build (Refined.encoder policyVersionIdType) (Refined.decoder policyVersionIdType)
 
 
 {-| Codec for PolicyType. -}
@@ -5738,7 +5738,7 @@ policyScopeTypeCodec =
 {-| Codec for PolicyPathType. -}
 policyPathTypeCodec : Codec PolicyPathType
 policyPathTypeCodec =
-    Codec.build (Guarded.encoder policyPathType) (Guarded.decoder policyPathType)
+    Codec.build (Refined.encoder policyPathType) (Refined.decoder policyPathType)
 
 
 {-| Codec for PolicyOwnerEntityType. -}
@@ -5750,7 +5750,7 @@ policyOwnerEntityTypeCodec =
 {-| Codec for PolicyNameType. -}
 policyNameTypeCodec : Codec PolicyNameType
 policyNameTypeCodec =
-    Codec.build (Guarded.encoder policyNameType) (Guarded.decoder policyNameType)
+    Codec.build (Refined.encoder policyNameType) (Refined.decoder policyNameType)
 
 
 {-| Codec for PolicyNameListType. -}
@@ -5780,7 +5780,7 @@ policyDocumentVersionListTypeCodec =
 {-| Codec for PolicyDocumentType. -}
 policyDocumentTypeCodec : Codec PolicyDocumentType
 policyDocumentTypeCodec =
-    Codec.build (Guarded.encoder policyDocumentType) (Guarded.decoder policyDocumentType)
+    Codec.build (Refined.encoder policyDocumentType) (Refined.decoder policyDocumentType)
 
 
 {-| Codec for PolicyDetailListType. -}
@@ -5792,49 +5792,49 @@ policyDetailListTypeCodec =
 {-| Codec for PolicyDescriptionType. -}
 policyDescriptionTypeCodec : Codec PolicyDescriptionType
 policyDescriptionTypeCodec =
-    Codec.build (Guarded.encoder policyDescriptionType) (Guarded.decoder policyDescriptionType)
+    Codec.build (Refined.encoder policyDescriptionType) (Refined.decoder policyDescriptionType)
 
 
 {-| Codec for PathType. -}
 pathTypeCodec : Codec PathType
 pathTypeCodec =
-    Codec.build (Guarded.encoder pathType) (Guarded.decoder pathType)
+    Codec.build (Refined.encoder pathType) (Refined.decoder pathType)
 
 
 {-| Codec for PathPrefixType. -}
 pathPrefixTypeCodec : Codec PathPrefixType
 pathPrefixTypeCodec =
-    Codec.build (Guarded.encoder pathPrefixType) (Guarded.decoder pathPrefixType)
+    Codec.build (Refined.encoder pathPrefixType) (Refined.decoder pathPrefixType)
 
 
 {-| Codec for PasswordType. -}
 passwordTypeCodec : Codec PasswordType
 passwordTypeCodec =
-    Codec.build (Guarded.encoder passwordType) (Guarded.decoder passwordType)
+    Codec.build (Refined.encoder passwordType) (Refined.decoder passwordType)
 
 
 {-| Codec for PasswordReusePreventionType. -}
 passwordReusePreventionTypeCodec : Codec PasswordReusePreventionType
 passwordReusePreventionTypeCodec =
-    Codec.build (Guarded.encoder passwordReusePreventionType) (Guarded.decoder passwordReusePreventionType)
+    Codec.build (Refined.encoder passwordReusePreventionType) (Refined.decoder passwordReusePreventionType)
 
 
 {-| Codec for OrganizationsPolicyIdType. -}
 organizationsPolicyIdTypeCodec : Codec OrganizationsPolicyIdType
 organizationsPolicyIdTypeCodec =
-    Codec.build (Guarded.encoder organizationsPolicyIdType) (Guarded.decoder organizationsPolicyIdType)
+    Codec.build (Refined.encoder organizationsPolicyIdType) (Refined.decoder organizationsPolicyIdType)
 
 
 {-| Codec for OrganizationsEntityPathType. -}
 organizationsEntityPathTypeCodec : Codec OrganizationsEntityPathType
 organizationsEntityPathTypeCodec =
-    Codec.build (Guarded.encoder organizationsEntityPathType) (Guarded.decoder organizationsEntityPathType)
+    Codec.build (Refined.encoder organizationsEntityPathType) (Refined.decoder organizationsEntityPathType)
 
 
 {-| Codec for MinimumPasswordLengthType. -}
 minimumPasswordLengthTypeCodec : Codec MinimumPasswordLengthType
 minimumPasswordLengthTypeCodec =
-    Codec.build (Guarded.encoder minimumPasswordLengthType) (Guarded.decoder minimumPasswordLengthType)
+    Codec.build (Refined.encoder minimumPasswordLengthType) (Refined.decoder minimumPasswordLengthType)
 
 
 {-| Codec for MfaDeviceListType. -}
@@ -5846,19 +5846,19 @@ mfaDeviceListTypeCodec =
 {-| Codec for MaxPasswordAgeType. -}
 maxPasswordAgeTypeCodec : Codec MaxPasswordAgeType
 maxPasswordAgeTypeCodec =
-    Codec.build (Guarded.encoder maxPasswordAgeType) (Guarded.decoder maxPasswordAgeType)
+    Codec.build (Refined.encoder maxPasswordAgeType) (Refined.decoder maxPasswordAgeType)
 
 
 {-| Codec for MaxItemsType. -}
 maxItemsTypeCodec : Codec MaxItemsType
 maxItemsTypeCodec =
-    Codec.build (Guarded.encoder maxItemsType) (Guarded.decoder maxItemsType)
+    Codec.build (Refined.encoder maxItemsType) (Refined.decoder maxItemsType)
 
 
 {-| Codec for MarkerType. -}
 markerTypeCodec : Codec MarkerType
 markerTypeCodec =
-    Codec.build (Guarded.encoder markerType) (Guarded.decoder markerType)
+    Codec.build (Refined.encoder markerType) (Refined.decoder markerType)
 
 
 {-| Codec for ListPolicyGrantingServiceAccessResponseListType. -}
@@ -5876,7 +5876,7 @@ jobStatusTypeCodec =
 {-| Codec for JobIdtype. -}
 jobIdtypeCodec : Codec JobIdtype
 jobIdtypeCodec =
-    Codec.build (Guarded.encoder jobIdtype) (Guarded.decoder jobIdtype)
+    Codec.build (Refined.encoder jobIdtype) (Refined.decoder jobIdtype)
 
 
 {-| Codec for IntegerType. -}
@@ -5888,7 +5888,7 @@ integerTypeCodec =
 {-| Codec for InstanceProfileNameType. -}
 instanceProfileNameTypeCodec : Codec InstanceProfileNameType
 instanceProfileNameTypeCodec =
-    Codec.build (Guarded.encoder instanceProfileNameType) (Guarded.decoder instanceProfileNameType)
+    Codec.build (Refined.encoder instanceProfileNameType) (Refined.decoder instanceProfileNameType)
 
 
 {-| Codec for InstanceProfileListType. -}
@@ -5900,13 +5900,13 @@ instanceProfileListTypeCodec =
 {-| Codec for IdType. -}
 idTypeCodec : Codec IdType
 idTypeCodec =
-    Codec.build (Guarded.encoder idType) (Guarded.decoder idType)
+    Codec.build (Refined.encoder idType) (Refined.decoder idType)
 
 
 {-| Codec for GroupNameType. -}
 groupNameTypeCodec : Codec GroupNameType
 groupNameTypeCodec =
-    Codec.build (Guarded.encoder groupNameType) (Guarded.decoder groupNameType)
+    Codec.build (Refined.encoder groupNameType) (Refined.decoder groupNameType)
 
 
 {-| Codec for GroupNameListType. -}
@@ -5936,13 +5936,13 @@ globalEndpointTokenVersionCodec =
 {-| Codec for ExistingUserNameType. -}
 existingUserNameTypeCodec : Codec ExistingUserNameType
 existingUserNameTypeCodec =
-    Codec.build (Guarded.encoder existingUserNameType) (Guarded.decoder existingUserNameType)
+    Codec.build (Refined.encoder existingUserNameType) (Refined.decoder existingUserNameType)
 
 
 {-| Codec for EntityNameType. -}
 entityNameTypeCodec : Codec EntityNameType
 entityNameTypeCodec =
-    Codec.build (Guarded.encoder entityNameType) (Guarded.decoder entityNameType)
+    Codec.build (Refined.encoder entityNameType) (Refined.decoder entityNameType)
 
 
 {-| Codec for EntityListType. -}
@@ -5972,13 +5972,13 @@ dateTypeCodec =
 {-| Codec for CustomSuffixType. -}
 customSuffixTypeCodec : Codec CustomSuffixType
 customSuffixTypeCodec =
-    Codec.build (Guarded.encoder customSuffixType) (Guarded.decoder customSuffixType)
+    Codec.build (Refined.encoder customSuffixType) (Refined.decoder customSuffixType)
 
 
 {-| Codec for ClientIdtype. -}
 clientIdtypeCodec : Codec ClientIdtype
 clientIdtypeCodec =
-    Codec.build (Guarded.encoder clientIdtype) (Guarded.decoder clientIdtype)
+    Codec.build (Refined.encoder clientIdtype) (Refined.decoder clientIdtype)
 
 
 {-| Codec for ClientIdlistType. -}
@@ -5996,19 +5996,19 @@ certificateListTypeCodec =
 {-| Codec for CertificateIdType. -}
 certificateIdTypeCodec : Codec CertificateIdType
 certificateIdTypeCodec =
-    Codec.build (Guarded.encoder certificateIdType) (Guarded.decoder certificateIdType)
+    Codec.build (Refined.encoder certificateIdType) (Refined.decoder certificateIdType)
 
 
 {-| Codec for CertificateChainType. -}
 certificateChainTypeCodec : Codec CertificateChainType
 certificateChainTypeCodec =
-    Codec.build (Guarded.encoder certificateChainType) (Guarded.decoder certificateChainType)
+    Codec.build (Refined.encoder certificateChainType) (Refined.decoder certificateChainType)
 
 
 {-| Codec for CertificateBodyType. -}
 certificateBodyTypeCodec : Codec CertificateBodyType
 certificateBodyTypeCodec =
-    Codec.build (Guarded.encoder certificateBodyType) (Guarded.decoder certificateBodyType)
+    Codec.build (Refined.encoder certificateBodyType) (Refined.decoder certificateBodyType)
 
 
 {-| Codec for BooleanType. -}
@@ -6026,7 +6026,7 @@ booleanObjectTypeCodec =
 {-| Codec for AuthenticationCodeType. -}
 authenticationCodeTypeCodec : Codec AuthenticationCodeType
 authenticationCodeTypeCodec =
-    Codec.build (Guarded.encoder authenticationCodeType) (Guarded.decoder authenticationCodeType)
+    Codec.build (Refined.encoder authenticationCodeType) (Refined.decoder authenticationCodeType)
 
 
 {-| Codec for AttachmentCountType. -}
@@ -6050,13 +6050,13 @@ assignmentStatusTypeCodec =
 {-| Codec for ArnType. -}
 arnTypeCodec : Codec ArnType
 arnTypeCodec =
-    Codec.build (Guarded.encoder arnType) (Guarded.decoder arnType)
+    Codec.build (Refined.encoder arnType) (Refined.decoder arnType)
 
 
 {-| Codec for AccountAliasType. -}
 accountAliasTypeCodec : Codec AccountAliasType
 accountAliasTypeCodec =
-    Codec.build (Guarded.encoder accountAliasType) (Guarded.decoder accountAliasType)
+    Codec.build (Refined.encoder accountAliasType) (Refined.decoder accountAliasType)
 
 
 {-| Codec for AccountAliasListType. -}
@@ -6080,7 +6080,7 @@ accessKeyMetadataListTypeCodec =
 {-| Codec for AccessKeyIdType. -}
 accessKeyIdTypeCodec : Codec AccessKeyIdType
 accessKeyIdTypeCodec =
-    Codec.build (Guarded.encoder accessKeyIdType) (Guarded.decoder accessKeyIdType)
+    Codec.build (Refined.encoder accessKeyIdType) (Refined.decoder accessKeyIdType)
 
 
 {-| Codec for VirtualMfadevice. -}
@@ -6592,7 +6592,7 @@ sshpublicKeyCodec =
 {-| Codec for SamlproviderNameType. -}
 samlproviderNameTypeCodec : Codec SamlproviderNameType
 samlproviderNameTypeCodec =
-    Codec.build (Guarded.encoder samlproviderNameType) (Guarded.decoder samlproviderNameType)
+    Codec.build (Refined.encoder samlproviderNameType) (Refined.decoder samlproviderNameType)
 
 
 {-| Codec for SamlproviderListType. -}
@@ -6614,7 +6614,7 @@ samlproviderListEntryCodec =
 {-| Codec for SamlmetadataDocumentType. -}
 samlmetadataDocumentTypeCodec : Codec SamlmetadataDocumentType
 samlmetadataDocumentTypeCodec =
-    Codec.build (Guarded.encoder samlmetadataDocumentType) (Guarded.decoder samlmetadataDocumentType)
+    Codec.build (Refined.encoder samlmetadataDocumentType) (Refined.decoder samlmetadataDocumentType)
 
 
 {-| Codec for RoleUsageType. -}
@@ -6699,7 +6699,7 @@ resourceSpecificResultCodec =
 {-| Codec for ResourceNameType. -}
 resourceNameTypeCodec : Codec ResourceNameType
 resourceNameTypeCodec =
-    Codec.build (Guarded.encoder resourceNameType) (Guarded.decoder resourceNameType)
+    Codec.build (Refined.encoder resourceNameType) (Refined.decoder resourceNameType)
 
 
 {-| Codec for ResourceNameListType. -}
@@ -6711,7 +6711,7 @@ resourceNameListTypeCodec =
 {-| Codec for ResourceHandlingOptionType. -}
 resourceHandlingOptionTypeCodec : Codec ResourceHandlingOptionType
 resourceHandlingOptionTypeCodec =
-    Codec.build (Guarded.encoder resourceHandlingOptionType) (Guarded.decoder resourceHandlingOptionType)
+    Codec.build (Refined.encoder resourceHandlingOptionType) (Refined.decoder resourceHandlingOptionType)
 
 
 {-| Codec for ResetServiceSpecificCredentialResponse. -}
@@ -6785,13 +6785,13 @@ removeClientIdfromOpenIdconnectProviderRequestCodec =
 {-| Codec for RegionNameType. -}
 regionNameTypeCodec : Codec RegionNameType
 regionNameTypeCodec =
-    Codec.build (Guarded.encoder regionNameType) (Guarded.decoder regionNameType)
+    Codec.build (Refined.encoder regionNameType) (Refined.decoder regionNameType)
 
 
 {-| Codec for ReasonType. -}
 reasonTypeCodec : Codec ReasonType
 reasonTypeCodec =
-    Codec.build (Guarded.encoder reasonType) (Guarded.decoder reasonType)
+    Codec.build (Refined.encoder reasonType) (Refined.decoder reasonType)
 
 
 {-| Codec for PutUserPolicyRequest. -}
@@ -7004,7 +7004,7 @@ organizationsDecisionDetailCodec =
 {-| Codec for OpenIdconnectProviderUrlType. -}
 openIdconnectProviderUrlTypeCodec : Codec OpenIdconnectProviderUrlType
 openIdconnectProviderUrlTypeCodec =
-    Codec.build (Guarded.encoder openIdconnectProviderUrlType) (Guarded.decoder openIdconnectProviderUrlType)
+    Codec.build (Refined.encoder openIdconnectProviderUrlType) (Refined.decoder openIdconnectProviderUrlType)
 
 
 {-| Codec for OpenIdconnectProviderListType. -}
@@ -8159,7 +8159,7 @@ evaluationResultCodec =
 {-| Codec for EvalDecisionSourceType. -}
 evalDecisionSourceTypeCodec : Codec EvalDecisionSourceType
 evalDecisionSourceTypeCodec =
-    Codec.build (Guarded.encoder evalDecisionSourceType) (Guarded.decoder evalDecisionSourceType)
+    Codec.build (Refined.encoder evalDecisionSourceType) (Refined.decoder evalDecisionSourceType)
 
 
 {-| Codec for EvalDecisionDetailsType. -}
@@ -8251,7 +8251,7 @@ deletionTaskStatusTypeCodec =
 {-| Codec for DeletionTaskIdType. -}
 deletionTaskIdTypeCodec : Codec DeletionTaskIdType
 deletionTaskIdTypeCodec =
-    Codec.build (Guarded.encoder deletionTaskIdType) (Guarded.decoder deletionTaskIdType)
+    Codec.build (Refined.encoder deletionTaskIdType) (Refined.decoder deletionTaskIdType)
 
 
 {-| Codec for DeletionTaskFailureReasonType. -}
@@ -8710,7 +8710,7 @@ contextKeyNamesResultListTypeCodec =
 {-| Codec for ContextKeyNameType. -}
 contextKeyNameTypeCodec : Codec ContextKeyNameType
 contextKeyNameTypeCodec =
-    Codec.build (Guarded.encoder contextKeyNameType) (Guarded.decoder contextKeyNameType)
+    Codec.build (Refined.encoder contextKeyNameType) (Refined.decoder contextKeyNameType)
 
 
 {-| Codec for ContextEntryListType. -}
@@ -8831,7 +8831,7 @@ addClientIdtoOpenIdconnectProviderRequestCodec =
 {-| Codec for ActionNameType. -}
 actionNameTypeCodec : Codec ActionNameType
 actionNameTypeCodec =
-    Codec.build (Guarded.encoder actionNameType) (Guarded.decoder actionNameType)
+    Codec.build (Refined.encoder actionNameType) (Refined.decoder actionNameType)
 
 
 {-| Codec for ActionNameListType. -}

@@ -5,9 +5,9 @@ import AWS.Core.Http
 import AWS.Core.Service
 import Codec exposing (Codec)
 import Enum exposing (Enum)
-import Guarded exposing (Guarded, IntError, StringError)
 import Json.Decode exposing (Decoder)
 import Json.Encode exposing (Value)
+import Refined exposing (IntError, Refined, StringError)
 
 
 {-| Configuration for this service. -}
@@ -331,16 +331,16 @@ type AmazonResourceName
     = AmazonResourceName String
 
 
-amazonResourceName : Guarded String AmazonResourceName StringError
+amazonResourceName : Refined String AmazonResourceName StringError
 amazonResourceName =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 1011) |> Result.map AmazonResourceName
+            Refined.minLength 1 val |> Result.andThen (Refined.maxLength 1011) |> Result.map AmazonResourceName
 
         unboxFn (AmazonResourceName val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias BatchGetNamedQueryInput =
@@ -397,7 +397,7 @@ type ColumnNullable
 
 columnNullable : Enum ColumnNullable
 columnNullable =
-    Enum.make
+    Enum.define
         [ ColumnNullableNotNull, ColumnNullableNullable, ColumnNullableUnknown ]
         (\val ->
             case val of
@@ -442,16 +442,16 @@ type DatabaseString
     = DatabaseString String
 
 
-databaseString : Guarded String DatabaseString StringError
+databaseString : Refined String DatabaseString StringError
 databaseString =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 255) |> Result.map DatabaseString
+            Refined.minLength 1 val |> Result.andThen (Refined.maxLength 255) |> Result.map DatabaseString
 
         unboxFn (DatabaseString val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias Date =
@@ -482,16 +482,16 @@ type DescriptionString
     = DescriptionString String
 
 
-descriptionString : Guarded String DescriptionString StringError
+descriptionString : Refined String DescriptionString StringError
 descriptionString =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 1024) |> Result.map DescriptionString
+            Refined.minLength 1 val |> Result.andThen (Refined.maxLength 1024) |> Result.map DescriptionString
 
         unboxFn (DescriptionString val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias EncryptionConfiguration =
@@ -506,7 +506,7 @@ type EncryptionOption
 
 encryptionOption : Enum EncryptionOption
 encryptionOption =
-    Enum.make
+    Enum.define
         [ EncryptionOptionSseS3, EncryptionOptionSseKms, EncryptionOptionCseKms ]
         (\val ->
             case val of
@@ -525,16 +525,16 @@ type ErrorCode
     = ErrorCode String
 
 
-errorCode : Guarded String ErrorCode StringError
+errorCode : Refined String ErrorCode StringError
 errorCode =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 256) |> Result.map ErrorCode
+            Refined.minLength 1 val |> Result.andThen (Refined.maxLength 256) |> Result.map ErrorCode
 
         unboxFn (ErrorCode val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias ErrorMessage =
@@ -577,16 +577,16 @@ type IdempotencyToken
     = IdempotencyToken String
 
 
-idempotencyToken : Guarded String IdempotencyToken StringError
+idempotencyToken : Refined String IdempotencyToken StringError
 idempotencyToken =
     let
         guardFn val =
-            Guarded.minLength 32 val |> Result.andThen (Guarded.maxLength 128) |> Result.map IdempotencyToken
+            Refined.minLength 32 val |> Result.andThen (Refined.maxLength 128) |> Result.map IdempotencyToken
 
         unboxFn (IdempotencyToken val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias Integer =
@@ -633,96 +633,96 @@ type MaxNamedQueriesCount
     = MaxNamedQueriesCount Int
 
 
-maxNamedQueriesCount : Guarded Int MaxNamedQueriesCount IntError
+maxNamedQueriesCount : Refined Int MaxNamedQueriesCount IntError
 maxNamedQueriesCount =
     let
         guardFn val =
-            Guarded.gt 0 val |> Result.andThen (Guarded.lt 50) |> Result.map MaxNamedQueriesCount
+            Refined.gt 0 val |> Result.andThen (Refined.lt 50) |> Result.map MaxNamedQueriesCount
 
         unboxFn (MaxNamedQueriesCount val) =
             val
     in
-    Guarded.make guardFn Json.Decode.int Json.Encode.int Guarded.intErrorToString unboxFn
+    Refined.define guardFn Json.Decode.int Json.Encode.int Refined.intErrorToString unboxFn
 
 
 type MaxQueryExecutionsCount
     = MaxQueryExecutionsCount Int
 
 
-maxQueryExecutionsCount : Guarded Int MaxQueryExecutionsCount IntError
+maxQueryExecutionsCount : Refined Int MaxQueryExecutionsCount IntError
 maxQueryExecutionsCount =
     let
         guardFn val =
-            Guarded.gt 0 val |> Result.andThen (Guarded.lt 50) |> Result.map MaxQueryExecutionsCount
+            Refined.gt 0 val |> Result.andThen (Refined.lt 50) |> Result.map MaxQueryExecutionsCount
 
         unboxFn (MaxQueryExecutionsCount val) =
             val
     in
-    Guarded.make guardFn Json.Decode.int Json.Encode.int Guarded.intErrorToString unboxFn
+    Refined.define guardFn Json.Decode.int Json.Encode.int Refined.intErrorToString unboxFn
 
 
 type MaxQueryResults
     = MaxQueryResults Int
 
 
-maxQueryResults : Guarded Int MaxQueryResults IntError
+maxQueryResults : Refined Int MaxQueryResults IntError
 maxQueryResults =
     let
         guardFn val =
-            Guarded.gt 0 val |> Result.andThen (Guarded.lt 1000) |> Result.map MaxQueryResults
+            Refined.gt 0 val |> Result.andThen (Refined.lt 1000) |> Result.map MaxQueryResults
 
         unboxFn (MaxQueryResults val) =
             val
     in
-    Guarded.make guardFn Json.Decode.int Json.Encode.int Guarded.intErrorToString unboxFn
+    Refined.define guardFn Json.Decode.int Json.Encode.int Refined.intErrorToString unboxFn
 
 
 type MaxTagsCount
     = MaxTagsCount Int
 
 
-maxTagsCount : Guarded Int MaxTagsCount IntError
+maxTagsCount : Refined Int MaxTagsCount IntError
 maxTagsCount =
     let
         guardFn val =
-            Guarded.gt 75 val |> Result.map MaxTagsCount
+            Refined.gt 75 val |> Result.map MaxTagsCount
 
         unboxFn (MaxTagsCount val) =
             val
     in
-    Guarded.make guardFn Json.Decode.int Json.Encode.int Guarded.intErrorToString unboxFn
+    Refined.define guardFn Json.Decode.int Json.Encode.int Refined.intErrorToString unboxFn
 
 
 type MaxWorkGroupsCount
     = MaxWorkGroupsCount Int
 
 
-maxWorkGroupsCount : Guarded Int MaxWorkGroupsCount IntError
+maxWorkGroupsCount : Refined Int MaxWorkGroupsCount IntError
 maxWorkGroupsCount =
     let
         guardFn val =
-            Guarded.gt 1 val |> Result.andThen (Guarded.lt 50) |> Result.map MaxWorkGroupsCount
+            Refined.gt 1 val |> Result.andThen (Refined.lt 50) |> Result.map MaxWorkGroupsCount
 
         unboxFn (MaxWorkGroupsCount val) =
             val
     in
-    Guarded.make guardFn Json.Decode.int Json.Encode.int Guarded.intErrorToString unboxFn
+    Refined.define guardFn Json.Decode.int Json.Encode.int Refined.intErrorToString unboxFn
 
 
 type NameString
     = NameString String
 
 
-nameString : Guarded String NameString StringError
+nameString : Refined String NameString StringError
 nameString =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 128) |> Result.map NameString
+            Refined.minLength 1 val |> Result.andThen (Refined.maxLength 128) |> Result.map NameString
 
         unboxFn (NameString val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias NamedQuery =
@@ -785,7 +785,7 @@ type QueryExecutionState
 
 queryExecutionState : Enum QueryExecutionState
 queryExecutionState =
-    Enum.make
+    Enum.define
         [ QueryExecutionStateQueued
         , QueryExecutionStateRunning
         , QueryExecutionStateSucceeded
@@ -823,16 +823,16 @@ type QueryString
     = QueryString String
 
 
-queryString : Guarded String QueryString StringError
+queryString : Refined String QueryString StringError
 queryString =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 262144) |> Result.map QueryString
+            Refined.minLength 1 val |> Result.andThen (Refined.maxLength 262144) |> Result.map QueryString
 
         unboxFn (QueryString val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias ResultConfiguration =
@@ -884,7 +884,7 @@ type StatementType
 
 statementType : Enum StatementType
 statementType =
-    Enum.make
+    Enum.define
         [ StatementTypeDdl, StatementTypeDml, StatementTypeUtility ]
         (\val ->
             case val of
@@ -919,16 +919,16 @@ type TagKey
     = TagKey String
 
 
-tagKey : Guarded String TagKey StringError
+tagKey : Refined String TagKey StringError
 tagKey =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 128) |> Result.map TagKey
+            Refined.minLength 1 val |> Result.andThen (Refined.maxLength 128) |> Result.map TagKey
 
         unboxFn (TagKey val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias TagKeyList =
@@ -951,32 +951,32 @@ type TagValue
     = TagValue String
 
 
-tagValue : Guarded String TagValue StringError
+tagValue : Refined String TagValue StringError
 tagValue =
     let
         guardFn val =
-            Guarded.minLength 0 val |> Result.andThen (Guarded.maxLength 256) |> Result.map TagValue
+            Refined.minLength 0 val |> Result.andThen (Refined.maxLength 256) |> Result.map TagValue
 
         unboxFn (TagValue val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type Token
     = Token String
 
 
-token : Guarded String Token StringError
+token : Refined String Token StringError
 token =
     let
         guardFn val =
-            Guarded.minLength 1 val |> Result.andThen (Guarded.maxLength 1024) |> Result.map Token
+            Refined.minLength 1 val |> Result.andThen (Refined.maxLength 1024) |> Result.map Token
 
         unboxFn (Token val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type alias UnprocessedNamedQueryId =
@@ -1045,32 +1045,32 @@ type WorkGroupDescriptionString
     = WorkGroupDescriptionString String
 
 
-workGroupDescriptionString : Guarded String WorkGroupDescriptionString StringError
+workGroupDescriptionString : Refined String WorkGroupDescriptionString StringError
 workGroupDescriptionString =
     let
         guardFn val =
-            Guarded.minLength 0 val |> Result.andThen (Guarded.maxLength 1024) |> Result.map WorkGroupDescriptionString
+            Refined.minLength 0 val |> Result.andThen (Refined.maxLength 1024) |> Result.map WorkGroupDescriptionString
 
         unboxFn (WorkGroupDescriptionString val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type WorkGroupName
     = WorkGroupName String
 
 
-workGroupName : Guarded String WorkGroupName StringError
+workGroupName : Refined String WorkGroupName StringError
 workGroupName =
     let
         guardFn val =
-            Guarded.regexMatch "[a-zA-z0-9._-]{1,128}" val |> Result.map WorkGroupName
+            Refined.regexMatch "[a-zA-z0-9._-]{1,128}" val |> Result.map WorkGroupName
 
         unboxFn (WorkGroupName val) =
             val
     in
-    Guarded.make guardFn Json.Decode.string Json.Encode.string Guarded.stringErrorToString unboxFn
+    Refined.define guardFn Json.Decode.string Json.Encode.string Refined.stringErrorToString unboxFn
 
 
 type WorkGroupState
@@ -1080,7 +1080,7 @@ type WorkGroupState
 
 workGroupState : Enum WorkGroupState
 workGroupState =
-    Enum.make
+    Enum.define
         [ WorkGroupStateEnabled, WorkGroupStateDisabled ]
         (\val ->
             case val of
@@ -1146,13 +1146,13 @@ workGroupStateCodec =
 {-| Codec for WorkGroupName. -}
 workGroupNameCodec : Codec WorkGroupName
 workGroupNameCodec =
-    Codec.build (Guarded.encoder workGroupName) (Guarded.decoder workGroupName)
+    Codec.build (Refined.encoder workGroupName) (Refined.decoder workGroupName)
 
 
 {-| Codec for WorkGroupDescriptionString. -}
 workGroupDescriptionStringCodec : Codec WorkGroupDescriptionString
 workGroupDescriptionStringCodec =
-    Codec.build (Guarded.encoder workGroupDescriptionString) (Guarded.decoder workGroupDescriptionString)
+    Codec.build (Refined.encoder workGroupDescriptionString) (Refined.decoder workGroupDescriptionString)
 
 
 {-| Codec for WorkGroupConfigurationUpdates. -}
@@ -1257,13 +1257,13 @@ unprocessedNamedQueryIdCodec =
 {-| Codec for Token. -}
 tokenCodec : Codec Token
 tokenCodec =
-    Codec.build (Guarded.encoder token) (Guarded.decoder token)
+    Codec.build (Refined.encoder token) (Refined.decoder token)
 
 
 {-| Codec for TagValue. -}
 tagValueCodec : Codec TagValue
 tagValueCodec =
-    Codec.build (Guarded.encoder tagValue) (Guarded.decoder tagValue)
+    Codec.build (Refined.encoder tagValue) (Refined.decoder tagValue)
 
 
 {-| Codec for TagResourceOutput. -}
@@ -1296,7 +1296,7 @@ tagKeyListCodec =
 {-| Codec for TagKey. -}
 tagKeyCodec : Codec TagKey
 tagKeyCodec =
-    Codec.build (Guarded.encoder tagKey) (Guarded.decoder tagKey)
+    Codec.build (Refined.encoder tagKey) (Refined.decoder tagKey)
 
 
 {-| Codec for Tag. -}
@@ -1404,7 +1404,7 @@ resultConfigurationCodec =
 {-| Codec for QueryString. -}
 queryStringCodec : Codec QueryString
 queryStringCodec =
-    Codec.build (Guarded.encoder queryString) (Guarded.decoder queryString)
+    Codec.build (Refined.encoder queryString) (Refined.decoder queryString)
 
 
 {-| Codec for QueryExecutionStatus. -}
@@ -1506,37 +1506,37 @@ namedQueryCodec =
 {-| Codec for NameString. -}
 nameStringCodec : Codec NameString
 nameStringCodec =
-    Codec.build (Guarded.encoder nameString) (Guarded.decoder nameString)
+    Codec.build (Refined.encoder nameString) (Refined.decoder nameString)
 
 
 {-| Codec for MaxWorkGroupsCount. -}
 maxWorkGroupsCountCodec : Codec MaxWorkGroupsCount
 maxWorkGroupsCountCodec =
-    Codec.build (Guarded.encoder maxWorkGroupsCount) (Guarded.decoder maxWorkGroupsCount)
+    Codec.build (Refined.encoder maxWorkGroupsCount) (Refined.decoder maxWorkGroupsCount)
 
 
 {-| Codec for MaxTagsCount. -}
 maxTagsCountCodec : Codec MaxTagsCount
 maxTagsCountCodec =
-    Codec.build (Guarded.encoder maxTagsCount) (Guarded.decoder maxTagsCount)
+    Codec.build (Refined.encoder maxTagsCount) (Refined.decoder maxTagsCount)
 
 
 {-| Codec for MaxQueryResults. -}
 maxQueryResultsCodec : Codec MaxQueryResults
 maxQueryResultsCodec =
-    Codec.build (Guarded.encoder maxQueryResults) (Guarded.decoder maxQueryResults)
+    Codec.build (Refined.encoder maxQueryResults) (Refined.decoder maxQueryResults)
 
 
 {-| Codec for MaxQueryExecutionsCount. -}
 maxQueryExecutionsCountCodec : Codec MaxQueryExecutionsCount
 maxQueryExecutionsCountCodec =
-    Codec.build (Guarded.encoder maxQueryExecutionsCount) (Guarded.decoder maxQueryExecutionsCount)
+    Codec.build (Refined.encoder maxQueryExecutionsCount) (Refined.decoder maxQueryExecutionsCount)
 
 
 {-| Codec for MaxNamedQueriesCount. -}
 maxNamedQueriesCountCodec : Codec MaxNamedQueriesCount
 maxNamedQueriesCountCodec =
-    Codec.build (Guarded.encoder maxNamedQueriesCount) (Guarded.decoder maxNamedQueriesCount)
+    Codec.build (Refined.encoder maxNamedQueriesCount) (Refined.decoder maxNamedQueriesCount)
 
 
 {-| Codec for Long. -}
@@ -1629,7 +1629,7 @@ integerCodec =
 {-| Codec for IdempotencyToken. -}
 idempotencyTokenCodec : Codec IdempotencyToken
 idempotencyTokenCodec =
-    Codec.build (Guarded.encoder idempotencyToken) (Guarded.decoder idempotencyToken)
+    Codec.build (Refined.encoder idempotencyToken) (Refined.decoder idempotencyToken)
 
 
 {-| Codec for GetWorkGroupOutput. -}
@@ -1701,7 +1701,7 @@ errorMessageCodec =
 {-| Codec for ErrorCode. -}
 errorCodeCodec : Codec ErrorCode
 errorCodeCodec =
-    Codec.build (Guarded.encoder errorCode) (Guarded.decoder errorCode)
+    Codec.build (Refined.encoder errorCode) (Refined.decoder errorCode)
 
 
 {-| Codec for EncryptionOption. -}
@@ -1722,7 +1722,7 @@ encryptionConfigurationCodec =
 {-| Codec for DescriptionString. -}
 descriptionStringCodec : Codec DescriptionString
 descriptionStringCodec =
-    Codec.build (Guarded.encoder descriptionString) (Guarded.decoder descriptionString)
+    Codec.build (Refined.encoder descriptionString) (Refined.decoder descriptionString)
 
 
 {-| Codec for DeleteWorkGroupOutput. -}
@@ -1767,7 +1767,7 @@ dateCodec =
 {-| Codec for DatabaseString. -}
 databaseStringCodec : Codec DatabaseString
 databaseStringCodec =
-    Codec.build (Guarded.encoder databaseString) (Guarded.decoder databaseString)
+    Codec.build (Refined.encoder databaseString) (Refined.decoder databaseString)
 
 
 {-| Codec for CreateWorkGroupOutput. -}
@@ -1890,4 +1890,4 @@ batchGetNamedQueryInputCodec =
 {-| Codec for AmazonResourceName. -}
 amazonResourceNameCodec : Codec AmazonResourceName
 amazonResourceNameCodec =
-    Codec.build (Guarded.encoder amazonResourceName) (Guarded.decoder amazonResourceName)
+    Codec.build (Refined.encoder amazonResourceName) (Refined.decoder amazonResourceName)
