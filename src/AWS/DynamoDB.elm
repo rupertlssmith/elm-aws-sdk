@@ -5,6 +5,7 @@ import AWS.Core.Http
 import AWS.Core.Service
 import Codec exposing (Codec)
 import Dict exposing (Dict)
+import Dict.Refined
 import Enum exposing (Enum)
 import Json.Decode exposing (Decoder)
 import Json.Encode exposing (Value)
@@ -634,7 +635,7 @@ type alias AttributeDefinitions =
 
 
 type alias AttributeMap =
-    Dict AttributeName AttributeValue
+    Dict.Refined.Dict String AttributeName AttributeValue
 
 
 type AttributeName
@@ -658,7 +659,7 @@ type alias AttributeNameList =
 
 
 type alias AttributeUpdates =
-    Dict AttributeName AttributeValueUpdate
+    Dict.Refined.Dict String AttributeName AttributeValueUpdate
 
 
 type alias AttributeValue =
@@ -948,11 +949,11 @@ type alias BatchGetItemOutput =
 
 
 type alias BatchGetRequestMap =
-    Dict TableName KeysAndAttributes
+    Dict.Refined.Dict String TableName KeysAndAttributes
 
 
 type alias BatchGetResponseMap =
-    Dict TableName ItemList
+    Dict.Refined.Dict String TableName ItemList
 
 
 type alias BatchWriteItemInput =
@@ -970,7 +971,7 @@ type alias BatchWriteItemOutput =
 
 
 type alias BatchWriteItemRequestMap =
-    Dict TableName WriteRequests
+    Dict.Refined.Dict String TableName WriteRequests
 
 
 type BillingMode
@@ -1380,7 +1381,7 @@ type alias Endpoints =
 
 
 type alias ExpectedAttributeMap =
-    Dict AttributeName ExpectedAttributeValue
+    Dict.Refined.Dict String AttributeName ExpectedAttributeValue
 
 
 type alias ExpectedAttributeValue =
@@ -1408,7 +1409,7 @@ type alias ExpressionAttributeValueVariable =
 
 
 type alias FilterConditionMap =
-    Dict AttributeName Condition
+    Dict.Refined.Dict String AttributeName Condition
 
 
 type alias Get =
@@ -1600,7 +1601,7 @@ type alias IntegerObject =
 
 
 type alias ItemCollectionKeyAttributeMap =
-    Dict AttributeName AttributeValue
+    Dict.Refined.Dict String AttributeName AttributeValue
 
 
 type alias ItemCollectionMetrics =
@@ -1612,7 +1613,7 @@ type alias ItemCollectionMetricsMultiple =
 
 
 type alias ItemCollectionMetricsPerTable =
-    Dict TableName ItemCollectionMetricsMultiple
+    Dict.Refined.Dict String TableName ItemCollectionMetricsMultiple
 
 
 type alias ItemCollectionSizeEstimateBound =
@@ -1648,11 +1649,11 @@ type alias KmsmasterKeyId =
 
 
 type alias Key =
-    Dict AttributeName AttributeValue
+    Dict.Refined.Dict String AttributeName AttributeValue
 
 
 type alias KeyConditions =
-    Dict AttributeName Condition
+    Dict.Refined.Dict String AttributeName Condition
 
 
 type alias KeyExpression =
@@ -1808,7 +1809,7 @@ type alias Long =
 
 
 type alias MapAttributeValue =
-    Dict AttributeName AttributeValue
+    Dict.Refined.Dict String AttributeName AttributeValue
 
 
 type alias NextTokenString =
@@ -1970,7 +1971,7 @@ type alias PutItemInput =
 
 
 type alias PutItemInputAttributeMap =
-    Dict AttributeName AttributeValue
+    Dict.Refined.Dict String AttributeName AttributeValue
 
 
 type alias PutItemOutput =
@@ -2388,7 +2389,7 @@ scanTotalSegments =
 
 
 type alias SecondaryIndexesCapacityMap =
-    Dict IndexName Capacity
+    Dict.Refined.Dict String IndexName Capacity
 
 
 type Select

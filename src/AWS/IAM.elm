@@ -4,7 +4,8 @@ import AWS.Core.Decode
 import AWS.Core.Http
 import AWS.Core.Service
 import Codec exposing (Codec)
-import Dict exposing (Dict)
+import Dict.Enum
+import Dict.Refined
 import Enum exposing (Enum)
 import Json.Decode exposing (Decoder)
 import Json.Encode exposing (Value)
@@ -2791,7 +2792,7 @@ type alias ErrorDetails =
 
 
 type alias EvalDecisionDetailsType =
-    Dict EvalDecisionSourceType PolicyEvaluationDecisionType
+    Dict.Refined.Dict String EvalDecisionSourceType PolicyEvaluationDecisionType
 
 
 type EvalDecisionSourceType
@@ -5373,7 +5374,7 @@ summaryKeyType =
 
 
 type alias SummaryMapType =
-    Dict SummaryKeyType Int
+    Dict.Enum.Dict SummaryKeyType Int
 
 
 type alias SummaryValueType =

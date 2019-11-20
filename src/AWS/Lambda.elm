@@ -5,6 +5,7 @@ import AWS.Core.Http
 import AWS.Core.Service
 import Codec exposing (Codec)
 import Dict exposing (Dict)
+import Dict.Refined
 import Enum exposing (Enum)
 import Json.Decode exposing (Decoder)
 import Json.Encode exposing (Value)
@@ -731,7 +732,7 @@ additionalVersion =
 
 
 type alias AdditionalVersionWeights =
-    Dict AdditionalVersion Float
+    Dict.Refined.Dict String AdditionalVersion Float
 
 
 type Alias
@@ -946,7 +947,7 @@ type alias EnvironmentVariableValue =
 
 
 type alias EnvironmentVariables =
-    Dict EnvironmentVariableName String
+    Dict.Refined.Dict String EnvironmentVariableName String
 
 
 type alias EventSourceMappingConfiguration =
