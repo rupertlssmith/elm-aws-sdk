@@ -3340,7 +3340,9 @@ selectCodec =
 {-| Codec for SecondaryIndexesCapacityMap. -}
 secondaryIndexesCapacityMapCodec : Codec SecondaryIndexesCapacityMap
 secondaryIndexesCapacityMapCodec =
-    Codec.dict capacityCodec
+    Codec.build
+        (Refined.dictEncoder indexName (Codec.encoder capacityCodec))
+        (Refined.dictDecoder indexName (Codec.decoder capacityCodec))
 
 
 {-| Codec for ScanTotalSegments. -}
@@ -3720,7 +3722,9 @@ putItemOutputCodec =
 {-| Codec for PutItemInputAttributeMap. -}
 putItemInputAttributeMapCodec : Codec PutItemInputAttributeMap
 putItemInputAttributeMapCodec =
-    Codec.dict attributeValueCodec
+    Codec.build
+        (Refined.dictEncoder attributeName (Codec.encoder attributeValueCodec))
+        (Refined.dictDecoder attributeName (Codec.decoder attributeValueCodec))
 
 
 {-| Codec for PutItemInput. -}
@@ -3879,7 +3883,9 @@ nextTokenStringCodec =
 {-| Codec for MapAttributeValue. -}
 mapAttributeValueCodec : Codec MapAttributeValue
 mapAttributeValueCodec =
-    Codec.dict attributeValueCodec
+    Codec.build
+        (Refined.dictEncoder attributeName (Codec.encoder attributeValueCodec))
+        (Refined.dictDecoder attributeName (Codec.decoder attributeValueCodec))
 
 
 {-| Codec for Long. -}
@@ -4082,13 +4088,17 @@ keyExpressionCodec =
 {-| Codec for KeyConditions. -}
 keyConditionsCodec : Codec KeyConditions
 keyConditionsCodec =
-    Codec.dict conditionCodec
+    Codec.build
+        (Refined.dictEncoder attributeName (Codec.encoder conditionCodec))
+        (Refined.dictDecoder attributeName (Codec.decoder conditionCodec))
 
 
 {-| Codec for Key. -}
 keyCodec : Codec Key
 keyCodec =
-    Codec.dict attributeValueCodec
+    Codec.build
+        (Refined.dictEncoder attributeName (Codec.encoder attributeValueCodec))
+        (Refined.dictDecoder attributeName (Codec.decoder attributeValueCodec))
 
 
 {-| Codec for KmsmasterKeyId. -}
@@ -4142,7 +4152,9 @@ itemCollectionSizeEstimateBoundCodec =
 {-| Codec for ItemCollectionMetricsPerTable. -}
 itemCollectionMetricsPerTableCodec : Codec ItemCollectionMetricsPerTable
 itemCollectionMetricsPerTableCodec =
-    Codec.dict itemCollectionMetricsMultipleCodec
+    Codec.build
+        (Refined.dictEncoder tableName (Codec.encoder itemCollectionMetricsMultipleCodec))
+        (Refined.dictDecoder tableName (Codec.decoder itemCollectionMetricsMultipleCodec))
 
 
 {-| Codec for ItemCollectionMetricsMultiple. -}
@@ -4163,7 +4175,9 @@ itemCollectionMetricsCodec =
 {-| Codec for ItemCollectionKeyAttributeMap. -}
 itemCollectionKeyAttributeMapCodec : Codec ItemCollectionKeyAttributeMap
 itemCollectionKeyAttributeMapCodec =
-    Codec.dict attributeValueCodec
+    Codec.build
+        (Refined.dictEncoder attributeName (Codec.encoder attributeValueCodec))
+        (Refined.dictDecoder attributeName (Codec.decoder attributeValueCodec))
 
 
 {-| Codec for IntegerObject. -}
@@ -4357,7 +4371,9 @@ getCodec =
 {-| Codec for FilterConditionMap. -}
 filterConditionMapCodec : Codec FilterConditionMap
 filterConditionMapCodec =
-    Codec.dict conditionCodec
+    Codec.build
+        (Refined.dictEncoder attributeName (Codec.encoder conditionCodec))
+        (Refined.dictDecoder attributeName (Codec.decoder conditionCodec))
 
 
 {-| Codec for ExpressionAttributeValueVariable. -}
@@ -4398,7 +4414,9 @@ expectedAttributeValueCodec =
 {-| Codec for ExpectedAttributeMap. -}
 expectedAttributeMapCodec : Codec ExpectedAttributeMap
 expectedAttributeMapCodec =
-    Codec.dict expectedAttributeValueCodec
+    Codec.build
+        (Refined.dictEncoder attributeName (Codec.encoder expectedAttributeValueCodec))
+        (Refined.dictDecoder attributeName (Codec.decoder expectedAttributeValueCodec))
 
 
 {-| Codec for Endpoints. -}
@@ -4864,7 +4882,9 @@ billingModeCodec =
 {-| Codec for BatchWriteItemRequestMap. -}
 batchWriteItemRequestMapCodec : Codec BatchWriteItemRequestMap
 batchWriteItemRequestMapCodec =
-    Codec.dict writeRequestsCodec
+    Codec.build
+        (Refined.dictEncoder tableName (Codec.encoder writeRequestsCodec))
+        (Refined.dictDecoder tableName (Codec.decoder writeRequestsCodec))
 
 
 {-| Codec for BatchWriteItemOutput. -}
@@ -4890,13 +4910,17 @@ batchWriteItemInputCodec =
 {-| Codec for BatchGetResponseMap. -}
 batchGetResponseMapCodec : Codec BatchGetResponseMap
 batchGetResponseMapCodec =
-    Codec.dict itemListCodec
+    Codec.build
+        (Refined.dictEncoder tableName (Codec.encoder itemListCodec))
+        (Refined.dictDecoder tableName (Codec.decoder itemListCodec))
 
 
 {-| Codec for BatchGetRequestMap. -}
 batchGetRequestMapCodec : Codec BatchGetRequestMap
 batchGetRequestMapCodec =
-    Codec.dict keysAndAttributesCodec
+    Codec.build
+        (Refined.dictEncoder tableName (Codec.encoder keysAndAttributesCodec))
+        (Refined.dictDecoder tableName (Codec.decoder keysAndAttributesCodec))
 
 
 {-| Codec for BatchGetItemOutput. -}
@@ -5144,7 +5168,9 @@ attributeValueCodec =
 {-| Codec for AttributeUpdates. -}
 attributeUpdatesCodec : Codec AttributeUpdates
 attributeUpdatesCodec =
-    Codec.dict attributeValueUpdateCodec
+    Codec.build
+        (Refined.dictEncoder attributeName (Codec.encoder attributeValueUpdateCodec))
+        (Refined.dictDecoder attributeName (Codec.decoder attributeValueUpdateCodec))
 
 
 {-| Codec for AttributeNameList. -}
@@ -5162,7 +5188,9 @@ attributeNameCodec =
 {-| Codec for AttributeMap. -}
 attributeMapCodec : Codec AttributeMap
 attributeMapCodec =
-    Codec.dict attributeValueCodec
+    Codec.build
+        (Refined.dictEncoder attributeName (Codec.encoder attributeValueCodec))
+        (Refined.dictDecoder attributeName (Codec.decoder attributeValueCodec))
 
 
 {-| Codec for AttributeDefinitions. -}

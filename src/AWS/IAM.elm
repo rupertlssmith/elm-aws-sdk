@@ -5571,7 +5571,9 @@ summaryValueTypeCodec =
 {-| Codec for SummaryMapType. -}
 summaryMapTypeCodec : Codec SummaryMapType
 summaryMapTypeCodec =
-    Codec.dict Codec.int
+    Codec.build
+        (Enum.dictEncoder summaryKeyType (Codec.encoder Codec.int))
+        (Enum.dictDecoder summaryKeyType (Codec.decoder Codec.int))
 
 
 {-| Codec for SummaryKeyType. -}
@@ -8166,7 +8168,9 @@ evalDecisionSourceTypeCodec =
 {-| Codec for EvalDecisionDetailsType. -}
 evalDecisionDetailsTypeCodec : Codec EvalDecisionDetailsType
 evalDecisionDetailsTypeCodec =
-    Codec.dict policyEvaluationDecisionTypeCodec
+    Codec.build
+        (Refined.dictEncoder evalDecisionSourceType (Codec.encoder policyEvaluationDecisionTypeCodec))
+        (Refined.dictDecoder evalDecisionSourceType (Codec.decoder policyEvaluationDecisionTypeCodec))
 
 
 {-| Codec for ErrorDetails. -}

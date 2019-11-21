@@ -3070,7 +3070,9 @@ eventSourceMappingConfigurationCodec =
 {-| Codec for EnvironmentVariables. -}
 environmentVariablesCodec : Codec EnvironmentVariables
 environmentVariablesCodec =
-    Codec.dict Codec.string
+    Codec.build
+        (Refined.dictEncoder environmentVariableName (Codec.encoder Codec.string))
+        (Refined.dictDecoder environmentVariableName (Codec.decoder Codec.string))
 
 
 {-| Codec for EnvironmentVariableValue. -}
@@ -3302,7 +3304,9 @@ aliasCodec =
 {-| Codec for AdditionalVersionWeights. -}
 additionalVersionWeightsCodec : Codec AdditionalVersionWeights
 additionalVersionWeightsCodec =
-    Codec.dict Codec.float
+    Codec.build
+        (Refined.dictEncoder additionalVersion (Codec.encoder Codec.float))
+        (Refined.dictDecoder additionalVersion (Codec.decoder Codec.float))
 
 
 {-| Codec for AdditionalVersion. -}
