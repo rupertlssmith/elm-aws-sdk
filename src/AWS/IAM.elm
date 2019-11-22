@@ -19,7 +19,7 @@ service =
         optionsFn =
             AWS.Core.Service.setXmlNamespace "https://iam.amazonaws.com/doc/2010-05-08/"
     in
-    AWS.Core.Service.defineRegional "iam" "2010-05-08" AWS.Core.Service.query AWS.Core.Service.signV4 optionsFn
+    AWS.Core.Service.defineRegional "iam" "2010-05-08" AWS.Core.Service.QUERY AWS.Core.Service.SignV4 optionsFn
 
 
 {-| AWS Endpoint. -}

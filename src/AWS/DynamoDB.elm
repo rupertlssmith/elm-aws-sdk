@@ -19,7 +19,7 @@ service =
         optionsFn =
             AWS.Core.Service.setJsonVersion "1.0" >> AWS.Core.Service.setTargetPrefix "DynamoDB_20120810"
     in
-    AWS.Core.Service.defineGlobal "dynamodb" "2012-08-10" AWS.Core.Service.json AWS.Core.Service.signV4 optionsFn
+    AWS.Core.Service.defineGlobal "dynamodb" "2012-08-10" AWS.Core.Service.JSON AWS.Core.Service.SignV4 optionsFn
 
 
 {-| AWS Endpoint. -}

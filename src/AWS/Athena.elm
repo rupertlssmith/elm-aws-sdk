@@ -17,7 +17,7 @@ service =
         optionsFn =
             AWS.Core.Service.setJsonVersion "1.1" >> AWS.Core.Service.setTargetPrefix "AmazonAthena"
     in
-    AWS.Core.Service.defineGlobal "athena" "2017-05-18" AWS.Core.Service.json AWS.Core.Service.signV4 optionsFn
+    AWS.Core.Service.defineGlobal "athena" "2017-05-18" AWS.Core.Service.JSON AWS.Core.Service.SignV4 optionsFn
 
 
 {-| AWS Endpoint. -}

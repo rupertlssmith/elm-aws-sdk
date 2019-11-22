@@ -19,7 +19,7 @@ service =
         optionsFn =
             identity
     in
-    AWS.Core.Service.defineGlobal "lambda" "2015-03-31" AWS.Core.Service.rest-json AWS.Core.Service.signV4 optionsFn
+    AWS.Core.Service.defineGlobal "lambda" "2015-03-31" AWS.Core.Service.REST_JSON AWS.Core.Service.SignV4 optionsFn
 
 
 {-| AWS Endpoint. -}
