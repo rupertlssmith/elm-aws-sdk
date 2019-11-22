@@ -2244,7 +2244,7 @@ type alias CreateDbclusterMessage =
     , preferredMaintenanceWindow : String
     , preferredBackupWindow : String
     , preSignedUrl : String
-    , port : Int
+    , port_ : Int
     , optionGroupName : String
     , masterUsername : String
     , masterUserPassword : String
@@ -2301,7 +2301,7 @@ type alias CreateDbinstanceMessage =
     , processorFeatures : ProcessorFeatureList
     , preferredMaintenanceWindow : String
     , preferredBackupWindow : String
-    , port : Int
+    , port_ : Int
     , performanceInsightsRetentionPeriod : Int
     , performanceInsightsKmskeyId : String
     , optionGroupName : String
@@ -2348,7 +2348,7 @@ type alias CreateDbinstanceReadReplicaMessage =
     , publiclyAccessible : Bool
     , processorFeatures : ProcessorFeatureList
     , preSignedUrl : String
-    , port : Int
+    , port_ : Int
     , performanceInsightsRetentionPeriod : Int
     , performanceInsightsKmskeyId : String
     , optionGroupName : String
@@ -2463,7 +2463,7 @@ type alias Dbcluster =
     , readReplicaIdentifiers : ReadReplicaIdentifierList
     , preferredMaintenanceWindow : String
     , preferredBackupWindow : String
-    , port : Int
+    , port_ : Int
     , percentProgress : String
     , multiAz : Bool
     , masterUsername : String
@@ -2624,7 +2624,7 @@ type alias DbclusterSnapshot =
     , sourceDbclusterSnapshotArn : String
     , snapshotType : String
     , snapshotCreateTime : Tstamp
-    , port : Int
+    , port_ : Int
     , percentProgress : Int
     , masterUsername : String
     , licenseModel : String
@@ -2758,7 +2758,7 @@ type alias DbinstanceAutomatedBackup =
     , status : String
     , restoreWindow : RestoreWindow
     , region : String
-    , port : Int
+    , port_ : Int
     , optionGroupName : String
     , masterUsername : String
     , licenseModel : String
@@ -2883,7 +2883,7 @@ type alias Dbsnapshot =
     , snapshotType : String
     , snapshotCreateTime : Tstamp
     , processorFeatures : ProcessorFeatureList
-    , port : Int
+    , port_ : Int
     , percentProgress : Int
     , optionGroupName : String
     , masterUsername : String
@@ -3317,7 +3317,7 @@ type alias Ec2SecurityGroupList =
 
 
 type alias Endpoint =
-    { port : Int, hostedZoneId : String, address : String }
+    { port_ : Int, hostedZoneId : String, address : String }
 
 
 type alias EngineDefaults =
@@ -3499,7 +3499,7 @@ type alias ModifyDbclusterMessage =
     , scalingConfiguration : ScalingConfiguration
     , preferredMaintenanceWindow : String
     , preferredBackupWindow : String
-    , port : Int
+    , port_ : Int
     , optionGroupName : String
     , newDbclusterIdentifier : String
     , masterUserPassword : String
@@ -3655,7 +3655,7 @@ type alias ModifyOptionGroupResult =
 
 type alias Option =
     { vpcSecurityGroupMemberships : VpcSecurityGroupMembershipList
-    , port : Int
+    , port_ : Int
     , persistent : Bool
     , permanent : Bool
     , optionVersion : String
@@ -3668,7 +3668,7 @@ type alias Option =
 
 type alias OptionConfiguration =
     { vpcSecurityGroupMemberships : VpcSecurityGroupIdList
-    , port : Int
+    , port_ : Int
     , optionVersion : String
     , optionSettings : OptionSettingsList
     , optionName : String
@@ -3880,7 +3880,7 @@ type alias PendingMaintenanceActionsMessage =
 type alias PendingModifiedValues =
     { storageType : String
     , processorFeatures : ProcessorFeatureList
-    , port : Int
+    , port_ : Int
     , pendingCloudwatchLogsExports : PendingCloudwatchLogsExports
     , multiAz : Bool
     , masterUserPassword : String
@@ -4068,7 +4068,7 @@ type alias RestoreDbclusterFromS3Message =
     , s3BucketName : String
     , preferredMaintenanceWindow : String
     , preferredBackupWindow : String
-    , port : Int
+    , port_ : Int
     , optionGroupName : String
     , masterUsername : String
     , masterUserPassword : String
@@ -4099,7 +4099,7 @@ type alias RestoreDbclusterFromSnapshotMessage =
     , tags : TagList
     , snapshotIdentifier : String
     , scalingConfiguration : ScalingConfiguration
-    , port : Int
+    , port_ : Int
     , optionGroupName : String
     , kmsKeyId : String
     , engineVersion : String
@@ -4129,7 +4129,7 @@ type alias RestoreDbclusterToPointInTimeMessage =
     , sourceDbclusterIdentifier : String
     , restoreType : String
     , restoreToTime : Tstamp
-    , port : Int
+    , port_ : Int
     , optionGroupName : String
     , kmsKeyId : String
     , enableIamdatabaseAuthentication : Bool
@@ -4156,7 +4156,7 @@ type alias RestoreDbinstanceFromDbsnapshotMessage =
     , storageType : String
     , publiclyAccessible : Bool
     , processorFeatures : ProcessorFeatureList
-    , port : Int
+    , port_ : Int
     , optionGroupName : String
     , multiAz : Bool
     , licenseModel : String
@@ -4198,7 +4198,7 @@ type alias RestoreDbinstanceFromS3Message =
     , processorFeatures : ProcessorFeatureList
     , preferredMaintenanceWindow : String
     , preferredBackupWindow : String
-    , port : Int
+    , port_ : Int
     , performanceInsightsRetentionPeriod : Int
     , performanceInsightsKmskeyId : String
     , optionGroupName : String
@@ -4248,7 +4248,7 @@ type alias RestoreDbinstanceToPointInTimeMessage =
     , restoreTime : Tstamp
     , publiclyAccessible : Bool
     , processorFeatures : ProcessorFeatureList
-    , port : Int
+    , port_ : Int
     , optionGroupName : String
     , multiAz : Bool
     , licenseModel : String
@@ -4852,7 +4852,7 @@ restoreDbinstanceToPointInTimeMessageCodec =
         |> Codec.field "RestoreTime" .restoreTime tstampCodec
         |> Codec.field "PubliclyAccessible" .publiclyAccessible Codec.bool
         |> Codec.field "ProcessorFeatures" .processorFeatures processorFeatureListCodec
-        |> Codec.field "Port" .port Codec.int
+        |> Codec.field "Port" .port_ Codec.int
         |> Codec.field "OptionGroupName" .optionGroupName Codec.string
         |> Codec.field "MultiAZ" .multiAz Codec.bool
         |> Codec.field "LicenseModel" .licenseModel Codec.string
@@ -4899,7 +4899,7 @@ restoreDbinstanceFromS3MessageCodec =
         |> Codec.field "ProcessorFeatures" .processorFeatures processorFeatureListCodec
         |> Codec.field "PreferredMaintenanceWindow" .preferredMaintenanceWindow Codec.string
         |> Codec.field "PreferredBackupWindow" .preferredBackupWindow Codec.string
-        |> Codec.field "Port" .port Codec.int
+        |> Codec.field "Port" .port_ Codec.int
         |> Codec.field "PerformanceInsightsRetentionPeriod" .performanceInsightsRetentionPeriod Codec.int
         |> Codec.field "PerformanceInsightsKMSKeyId" .performanceInsightsKmskeyId Codec.string
         |> Codec.field "OptionGroupName" .optionGroupName Codec.string
@@ -4951,7 +4951,7 @@ restoreDbinstanceFromDbsnapshotMessageCodec =
         |> Codec.field "StorageType" .storageType Codec.string
         |> Codec.field "PubliclyAccessible" .publiclyAccessible Codec.bool
         |> Codec.field "ProcessorFeatures" .processorFeatures processorFeatureListCodec
-        |> Codec.field "Port" .port Codec.int
+        |> Codec.field "Port" .port_ Codec.int
         |> Codec.field "OptionGroupName" .optionGroupName Codec.string
         |> Codec.field "MultiAZ" .multiAz Codec.bool
         |> Codec.field "LicenseModel" .licenseModel Codec.string
@@ -4992,7 +4992,7 @@ restoreDbclusterToPointInTimeMessageCodec =
         |> Codec.field "SourceDBClusterIdentifier" .sourceDbclusterIdentifier Codec.string
         |> Codec.field "RestoreType" .restoreType Codec.string
         |> Codec.field "RestoreToTime" .restoreToTime tstampCodec
-        |> Codec.field "Port" .port Codec.int
+        |> Codec.field "Port" .port_ Codec.int
         |> Codec.field "OptionGroupName" .optionGroupName Codec.string
         |> Codec.field "KmsKeyId" .kmsKeyId Codec.string
         |> Codec.field "EnableIAMDatabaseAuthentication" .enableIamdatabaseAuthentication Codec.bool
@@ -5022,7 +5022,7 @@ restoreDbclusterFromSnapshotMessageCodec =
         |> Codec.field "Tags" .tags tagListCodec
         |> Codec.field "SnapshotIdentifier" .snapshotIdentifier Codec.string
         |> Codec.field "ScalingConfiguration" .scalingConfiguration scalingConfigurationCodec
-        |> Codec.field "Port" .port Codec.int
+        |> Codec.field "Port" .port_ Codec.int
         |> Codec.field "OptionGroupName" .optionGroupName Codec.string
         |> Codec.field "KmsKeyId" .kmsKeyId Codec.string
         |> Codec.field "EngineVersion" .engineVersion Codec.string
@@ -5061,7 +5061,7 @@ restoreDbclusterFromS3MessageCodec =
         |> Codec.field "S3BucketName" .s3BucketName Codec.string
         |> Codec.field "PreferredMaintenanceWindow" .preferredMaintenanceWindow Codec.string
         |> Codec.field "PreferredBackupWindow" .preferredBackupWindow Codec.string
-        |> Codec.field "Port" .port Codec.int
+        |> Codec.field "Port" .port_ Codec.int
         |> Codec.field "OptionGroupName" .optionGroupName Codec.string
         |> Codec.field "MasterUsername" .masterUsername Codec.string
         |> Codec.field "MasterUserPassword" .masterUserPassword Codec.string
@@ -5389,7 +5389,7 @@ pendingModifiedValuesCodec =
     Codec.object PendingModifiedValues
         |> Codec.field "StorageType" .storageType Codec.string
         |> Codec.field "ProcessorFeatures" .processorFeatures processorFeatureListCodec
-        |> Codec.field "Port" .port Codec.int
+        |> Codec.field "Port" .port_ Codec.int
         |> Codec.field "PendingCloudwatchLogsExports" .pendingCloudwatchLogsExports pendingCloudwatchLogsExportsCodec
         |> Codec.field "MultiAZ" .multiAz Codec.bool
         |> Codec.field "MasterUserPassword" .masterUserPassword Codec.string
@@ -5702,7 +5702,7 @@ optionConfigurationCodec : Codec OptionConfiguration
 optionConfigurationCodec =
     Codec.object OptionConfiguration
         |> Codec.field "VpcSecurityGroupMemberships" .vpcSecurityGroupMemberships vpcSecurityGroupIdListCodec
-        |> Codec.field "Port" .port Codec.int
+        |> Codec.field "Port" .port_ Codec.int
         |> Codec.field "OptionVersion" .optionVersion Codec.string
         |> Codec.field "OptionSettings" .optionSettings optionSettingsListCodec
         |> Codec.field "OptionName" .optionName Codec.string
@@ -5715,7 +5715,7 @@ optionCodec : Codec Option
 optionCodec =
     Codec.object Option
         |> Codec.field "VpcSecurityGroupMemberships" .vpcSecurityGroupMemberships vpcSecurityGroupMembershipListCodec
-        |> Codec.field "Port" .port Codec.int
+        |> Codec.field "Port" .port_ Codec.int
         |> Codec.field "Persistent" .persistent Codec.bool
         |> Codec.field "Permanent" .permanent Codec.bool
         |> Codec.field "OptionVersion" .optionVersion Codec.string
@@ -5945,7 +5945,7 @@ modifyDbclusterMessageCodec =
         |> Codec.field "ScalingConfiguration" .scalingConfiguration scalingConfigurationCodec
         |> Codec.field "PreferredMaintenanceWindow" .preferredMaintenanceWindow Codec.string
         |> Codec.field "PreferredBackupWindow" .preferredBackupWindow Codec.string
-        |> Codec.field "Port" .port Codec.int
+        |> Codec.field "Port" .port_ Codec.int
         |> Codec.field "OptionGroupName" .optionGroupName Codec.string
         |> Codec.field "NewDBClusterIdentifier" .newDbclusterIdentifier Codec.string
         |> Codec.field "MasterUserPassword" .masterUserPassword Codec.string
@@ -6264,7 +6264,7 @@ engineDefaultsCodec =
 endpointCodec : Codec Endpoint
 endpointCodec =
     Codec.object Endpoint
-        |> Codec.field "Port" .port Codec.int
+        |> Codec.field "Port" .port_ Codec.int
         |> Codec.field "HostedZoneId" .hostedZoneId Codec.string
         |> Codec.field "Address" .address Codec.string
         |> Codec.buildObject
@@ -7057,7 +7057,7 @@ dbsnapshotCodec =
         |> Codec.field "SnapshotType" .snapshotType Codec.string
         |> Codec.field "SnapshotCreateTime" .snapshotCreateTime tstampCodec
         |> Codec.field "ProcessorFeatures" .processorFeatures processorFeatureListCodec
-        |> Codec.field "Port" .port Codec.int
+        |> Codec.field "Port" .port_ Codec.int
         |> Codec.field "PercentProgress" .percentProgress Codec.int
         |> Codec.field "OptionGroupName" .optionGroupName Codec.string
         |> Codec.field "MasterUsername" .masterUsername Codec.string
@@ -7260,7 +7260,7 @@ dbinstanceAutomatedBackupCodec =
         |> Codec.field "Status" .status Codec.string
         |> Codec.field "RestoreWindow" .restoreWindow restoreWindowCodec
         |> Codec.field "Region" .region Codec.string
-        |> Codec.field "Port" .port Codec.int
+        |> Codec.field "Port" .port_ Codec.int
         |> Codec.field "OptionGroupName" .optionGroupName Codec.string
         |> Codec.field "MasterUsername" .masterUsername Codec.string
         |> Codec.field "LicenseModel" .licenseModel Codec.string
@@ -7436,7 +7436,7 @@ dbclusterSnapshotCodec =
         |> Codec.field "SourceDBClusterSnapshotArn" .sourceDbclusterSnapshotArn Codec.string
         |> Codec.field "SnapshotType" .snapshotType Codec.string
         |> Codec.field "SnapshotCreateTime" .snapshotCreateTime tstampCodec
-        |> Codec.field "Port" .port Codec.int
+        |> Codec.field "Port" .port_ Codec.int
         |> Codec.field "PercentProgress" .percentProgress Codec.int
         |> Codec.field "MasterUsername" .masterUsername Codec.string
         |> Codec.field "LicenseModel" .licenseModel Codec.string
@@ -7644,7 +7644,7 @@ dbclusterCodec =
         |> Codec.field "ReadReplicaIdentifiers" .readReplicaIdentifiers readReplicaIdentifierListCodec
         |> Codec.field "PreferredMaintenanceWindow" .preferredMaintenanceWindow Codec.string
         |> Codec.field "PreferredBackupWindow" .preferredBackupWindow Codec.string
-        |> Codec.field "Port" .port Codec.int
+        |> Codec.field "Port" .port_ Codec.int
         |> Codec.field "PercentProgress" .percentProgress Codec.string
         |> Codec.field "MultiAZ" .multiAz Codec.bool
         |> Codec.field "MasterUsername" .masterUsername Codec.string
@@ -7853,7 +7853,7 @@ createDbinstanceReadReplicaMessageCodec =
         |> Codec.field "PubliclyAccessible" .publiclyAccessible Codec.bool
         |> Codec.field "ProcessorFeatures" .processorFeatures processorFeatureListCodec
         |> Codec.field "PreSignedUrl" .preSignedUrl Codec.string
-        |> Codec.field "Port" .port Codec.int
+        |> Codec.field "Port" .port_ Codec.int
         |> Codec.field "PerformanceInsightsRetentionPeriod" .performanceInsightsRetentionPeriod Codec.int
         |> Codec.field "PerformanceInsightsKMSKeyId" .performanceInsightsKmskeyId Codec.string
         |> Codec.field "OptionGroupName" .optionGroupName Codec.string
@@ -7891,7 +7891,7 @@ createDbinstanceMessageCodec =
         |> Codec.field "ProcessorFeatures" .processorFeatures processorFeatureListCodec
         |> Codec.field "PreferredMaintenanceWindow" .preferredMaintenanceWindow Codec.string
         |> Codec.field "PreferredBackupWindow" .preferredBackupWindow Codec.string
-        |> Codec.field "Port" .port Codec.int
+        |> Codec.field "Port" .port_ Codec.int
         |> Codec.field "PerformanceInsightsRetentionPeriod" .performanceInsightsRetentionPeriod Codec.int
         |> Codec.field "PerformanceInsightsKMSKeyId" .performanceInsightsKmskeyId Codec.string
         |> Codec.field "OptionGroupName" .optionGroupName Codec.string
@@ -7984,7 +7984,7 @@ createDbclusterMessageCodec =
         |> Codec.field "PreferredMaintenanceWindow" .preferredMaintenanceWindow Codec.string
         |> Codec.field "PreferredBackupWindow" .preferredBackupWindow Codec.string
         |> Codec.field "PreSignedUrl" .preSignedUrl Codec.string
-        |> Codec.field "Port" .port Codec.int
+        |> Codec.field "Port" .port_ Codec.int
         |> Codec.field "OptionGroupName" .optionGroupName Codec.string
         |> Codec.field "MasterUsername" .masterUsername Codec.string
         |> Codec.field "MasterUserPassword" .masterUserPassword Codec.string

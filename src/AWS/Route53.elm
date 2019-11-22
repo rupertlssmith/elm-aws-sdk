@@ -1818,7 +1818,7 @@ type alias HealthCheckConfig =
     , resourcePath : ResourcePath
     , requestInterval : RequestInterval
     , regions : HealthCheckRegionList
-    , port : Port
+    , port_ : Port
     , measureLatency : Bool
     , inverted : Bool
     , insufficientDataHealthStatus : InsufficientDataHealthStatus
@@ -2411,8 +2411,8 @@ type Port
     = Port Int
 
 
-port : Refined Int Port IntError
-port =
+port_ : Refined Int Port IntError
+port_ =
     let
         guardFn val =
             Refined.gt 1 val |> Result.andThen (Refined.lt 65535) |> Result.map Port
@@ -3120,7 +3120,7 @@ type alias UpdateHealthCheckRequest =
     , resourcePath : ResourcePath
     , resetElements : ResettableElementNameList
     , regions : HealthCheckRegionList
-    , port : Port
+    , port_ : Port
     , inverted : Bool
     , insufficientDataHealthStatus : InsufficientDataHealthStatus
     , ipaddress : Ipaddress
@@ -3303,7 +3303,7 @@ updateHealthCheckRequestCodec =
         |> Codec.field "ResourcePath" .resourcePath resourcePathCodec
         |> Codec.field "ResetElements" .resetElements resettableElementNameListCodec
         |> Codec.field "Regions" .regions healthCheckRegionListCodec
-        |> Codec.field "Port" .port portCodec
+        |> Codec.field "Port" .port_ portCodec
         |> Codec.field "Inverted" .inverted Codec.bool
         |> Codec.field "InsufficientDataHealthStatus" .insufficientDataHealthStatus insufficientDataHealthStatusCodec
         |> Codec.field "IPAddress" .ipaddress ipaddressCodec
@@ -3762,7 +3762,7 @@ queryLoggingConfigCodec =
 {-| Codec for Port. -}
 portCodec : Codec Port
 portCodec =
-    Codec.build (Refined.encoder port) (Refined.decoder port)
+    Codec.build (Refined.encoder port_) (Refined.decoder port_)
 
 
 {-| Codec for Period. -}
@@ -4340,7 +4340,7 @@ healthCheckConfigCodec =
         |> Codec.field "ResourcePath" .resourcePath resourcePathCodec
         |> Codec.field "RequestInterval" .requestInterval requestIntervalCodec
         |> Codec.field "Regions" .regions healthCheckRegionListCodec
-        |> Codec.field "Port" .port portCodec
+        |> Codec.field "Port" .port_ portCodec
         |> Codec.field "MeasureLatency" .measureLatency Codec.bool
         |> Codec.field "Inverted" .inverted Codec.bool
         |> Codec.field "InsufficientDataHealthStatus" .insufficientDataHealthStatus insufficientDataHealthStatusCodec
