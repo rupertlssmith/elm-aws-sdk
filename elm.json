@@ -11,6 +11,7 @@
     "AWS.CloudTrail",
     "AWS.CognitoIdentity",
     "AWS.DynamoDb",
+    "AWS.Ec2",
     "AWS.Iam",
     "AWS.Lambda",
     "AWS.Rds",
