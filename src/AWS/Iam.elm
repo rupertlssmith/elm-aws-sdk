@@ -1,4 +1,4 @@
-module AWS.IAM exposing (service)
+module AWS.Iam exposing (service)
 
 import AWS.Core.Decode
 import AWS.Core.Http

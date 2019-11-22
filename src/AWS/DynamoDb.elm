@@ -1,4 +1,4 @@
-module AWS.DynamoDB exposing (service)
+module AWS.DynamoDb exposing (service)
 
 import AWS.Core.Decode
 import AWS.Core.Http
