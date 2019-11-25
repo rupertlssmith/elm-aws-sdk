@@ -33,7 +33,7 @@ uploadPartCopy req =
                 "UploadPartCopy"
                 (AWS.Core.Decode.ResultDecoder "UploadPartCopyOutput" (Codec.decoder uploadPartCopyOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/{Bucket}/{Key+}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -48,7 +48,7 @@ uploadPart req =
                 "UploadPart"
                 (AWS.Core.Decode.ResultDecoder "UploadPartOutput" (Codec.decoder uploadPartOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/{Bucket}/{Key+}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -67,7 +67,7 @@ selectObjectContent req =
                     (Codec.decoder selectObjectContentOutputCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/{Bucket}/{Key+}?select&select-type=2" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -82,7 +82,7 @@ restoreObject req =
                 "RestoreObject"
                 (AWS.Core.Decode.ResultDecoder "RestoreObjectOutput" (Codec.decoder restoreObjectOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/{Bucket}/{Key+}?restore" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -95,7 +95,7 @@ putPublicAccessBlock req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "PutPublicAccessBlock" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/{Bucket}?publicAccessBlock" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -111,7 +111,7 @@ putObjectTagging req =
                 "PutObjectTagging"
                 (AWS.Core.Decode.ResultDecoder "PutObjectTaggingOutput" (Codec.decoder putObjectTaggingOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/{Bucket}/{Key+}?tagging" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -127,7 +127,7 @@ putObjectRetention req =
                 "PutObjectRetention"
                 (AWS.Core.Decode.ResultDecoder "PutObjectRetentionOutput" (Codec.decoder putObjectRetentionOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/{Bucket}/{Key+}?retention" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -147,7 +147,7 @@ putObjectLockConfiguration req =
                     (Codec.decoder putObjectLockConfigurationOutputCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/{Bucket}?object-lock" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -163,7 +163,7 @@ putObjectLegalHold req =
                 "PutObjectLegalHold"
                 (AWS.Core.Decode.ResultDecoder "PutObjectLegalHoldOutput" (Codec.decoder putObjectLegalHoldOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/{Bucket}/{Key+}?legal-hold" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -178,7 +178,7 @@ putObjectAcl req =
                 "PutObjectAcl"
                 (AWS.Core.Decode.ResultDecoder "PutObjectAclOutput" (Codec.decoder putObjectAclOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/{Bucket}/{Key+}?acl" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -193,7 +193,7 @@ putObject req =
                 "PutObject"
                 (AWS.Core.Decode.ResultDecoder "PutObjectOutput" (Codec.decoder putObjectOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/{Bucket}/{Key+}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -206,7 +206,7 @@ putBucketWebsite req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "PutBucketWebsite" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/{Bucket}?website" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -219,7 +219,7 @@ putBucketVersioning req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "PutBucketVersioning" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/{Bucket}?versioning" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -232,7 +232,7 @@ putBucketTagging req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "PutBucketTagging" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/{Bucket}?tagging" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -245,7 +245,7 @@ putBucketRequestPayment req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "PutBucketRequestPayment" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/{Bucket}?requestPayment" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -258,7 +258,7 @@ putBucketReplication req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "PutBucketReplication" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/{Bucket}?replication" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -271,7 +271,7 @@ putBucketPolicy req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "PutBucketPolicy" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/{Bucket}?policy" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -285,7 +285,7 @@ putBucketNotificationConfiguration req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "PutBucketNotificationConfiguration" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/{Bucket}?notification" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -298,7 +298,7 @@ putBucketNotification req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "PutBucketNotification" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/{Bucket}?notification" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -312,7 +312,7 @@ putBucketMetricsConfiguration req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "PutBucketMetricsConfiguration" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/{Bucket}?metrics" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -325,7 +325,7 @@ putBucketLogging req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "PutBucketLogging" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/{Bucket}?logging" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -339,7 +339,7 @@ putBucketLifecycleConfiguration req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "PutBucketLifecycleConfiguration" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/{Bucket}?lifecycle" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -352,7 +352,7 @@ putBucketLifecycle req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "PutBucketLifecycle" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/{Bucket}?lifecycle" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -366,7 +366,7 @@ putBucketInventoryConfiguration req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "PutBucketInventoryConfiguration" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/{Bucket}?inventory" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -379,7 +379,7 @@ putBucketEncryption req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "PutBucketEncryption" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/{Bucket}?encryption" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -392,7 +392,7 @@ putBucketCors req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "PutBucketCors" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/{Bucket}?cors" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -406,7 +406,7 @@ putBucketAnalyticsConfiguration req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "PutBucketAnalyticsConfiguration" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/{Bucket}?analytics" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -419,7 +419,7 @@ putBucketAcl req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "PutBucketAcl" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/{Bucket}?acl" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -433,7 +433,7 @@ putBucketAccelerateConfiguration req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "PutBucketAccelerateConfiguration" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/{Bucket}?accelerate" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -448,7 +448,7 @@ listParts req =
                 "ListParts"
                 (AWS.Core.Decode.ResultDecoder "ListPartsOutput" (Codec.decoder listPartsOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}/{Key+}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -463,7 +463,7 @@ listObjectsV2 req =
                 "ListObjectsV2"
                 (AWS.Core.Decode.ResultDecoder "ListObjectsV2Output" (Codec.decoder listObjectsV2OutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}?list-type=2" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -478,7 +478,7 @@ listObjects req =
                 "ListObjects"
                 (AWS.Core.Decode.ResultDecoder "ListObjectsOutput" (Codec.decoder listObjectsOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -494,7 +494,7 @@ listObjectVersions req =
                 "ListObjectVersions"
                 (AWS.Core.Decode.ResultDecoder "ListObjectVersionsOutput" (Codec.decoder listObjectVersionsOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}?versions" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -513,7 +513,7 @@ listMultipartUploads req =
                     (Codec.decoder listMultipartUploadsOutputCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}?uploads" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -548,7 +548,7 @@ listBucketMetricsConfigurations req =
                     (Codec.decoder listBucketMetricsConfigurationsOutputCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}?metrics" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -568,7 +568,7 @@ listBucketInventoryConfigurations req =
                     (Codec.decoder listBucketInventoryConfigurationsOutputCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}?inventory" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -588,7 +588,7 @@ listBucketAnalyticsConfigurations req =
                     (Codec.decoder listBucketAnalyticsConfigurationsOutputCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}?analytics" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -603,7 +603,7 @@ headObject req =
                 "HeadObject"
                 (AWS.Core.Decode.ResultDecoder "HeadObjectOutput" (Codec.decoder headObjectOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.HEAD "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.HEAD "/{Bucket}/{Key+}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -616,7 +616,7 @@ headBucket req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "HeadBucket" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.HEAD "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.HEAD "/{Bucket}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -635,7 +635,7 @@ getPublicAccessBlock req =
                     (Codec.decoder getPublicAccessBlockOutputCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}?publicAccessBlock" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -651,7 +651,7 @@ getObjectTorrent req =
                 "GetObjectTorrent"
                 (AWS.Core.Decode.ResultDecoder "GetObjectTorrentOutput" (Codec.decoder getObjectTorrentOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}/{Key+}?torrent" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -667,7 +667,7 @@ getObjectTagging req =
                 "GetObjectTagging"
                 (AWS.Core.Decode.ResultDecoder "GetObjectTaggingOutput" (Codec.decoder getObjectTaggingOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}/{Key+}?tagging" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -683,7 +683,7 @@ getObjectRetention req =
                 "GetObjectRetention"
                 (AWS.Core.Decode.ResultDecoder "GetObjectRetentionOutput" (Codec.decoder getObjectRetentionOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}/{Key+}?retention" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -703,7 +703,7 @@ getObjectLockConfiguration req =
                     (Codec.decoder getObjectLockConfigurationOutputCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}?object-lock" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -719,7 +719,7 @@ getObjectLegalHold req =
                 "GetObjectLegalHold"
                 (AWS.Core.Decode.ResultDecoder "GetObjectLegalHoldOutput" (Codec.decoder getObjectLegalHoldOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}/{Key+}?legal-hold" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -734,7 +734,7 @@ getObjectAcl req =
                 "GetObjectAcl"
                 (AWS.Core.Decode.ResultDecoder "GetObjectAclOutput" (Codec.decoder getObjectAclOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}/{Key+}?acl" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -749,7 +749,7 @@ getObject req =
                 "GetObject"
                 (AWS.Core.Decode.ResultDecoder "GetObjectOutput" (Codec.decoder getObjectOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}/{Key+}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -765,7 +765,7 @@ getBucketWebsite req =
                 "GetBucketWebsite"
                 (AWS.Core.Decode.ResultDecoder "GetBucketWebsiteOutput" (Codec.decoder getBucketWebsiteOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}?website" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -784,7 +784,7 @@ getBucketVersioning req =
                     (Codec.decoder getBucketVersioningOutputCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}?versioning" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -800,7 +800,7 @@ getBucketTagging req =
                 "GetBucketTagging"
                 (AWS.Core.Decode.ResultDecoder "GetBucketTaggingOutput" (Codec.decoder getBucketTaggingOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}?tagging" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -820,7 +820,7 @@ getBucketRequestPayment req =
                     (Codec.decoder getBucketRequestPaymentOutputCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}?requestPayment" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -839,7 +839,7 @@ getBucketReplication req =
                     (Codec.decoder getBucketReplicationOutputCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}?replication" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -858,7 +858,7 @@ getBucketPolicyStatus req =
                     (Codec.decoder getBucketPolicyStatusOutputCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}?policyStatus" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -874,7 +874,7 @@ getBucketPolicy req =
                 "GetBucketPolicy"
                 (AWS.Core.Decode.ResultDecoder "GetBucketPolicyOutput" (Codec.decoder getBucketPolicyOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}?policy" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -894,7 +894,7 @@ getBucketNotificationConfiguration req =
                     (Codec.decoder notificationConfigurationCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}?notification" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -914,7 +914,7 @@ getBucketNotification req =
                     (Codec.decoder notificationConfigurationDeprecatedCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}?notification" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -934,7 +934,7 @@ getBucketMetricsConfiguration req =
                     (Codec.decoder getBucketMetricsConfigurationOutputCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}?metrics" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -950,7 +950,7 @@ getBucketLogging req =
                 "GetBucketLogging"
                 (AWS.Core.Decode.ResultDecoder "GetBucketLoggingOutput" (Codec.decoder getBucketLoggingOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}?logging" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -966,7 +966,7 @@ getBucketLocation req =
                 "GetBucketLocation"
                 (AWS.Core.Decode.ResultDecoder "GetBucketLocationOutput" (Codec.decoder getBucketLocationOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}?location" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -986,7 +986,7 @@ getBucketLifecycleConfiguration req =
                     (Codec.decoder getBucketLifecycleConfigurationOutputCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}?lifecycle" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1002,7 +1002,7 @@ getBucketLifecycle req =
                 "GetBucketLifecycle"
                 (AWS.Core.Decode.ResultDecoder "GetBucketLifecycleOutput" (Codec.decoder getBucketLifecycleOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}?lifecycle" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1022,7 +1022,7 @@ getBucketInventoryConfiguration req =
                     (Codec.decoder getBucketInventoryConfigurationOutputCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}?inventory" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1041,7 +1041,7 @@ getBucketEncryption req =
                     (Codec.decoder getBucketEncryptionOutputCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}?encryption" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1056,7 +1056,7 @@ getBucketCors req =
                 "GetBucketCors"
                 (AWS.Core.Decode.ResultDecoder "GetBucketCorsOutput" (Codec.decoder getBucketCorsOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}?cors" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1076,7 +1076,7 @@ getBucketAnalyticsConfiguration req =
                     (Codec.decoder getBucketAnalyticsConfigurationOutputCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}?analytics" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1091,7 +1091,7 @@ getBucketAcl req =
                 "GetBucketAcl"
                 (AWS.Core.Decode.ResultDecoder "GetBucketAclOutput" (Codec.decoder getBucketAclOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}?acl" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1111,7 +1111,7 @@ getBucketAccelerateConfiguration req =
                     (Codec.decoder getBucketAccelerateConfigurationOutputCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/{Bucket}?accelerate" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1124,7 +1124,7 @@ deletePublicAccessBlock req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "DeletePublicAccessBlock" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.DELETE "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.DELETE "/{Bucket}?publicAccessBlock" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1139,7 +1139,7 @@ deleteObjects req =
                 "DeleteObjects"
                 (AWS.Core.Decode.ResultDecoder "DeleteObjectsOutput" (Codec.decoder deleteObjectsOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/{Bucket}?delete" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1158,7 +1158,7 @@ deleteObjectTagging req =
                     (Codec.decoder deleteObjectTaggingOutputCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.DELETE "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.DELETE "/{Bucket}/{Key+}?tagging" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1173,7 +1173,7 @@ deleteObject req =
                 "DeleteObject"
                 (AWS.Core.Decode.ResultDecoder "DeleteObjectOutput" (Codec.decoder deleteObjectOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.DELETE "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.DELETE "/{Bucket}/{Key+}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1186,7 +1186,7 @@ deleteBucketWebsite req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "DeleteBucketWebsite" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.DELETE "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.DELETE "/{Bucket}?website" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1199,7 +1199,7 @@ deleteBucketTagging req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "DeleteBucketTagging" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.DELETE "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.DELETE "/{Bucket}?tagging" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1212,7 +1212,7 @@ deleteBucketReplication req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "DeleteBucketReplication" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.DELETE "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.DELETE "/{Bucket}?replication" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1225,7 +1225,7 @@ deleteBucketPolicy req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "DeleteBucketPolicy" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.DELETE "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.DELETE "/{Bucket}?policy" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1239,7 +1239,7 @@ deleteBucketMetricsConfiguration req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "DeleteBucketMetricsConfiguration" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.DELETE "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.DELETE "/{Bucket}?metrics" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1252,7 +1252,7 @@ deleteBucketLifecycle req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "DeleteBucketLifecycle" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.DELETE "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.DELETE "/{Bucket}?lifecycle" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1266,7 +1266,7 @@ deleteBucketInventoryConfiguration req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "DeleteBucketInventoryConfiguration" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.DELETE "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.DELETE "/{Bucket}?inventory" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1279,7 +1279,7 @@ deleteBucketEncryption req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "DeleteBucketEncryption" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.DELETE "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.DELETE "/{Bucket}?encryption" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1292,7 +1292,7 @@ deleteBucketCors req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "DeleteBucketCors" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.DELETE "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.DELETE "/{Bucket}?cors" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1306,7 +1306,7 @@ deleteBucketAnalyticsConfiguration req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "DeleteBucketAnalyticsConfiguration" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.DELETE "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.DELETE "/{Bucket}?analytics" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1319,7 +1319,7 @@ deleteBucket req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "DeleteBucket" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.DELETE "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.DELETE "/{Bucket}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1338,7 +1338,7 @@ createMultipartUpload req =
                     (Codec.decoder createMultipartUploadOutputCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/{Bucket}/{Key+}?uploads" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1353,7 +1353,7 @@ createBucket req =
                 "CreateBucket"
                 (AWS.Core.Decode.ResultDecoder "CreateBucketOutput" (Codec.decoder createBucketOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/{Bucket}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1368,7 +1368,7 @@ copyObject req =
                 "CopyObject"
                 (AWS.Core.Decode.ResultDecoder "CopyObjectOutput" (Codec.decoder copyObjectOutputCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/{Bucket}/{Key+}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1388,7 +1388,7 @@ completeMultipartUpload req =
                     (Codec.decoder completeMultipartUploadOutputCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/{Bucket}/{Key+}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1407,7 +1407,7 @@ abortMultipartUpload req =
                     (Codec.decoder abortMultipartUploadOutputCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.DELETE "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.DELETE "/{Bucket}/{Key+}" jsonBody wrappedDecoder
 
 
 type alias AbortDate =

@@ -30,7 +30,7 @@ updateJobQueue req =
                 "UpdateJobQueue"
                 (AWS.Core.Decode.ResultDecoder "UpdateJobQueueResponse" (Codec.decoder updateJobQueueResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/v1/updatejobqueue" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -50,7 +50,7 @@ updateComputeEnvironment req =
                     (Codec.decoder updateComputeEnvironmentResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/v1/updatecomputeenvironment" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -65,7 +65,7 @@ terminateJob req =
                 "TerminateJob"
                 (AWS.Core.Decode.ResultDecoder "TerminateJobResponse" (Codec.decoder terminateJobResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/v1/terminatejob" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -80,7 +80,7 @@ submitJob req =
                 "SubmitJob"
                 (AWS.Core.Decode.ResultDecoder "SubmitJobResponse" (Codec.decoder submitJobResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/v1/submitjob" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -100,7 +100,7 @@ registerJobDefinition req =
                     (Codec.decoder registerJobDefinitionResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/v1/registerjobdefinition" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -115,7 +115,7 @@ listJobs req =
                 "ListJobs"
                 (AWS.Core.Decode.ResultDecoder "ListJobsResponse" (Codec.decoder listJobsResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/v1/listjobs" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -130,7 +130,7 @@ describeJobs req =
                 "DescribeJobs"
                 (AWS.Core.Decode.ResultDecoder "DescribeJobsResponse" (Codec.decoder describeJobsResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/v1/describejobs" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -149,7 +149,7 @@ describeJobQueues req =
                     (Codec.decoder describeJobQueuesResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/v1/describejobqueues" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -169,7 +169,7 @@ describeJobDefinitions req =
                     (Codec.decoder describeJobDefinitionsResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/v1/describejobdefinitions" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -189,7 +189,7 @@ describeComputeEnvironments req =
                     (Codec.decoder describeComputeEnvironmentsResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/v1/describecomputeenvironments" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -209,7 +209,7 @@ deregisterJobDefinition req =
                     (Codec.decoder deregisterJobDefinitionResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/v1/deregisterjobdefinition" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -224,7 +224,7 @@ deleteJobQueue req =
                 "DeleteJobQueue"
                 (AWS.Core.Decode.ResultDecoder "DeleteJobQueueResponse" (Codec.decoder deleteJobQueueResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/v1/deletejobqueue" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -244,7 +244,7 @@ deleteComputeEnvironment req =
                     (Codec.decoder deleteComputeEnvironmentResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/v1/deletecomputeenvironment" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -259,7 +259,7 @@ createJobQueue req =
                 "CreateJobQueue"
                 (AWS.Core.Decode.ResultDecoder "CreateJobQueueResponse" (Codec.decoder createJobQueueResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/v1/createjobqueue" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -279,7 +279,7 @@ createComputeEnvironment req =
                     (Codec.decoder createComputeEnvironmentResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/v1/createcomputeenvironment" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -294,7 +294,7 @@ cancelJob req =
                 "CancelJob"
                 (AWS.Core.Decode.ResultDecoder "CancelJobResponse" (Codec.decoder cancelJobResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/v1/canceljob" jsonBody wrappedDecoder
 
 
 type ArrayJobDependency

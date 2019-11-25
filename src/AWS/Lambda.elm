@@ -35,7 +35,7 @@ updateFunctionConfiguration req =
                 "UpdateFunctionConfiguration"
                 (AWS.Core.Decode.ResultDecoder "FunctionConfiguration" (Codec.decoder functionConfigurationCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/2015-03-31/functions/{FunctionName}/configuration" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -51,7 +51,7 @@ updateFunctionCode req =
                 "UpdateFunctionCode"
                 (AWS.Core.Decode.ResultDecoder "FunctionConfiguration" (Codec.decoder functionConfigurationCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/2015-03-31/functions/{FunctionName}/code" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -71,7 +71,7 @@ updateEventSourceMapping req =
                     (Codec.decoder eventSourceMappingConfigurationCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/2015-03-31/event-source-mappings/{UUID}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -86,7 +86,11 @@ updateAlias req =
                 "UpdateAlias"
                 (AWS.Core.Decode.ResultDecoder "AliasConfiguration" (Codec.decoder aliasConfigurationCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request
+        AWS.Core.Http.PUT
+        "/2015-03-31/functions/{FunctionName}/aliases/{Name}"
+        jsonBody
+        wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -99,7 +103,7 @@ untagResource req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "UntagResource" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.DELETE "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.DELETE "/2017-03-31/tags/{ARN}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -112,7 +116,7 @@ tagResource req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "TagResource" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/2017-03-31/tags/{ARN}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -125,7 +129,11 @@ removePermission req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "RemovePermission" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.DELETE "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request
+        AWS.Core.Http.DELETE
+        "/2015-03-31/functions/{FunctionName}/policy/{StatementId}"
+        jsonBody
+        wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -139,7 +147,11 @@ removeLayerVersionPermission req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "RemoveLayerVersionPermission" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.DELETE "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request
+        AWS.Core.Http.DELETE
+        "/2018-10-31/layers/{LayerName}/versions/{VersionNumber}/policy/{StatementId}"
+        jsonBody
+        wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -155,7 +167,7 @@ putFunctionConcurrency req =
                 "PutFunctionConcurrency"
                 (AWS.Core.Decode.ResultDecoder "Concurrency" (Codec.decoder concurrencyCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.PUT "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.PUT "/2017-10-31/functions/{FunctionName}/concurrency" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -170,7 +182,7 @@ publishVersion req =
                 "PublishVersion"
                 (AWS.Core.Decode.ResultDecoder "FunctionConfiguration" (Codec.decoder functionConfigurationCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/2015-03-31/functions/{FunctionName}/versions" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -189,7 +201,7 @@ publishLayerVersion req =
                     (Codec.decoder publishLayerVersionResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/2018-10-31/layers/{LayerName}/versions" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -209,7 +221,7 @@ listVersionsByFunction req =
                     (Codec.decoder listVersionsByFunctionResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2015-03-31/functions/{FunctionName}/versions" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -224,7 +236,7 @@ listTags req =
                 "ListTags"
                 (AWS.Core.Decode.ResultDecoder "ListTagsResponse" (Codec.decoder listTagsResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2017-03-31/tags/{ARN}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -239,7 +251,7 @@ listLayers req =
                 "ListLayers"
                 (AWS.Core.Decode.ResultDecoder "ListLayersResponse" (Codec.decoder listLayersResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2018-10-31/layers" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -258,7 +270,7 @@ listLayerVersions req =
                     (Codec.decoder listLayerVersionsResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2018-10-31/layers/{LayerName}/versions" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -273,7 +285,7 @@ listFunctions req =
                 "ListFunctions"
                 (AWS.Core.Decode.ResultDecoder "ListFunctionsResponse" (Codec.decoder listFunctionsResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2015-03-31/functions/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -293,7 +305,7 @@ listEventSourceMappings req =
                     (Codec.decoder listEventSourceMappingsResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2015-03-31/event-source-mappings/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -308,7 +320,7 @@ listAliases req =
                 "ListAliases"
                 (AWS.Core.Decode.ResultDecoder "ListAliasesResponse" (Codec.decoder listAliasesResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2015-03-31/functions/{FunctionName}/aliases" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -323,7 +335,11 @@ invokeAsync req =
                 "InvokeAsync"
                 (AWS.Core.Decode.ResultDecoder "InvokeAsyncResponse" (Codec.decoder invokeAsyncResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request
+        AWS.Core.Http.POST
+        "/2014-11-13/functions/{FunctionName}/invoke-async/"
+        jsonBody
+        wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -338,7 +354,7 @@ invoke req =
                 "Invoke"
                 (AWS.Core.Decode.ResultDecoder "InvocationResponse" (Codec.decoder invocationResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/2015-03-31/functions/{FunctionName}/invocations" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -353,7 +369,7 @@ getPolicy req =
                 "GetPolicy"
                 (AWS.Core.Decode.ResultDecoder "GetPolicyResponse" (Codec.decoder getPolicyResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2015-03-31/functions/{FunctionName}/policy" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -373,7 +389,11 @@ getLayerVersionPolicy req =
                     (Codec.decoder getLayerVersionPolicyResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request
+        AWS.Core.Http.GET
+        "/2018-10-31/layers/{LayerName}/versions/{VersionNumber}/policy"
+        jsonBody
+        wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -389,7 +409,7 @@ getLayerVersionByArn req =
                 "GetLayerVersionByArn"
                 (AWS.Core.Decode.ResultDecoder "GetLayerVersionResponse" (Codec.decoder getLayerVersionResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2018-10-31/layers?find=LayerVersion" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -405,7 +425,11 @@ getLayerVersion req =
                 "GetLayerVersion"
                 (AWS.Core.Decode.ResultDecoder "GetLayerVersionResponse" (Codec.decoder getLayerVersionResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request
+        AWS.Core.Http.GET
+        "/2018-10-31/layers/{LayerName}/versions/{VersionNumber}"
+        jsonBody
+        wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -421,7 +445,7 @@ getFunctionConfiguration req =
                 "GetFunctionConfiguration"
                 (AWS.Core.Decode.ResultDecoder "FunctionConfiguration" (Codec.decoder functionConfigurationCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2015-03-31/functions/{FunctionName}/configuration" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -436,7 +460,7 @@ getFunction req =
                 "GetFunction"
                 (AWS.Core.Decode.ResultDecoder "GetFunctionResponse" (Codec.decoder getFunctionResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2015-03-31/functions/{FunctionName}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -456,7 +480,7 @@ getEventSourceMapping req =
                     (Codec.decoder eventSourceMappingConfigurationCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2015-03-31/event-source-mappings/{UUID}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -471,7 +495,11 @@ getAlias req =
                 "GetAlias"
                 (AWS.Core.Decode.ResultDecoder "AliasConfiguration" (Codec.decoder aliasConfigurationCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request
+        AWS.Core.Http.GET
+        "/2015-03-31/functions/{FunctionName}/aliases/{Name}"
+        jsonBody
+        wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -490,7 +518,7 @@ getAccountSettings req =
                     (Codec.decoder getAccountSettingsResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2016-08-19/account-settings/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -503,7 +531,11 @@ deleteLayerVersion req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "DeleteLayerVersion" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.DELETE "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request
+        AWS.Core.Http.DELETE
+        "/2018-10-31/layers/{LayerName}/versions/{VersionNumber}"
+        jsonBody
+        wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -517,7 +549,11 @@ deleteFunctionConcurrency req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "DeleteFunctionConcurrency" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.DELETE "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request
+        AWS.Core.Http.DELETE
+        "/2017-10-31/functions/{FunctionName}/concurrency"
+        jsonBody
+        wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -530,7 +566,7 @@ deleteFunction req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "DeleteFunction" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.DELETE "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.DELETE "/2015-03-31/functions/{FunctionName}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -550,7 +586,7 @@ deleteEventSourceMapping req =
                     (Codec.decoder eventSourceMappingConfigurationCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.DELETE "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.DELETE "/2015-03-31/event-source-mappings/{UUID}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -563,7 +599,11 @@ deleteAlias req =
         wrappedDecoder =
             AWS.Core.Decode.responseWrapperDecoder "DeleteAlias" (AWS.Core.Decode.FixedResult ())
     in
-    AWS.Core.Http.request AWS.Core.Http.DELETE "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request
+        AWS.Core.Http.DELETE
+        "/2015-03-31/functions/{FunctionName}/aliases/{Name}"
+        jsonBody
+        wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -578,7 +618,7 @@ createFunction req =
                 "CreateFunction"
                 (AWS.Core.Decode.ResultDecoder "FunctionConfiguration" (Codec.decoder functionConfigurationCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/2015-03-31/functions" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -598,7 +638,7 @@ createEventSourceMapping req =
                     (Codec.decoder eventSourceMappingConfigurationCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/2015-03-31/event-source-mappings/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -613,7 +653,7 @@ createAlias req =
                 "CreateAlias"
                 (AWS.Core.Decode.ResultDecoder "AliasConfiguration" (Codec.decoder aliasConfigurationCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/2015-03-31/functions/{FunctionName}/aliases" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -628,7 +668,7 @@ addPermission req =
                 "AddPermission"
                 (AWS.Core.Decode.ResultDecoder "AddPermissionResponse" (Codec.decoder addPermissionResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/2015-03-31/functions/{FunctionName}/policy" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -648,7 +688,11 @@ addLayerVersionPermission req =
                     (Codec.decoder addLayerVersionPermissionResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request
+        AWS.Core.Http.POST
+        "/2018-10-31/layers/{LayerName}/versions/{VersionNumber}/policy"
+        jsonBody
+        wrappedDecoder
 
 
 type alias AccountLimit =

@@ -37,7 +37,7 @@ updateTrafficPolicyInstance req =
                     (Codec.decoder updateTrafficPolicyInstanceResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/2013-04-01/trafficpolicyinstance/{Id}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -57,7 +57,7 @@ updateTrafficPolicyComment req =
                     (Codec.decoder updateTrafficPolicyCommentResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/2013-04-01/trafficpolicy/{Id}/{Version}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -77,7 +77,7 @@ updateHostedZoneComment req =
                     (Codec.decoder updateHostedZoneCommentResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/2013-04-01/hostedzone/{Id}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -96,7 +96,7 @@ updateHealthCheck req =
                     (Codec.decoder updateHealthCheckResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/2013-04-01/healthcheck/{HealthCheckId}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -111,7 +111,7 @@ testDnsanswer req =
                 "TestDnsanswer"
                 (AWS.Core.Decode.ResultDecoder "TestDNSAnswerResponse" (Codec.decoder testDnsanswerResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2013-04-01/testdnsanswer" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -131,7 +131,11 @@ listVpcassociationAuthorizations req =
                     (Codec.decoder listVpcassociationAuthorizationsResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request
+        AWS.Core.Http.GET
+        "/2013-04-01/hostedzone/{Id}/authorizevpcassociation"
+        jsonBody
+        wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -151,7 +155,7 @@ listTrafficPolicyVersions req =
                     (Codec.decoder listTrafficPolicyVersionsResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2013-04-01/trafficpolicies/{Id}/versions" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -171,7 +175,7 @@ listTrafficPolicyInstancesByPolicy req =
                     (Codec.decoder listTrafficPolicyInstancesByPolicyResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2013-04-01/trafficpolicyinstances/trafficpolicy" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -191,7 +195,7 @@ listTrafficPolicyInstancesByHostedZone req =
                     (Codec.decoder listTrafficPolicyInstancesByHostedZoneResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2013-04-01/trafficpolicyinstances/hostedzone" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -211,7 +215,7 @@ listTrafficPolicyInstances req =
                     (Codec.decoder listTrafficPolicyInstancesResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2013-04-01/trafficpolicyinstances" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -230,7 +234,7 @@ listTrafficPolicies req =
                     (Codec.decoder listTrafficPoliciesResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2013-04-01/trafficpolicies" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -249,7 +253,7 @@ listTagsForResources req =
                     (Codec.decoder listTagsForResourcesResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/2013-04-01/tags/{ResourceType}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -268,7 +272,7 @@ listTagsForResource req =
                     (Codec.decoder listTagsForResourceResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2013-04-01/tags/{ResourceType}/{ResourceId}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -288,7 +292,7 @@ listReusableDelegationSets req =
                     (Codec.decoder listReusableDelegationSetsResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2013-04-01/delegationset" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -308,7 +312,7 @@ listResourceRecordSets req =
                     (Codec.decoder listResourceRecordSetsResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2013-04-01/hostedzone/{Id}/rrset" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -328,7 +332,7 @@ listQueryLoggingConfigs req =
                     (Codec.decoder listQueryLoggingConfigsResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2013-04-01/queryloggingconfig" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -348,7 +352,7 @@ listHostedZonesByName req =
                     (Codec.decoder listHostedZonesByNameResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2013-04-01/hostedzonesbyname" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -364,7 +368,7 @@ listHostedZones req =
                 "ListHostedZones"
                 (AWS.Core.Decode.ResultDecoder "ListHostedZonesResponse" (Codec.decoder listHostedZonesResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2013-04-01/hostedzone" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -380,7 +384,7 @@ listHealthChecks req =
                 "ListHealthChecks"
                 (AWS.Core.Decode.ResultDecoder "ListHealthChecksResponse" (Codec.decoder listHealthChecksResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2013-04-01/healthcheck" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -396,7 +400,7 @@ listGeoLocations req =
                 "ListGeoLocations"
                 (AWS.Core.Decode.ResultDecoder "ListGeoLocationsResponse" (Codec.decoder listGeoLocationsResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2013-04-01/geolocations" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -416,7 +420,7 @@ getTrafficPolicyInstanceCount req =
                     (Codec.decoder getTrafficPolicyInstanceCountResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2013-04-01/trafficpolicyinstancecount" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -436,7 +440,7 @@ getTrafficPolicyInstance req =
                     (Codec.decoder getTrafficPolicyInstanceResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2013-04-01/trafficpolicyinstance/{Id}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -452,7 +456,7 @@ getTrafficPolicy req =
                 "GetTrafficPolicy"
                 (AWS.Core.Decode.ResultDecoder "GetTrafficPolicyResponse" (Codec.decoder getTrafficPolicyResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2013-04-01/trafficpolicy/{Id}/{Version}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -472,7 +476,7 @@ getReusableDelegationSetLimit req =
                     (Codec.decoder getReusableDelegationSetLimitResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2013-04-01/reusabledelegationsetlimit/{Id}/{Type}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -492,7 +496,7 @@ getReusableDelegationSet req =
                     (Codec.decoder getReusableDelegationSetResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2013-04-01/delegationset/{Id}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -512,7 +516,7 @@ getQueryLoggingConfig req =
                     (Codec.decoder getQueryLoggingConfigResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2013-04-01/queryloggingconfig/{Id}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -531,7 +535,7 @@ getHostedZoneLimit req =
                     (Codec.decoder getHostedZoneLimitResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2013-04-01/hostedzonelimit/{Id}/{Type}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -550,7 +554,7 @@ getHostedZoneCount req =
                     (Codec.decoder getHostedZoneCountResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2013-04-01/hostedzonecount" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -565,7 +569,7 @@ getHostedZone req =
                 "GetHostedZone"
                 (AWS.Core.Decode.ResultDecoder "GetHostedZoneResponse" (Codec.decoder getHostedZoneResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2013-04-01/hostedzone/{Id}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -584,7 +588,7 @@ getHealthCheckStatus req =
                     (Codec.decoder getHealthCheckStatusResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2013-04-01/healthcheck/{HealthCheckId}/status" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -604,7 +608,11 @@ getHealthCheckLastFailureReason req =
                     (Codec.decoder getHealthCheckLastFailureReasonResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request
+        AWS.Core.Http.GET
+        "/2013-04-01/healthcheck/{HealthCheckId}/lastfailurereason"
+        jsonBody
+        wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -623,7 +631,7 @@ getHealthCheckCount req =
                     (Codec.decoder getHealthCheckCountResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2013-04-01/healthcheckcount" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -638,7 +646,7 @@ getHealthCheck req =
                 "GetHealthCheck"
                 (AWS.Core.Decode.ResultDecoder "GetHealthCheckResponse" (Codec.decoder getHealthCheckResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2013-04-01/healthcheck/{HealthCheckId}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -653,7 +661,7 @@ getGeoLocation req =
                 "GetGeoLocation"
                 (AWS.Core.Decode.ResultDecoder "GetGeoLocationResponse" (Codec.decoder getGeoLocationResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2013-04-01/geolocation" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -672,7 +680,7 @@ getCheckerIpRanges req =
                     (Codec.decoder getCheckerIpRangesResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2013-04-01/checkeripranges" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -687,7 +695,7 @@ getChange req =
                 "GetChange"
                 (AWS.Core.Decode.ResultDecoder "GetChangeResponse" (Codec.decoder getChangeResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2013-04-01/change/{Id}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -703,7 +711,7 @@ getAccountLimit req =
                 "GetAccountLimit"
                 (AWS.Core.Decode.ResultDecoder "GetAccountLimitResponse" (Codec.decoder getAccountLimitResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.GET "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.GET "/2013-04-01/accountlimit/{Type}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -723,7 +731,7 @@ disassociateVpcfromHostedZone req =
                     (Codec.decoder disassociateVpcfromHostedZoneResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/2013-04-01/hostedzone/{Id}/disassociatevpc" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -743,7 +751,11 @@ deleteVpcassociationAuthorization req =
                     (Codec.decoder deleteVpcassociationAuthorizationResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request
+        AWS.Core.Http.POST
+        "/2013-04-01/hostedzone/{Id}/deauthorizevpcassociation"
+        jsonBody
+        wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -763,7 +775,7 @@ deleteTrafficPolicyInstance req =
                     (Codec.decoder deleteTrafficPolicyInstanceResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.DELETE "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.DELETE "/2013-04-01/trafficpolicyinstance/{Id}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -782,7 +794,7 @@ deleteTrafficPolicy req =
                     (Codec.decoder deleteTrafficPolicyResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.DELETE "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.DELETE "/2013-04-01/trafficpolicy/{Id}/{Version}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -802,7 +814,7 @@ deleteReusableDelegationSet req =
                     (Codec.decoder deleteReusableDelegationSetResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.DELETE "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.DELETE "/2013-04-01/delegationset/{Id}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -822,7 +834,7 @@ deleteQueryLoggingConfig req =
                     (Codec.decoder deleteQueryLoggingConfigResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.DELETE "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.DELETE "/2013-04-01/queryloggingconfig/{Id}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -838,7 +850,7 @@ deleteHostedZone req =
                 "DeleteHostedZone"
                 (AWS.Core.Decode.ResultDecoder "DeleteHostedZoneResponse" (Codec.decoder deleteHostedZoneResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.DELETE "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.DELETE "/2013-04-01/hostedzone/{Id}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -857,7 +869,7 @@ deleteHealthCheck req =
                     (Codec.decoder deleteHealthCheckResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.DELETE "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.DELETE "/2013-04-01/healthcheck/{HealthCheckId}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -877,7 +889,11 @@ createVpcassociationAuthorization req =
                     (Codec.decoder createVpcassociationAuthorizationResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request
+        AWS.Core.Http.POST
+        "/2013-04-01/hostedzone/{Id}/authorizevpcassociation"
+        jsonBody
+        wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -897,7 +913,7 @@ createTrafficPolicyVersion req =
                     (Codec.decoder createTrafficPolicyVersionResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/2013-04-01/trafficpolicy/{Id}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -917,7 +933,7 @@ createTrafficPolicyInstance req =
                     (Codec.decoder createTrafficPolicyInstanceResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/2013-04-01/trafficpolicyinstance" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -936,7 +952,7 @@ createTrafficPolicy req =
                     (Codec.decoder createTrafficPolicyResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/2013-04-01/trafficpolicy" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -956,7 +972,7 @@ createReusableDelegationSet req =
                     (Codec.decoder createReusableDelegationSetResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/2013-04-01/delegationset" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -976,7 +992,7 @@ createQueryLoggingConfig req =
                     (Codec.decoder createQueryLoggingConfigResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/2013-04-01/queryloggingconfig" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -992,7 +1008,7 @@ createHostedZone req =
                 "CreateHostedZone"
                 (AWS.Core.Decode.ResultDecoder "CreateHostedZoneResponse" (Codec.decoder createHostedZoneResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/2013-04-01/hostedzone" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1011,7 +1027,7 @@ createHealthCheck req =
                     (Codec.decoder createHealthCheckResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/2013-04-01/healthcheck" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1031,7 +1047,7 @@ changeTagsForResource req =
                     (Codec.decoder changeTagsForResourceResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/2013-04-01/tags/{ResourceType}/{ResourceId}" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1051,7 +1067,7 @@ changeResourceRecordSets req =
                     (Codec.decoder changeResourceRecordSetsResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/2013-04-01/hostedzone/{Id}/rrset/" jsonBody wrappedDecoder
 
 
 {-| AWS Endpoint. -}
@@ -1071,7 +1087,7 @@ associateVpcwithHostedZone req =
                     (Codec.decoder associateVpcwithHostedZoneResponseCodec)
                 )
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request AWS.Core.Http.POST "/2013-04-01/hostedzone/{Id}/associatevpc" jsonBody wrappedDecoder
 
 
 type alias AccountLimit =

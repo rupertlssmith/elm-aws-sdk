@@ -5,18 +5,7 @@
   "license": "Apache-2.0",
   "version": "1.0.0",
   "exposed-modules": [
-    "AWS.Athena",
-    "AWS.Batch",
-    "AWS.CloudFormation",
-    "AWS.CloudTrail",
-    "AWS.CognitoIdentity",
-    "AWS.DynamoDb",
-    "AWS.Ec2",
-    "AWS.Iam",
-    "AWS.Lambda",
-    "AWS.Rds",
-    "AWS.Route53",
-    "AWS.S3"
+    "AWS.CognitoIdentity"
   ],
   "elm-version": "0.19.0 <= v < 0.20.0",
   "dependencies": {
