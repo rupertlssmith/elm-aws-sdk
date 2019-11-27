@@ -1,6 +1,6 @@
 port module Routing.API exposing (Conn, Route(..), main, requestPort, responsePort, router)
 
-import AWS.CognitoIdentity
+import AWS.CognitoIdentityProvider
 import Serverless
 import Serverless.Conn exposing (method, respond, route, textBody)
 import Serverless.Conn.Request exposing (Method(..))
