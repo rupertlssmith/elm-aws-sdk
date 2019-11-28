@@ -11,7 +11,10 @@ provider:
         - cognito-sync:*,
         - iam:ListRoles,
         - iam:ListOpenIdConnectProviders,
-        - sns:ListPlatformApplications
+        - sns:ListPlatformApplications,
+        - logs:CreateLogGroup,
+        - logs:CreateLogStream,
+        - logs:PutLogEvents
       Resource: '*'
 
 plugins:
