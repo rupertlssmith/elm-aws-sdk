@@ -10,7 +10,7 @@ import Refined
 import Serverless
 import Serverless.Conn exposing (jsonBody, method, respond, route, textBody)
 import Serverless.Conn.Request exposing (Method(..))
-import Serverless.Conn.Response exposing (Response, Status)
+import Serverless.Conn.Response exposing (Status)
 import Task
 import Task.Extra
 import Url
@@ -136,7 +136,6 @@ update msg conn =
 -- HTTP Helpers
 
 
-httpErrorToResponse : Error -> ( Status, Response )
 httpErrorToResponse err =
     case err of
         BadUrl url ->

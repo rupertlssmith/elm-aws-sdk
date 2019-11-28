@@ -1,4 +1,4 @@
-module AWS.CognitoIdentityProvider exposing (service)
+module AWS.CognitoIdentityProvider exposing (service, ListUserPoolsResponse, listUserPools, paginationKeyType, poolQueryLimitType)
 
 import AWS.Core.Decode
 import AWS.Core.Http
@@ -1878,8 +1878,8 @@ adminCreateUserUnusedAccountValidityDaysType : Refined Int AdminCreateUserUnused
 adminCreateUserUnusedAccountValidityDaysType =
     let
         guardFn val =
-            Refined.gt 0 val
-                |> Result.andThen (Refined.lt 365)
+            Refined.gte 0 val
+                |> Result.andThen (Refined.lte 365)
                 |> Result.map AdminCreateUserUnusedAccountValidityDaysType
 
         unboxFn (AdminCreateUserUnusedAccountValidityDaysType val) =
@@ -3778,7 +3778,7 @@ listProvidersLimitType : Refined Int ListProvidersLimitType IntError
 listProvidersLimitType =
     let
         guardFn val =
-            Refined.gt 0 val |> Result.andThen (Refined.lt 60) |> Result.map ListProvidersLimitType
+            Refined.gte 0 val |> Result.andThen (Refined.lte 60) |> Result.map ListProvidersLimitType
 
         unboxFn (ListProvidersLimitType val) =
             val
@@ -3794,7 +3794,7 @@ listResourceServersLimitType : Refined Int ListResourceServersLimitType IntError
 listResourceServersLimitType =
     let
         guardFn val =
-            Refined.gt 1 val |> Result.andThen (Refined.lt 50) |> Result.map ListResourceServersLimitType
+            Refined.gte 1 val |> Result.andThen (Refined.lte 50) |> Result.map ListResourceServersLimitType
 
         unboxFn (ListResourceServersLimitType val) =
             val
@@ -3997,7 +3997,7 @@ passwordPolicyMinLengthType : Refined Int PasswordPolicyMinLengthType IntError
 passwordPolicyMinLengthType =
     let
         guardFn val =
-            Refined.gt 6 val |> Result.andThen (Refined.lt 99) |> Result.map PasswordPolicyMinLengthType
+            Refined.gte 6 val |> Result.andThen (Refined.lte 99) |> Result.map PasswordPolicyMinLengthType
 
         unboxFn (PasswordPolicyMinLengthType val) =
             val
@@ -4042,7 +4042,7 @@ poolQueryLimitType : Refined Int PoolQueryLimitType IntError
 poolQueryLimitType =
     let
         guardFn val =
-            Refined.gt 1 val |> Result.andThen (Refined.lt 60) |> Result.map PoolQueryLimitType
+            Refined.gte 1 val |> Result.andThen (Refined.lte 60) |> Result.map PoolQueryLimitType
 
         unboxFn (PoolQueryLimitType val) =
             val
@@ -4074,7 +4074,7 @@ precedenceType : Refined Int PrecedenceType IntError
 precedenceType =
     let
         guardFn val =
-            Refined.gt 0 val |> Result.map PrecedenceType
+            Refined.gte 0 val |> Result.map PrecedenceType
 
         unboxFn (PrecedenceType val) =
             val
@@ -4148,7 +4148,7 @@ queryLimit : Refined Int QueryLimit IntError
 queryLimit =
     let
         guardFn val =
-            Refined.gt 1 val |> Result.andThen (Refined.lt 60) |> Result.map QueryLimit
+            Refined.gte 1 val |> Result.andThen (Refined.lte 60) |> Result.map QueryLimit
 
         unboxFn (QueryLimit val) =
             val
@@ -4164,7 +4164,7 @@ queryLimitType : Refined Int QueryLimitType IntError
 queryLimitType =
     let
         guardFn val =
-            Refined.gt 0 val |> Result.andThen (Refined.lt 60) |> Result.map QueryLimitType
+            Refined.gte 0 val |> Result.andThen (Refined.lte 60) |> Result.map QueryLimitType
 
         unboxFn (QueryLimitType val) =
             val
@@ -4199,7 +4199,7 @@ refreshTokenValidityType : Refined Int RefreshTokenValidityType IntError
 refreshTokenValidityType =
     let
         guardFn val =
-            Refined.gt 0 val |> Result.andThen (Refined.lt 3650) |> Result.map RefreshTokenValidityType
+            Refined.gte 0 val |> Result.andThen (Refined.lte 3650) |> Result.map RefreshTokenValidityType
 
         unboxFn (RefreshTokenValidityType val) =
             val
@@ -4751,7 +4751,7 @@ temporaryPasswordValidityDaysType : Refined Int TemporaryPasswordValidityDaysTyp
 temporaryPasswordValidityDaysType =
     let
         guardFn val =
-            Refined.gt 0 val |> Result.andThen (Refined.lt 365) |> Result.map TemporaryPasswordValidityDaysType
+            Refined.gte 0 val |> Result.andThen (Refined.lte 365) |> Result.map TemporaryPasswordValidityDaysType
 
         unboxFn (TemporaryPasswordValidityDaysType val) =
             val
