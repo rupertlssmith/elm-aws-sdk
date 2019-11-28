@@ -3,6 +3,16 @@ service: elm-serverless-demo
 provider:
   name: aws
   runtime: nodejs8.10
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - cognito-identity:*,
+        - cognito-idp:*,
+        - cognito-sync:*,
+        - iam:ListRoles,
+        - iam:ListOpenIdConnectProviders,
+        - sns:ListPlatformApplications
+      Resource: '*'
 
 plugins:
   - serverless-webpack
@@ -22,5 +32,5 @@ functions:
           method: ANY
       - http:
           integration: lambda-proxy
-          path: /routing/{proxy+} # Lambda Proxy Integration
+          path: /routing/{proxy+}
           method: ANY
