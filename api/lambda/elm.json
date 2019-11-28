@@ -13,9 +13,10 @@
             "elm/random": "1.0.0",
             "elm/url": "1.0.0",
             "miniBill/elm-codec": "1.2.0",
-            "the-sett/elm-aws-core": "2.0.0",
-            "the-sett/elm-refine": "1.1.0",
-            "the-sett/elm-serverless": "2.0.1"
+            "the-sett/elm-aws-core": "2.0.1",
+            "the-sett/elm-refine": "1.2.0",
+            "the-sett/elm-serverless": "2.0.1",
+            "the-sett/elm-update-helper": "1.4.1"
         },
         "indirect": {
             "elm/bytes": "1.0.8",
