@@ -13,14 +13,14 @@ import Refined exposing (IntError, Refined, StringError)
 
 
 {-| Configuration for this service. -}
-service : AWS.Core.Service.Service
+service : AWS.Core.Service.Region -> AWS.Core.Service.Service
 service =
     let
         optionsFn =
             AWS.Core.Service.setJsonVersion "1.1"
                 >> AWS.Core.Service.setTargetPrefix "AWSCognitoIdentityProviderService"
     in
-    AWS.Core.Service.defineGlobal "cognito-idp" "2016-04-18" AWS.Core.Service.JSON AWS.Core.Service.SignV4 optionsFn
+    AWS.Core.Service.defineRegional "cognito-idp" "2016-04-18" AWS.Core.Service.JSON AWS.Core.Service.SignV4 optionsFn
 
 
 {-| AWS Endpoint. -}

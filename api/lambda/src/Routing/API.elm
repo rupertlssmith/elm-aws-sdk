@@ -98,7 +98,7 @@ listUserPools =
                 { nextToken = nextToken
                 , maxResults = maxResults
                 }
-                |> AWS.Core.Http.send CIP.service credentials
+                |> AWS.Core.Http.send (CIP.service "us-east-1") credentials
                 |> Task.attempt ListUserPoolsResponse
 
         ( Err err, _ ) ->
@@ -148,7 +148,7 @@ httpErrorToResponse err =
             ( 500, textBody "Network Error" )
 
         BadStatus status ->
-            ( status, textBody "Bad Status" )
+            ( status, "Bad Status " ++ String.fromInt status |> textBody )
 
         BadBody val ->
             ( 500, textBody val )
