@@ -4,6 +4,7 @@ import AWS.CognitoIdentityProvider as CIP
 import AWS.Core.Credentials
 import AWS.Core.Decode
 import AWS.Core.Http
+import Codec exposing (Codec)
 import Http exposing (Error(..))
 import Json.Encode as Encode
 import Refined
@@ -21,10 +22,10 @@ import Url.Parser exposing ((</>), map, oneOf, s, string, top)
 -- Serverless program
 
 
-main : Serverless.Program () () Route Msg
+main : Serverless.Program Config () Route Msg
 main =
     Serverless.httpApi
-        { configDecoder = Serverless.noConfig
+        { configDecoder = Codec.decoder configCodec
         , initialModel = ()
         , update = update
         , requestPort = requestPort
@@ -36,13 +37,33 @@ main =
 
 
 type alias Conn =
-    Serverless.Conn.Conn () () Route
+    Serverless.Conn.Conn Config () Route
 
 
 port requestPort : Serverless.RequestPort msg
 
 
 port responsePort : Serverless.ResponsePort msg
+
+
+
+-- Configuration
+
+
+type alias Config =
+    { accessKeyId : String
+    , secretAccessKey : String
+    , awsRegion : String
+    }
+
+
+configCodec : Codec Config
+configCodec =
+    Codec.object Config
+        |> Codec.field "aws_access_key_id" .accessKeyId Codec.string
+        |> Codec.field "aws_secret_access_key" .secretAccessKey Codec.string
+        |> Codec.field "aws_region" .awsRegion Codec.string
+        |> Codec.buildObject
 
 
 
