@@ -1,15 +1,16 @@
 port module Routing.API exposing (Conn, Route(..), main, requestPort, responsePort, router)
 
 import AWS.CognitoIdentityProvider as CIP
-import AWS.Core.Credentials
+import AWS.Core.Credentials exposing (Credentials)
 import AWS.Core.Decode
 import AWS.Core.Http
+import AWS.Core.Service exposing (Service)
 import Codec exposing (Codec)
 import Http exposing (Error(..))
 import Json.Encode as Encode
 import Refined
 import Serverless
-import Serverless.Conn exposing (jsonBody, method, respond, route, textBody)
+import Serverless.Conn exposing (config, jsonBody, method, respond, route, textBody)
 import Serverless.Conn.Request exposing (Method(..))
 import Serverless.Conn.Response exposing (Status)
 import Task
@@ -86,7 +87,7 @@ router : Conn -> ( Conn, Cmd Msg )
 router conn =
     case ( method conn, route conn ) of
         ( GET, ListUserPools ) ->
-            ( conn, listUserPools )
+            ( conn, listUserPools (config conn) )
 
         _ ->
             respond ( 405, textBody "Method not allowed" ) conn
@@ -96,18 +97,20 @@ router conn =
 -- AWS Services
 
 
-credentials =
+credentials : Config -> Credentials
+credentials config =
     AWS.Core.Credentials.fromAccessKeys
-        "keyId"
-        "secret"
+        config.accessKeyId
+        config.secretAccessKey
 
 
-cipService =
-    CIP.service "us-east-1"
+cipService : Config -> Service
+cipService config =
+    CIP.service config.awsRegion
 
 
-listUserPools : Cmd Msg
-listUserPools =
+listUserPools : Config -> Cmd Msg
+listUserPools config =
     let
         nextTokenRes =
             Refined.build CIP.paginationKeyType "paginationKey"
@@ -123,7 +126,7 @@ listUserPools =
                 { nextToken = nextToken
                 , maxResults = maxResults
                 }
-                |> AWS.Core.Http.send cipService credentials
+                |> AWS.Core.Http.send (cipService config) (credentials config)
                 |> Task.attempt ListUserPoolsResponse
 
         ( Err err, _ ) ->
