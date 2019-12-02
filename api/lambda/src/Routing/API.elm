@@ -81,11 +81,15 @@ credentials =
         "secret"
 
 
+cipService =
+    CIP.service "us-east-1"
+
+
 listUserPools : Cmd Msg
 listUserPools =
     let
         nextTokenRes =
-            Refined.build CIP.paginationKeyType "blah"
+            Refined.build CIP.paginationKeyType "paginationKey"
                 |> Result.mapError (Refined.errorToString CIP.paginationKeyType)
 
         maxResultsRes =
@@ -98,7 +102,7 @@ listUserPools =
                 { nextToken = nextToken
                 , maxResults = maxResults
                 }
-                |> AWS.Core.Http.send (CIP.service "us-east-1") credentials
+                |> AWS.Core.Http.send cipService credentials
                 |> Task.attempt ListUserPoolsResponse
 
         ( Err err, _ ) ->
