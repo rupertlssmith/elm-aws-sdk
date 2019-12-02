@@ -37,7 +37,7 @@ listUserPools req =
                 "ListUserPools"
                 (AWS.Core.Decode.ResultDecoder "ListUserPoolsResponse" (Codec.decoder listUserPoolsResponseCodec))
     in
-    AWS.Core.Http.request AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request "ListUserPools" AWS.Core.Http.POST "/" jsonBody wrappedDecoder
 
 
 type alias AwsaccountIdType =
