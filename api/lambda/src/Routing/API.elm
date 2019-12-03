@@ -61,9 +61,9 @@ type alias Config =
 configCodec : Codec Config
 configCodec =
     Codec.object Config
-        |> Codec.field "aws_access_key_id" .accessKeyId Codec.string
-        |> Codec.field "aws_secret_access_key" .secretAccessKey Codec.string
-        |> Codec.field "aws_region" .awsRegion Codec.string
+        |> Codec.field "accessKeyId" .accessKeyId Codec.string
+        |> Codec.field "secretAccessKey" .secretAccessKey Codec.string
+        |> Codec.field "region" .awsRegion Codec.string
         |> Codec.buildObject
 
 

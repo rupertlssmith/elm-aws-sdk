@@ -4,10 +4,10 @@ const rc = require('rc');
 
 const { Elm } = require('./API.elm');
 
-const config = rc('demoConfig', {
-  aws_access_key_id: '',
-  aws_secret_access_key: '',
-  aws_region: 'us-east-1'
+const config = rc('demo', {
+  "accessKeyId": "",
+  "secretAccessKey": "",
+  "region": "us-east-1"
 });
 
 module.exports.handler = elmServerless.httpApi({
