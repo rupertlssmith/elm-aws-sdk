@@ -153,8 +153,8 @@ update msg conn =
                 Err err ->
                     respond (httpErrorToResponse err) conn
 
-                Ok wrapper ->
-                    respond ( 200, jsonBody <| Encode.string "userPools" ) conn
+                Ok response ->
+                    respond ( 200, response |> Codec.encoder CIP.listUserPoolsResponseCodec |> jsonBody ) conn
 
         Error err ->
             respond ( 500, textBody err ) conn

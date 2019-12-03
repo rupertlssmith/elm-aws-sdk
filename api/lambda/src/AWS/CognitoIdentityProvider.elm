@@ -1,4 +1,11 @@
-module AWS.CognitoIdentityProvider exposing (ListUserPoolsResponse, listUserPools, paginationKeyType, poolQueryLimitType, service)
+module AWS.CognitoIdentityProvider exposing
+    ( ListUserPoolsResponse
+    , listUserPools
+    , listUserPoolsResponseCodec
+    , paginationKeyType
+    , poolQueryLimitType
+    , service
+    )
 
 import AWS.Core.Decode
 import AWS.Core.Http
