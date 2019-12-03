@@ -26,18 +26,16 @@ service =
 
 {-| AWS Endpoint.
 -}
-listUserPools : ListUserPoolsRequest -> AWS.Core.Http.Request (AWS.Core.Decode.ResponseWrapper ListUserPoolsResponse)
+listUserPools : ListUserPoolsRequest -> AWS.Core.Http.Request ListUserPoolsResponse
 listUserPools req =
     let
         jsonBody =
             req |> Codec.encoder listUserPoolsRequestCodec |> AWS.Core.Http.jsonBody
 
-        wrappedDecoder =
-            AWS.Core.Decode.responseWrapperDecoder
-                "ListUserPools"
-                (AWS.Core.Decode.ResultDecoder "ListUserPoolsResponse" (Codec.decoder listUserPoolsResponseCodec))
+        decoder =
+            Codec.decoder listUserPoolsResponseCodec
     in
-    AWS.Core.Http.request "ListUserPools" AWS.Core.Http.POST "/" jsonBody wrappedDecoder
+    AWS.Core.Http.request "ListUserPools" AWS.Core.Http.POST "/" jsonBody decoder
 
 
 type alias AwsaccountIdType =
@@ -2106,7 +2104,7 @@ type alias ListUserPoolsRequest =
 
 
 type alias ListUserPoolsResponse =
-    { userPools : UserPoolListType, nextToken : PaginationKeyType }
+    { userPools : UserPoolListType, nextToken : Maybe PaginationKeyType }
 
 
 type alias ListUsersInGroupRequest =
@@ -5089,7 +5087,7 @@ listUserPoolsResponseCodec : Codec ListUserPoolsResponse
 listUserPoolsResponseCodec =
     Codec.object ListUserPoolsResponse
         |> Codec.field "UserPools" .userPools userPoolListTypeCodec
-        |> Codec.field "NextToken" .nextToken paginationKeyTypeCodec
+        |> Codec.optionalField "NextToken" .nextToken paginationKeyTypeCodec
         |> Codec.buildObject
 
 

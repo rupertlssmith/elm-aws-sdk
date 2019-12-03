@@ -141,7 +141,7 @@ listUserPools config =
 
 
 type Msg
-    = ListUserPoolsResponse (Result Http.Error (AWS.Core.Decode.ResponseWrapper CIP.ListUserPoolsResponse))
+    = ListUserPoolsResponse (Result Http.Error CIP.ListUserPoolsResponse)
     | Error String
 
 
