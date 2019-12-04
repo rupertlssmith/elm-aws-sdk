@@ -6,15 +6,26 @@ provider:
   iamRoleStatements:
     - Effect: Allow
       Action:
-        - cognito-identity:*,
-        - cognito-idp:*,
-        - cognito-sync:*,
-        - iam:ListRoles,
-        - iam:ListOpenIdConnectProviders,
-        - sns:ListPlatformApplications,
-        - logs:CreateLogGroup,
-        - logs:CreateLogStream,
+        - logs:CreateLogGroup
+        - logs:CreateLogStream
         - logs:PutLogEvents
+      Resource: '*'
+    - Effect: Allow
+      Action:
+        - cognito-identity:Describe*
+        - cognito-identity:Get*
+        - cognito-identity:List*
+        - cognito-idp:Describe*
+        - cognito-idp:AdminGet*
+        - cognito-idp:AdminList*
+        - cognito-idp:List*
+        - cognito-idp:Get*
+        - cognito-sync:Describe*
+        - cognito-sync:Get*
+        - cognito-sync:List*
+        - iam:ListOpenIdConnectProviders
+        - iam:ListRoles
+        - sns:ListPlatformApplications
       Resource: '*'
 
 plugins:
