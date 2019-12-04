@@ -54,6 +54,7 @@ port responsePort : Serverless.ResponsePort msg
 type alias Config =
     { accessKeyId : String
     , secretAccessKey : String
+    , sessionToken : Maybe String
     , awsRegion : String
     }
 
@@ -63,6 +64,7 @@ configCodec =
     Codec.object Config
         |> Codec.field "accessKeyId" .accessKeyId Codec.string
         |> Codec.field "secretAccessKey" .secretAccessKey Codec.string
+        |> Codec.optionalField "sessionToken" .sessionToken Codec.string
         |> Codec.field "region" .awsRegion Codec.string
         |> Codec.buildObject
 
@@ -99,9 +101,18 @@ router conn =
 
 credentials : Config -> Credentials
 credentials config =
-    AWS.Core.Credentials.fromAccessKeys
-        config.accessKeyId
-        config.secretAccessKey
+    let
+        creds =
+            AWS.Core.Credentials.fromAccessKeys
+                config.accessKeyId
+                config.secretAccessKey
+    in
+    case config.sessionToken of
+        Nothing ->
+            creds
+
+        Just sessionToken ->
+            AWS.Core.Credentials.setSessionToken sessionToken creds
 
 
 cipService : Config -> Service
