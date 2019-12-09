@@ -123,27 +123,20 @@ cipService config =
 listUserPools : Config -> Cmd Msg
 listUserPools config =
     let
-        nextTokenRes =
-            Refined.build CIP.paginationKeyType "paginationKey"
-                |> Result.mapError (Refined.errorToString CIP.paginationKeyType)
-
         maxResultsRes =
             Refined.build CIP.poolQueryLimitType 20
                 |> Result.mapError (Refined.errorToString CIP.poolQueryLimitType)
     in
-    case ( nextTokenRes, maxResultsRes ) of
-        ( Ok nextToken, Ok maxResults ) ->
+    case maxResultsRes of
+        Ok maxResults ->
             CIP.listUserPools
-                { nextToken = nextToken
+                { nextToken = Nothing
                 , maxResults = maxResults
                 }
                 |> AWS.Core.Http.send (cipService config) (credentials config)
                 |> Task.attempt ListUserPoolsResponse
 
-        ( Err err, _ ) ->
-            Error err |> Task.Extra.message
-
-        ( _, Err err ) ->
+        Err err ->
             Error err |> Task.Extra.message
 
 

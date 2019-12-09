@@ -1341,9 +1341,9 @@ type alias AccountTakeoverActionType =
 
 
 type alias AccountTakeoverActionsType =
-    { mediumAction : AccountTakeoverActionType
-    , lowAction : AccountTakeoverActionType
-    , highAction : AccountTakeoverActionType
+    { mediumAction : Maybe AccountTakeoverActionType
+    , lowAction : Maybe AccountTakeoverActionType
+    , highAction : Maybe AccountTakeoverActionType
     }
 
 
@@ -1379,7 +1379,7 @@ accountTakeoverEventActionType =
 
 
 type alias AccountTakeoverRiskConfigurationType =
-    { notifyConfiguration : NotifyConfigurationType, actions : AccountTakeoverActionsType }
+    { notifyConfiguration : Maybe NotifyConfigurationType, actions : AccountTakeoverActionsType }
 
 
 type alias AddCustomAttributesRequest =
@@ -1403,26 +1403,26 @@ type alias AdminConfirmSignUpResponse =
 
 
 type alias AdminCreateUserConfigType =
-    { unusedAccountValidityDays : AdminCreateUserUnusedAccountValidityDaysType
-    , inviteMessageTemplate : MessageTemplateType
-    , allowAdminCreateUserOnly : Bool
+    { unusedAccountValidityDays : Maybe AdminCreateUserUnusedAccountValidityDaysType
+    , inviteMessageTemplate : Maybe MessageTemplateType
+    , allowAdminCreateUserOnly : Maybe Bool
     }
 
 
 type alias AdminCreateUserRequest =
-    { validationData : AttributeListType
+    { validationData : Maybe AttributeListType
     , username : UsernameType
     , userPoolId : UserPoolIdType
-    , userAttributes : AttributeListType
-    , temporaryPassword : PasswordType
-    , messageAction : MessageActionType
-    , forceAliasCreation : Bool
-    , desiredDeliveryMediums : DeliveryMediumListType
+    , userAttributes : Maybe AttributeListType
+    , temporaryPassword : Maybe PasswordType
+    , messageAction : Maybe MessageActionType
+    , forceAliasCreation : Maybe Bool
+    , desiredDeliveryMediums : Maybe DeliveryMediumListType
     }
 
 
 type alias AdminCreateUserResponse =
-    { user : UserType }
+    { user : Maybe UserType }
 
 
 type AdminCreateUserUnusedAccountValidityDaysType
@@ -1497,33 +1497,33 @@ type alias AdminGetUserRequest =
 
 type alias AdminGetUserResponse =
     { username : UsernameType
-    , userStatus : UserStatusType
-    , userMfasettingList : UserMfasettingListType
-    , userLastModifiedDate : DateType
-    , userCreateDate : DateType
-    , userAttributes : AttributeListType
-    , preferredMfaSetting : String
-    , mfaoptions : MfaoptionListType
-    , enabled : Bool
+    , userStatus : Maybe UserStatusType
+    , userMfasettingList : Maybe UserMfasettingListType
+    , userLastModifiedDate : Maybe DateType
+    , userCreateDate : Maybe DateType
+    , userAttributes : Maybe AttributeListType
+    , preferredMfaSetting : Maybe String
+    , mfaoptions : Maybe MfaoptionListType
+    , enabled : Maybe Bool
     }
 
 
 type alias AdminInitiateAuthRequest =
     { userPoolId : UserPoolIdType
-    , contextData : ContextDataType
-    , clientMetadata : ClientMetadataType
+    , contextData : Maybe ContextDataType
+    , clientMetadata : Maybe ClientMetadataType
     , clientId : ClientIdType
-    , authParameters : AuthParametersType
+    , authParameters : Maybe AuthParametersType
     , authFlow : AuthFlowType
-    , analyticsMetadata : AnalyticsMetadataType
+    , analyticsMetadata : Maybe AnalyticsMetadataType
     }
 
 
 type alias AdminInitiateAuthResponse =
-    { session : SessionType
-    , challengeParameters : ChallengeParametersType
-    , challengeName : ChallengeNameType
-    , authenticationResult : AuthenticationResultType
+    { session : Maybe SessionType
+    , challengeParameters : Maybe ChallengeParametersType
+    , challengeName : Maybe ChallengeNameType
+    , authenticationResult : Maybe AuthenticationResultType
     }
 
 
@@ -1538,29 +1538,37 @@ type alias AdminLinkProviderForUserResponse =
 type alias AdminListDevicesRequest =
     { username : UsernameType
     , userPoolId : UserPoolIdType
-    , paginationToken : SearchPaginationTokenType
-    , limit : QueryLimitType
+    , paginationToken : Maybe SearchPaginationTokenType
+    , limit : Maybe QueryLimitType
     }
 
 
 type alias AdminListDevicesResponse =
-    { paginationToken : SearchPaginationTokenType, devices : DeviceListType }
+    { paginationToken : Maybe SearchPaginationTokenType, devices : Maybe DeviceListType }
 
 
 type alias AdminListGroupsForUserRequest =
-    { username : UsernameType, userPoolId : UserPoolIdType, nextToken : PaginationKey, limit : QueryLimitType }
+    { username : UsernameType
+    , userPoolId : UserPoolIdType
+    , nextToken : Maybe PaginationKey
+    , limit : Maybe QueryLimitType
+    }
 
 
 type alias AdminListGroupsForUserResponse =
-    { nextToken : PaginationKey, groups : GroupListType }
+    { nextToken : Maybe PaginationKey, groups : Maybe GroupListType }
 
 
 type alias AdminListUserAuthEventsRequest =
-    { username : UsernameType, userPoolId : UserPoolIdType, nextToken : PaginationKey, maxResults : QueryLimitType }
+    { username : UsernameType
+    , userPoolId : UserPoolIdType
+    , nextToken : Maybe PaginationKey
+    , maxResults : Maybe QueryLimitType
+    }
 
 
 type alias AdminListUserAuthEventsResponse =
-    { nextToken : PaginationKey, authEvents : AuthEventsType }
+    { nextToken : Maybe PaginationKey, authEvents : Maybe AuthEventsType }
 
 
 type alias AdminRemoveUserFromGroupRequest =
@@ -1577,28 +1585,28 @@ type alias AdminResetUserPasswordResponse =
 
 type alias AdminRespondToAuthChallengeRequest =
     { userPoolId : UserPoolIdType
-    , session : SessionType
-    , contextData : ContextDataType
+    , session : Maybe SessionType
+    , contextData : Maybe ContextDataType
     , clientId : ClientIdType
-    , challengeResponses : ChallengeResponsesType
+    , challengeResponses : Maybe ChallengeResponsesType
     , challengeName : ChallengeNameType
-    , analyticsMetadata : AnalyticsMetadataType
+    , analyticsMetadata : Maybe AnalyticsMetadataType
     }
 
 
 type alias AdminRespondToAuthChallengeResponse =
-    { session : SessionType
-    , challengeParameters : ChallengeParametersType
-    , challengeName : ChallengeNameType
-    , authenticationResult : AuthenticationResultType
+    { session : Maybe SessionType
+    , challengeParameters : Maybe ChallengeParametersType
+    , challengeName : Maybe ChallengeNameType
+    , authenticationResult : Maybe AuthenticationResultType
     }
 
 
 type alias AdminSetUserMfapreferenceRequest =
     { username : UsernameType
     , userPoolId : UserPoolIdType
-    , softwareTokenMfaSettings : SoftwareTokenMfaSettingsType
-    , smsmfaSettings : SmsmfaSettingsType
+    , softwareTokenMfaSettings : Maybe SoftwareTokenMfaSettingsType
+    , smsmfaSettings : Maybe SmsmfaSettingsType
     }
 
 
@@ -1607,7 +1615,7 @@ type alias AdminSetUserMfapreferenceResponse =
 
 
 type alias AdminSetUserPasswordRequest =
-    { username : UsernameType, userPoolId : UserPoolIdType, permanent : Bool, password : PasswordType }
+    { username : UsernameType, userPoolId : UserPoolIdType, permanent : Maybe Bool, password : PasswordType }
 
 
 type alias AdminSetUserPasswordResponse =
@@ -1633,7 +1641,7 @@ type alias AdminUpdateAuthEventFeedbackResponse =
 type alias AdminUpdateDeviceStatusRequest =
     { username : UsernameType
     , userPoolId : UserPoolIdType
-    , deviceRememberedStatus : DeviceRememberedStatusType
+    , deviceRememberedStatus : Maybe DeviceRememberedStatusType
     , deviceKey : DeviceKeyType
     }
 
@@ -1709,11 +1717,11 @@ type alias AliasAttributesListType =
 
 
 type alias AnalyticsConfigurationType =
-    { userDataShared : Bool, roleArn : ArnType, externalId : String, applicationId : HexStringType }
+    { userDataShared : Maybe Bool, roleArn : ArnType, externalId : String, applicationId : HexStringType }
 
 
 type alias AnalyticsMetadataType =
-    { analyticsEndpointId : String }
+    { analyticsEndpointId : Maybe String }
 
 
 type ArnType
@@ -1739,11 +1747,11 @@ arnType =
 
 
 type alias AssociateSoftwareTokenRequest =
-    { session : SessionType, accessToken : TokenModelType }
+    { session : Maybe SessionType, accessToken : Maybe TokenModelType }
 
 
 type alias AssociateSoftwareTokenResponse =
-    { session : SessionType, secretCode : SecretCodeType }
+    { session : Maybe SessionType, secretCode : Maybe SecretCodeType }
 
 
 type AttributeDataType
@@ -1821,7 +1829,7 @@ attributeNameType =
 
 
 type alias AttributeType =
-    { value : AttributeValueType, name : AttributeNameType }
+    { value : Maybe AttributeValueType, name : AttributeNameType }
 
 
 type AttributeValueType
@@ -1841,14 +1849,14 @@ attributeValueType =
 
 
 type alias AuthEventType =
-    { eventType : EventType
-    , eventRisk : EventRiskType
-    , eventResponse : EventResponseType
-    , eventId : String
-    , eventFeedback : EventFeedbackType
-    , eventContextData : EventContextDataType
-    , creationDate : DateType
-    , challengeResponses : ChallengeResponseListType
+    { eventType : Maybe EventType
+    , eventRisk : Maybe EventRiskType
+    , eventResponse : Maybe EventResponseType
+    , eventId : Maybe String
+    , eventFeedback : Maybe EventFeedbackType
+    , eventContextData : Maybe EventContextDataType
+    , creationDate : Maybe DateType
+    , challengeResponses : Maybe ChallengeResponseListType
     }
 
 
@@ -1902,12 +1910,12 @@ type alias AuthParametersType =
 
 
 type alias AuthenticationResultType =
-    { tokenType : String
-    , refreshToken : TokenModelType
-    , newDeviceMetadata : NewDeviceMetadataType
-    , idToken : TokenModelType
-    , expiresIn : Int
-    , accessToken : TokenModelType
+    { tokenType : Maybe String
+    , refreshToken : Maybe TokenModelType
+    , newDeviceMetadata : Maybe NewDeviceMetadataType
+    , idToken : Maybe TokenModelType
+    , expiresIn : Maybe Int
+    , accessToken : Maybe TokenModelType
     }
 
 
@@ -2039,7 +2047,7 @@ type alias ChallengeResponseListType =
 
 
 type alias ChallengeResponseType =
-    { challengeResponse : ChallengeResponse, challengeName : ChallengeName }
+    { challengeResponse : Maybe ChallengeResponse, challengeName : Maybe ChallengeName }
 
 
 type alias ChallengeResponsesType =
@@ -2140,7 +2148,7 @@ type alias CodeDeliveryDetailsListType =
 
 
 type alias CodeDeliveryDetailsType =
-    { destination : String, deliveryMedium : DeliveryMediumType, attributeName : AttributeNameType }
+    { destination : Maybe String, deliveryMedium : Maybe DeliveryMediumType, attributeName : Maybe AttributeNameType }
 
 
 type CompletionMessageType
@@ -2186,29 +2194,29 @@ compromisedCredentialsEventActionType =
 
 
 type alias CompromisedCredentialsRiskConfigurationType =
-    { eventFilter : EventFiltersType, actions : CompromisedCredentialsActionsType }
+    { eventFilter : Maybe EventFiltersType, actions : CompromisedCredentialsActionsType }
 
 
 type alias ConfirmDeviceRequest =
-    { deviceSecretVerifierConfig : DeviceSecretVerifierConfigType
-    , deviceName : DeviceNameType
+    { deviceSecretVerifierConfig : Maybe DeviceSecretVerifierConfigType
+    , deviceName : Maybe DeviceNameType
     , deviceKey : DeviceKeyType
     , accessToken : TokenModelType
     }
 
 
 type alias ConfirmDeviceResponse =
-    { userConfirmationNecessary : Bool }
+    { userConfirmationNecessary : Maybe Bool }
 
 
 type alias ConfirmForgotPasswordRequest =
     { username : UsernameType
-    , userContextData : UserContextDataType
-    , secretHash : SecretHashType
+    , userContextData : Maybe UserContextDataType
+    , secretHash : Maybe SecretHashType
     , password : PasswordType
     , confirmationCode : ConfirmationCodeType
     , clientId : ClientIdType
-    , analyticsMetadata : AnalyticsMetadataType
+    , analyticsMetadata : Maybe AnalyticsMetadataType
     }
 
 
@@ -2218,12 +2226,12 @@ type alias ConfirmForgotPasswordResponse =
 
 type alias ConfirmSignUpRequest =
     { username : UsernameType
-    , userContextData : UserContextDataType
-    , secretHash : SecretHashType
-    , forceAliasCreation : Bool
+    , userContextData : Maybe UserContextDataType
+    , secretHash : Maybe SecretHashType
+    , forceAliasCreation : Maybe Bool
     , confirmationCode : ConfirmationCodeType
     , clientId : ClientIdType
-    , analyticsMetadata : AnalyticsMetadataType
+    , analyticsMetadata : Maybe AnalyticsMetadataType
     }
 
 
@@ -2251,20 +2259,25 @@ confirmationCodeType =
 
 
 type alias ContextDataType =
-    { serverPath : String, serverName : String, ipAddress : String, httpHeaders : HttpHeaderList, encodedData : String }
+    { serverPath : String
+    , serverName : String
+    , ipAddress : String
+    , httpHeaders : HttpHeaderList
+    , encodedData : Maybe String
+    }
 
 
 type alias CreateGroupRequest =
     { userPoolId : UserPoolIdType
-    , roleArn : ArnType
-    , precedence : PrecedenceType
+    , roleArn : Maybe ArnType
+    , precedence : Maybe PrecedenceType
     , groupName : GroupNameType
-    , description : DescriptionType
+    , description : Maybe DescriptionType
     }
 
 
 type alias CreateGroupResponse =
-    { group : GroupType }
+    { group : Maybe GroupType }
 
 
 type alias CreateIdentityProviderRequest =
@@ -2272,8 +2285,8 @@ type alias CreateIdentityProviderRequest =
     , providerType : IdentityProviderTypeType
     , providerName : ProviderNameTypeV1
     , providerDetails : ProviderDetailsType
-    , idpIdentifiers : IdpIdentifiersListType
-    , attributeMapping : AttributeMappingType
+    , idpIdentifiers : Maybe IdpIdentifiersListType
+    , attributeMapping : Maybe AttributeMappingType
     }
 
 
@@ -2283,7 +2296,7 @@ type alias CreateIdentityProviderResponse =
 
 type alias CreateResourceServerRequest =
     { userPoolId : UserPoolIdType
-    , scopes : ResourceServerScopeListType
+    , scopes : Maybe ResourceServerScopeListType
     , name : ResourceServerNameType
     , identifier : ResourceServerIdentifierType
     }
@@ -2298,65 +2311,65 @@ type alias CreateUserImportJobRequest =
 
 
 type alias CreateUserImportJobResponse =
-    { userImportJob : UserImportJobType }
+    { userImportJob : Maybe UserImportJobType }
 
 
 type alias CreateUserPoolClientRequest =
-    { writeAttributes : ClientPermissionListType
+    { writeAttributes : Maybe ClientPermissionListType
     , userPoolId : UserPoolIdType
-    , supportedIdentityProviders : SupportedIdentityProvidersListType
-    , refreshTokenValidity : RefreshTokenValidityType
-    , readAttributes : ClientPermissionListType
-    , logoutUrls : LogoutUrlsListType
-    , generateSecret : Bool
-    , explicitAuthFlows : ExplicitAuthFlowsListType
-    , defaultRedirectUri : RedirectUrlType
+    , supportedIdentityProviders : Maybe SupportedIdentityProvidersListType
+    , refreshTokenValidity : Maybe RefreshTokenValidityType
+    , readAttributes : Maybe ClientPermissionListType
+    , logoutUrls : Maybe LogoutUrlsListType
+    , generateSecret : Maybe Bool
+    , explicitAuthFlows : Maybe ExplicitAuthFlowsListType
+    , defaultRedirectUri : Maybe RedirectUrlType
     , clientName : ClientNameType
-    , callbackUrls : CallbackUrlsListType
-    , analyticsConfiguration : AnalyticsConfigurationType
-    , allowedOauthScopes : ScopeListType
-    , allowedOauthFlowsUserPoolClient : Bool
-    , allowedOauthFlows : OauthFlowsType
+    , callbackUrls : Maybe CallbackUrlsListType
+    , analyticsConfiguration : Maybe AnalyticsConfigurationType
+    , allowedOauthScopes : Maybe ScopeListType
+    , allowedOauthFlowsUserPoolClient : Maybe Bool
+    , allowedOauthFlows : Maybe OauthFlowsType
     }
 
 
 type alias CreateUserPoolClientResponse =
-    { userPoolClient : UserPoolClientType }
+    { userPoolClient : Maybe UserPoolClientType }
 
 
 type alias CreateUserPoolDomainRequest =
-    { userPoolId : UserPoolIdType, domain : DomainType, customDomainConfig : CustomDomainConfigType }
+    { userPoolId : UserPoolIdType, domain : DomainType, customDomainConfig : Maybe CustomDomainConfigType }
 
 
 type alias CreateUserPoolDomainResponse =
-    { cloudFrontDomain : DomainType }
+    { cloudFrontDomain : Maybe DomainType }
 
 
 type alias CreateUserPoolRequest =
-    { verificationMessageTemplate : VerificationMessageTemplateType
-    , usernameAttributes : UsernameAttributesListType
-    , userPoolTags : UserPoolTagsType
-    , userPoolAddOns : UserPoolAddOnsType
-    , smsVerificationMessage : SmsVerificationMessageType
-    , smsConfiguration : SmsConfigurationType
-    , smsAuthenticationMessage : SmsVerificationMessageType
-    , schema : SchemaAttributesListType
+    { verificationMessageTemplate : Maybe VerificationMessageTemplateType
+    , usernameAttributes : Maybe UsernameAttributesListType
+    , userPoolTags : Maybe UserPoolTagsType
+    , userPoolAddOns : Maybe UserPoolAddOnsType
+    , smsVerificationMessage : Maybe SmsVerificationMessageType
+    , smsConfiguration : Maybe SmsConfigurationType
+    , smsAuthenticationMessage : Maybe SmsVerificationMessageType
+    , schema : Maybe SchemaAttributesListType
     , poolName : UserPoolNameType
-    , policies : UserPoolPolicyType
-    , mfaConfiguration : UserPoolMfaType
-    , lambdaConfig : LambdaConfigType
-    , emailVerificationSubject : EmailVerificationSubjectType
-    , emailVerificationMessage : EmailVerificationMessageType
-    , emailConfiguration : EmailConfigurationType
-    , deviceConfiguration : DeviceConfigurationType
-    , autoVerifiedAttributes : VerifiedAttributesListType
-    , aliasAttributes : AliasAttributesListType
-    , adminCreateUserConfig : AdminCreateUserConfigType
+    , policies : Maybe UserPoolPolicyType
+    , mfaConfiguration : Maybe UserPoolMfaType
+    , lambdaConfig : Maybe LambdaConfigType
+    , emailVerificationSubject : Maybe EmailVerificationSubjectType
+    , emailVerificationMessage : Maybe EmailVerificationMessageType
+    , emailConfiguration : Maybe EmailConfigurationType
+    , deviceConfiguration : Maybe DeviceConfigurationType
+    , autoVerifiedAttributes : Maybe VerifiedAttributesListType
+    , aliasAttributes : Maybe AliasAttributesListType
+    , adminCreateUserConfig : Maybe AdminCreateUserConfigType
     }
 
 
 type alias CreateUserPoolResponse =
-    { userPool : UserPoolType }
+    { userPool : Maybe UserPoolType }
 
 
 type CustomAttributeNameType
@@ -2489,7 +2502,7 @@ type alias DescribeResourceServerResponse =
 
 
 type alias DescribeRiskConfigurationRequest =
-    { userPoolId : UserPoolIdType, clientId : ClientIdType }
+    { userPoolId : UserPoolIdType, clientId : Maybe ClientIdType }
 
 
 type alias DescribeRiskConfigurationResponse =
@@ -2501,7 +2514,7 @@ type alias DescribeUserImportJobRequest =
 
 
 type alias DescribeUserImportJobResponse =
-    { userImportJob : UserImportJobType }
+    { userImportJob : Maybe UserImportJobType }
 
 
 type alias DescribeUserPoolClientRequest =
@@ -2509,7 +2522,7 @@ type alias DescribeUserPoolClientRequest =
 
 
 type alias DescribeUserPoolClientResponse =
-    { userPoolClient : UserPoolClientType }
+    { userPoolClient : Maybe UserPoolClientType }
 
 
 type alias DescribeUserPoolDomainRequest =
@@ -2517,7 +2530,7 @@ type alias DescribeUserPoolDomainRequest =
 
 
 type alias DescribeUserPoolDomainResponse =
-    { domainDescription : DomainDescriptionType }
+    { domainDescription : Maybe DomainDescriptionType }
 
 
 type alias DescribeUserPoolRequest =
@@ -2525,7 +2538,7 @@ type alias DescribeUserPoolRequest =
 
 
 type alias DescribeUserPoolResponse =
-    { userPool : UserPoolType }
+    { userPool : Maybe UserPoolType }
 
 
 type DescriptionType
@@ -2545,7 +2558,7 @@ descriptionType =
 
 
 type alias DeviceConfigurationType =
-    { deviceOnlyRememberedOnUserPrompt : Bool, challengeRequiredOnNewDevice : Bool }
+    { deviceOnlyRememberedOnUserPrompt : Maybe Bool, challengeRequiredOnNewDevice : Maybe Bool }
 
 
 type DeviceKeyType
@@ -2607,27 +2620,27 @@ deviceRememberedStatusType =
 
 
 type alias DeviceSecretVerifierConfigType =
-    { salt : String, passwordVerifier : String }
+    { salt : Maybe String, passwordVerifier : Maybe String }
 
 
 type alias DeviceType =
-    { deviceLastModifiedDate : DateType
-    , deviceLastAuthenticatedDate : DateType
-    , deviceKey : DeviceKeyType
-    , deviceCreateDate : DateType
-    , deviceAttributes : AttributeListType
+    { deviceLastModifiedDate : Maybe DateType
+    , deviceLastAuthenticatedDate : Maybe DateType
+    , deviceKey : Maybe DeviceKeyType
+    , deviceCreateDate : Maybe DateType
+    , deviceAttributes : Maybe AttributeListType
     }
 
 
 type alias DomainDescriptionType =
-    { version : DomainVersionType
-    , userPoolId : UserPoolIdType
-    , status : DomainStatusType
-    , s3Bucket : S3BucketType
-    , domain : DomainType
-    , customDomainConfig : CustomDomainConfigType
-    , cloudFrontDistribution : String
-    , awsaccountId : String
+    { version : Maybe DomainVersionType
+    , userPoolId : Maybe UserPoolIdType
+    , status : Maybe DomainStatusType
+    , s3Bucket : Maybe S3BucketType
+    , domain : Maybe DomainType
+    , customDomainConfig : Maybe CustomDomainConfigType
+    , cloudFrontDistribution : Maybe String
+    , awsaccountId : Maybe String
     }
 
 
@@ -2720,7 +2733,10 @@ emailAddressType =
 
 
 type alias EmailConfigurationType =
-    { sourceArn : ArnType, replyToEmailAddress : EmailAddressType, emailSendingAccount : EmailSendingAccountType }
+    { sourceArn : Maybe ArnType
+    , replyToEmailAddress : Maybe EmailAddressType
+    , emailSendingAccount : Maybe EmailSendingAccountType
+    }
 
 
 type EmailNotificationBodyType
@@ -2863,11 +2879,16 @@ emailVerificationSubjectType =
 
 
 type alias EventContextDataType =
-    { timezone : String, ipAddress : String, deviceName : String, country : String, city : String }
+    { timezone : Maybe String
+    , ipAddress : Maybe String
+    , deviceName : Maybe String
+    , country : Maybe String
+    , city : Maybe String
+    }
 
 
 type alias EventFeedbackType =
-    { provider : String, feedbackValue : FeedbackValueType, feedbackDate : DateType }
+    { provider : String, feedbackValue : FeedbackValueType, feedbackDate : Maybe DateType }
 
 
 type EventFilterType
@@ -2936,7 +2957,7 @@ eventResponseType =
 
 
 type alias EventRiskType =
-    { riskLevel : RiskLevelType, riskDecision : RiskDecisionType }
+    { riskLevel : Maybe RiskLevelType, riskDecision : Maybe RiskDecisionType }
 
 
 type EventType
@@ -3016,20 +3037,20 @@ type alias ForceAliasCreation =
 
 
 type alias ForgetDeviceRequest =
-    { deviceKey : DeviceKeyType, accessToken : TokenModelType }
+    { deviceKey : DeviceKeyType, accessToken : Maybe TokenModelType }
 
 
 type alias ForgotPasswordRequest =
     { username : UsernameType
-    , userContextData : UserContextDataType
-    , secretHash : SecretHashType
+    , userContextData : Maybe UserContextDataType
+    , secretHash : Maybe SecretHashType
     , clientId : ClientIdType
-    , analyticsMetadata : AnalyticsMetadataType
+    , analyticsMetadata : Maybe AnalyticsMetadataType
     }
 
 
 type alias ForgotPasswordResponse =
-    { codeDeliveryDetails : CodeDeliveryDetailsType }
+    { codeDeliveryDetails : Maybe CodeDeliveryDetailsType }
 
 
 type alias GenerateSecret =
@@ -3041,11 +3062,11 @@ type alias GetCsvheaderRequest =
 
 
 type alias GetCsvheaderResponse =
-    { userPoolId : UserPoolIdType, csvheader : ListOfStringTypes }
+    { userPoolId : Maybe UserPoolIdType, csvheader : Maybe ListOfStringTypes }
 
 
 type alias GetDeviceRequest =
-    { deviceKey : DeviceKeyType, accessToken : TokenModelType }
+    { deviceKey : DeviceKeyType, accessToken : Maybe TokenModelType }
 
 
 type alias GetDeviceResponse =
@@ -3057,7 +3078,7 @@ type alias GetGroupRequest =
 
 
 type alias GetGroupResponse =
-    { group : GroupType }
+    { group : Maybe GroupType }
 
 
 type alias GetIdentityProviderByIdentifierRequest =
@@ -3073,11 +3094,11 @@ type alias GetSigningCertificateRequest =
 
 
 type alias GetSigningCertificateResponse =
-    { certificate : String }
+    { certificate : Maybe String }
 
 
 type alias GetUicustomizationRequest =
-    { userPoolId : UserPoolIdType, clientId : ClientIdType }
+    { userPoolId : UserPoolIdType, clientId : Maybe ClientIdType }
 
 
 type alias GetUicustomizationResponse =
@@ -3089,7 +3110,7 @@ type alias GetUserAttributeVerificationCodeRequest =
 
 
 type alias GetUserAttributeVerificationCodeResponse =
-    { codeDeliveryDetails : CodeDeliveryDetailsType }
+    { codeDeliveryDetails : Maybe CodeDeliveryDetailsType }
 
 
 type alias GetUserPoolMfaConfigRequest =
@@ -3097,9 +3118,9 @@ type alias GetUserPoolMfaConfigRequest =
 
 
 type alias GetUserPoolMfaConfigResponse =
-    { softwareTokenMfaConfiguration : SoftwareTokenMfaConfigType
-    , smsMfaConfiguration : SmsMfaConfigType
-    , mfaConfiguration : UserPoolMfaType
+    { softwareTokenMfaConfiguration : Maybe SoftwareTokenMfaConfigType
+    , smsMfaConfiguration : Maybe SmsMfaConfigType
+    , mfaConfiguration : Maybe UserPoolMfaType
     }
 
 
@@ -3109,10 +3130,10 @@ type alias GetUserRequest =
 
 type alias GetUserResponse =
     { username : UsernameType
-    , userMfasettingList : UserMfasettingListType
+    , userMfasettingList : Maybe UserMfasettingListType
     , userAttributes : AttributeListType
-    , preferredMfaSetting : String
-    , mfaoptions : MfaoptionListType
+    , preferredMfaSetting : Maybe String
+    , mfaoptions : Maybe MfaoptionListType
     }
 
 
@@ -3148,13 +3169,13 @@ groupNameType =
 
 
 type alias GroupType =
-    { userPoolId : UserPoolIdType
-    , roleArn : ArnType
-    , precedence : PrecedenceType
-    , lastModifiedDate : DateType
-    , groupName : GroupNameType
-    , description : DescriptionType
-    , creationDate : DateType
+    { userPoolId : Maybe UserPoolIdType
+    , roleArn : Maybe ArnType
+    , precedence : Maybe PrecedenceType
+    , lastModifiedDate : Maybe DateType
+    , groupName : Maybe GroupNameType
+    , description : Maybe DescriptionType
+    , creationDate : Maybe DateType
     }
 
 
@@ -3175,7 +3196,7 @@ hexStringType =
 
 
 type alias HttpHeader =
-    { headerValue : String, headerName : String }
+    { headerValue : Maybe String, headerName : Maybe String }
 
 
 type alias HttpHeaderList =
@@ -3183,14 +3204,14 @@ type alias HttpHeaderList =
 
 
 type alias IdentityProviderType =
-    { userPoolId : UserPoolIdType
-    , providerType : IdentityProviderTypeType
-    , providerName : ProviderNameType
-    , providerDetails : ProviderDetailsType
-    , lastModifiedDate : DateType
-    , idpIdentifiers : IdpIdentifiersListType
-    , creationDate : DateType
-    , attributeMapping : AttributeMappingType
+    { userPoolId : Maybe UserPoolIdType
+    , providerType : Maybe IdentityProviderTypeType
+    , providerName : Maybe ProviderNameType
+    , providerDetails : Maybe ProviderDetailsType
+    , lastModifiedDate : Maybe DateType
+    , idpIdentifiers : Maybe IdpIdentifiersListType
+    , creationDate : Maybe DateType
+    , attributeMapping : Maybe AttributeMappingType
     }
 
 
@@ -3262,20 +3283,20 @@ type alias ImageUrlType =
 
 
 type alias InitiateAuthRequest =
-    { userContextData : UserContextDataType
-    , clientMetadata : ClientMetadataType
+    { userContextData : Maybe UserContextDataType
+    , clientMetadata : Maybe ClientMetadataType
     , clientId : ClientIdType
-    , authParameters : AuthParametersType
+    , authParameters : Maybe AuthParametersType
     , authFlow : AuthFlowType
-    , analyticsMetadata : AnalyticsMetadataType
+    , analyticsMetadata : Maybe AnalyticsMetadataType
     }
 
 
 type alias InitiateAuthResponse =
-    { session : SessionType
-    , challengeParameters : ChallengeParametersType
-    , challengeName : ChallengeNameType
-    , authenticationResult : AuthenticationResultType
+    { session : Maybe SessionType
+    , challengeParameters : Maybe ChallengeParametersType
+    , challengeName : Maybe ChallengeNameType
+    , authenticationResult : Maybe AuthenticationResultType
     }
 
 
@@ -3284,41 +3305,41 @@ type alias IntegerType =
 
 
 type alias LambdaConfigType =
-    { verifyAuthChallengeResponse : ArnType
-    , userMigration : ArnType
-    , preTokenGeneration : ArnType
-    , preSignUp : ArnType
-    , preAuthentication : ArnType
-    , postConfirmation : ArnType
-    , postAuthentication : ArnType
-    , defineAuthChallenge : ArnType
-    , customMessage : ArnType
-    , createAuthChallenge : ArnType
+    { verifyAuthChallengeResponse : Maybe ArnType
+    , userMigration : Maybe ArnType
+    , preTokenGeneration : Maybe ArnType
+    , preSignUp : Maybe ArnType
+    , preAuthentication : Maybe ArnType
+    , postConfirmation : Maybe ArnType
+    , postAuthentication : Maybe ArnType
+    , defineAuthChallenge : Maybe ArnType
+    , customMessage : Maybe ArnType
+    , createAuthChallenge : Maybe ArnType
     }
 
 
 type alias ListDevicesRequest =
-    { paginationToken : SearchPaginationTokenType, limit : QueryLimitType, accessToken : TokenModelType }
+    { paginationToken : Maybe SearchPaginationTokenType, limit : Maybe QueryLimitType, accessToken : TokenModelType }
 
 
 type alias ListDevicesResponse =
-    { paginationToken : SearchPaginationTokenType, devices : DeviceListType }
+    { paginationToken : Maybe SearchPaginationTokenType, devices : Maybe DeviceListType }
 
 
 type alias ListGroupsRequest =
-    { userPoolId : UserPoolIdType, nextToken : PaginationKey, limit : QueryLimitType }
+    { userPoolId : UserPoolIdType, nextToken : Maybe PaginationKey, limit : Maybe QueryLimitType }
 
 
 type alias ListGroupsResponse =
-    { nextToken : PaginationKey, groups : GroupListType }
+    { nextToken : Maybe PaginationKey, groups : Maybe GroupListType }
 
 
 type alias ListIdentityProvidersRequest =
-    { userPoolId : UserPoolIdType, nextToken : PaginationKeyType, maxResults : ListProvidersLimitType }
+    { userPoolId : UserPoolIdType, nextToken : Maybe PaginationKeyType, maxResults : Maybe ListProvidersLimitType }
 
 
 type alias ListIdentityProvidersResponse =
-    { providers : ProvidersListType, nextToken : PaginationKeyType }
+    { providers : ProvidersListType, nextToken : Maybe PaginationKeyType }
 
 
 type alias ListOfStringTypes =
@@ -3358,11 +3379,14 @@ listResourceServersLimitType =
 
 
 type alias ListResourceServersRequest =
-    { userPoolId : UserPoolIdType, nextToken : PaginationKeyType, maxResults : ListResourceServersLimitType }
+    { userPoolId : UserPoolIdType
+    , nextToken : Maybe PaginationKeyType
+    , maxResults : Maybe ListResourceServersLimitType
+    }
 
 
 type alias ListResourceServersResponse =
-    { resourceServers : ResourceServersListType, nextToken : PaginationKeyType }
+    { resourceServers : ResourceServersListType, nextToken : Maybe PaginationKeyType }
 
 
 type alias ListTagsForResourceRequest =
@@ -3370,52 +3394,56 @@ type alias ListTagsForResourceRequest =
 
 
 type alias ListTagsForResourceResponse =
-    { tags : UserPoolTagsType }
+    { tags : Maybe UserPoolTagsType }
 
 
 type alias ListUserImportJobsRequest =
-    { userPoolId : UserPoolIdType, paginationToken : PaginationKeyType, maxResults : PoolQueryLimitType }
+    { userPoolId : UserPoolIdType, paginationToken : Maybe PaginationKeyType, maxResults : PoolQueryLimitType }
 
 
 type alias ListUserImportJobsResponse =
-    { userImportJobs : UserImportJobsListType, paginationToken : PaginationKeyType }
+    { userImportJobs : Maybe UserImportJobsListType, paginationToken : Maybe PaginationKeyType }
 
 
 type alias ListUserPoolClientsRequest =
-    { userPoolId : UserPoolIdType, nextToken : PaginationKey, maxResults : QueryLimit }
+    { userPoolId : UserPoolIdType, nextToken : Maybe PaginationKey, maxResults : Maybe QueryLimit }
 
 
 type alias ListUserPoolClientsResponse =
-    { userPoolClients : UserPoolClientListType, nextToken : PaginationKey }
+    { userPoolClients : Maybe UserPoolClientListType, nextToken : Maybe PaginationKey }
 
 
 type alias ListUserPoolsRequest =
-    { nextToken : PaginationKeyType, maxResults : PoolQueryLimitType }
+    { nextToken : Maybe PaginationKeyType, maxResults : PoolQueryLimitType }
 
 
 type alias ListUserPoolsResponse =
-    { userPools : UserPoolListType, nextToken : PaginationKeyType }
+    { userPools : Maybe UserPoolListType, nextToken : Maybe PaginationKeyType }
 
 
 type alias ListUsersInGroupRequest =
-    { userPoolId : UserPoolIdType, nextToken : PaginationKey, limit : QueryLimitType, groupName : GroupNameType }
+    { userPoolId : UserPoolIdType
+    , nextToken : Maybe PaginationKey
+    , limit : Maybe QueryLimitType
+    , groupName : GroupNameType
+    }
 
 
 type alias ListUsersInGroupResponse =
-    { users : UsersListType, nextToken : PaginationKey }
+    { users : Maybe UsersListType, nextToken : Maybe PaginationKey }
 
 
 type alias ListUsersRequest =
     { userPoolId : UserPoolIdType
-    , paginationToken : SearchPaginationTokenType
-    , limit : QueryLimitType
-    , filter : UserFilterType
-    , attributesToGet : SearchedAttributeNamesListType
+    , paginationToken : Maybe SearchPaginationTokenType
+    , limit : Maybe QueryLimitType
+    , filter : Maybe UserFilterType
+    , attributesToGet : Maybe SearchedAttributeNamesListType
     }
 
 
 type alias ListUsersResponse =
-    { users : UsersListType, paginationToken : SearchPaginationTokenType }
+    { users : Maybe UsersListType, paginationToken : Maybe SearchPaginationTokenType }
 
 
 type alias LogoutUrlsListType =
@@ -3431,7 +3459,7 @@ type alias MfaoptionListType =
 
 
 type alias MfaoptionType =
-    { deliveryMedium : DeliveryMediumType, attributeName : AttributeNameType }
+    { deliveryMedium : Maybe DeliveryMediumType, attributeName : Maybe AttributeNameType }
 
 
 type MessageActionType
@@ -3454,35 +3482,35 @@ messageActionType =
 
 
 type alias MessageTemplateType =
-    { smsmessage : SmsVerificationMessageType
-    , emailSubject : EmailVerificationSubjectType
-    , emailMessage : EmailVerificationMessageType
+    { smsmessage : Maybe SmsVerificationMessageType
+    , emailSubject : Maybe EmailVerificationSubjectType
+    , emailMessage : Maybe EmailVerificationMessageType
     }
 
 
 type alias NewDeviceMetadataType =
-    { deviceKey : DeviceKeyType, deviceGroupKey : String }
+    { deviceKey : Maybe DeviceKeyType, deviceGroupKey : Maybe String }
 
 
 type alias NotifyConfigurationType =
     { sourceArn : ArnType
-    , replyTo : String
-    , noActionEmail : NotifyEmailType
-    , mfaEmail : NotifyEmailType
-    , from : String
-    , blockEmail : NotifyEmailType
+    , replyTo : Maybe String
+    , noActionEmail : Maybe NotifyEmailType
+    , mfaEmail : Maybe NotifyEmailType
+    , from : Maybe String
+    , blockEmail : Maybe NotifyEmailType
     }
 
 
 type alias NotifyEmailType =
-    { textBody : EmailNotificationBodyType
+    { textBody : Maybe EmailNotificationBodyType
     , subject : EmailNotificationSubjectType
-    , htmlBody : EmailNotificationBodyType
+    , htmlBody : Maybe EmailNotificationBodyType
     }
 
 
 type alias NumberAttributeConstraintsType =
-    { minValue : String, maxValue : String }
+    { minValue : Maybe String, maxValue : Maybe String }
 
 
 type OauthFlowType
@@ -3561,12 +3589,12 @@ passwordPolicyMinLengthType =
 
 
 type alias PasswordPolicyType =
-    { temporaryPasswordValidityDays : TemporaryPasswordValidityDaysType
-    , requireUppercase : Bool
-    , requireSymbols : Bool
-    , requireNumbers : Bool
-    , requireLowercase : Bool
-    , minimumLength : PasswordPolicyMinLengthType
+    { temporaryPasswordValidityDays : Maybe TemporaryPasswordValidityDaysType
+    , requireUppercase : Maybe Bool
+    , requireSymbols : Maybe Bool
+    , requireNumbers : Maybe Bool
+    , requireLowercase : Maybe Bool
+    , minimumLength : Maybe PasswordPolicyMinLengthType
     }
 
 
@@ -3638,10 +3666,10 @@ precedenceType =
 
 
 type alias ProviderDescription =
-    { providerType : IdentityProviderTypeType
-    , providerName : ProviderNameType
-    , lastModifiedDate : DateType
-    , creationDate : DateType
+    { providerType : Maybe IdentityProviderTypeType
+    , providerName : Maybe ProviderNameType
+    , lastModifiedDate : Maybe DateType
+    , creationDate : Maybe DateType
     }
 
 
@@ -3688,7 +3716,10 @@ providerNameTypeV1 =
 
 
 type alias ProviderUserIdentifierType =
-    { providerName : ProviderNameType, providerAttributeValue : String, providerAttributeName : String }
+    { providerName : Maybe ProviderNameType
+    , providerAttributeValue : Maybe String
+    , providerAttributeName : Maybe String
+    }
 
 
 type alias ProvidersListType =
@@ -3764,15 +3795,15 @@ refreshTokenValidityType =
 
 type alias ResendConfirmationCodeRequest =
     { username : UsernameType
-    , userContextData : UserContextDataType
-    , secretHash : SecretHashType
+    , userContextData : Maybe UserContextDataType
+    , secretHash : Maybe SecretHashType
     , clientId : ClientIdType
-    , analyticsMetadata : AnalyticsMetadataType
+    , analyticsMetadata : Maybe AnalyticsMetadataType
     }
 
 
 type alias ResendConfirmationCodeResponse =
-    { codeDeliveryDetails : CodeDeliveryDetailsType }
+    { codeDeliveryDetails : Maybe CodeDeliveryDetailsType }
 
 
 type ResourceServerIdentifierType
@@ -3859,10 +3890,10 @@ type alias ResourceServerScopeType =
 
 
 type alias ResourceServerType =
-    { userPoolId : UserPoolIdType
-    , scopes : ResourceServerScopeListType
-    , name : ResourceServerNameType
-    , identifier : ResourceServerIdentifierType
+    { userPoolId : Maybe UserPoolIdType
+    , scopes : Maybe ResourceServerScopeListType
+    , name : Maybe ResourceServerNameType
+    , identifier : Maybe ResourceServerIdentifierType
     }
 
 
@@ -3871,30 +3902,30 @@ type alias ResourceServersListType =
 
 
 type alias RespondToAuthChallengeRequest =
-    { userContextData : UserContextDataType
-    , session : SessionType
+    { userContextData : Maybe UserContextDataType
+    , session : Maybe SessionType
     , clientId : ClientIdType
-    , challengeResponses : ChallengeResponsesType
+    , challengeResponses : Maybe ChallengeResponsesType
     , challengeName : ChallengeNameType
-    , analyticsMetadata : AnalyticsMetadataType
+    , analyticsMetadata : Maybe AnalyticsMetadataType
     }
 
 
 type alias RespondToAuthChallengeResponse =
-    { session : SessionType
-    , challengeParameters : ChallengeParametersType
-    , challengeName : ChallengeNameType
-    , authenticationResult : AuthenticationResultType
+    { session : Maybe SessionType
+    , challengeParameters : Maybe ChallengeParametersType
+    , challengeName : Maybe ChallengeNameType
+    , authenticationResult : Maybe AuthenticationResultType
     }
 
 
 type alias RiskConfigurationType =
-    { userPoolId : UserPoolIdType
-    , riskExceptionConfiguration : RiskExceptionConfigurationType
-    , lastModifiedDate : DateType
-    , compromisedCredentialsRiskConfiguration : CompromisedCredentialsRiskConfigurationType
-    , clientId : ClientIdType
-    , accountTakeoverRiskConfiguration : AccountTakeoverRiskConfigurationType
+    { userPoolId : Maybe UserPoolIdType
+    , riskExceptionConfiguration : Maybe RiskExceptionConfigurationType
+    , lastModifiedDate : Maybe DateType
+    , compromisedCredentialsRiskConfiguration : Maybe CompromisedCredentialsRiskConfigurationType
+    , clientId : Maybe ClientIdType
+    , accountTakeoverRiskConfiguration : Maybe AccountTakeoverRiskConfigurationType
     }
 
 
@@ -3922,7 +3953,7 @@ riskDecisionType =
 
 
 type alias RiskExceptionConfigurationType =
-    { skippedIprangeList : SkippedIprangeListType, blockedIprangeList : BlockedIprangeListType }
+    { skippedIprangeList : Maybe SkippedIprangeListType, blockedIprangeList : Maybe BlockedIprangeListType }
 
 
 type RiskLevelType
@@ -3968,17 +3999,17 @@ s3BucketType =
 
 
 type alias SmsmfaSettingsType =
-    { preferredMfa : Bool, enabled : Bool }
+    { preferredMfa : Maybe Bool, enabled : Maybe Bool }
 
 
 type alias SchemaAttributeType =
-    { stringAttributeConstraints : StringAttributeConstraintsType
-    , required : Bool
-    , numberAttributeConstraints : NumberAttributeConstraintsType
-    , name : CustomAttributeNameType
-    , mutable : Bool
-    , developerOnlyAttribute : Bool
-    , attributeDataType : AttributeDataType
+    { stringAttributeConstraints : Maybe StringAttributeConstraintsType
+    , required : Maybe Bool
+    , numberAttributeConstraints : Maybe NumberAttributeConstraintsType
+    , name : Maybe CustomAttributeNameType
+    , mutable : Maybe Bool
+    , developerOnlyAttribute : Maybe Bool
+    , attributeDataType : Maybe AttributeDataType
     }
 
 
@@ -4084,10 +4115,10 @@ sessionType =
 
 type alias SetRiskConfigurationRequest =
     { userPoolId : UserPoolIdType
-    , riskExceptionConfiguration : RiskExceptionConfigurationType
-    , compromisedCredentialsRiskConfiguration : CompromisedCredentialsRiskConfigurationType
-    , clientId : ClientIdType
-    , accountTakeoverRiskConfiguration : AccountTakeoverRiskConfigurationType
+    , riskExceptionConfiguration : Maybe RiskExceptionConfigurationType
+    , compromisedCredentialsRiskConfiguration : Maybe CompromisedCredentialsRiskConfigurationType
+    , clientId : Maybe ClientIdType
+    , accountTakeoverRiskConfiguration : Maybe AccountTakeoverRiskConfigurationType
     }
 
 
@@ -4096,7 +4127,7 @@ type alias SetRiskConfigurationResponse =
 
 
 type alias SetUicustomizationRequest =
-    { userPoolId : UserPoolIdType, imageFile : String, clientId : ClientIdType, css : String }
+    { userPoolId : UserPoolIdType, imageFile : Maybe String, clientId : Maybe ClientIdType, css : Maybe String }
 
 
 type alias SetUicustomizationResponse =
@@ -4104,8 +4135,8 @@ type alias SetUicustomizationResponse =
 
 
 type alias SetUserMfapreferenceRequest =
-    { softwareTokenMfaSettings : SoftwareTokenMfaSettingsType
-    , smsmfaSettings : SmsmfaSettingsType
+    { softwareTokenMfaSettings : Maybe SoftwareTokenMfaSettingsType
+    , smsmfaSettings : Maybe SmsmfaSettingsType
     , accessToken : TokenModelType
     }
 
@@ -4116,16 +4147,16 @@ type alias SetUserMfapreferenceResponse =
 
 type alias SetUserPoolMfaConfigRequest =
     { userPoolId : UserPoolIdType
-    , softwareTokenMfaConfiguration : SoftwareTokenMfaConfigType
-    , smsMfaConfiguration : SmsMfaConfigType
-    , mfaConfiguration : UserPoolMfaType
+    , softwareTokenMfaConfiguration : Maybe SoftwareTokenMfaConfigType
+    , smsMfaConfiguration : Maybe SmsMfaConfigType
+    , mfaConfiguration : Maybe UserPoolMfaType
     }
 
 
 type alias SetUserPoolMfaConfigResponse =
-    { softwareTokenMfaConfiguration : SoftwareTokenMfaConfigType
-    , smsMfaConfiguration : SmsMfaConfigType
-    , mfaConfiguration : UserPoolMfaType
+    { softwareTokenMfaConfiguration : Maybe SoftwareTokenMfaConfigType
+    , smsMfaConfiguration : Maybe SmsMfaConfigType
+    , mfaConfiguration : Maybe UserPoolMfaType
     }
 
 
@@ -4138,19 +4169,19 @@ type alias SetUserSettingsResponse =
 
 
 type alias SignUpRequest =
-    { validationData : AttributeListType
+    { validationData : Maybe AttributeListType
     , username : UsernameType
-    , userContextData : UserContextDataType
-    , userAttributes : AttributeListType
-    , secretHash : SecretHashType
+    , userContextData : Maybe UserContextDataType
+    , userAttributes : Maybe AttributeListType
+    , secretHash : Maybe SecretHashType
     , password : PasswordType
     , clientId : ClientIdType
-    , analyticsMetadata : AnalyticsMetadataType
+    , analyticsMetadata : Maybe AnalyticsMetadataType
     }
 
 
 type alias SignUpResponse =
-    { userSub : String, userConfirmed : Bool, codeDeliveryDetails : CodeDeliveryDetailsType }
+    { userSub : String, userConfirmed : Bool, codeDeliveryDetails : Maybe CodeDeliveryDetailsType }
 
 
 type alias SkippedIprangeListType =
@@ -4158,11 +4189,11 @@ type alias SkippedIprangeListType =
 
 
 type alias SmsConfigurationType =
-    { snsCallerArn : ArnType, externalId : String }
+    { snsCallerArn : ArnType, externalId : Maybe String }
 
 
 type alias SmsMfaConfigType =
-    { smsConfiguration : SmsConfigurationType, smsAuthenticationMessage : SmsVerificationMessageType }
+    { smsConfiguration : Maybe SmsConfigurationType, smsAuthenticationMessage : Maybe SmsVerificationMessageType }
 
 
 type SmsVerificationMessageType
@@ -4204,11 +4235,11 @@ softwareTokenMfauserCodeType =
 
 
 type alias SoftwareTokenMfaConfigType =
-    { enabled : Bool }
+    { enabled : Maybe Bool }
 
 
 type alias SoftwareTokenMfaSettingsType =
-    { preferredMfa : Bool, enabled : Bool }
+    { preferredMfa : Maybe Bool, enabled : Maybe Bool }
 
 
 type alias StartUserImportJobRequest =
@@ -4216,7 +4247,7 @@ type alias StartUserImportJobRequest =
 
 
 type alias StartUserImportJobResponse =
-    { userImportJob : UserImportJobType }
+    { userImportJob : Maybe UserImportJobType }
 
 
 type StatusType
@@ -4243,11 +4274,11 @@ type alias StopUserImportJobRequest =
 
 
 type alias StopUserImportJobResponse =
-    { userImportJob : UserImportJobType }
+    { userImportJob : Maybe UserImportJobType }
 
 
 type alias StringAttributeConstraintsType =
-    { minLength : String, maxLength : String }
+    { minLength : Maybe String, maxLength : Maybe String }
 
 
 type alias StringType =
@@ -4275,7 +4306,7 @@ tagKeysType =
 
 
 type alias TagResourceRequest =
-    { tags : UserPoolTagsType, resourceArn : ArnType }
+    { tags : Maybe UserPoolTagsType, resourceArn : ArnType }
 
 
 type alias TagResourceResponse =
@@ -4331,18 +4362,18 @@ tokenModelType =
 
 
 type alias UicustomizationType =
-    { userPoolId : UserPoolIdType
-    , lastModifiedDate : DateType
-    , imageUrl : String
-    , creationDate : DateType
-    , clientId : ClientIdType
-    , cssversion : String
-    , css : String
+    { userPoolId : Maybe UserPoolIdType
+    , lastModifiedDate : Maybe DateType
+    , imageUrl : Maybe String
+    , creationDate : Maybe DateType
+    , clientId : Maybe ClientIdType
+    , cssversion : Maybe String
+    , css : Maybe String
     }
 
 
 type alias UntagResourceRequest =
-    { tagKeys : UserPoolTagsListType, resourceArn : ArnType }
+    { tagKeys : Maybe UserPoolTagsListType, resourceArn : ArnType }
 
 
 type alias UntagResourceResponse =
@@ -4363,7 +4394,10 @@ type alias UpdateAuthEventFeedbackResponse =
 
 
 type alias UpdateDeviceStatusRequest =
-    { deviceRememberedStatus : DeviceRememberedStatusType, deviceKey : DeviceKeyType, accessToken : TokenModelType }
+    { deviceRememberedStatus : Maybe DeviceRememberedStatusType
+    , deviceKey : DeviceKeyType
+    , accessToken : TokenModelType
+    }
 
 
 type alias UpdateDeviceStatusResponse =
@@ -4372,23 +4406,23 @@ type alias UpdateDeviceStatusResponse =
 
 type alias UpdateGroupRequest =
     { userPoolId : UserPoolIdType
-    , roleArn : ArnType
-    , precedence : PrecedenceType
+    , roleArn : Maybe ArnType
+    , precedence : Maybe PrecedenceType
     , groupName : GroupNameType
-    , description : DescriptionType
+    , description : Maybe DescriptionType
     }
 
 
 type alias UpdateGroupResponse =
-    { group : GroupType }
+    { group : Maybe GroupType }
 
 
 type alias UpdateIdentityProviderRequest =
     { userPoolId : UserPoolIdType
     , providerName : ProviderNameType
-    , providerDetails : ProviderDetailsType
-    , idpIdentifiers : IdpIdentifiersListType
-    , attributeMapping : AttributeMappingType
+    , providerDetails : Maybe ProviderDetailsType
+    , idpIdentifiers : Maybe IdpIdentifiersListType
+    , attributeMapping : Maybe AttributeMappingType
     }
 
 
@@ -4398,7 +4432,7 @@ type alias UpdateIdentityProviderResponse =
 
 type alias UpdateResourceServerRequest =
     { userPoolId : UserPoolIdType
-    , scopes : ResourceServerScopeListType
+    , scopes : Maybe ResourceServerScopeListType
     , name : ResourceServerNameType
     , identifier : ResourceServerIdentifierType
     }
@@ -4413,30 +4447,30 @@ type alias UpdateUserAttributesRequest =
 
 
 type alias UpdateUserAttributesResponse =
-    { codeDeliveryDetailsList : CodeDeliveryDetailsListType }
+    { codeDeliveryDetailsList : Maybe CodeDeliveryDetailsListType }
 
 
 type alias UpdateUserPoolClientRequest =
-    { writeAttributes : ClientPermissionListType
+    { writeAttributes : Maybe ClientPermissionListType
     , userPoolId : UserPoolIdType
-    , supportedIdentityProviders : SupportedIdentityProvidersListType
-    , refreshTokenValidity : RefreshTokenValidityType
-    , readAttributes : ClientPermissionListType
-    , logoutUrls : LogoutUrlsListType
-    , explicitAuthFlows : ExplicitAuthFlowsListType
-    , defaultRedirectUri : RedirectUrlType
-    , clientName : ClientNameType
+    , supportedIdentityProviders : Maybe SupportedIdentityProvidersListType
+    , refreshTokenValidity : Maybe RefreshTokenValidityType
+    , readAttributes : Maybe ClientPermissionListType
+    , logoutUrls : Maybe LogoutUrlsListType
+    , explicitAuthFlows : Maybe ExplicitAuthFlowsListType
+    , defaultRedirectUri : Maybe RedirectUrlType
+    , clientName : Maybe ClientNameType
     , clientId : ClientIdType
-    , callbackUrls : CallbackUrlsListType
-    , analyticsConfiguration : AnalyticsConfigurationType
-    , allowedOauthScopes : ScopeListType
-    , allowedOauthFlowsUserPoolClient : Bool
-    , allowedOauthFlows : OauthFlowsType
+    , callbackUrls : Maybe CallbackUrlsListType
+    , analyticsConfiguration : Maybe AnalyticsConfigurationType
+    , allowedOauthScopes : Maybe ScopeListType
+    , allowedOauthFlowsUserPoolClient : Maybe Bool
+    , allowedOauthFlows : Maybe OauthFlowsType
     }
 
 
 type alias UpdateUserPoolClientResponse =
-    { userPoolClient : UserPoolClientType }
+    { userPoolClient : Maybe UserPoolClientType }
 
 
 type alias UpdateUserPoolDomainRequest =
@@ -4444,26 +4478,26 @@ type alias UpdateUserPoolDomainRequest =
 
 
 type alias UpdateUserPoolDomainResponse =
-    { cloudFrontDomain : DomainType }
+    { cloudFrontDomain : Maybe DomainType }
 
 
 type alias UpdateUserPoolRequest =
-    { verificationMessageTemplate : VerificationMessageTemplateType
-    , userPoolTags : UserPoolTagsType
+    { verificationMessageTemplate : Maybe VerificationMessageTemplateType
+    , userPoolTags : Maybe UserPoolTagsType
     , userPoolId : UserPoolIdType
-    , userPoolAddOns : UserPoolAddOnsType
-    , smsVerificationMessage : SmsVerificationMessageType
-    , smsConfiguration : SmsConfigurationType
-    , smsAuthenticationMessage : SmsVerificationMessageType
-    , policies : UserPoolPolicyType
-    , mfaConfiguration : UserPoolMfaType
-    , lambdaConfig : LambdaConfigType
-    , emailVerificationSubject : EmailVerificationSubjectType
-    , emailVerificationMessage : EmailVerificationMessageType
-    , emailConfiguration : EmailConfigurationType
-    , deviceConfiguration : DeviceConfigurationType
-    , autoVerifiedAttributes : VerifiedAttributesListType
-    , adminCreateUserConfig : AdminCreateUserConfigType
+    , userPoolAddOns : Maybe UserPoolAddOnsType
+    , smsVerificationMessage : Maybe SmsVerificationMessageType
+    , smsConfiguration : Maybe SmsConfigurationType
+    , smsAuthenticationMessage : Maybe SmsVerificationMessageType
+    , policies : Maybe UserPoolPolicyType
+    , mfaConfiguration : Maybe UserPoolMfaType
+    , lambdaConfig : Maybe LambdaConfigType
+    , emailVerificationSubject : Maybe EmailVerificationSubjectType
+    , emailVerificationMessage : Maybe EmailVerificationMessageType
+    , emailConfiguration : Maybe EmailConfigurationType
+    , deviceConfiguration : Maybe DeviceConfigurationType
+    , autoVerifiedAttributes : Maybe VerifiedAttributesListType
+    , adminCreateUserConfig : Maybe AdminCreateUserConfigType
     }
 
 
@@ -4472,7 +4506,7 @@ type alias UpdateUserPoolResponse =
 
 
 type alias UserContextDataType =
-    { encodedData : String }
+    { encodedData : Maybe String }
 
 
 type UserFilterType
@@ -4581,19 +4615,19 @@ userImportJobStatusType =
 
 
 type alias UserImportJobType =
-    { userPoolId : UserPoolIdType
-    , status : UserImportJobStatusType
-    , startDate : DateType
-    , skippedUsers : Int
-    , preSignedUrl : PreSignedUrlType
-    , jobName : UserImportJobNameType
-    , jobId : UserImportJobIdType
-    , importedUsers : Int
-    , failedUsers : Int
-    , creationDate : DateType
-    , completionMessage : CompletionMessageType
-    , completionDate : DateType
-    , cloudWatchLogsRoleArn : ArnType
+    { userPoolId : Maybe UserPoolIdType
+    , status : Maybe UserImportJobStatusType
+    , startDate : Maybe DateType
+    , skippedUsers : Maybe Int
+    , preSignedUrl : Maybe PreSignedUrlType
+    , jobName : Maybe UserImportJobNameType
+    , jobId : Maybe UserImportJobIdType
+    , importedUsers : Maybe Int
+    , failedUsers : Maybe Int
+    , creationDate : Maybe DateType
+    , completionMessage : Maybe CompletionMessageType
+    , completionDate : Maybe DateType
+    , cloudWatchLogsRoleArn : Maybe ArnType
     }
 
 
@@ -4610,7 +4644,7 @@ type alias UserPoolAddOnsType =
 
 
 type alias UserPoolClientDescription =
-    { userPoolId : UserPoolIdType, clientName : ClientNameType, clientId : ClientIdType }
+    { userPoolId : Maybe UserPoolIdType, clientName : Maybe ClientNameType, clientId : Maybe ClientIdType }
 
 
 type alias UserPoolClientListType =
@@ -4618,34 +4652,34 @@ type alias UserPoolClientListType =
 
 
 type alias UserPoolClientType =
-    { writeAttributes : ClientPermissionListType
-    , userPoolId : UserPoolIdType
-    , supportedIdentityProviders : SupportedIdentityProvidersListType
-    , refreshTokenValidity : RefreshTokenValidityType
-    , readAttributes : ClientPermissionListType
-    , logoutUrls : LogoutUrlsListType
-    , lastModifiedDate : DateType
-    , explicitAuthFlows : ExplicitAuthFlowsListType
-    , defaultRedirectUri : RedirectUrlType
-    , creationDate : DateType
-    , clientSecret : ClientSecretType
-    , clientName : ClientNameType
-    , clientId : ClientIdType
-    , callbackUrls : CallbackUrlsListType
-    , analyticsConfiguration : AnalyticsConfigurationType
-    , allowedOauthScopes : ScopeListType
-    , allowedOauthFlowsUserPoolClient : Bool
-    , allowedOauthFlows : OauthFlowsType
+    { writeAttributes : Maybe ClientPermissionListType
+    , userPoolId : Maybe UserPoolIdType
+    , supportedIdentityProviders : Maybe SupportedIdentityProvidersListType
+    , refreshTokenValidity : Maybe RefreshTokenValidityType
+    , readAttributes : Maybe ClientPermissionListType
+    , logoutUrls : Maybe LogoutUrlsListType
+    , lastModifiedDate : Maybe DateType
+    , explicitAuthFlows : Maybe ExplicitAuthFlowsListType
+    , defaultRedirectUri : Maybe RedirectUrlType
+    , creationDate : Maybe DateType
+    , clientSecret : Maybe ClientSecretType
+    , clientName : Maybe ClientNameType
+    , clientId : Maybe ClientIdType
+    , callbackUrls : Maybe CallbackUrlsListType
+    , analyticsConfiguration : Maybe AnalyticsConfigurationType
+    , allowedOauthScopes : Maybe ScopeListType
+    , allowedOauthFlowsUserPoolClient : Maybe Bool
+    , allowedOauthFlows : Maybe OauthFlowsType
     }
 
 
 type alias UserPoolDescriptionType =
-    { status : StatusType
-    , name : UserPoolNameType
-    , lastModifiedDate : DateType
-    , lambdaConfig : LambdaConfigType
-    , id : UserPoolIdType
-    , creationDate : DateType
+    { status : Maybe StatusType
+    , name : Maybe UserPoolNameType
+    , lastModifiedDate : Maybe DateType
+    , lambdaConfig : Maybe LambdaConfigType
+    , id : Maybe UserPoolIdType
+    , creationDate : Maybe DateType
     }
 
 
@@ -4715,7 +4749,7 @@ userPoolNameType =
 
 
 type alias UserPoolPolicyType =
-    { passwordPolicy : PasswordPolicyType }
+    { passwordPolicy : Maybe PasswordPolicyType }
 
 
 type alias UserPoolTagsListType =
@@ -4727,35 +4761,35 @@ type alias UserPoolTagsType =
 
 
 type alias UserPoolType =
-    { verificationMessageTemplate : VerificationMessageTemplateType
-    , usernameAttributes : UsernameAttributesListType
-    , userPoolTags : UserPoolTagsType
-    , userPoolAddOns : UserPoolAddOnsType
-    , status : StatusType
-    , smsVerificationMessage : SmsVerificationMessageType
-    , smsConfigurationFailure : String
-    , smsConfiguration : SmsConfigurationType
-    , smsAuthenticationMessage : SmsVerificationMessageType
-    , schemaAttributes : SchemaAttributesListType
-    , policies : UserPoolPolicyType
-    , name : UserPoolNameType
-    , mfaConfiguration : UserPoolMfaType
-    , lastModifiedDate : DateType
-    , lambdaConfig : LambdaConfigType
-    , id : UserPoolIdType
-    , estimatedNumberOfUsers : Int
-    , emailVerificationSubject : EmailVerificationSubjectType
-    , emailVerificationMessage : EmailVerificationMessageType
-    , emailConfigurationFailure : String
-    , emailConfiguration : EmailConfigurationType
-    , domain : DomainType
-    , deviceConfiguration : DeviceConfigurationType
-    , customDomain : DomainType
-    , creationDate : DateType
-    , autoVerifiedAttributes : VerifiedAttributesListType
-    , arn : ArnType
-    , aliasAttributes : AliasAttributesListType
-    , adminCreateUserConfig : AdminCreateUserConfigType
+    { verificationMessageTemplate : Maybe VerificationMessageTemplateType
+    , usernameAttributes : Maybe UsernameAttributesListType
+    , userPoolTags : Maybe UserPoolTagsType
+    , userPoolAddOns : Maybe UserPoolAddOnsType
+    , status : Maybe StatusType
+    , smsVerificationMessage : Maybe SmsVerificationMessageType
+    , smsConfigurationFailure : Maybe String
+    , smsConfiguration : Maybe SmsConfigurationType
+    , smsAuthenticationMessage : Maybe SmsVerificationMessageType
+    , schemaAttributes : Maybe SchemaAttributesListType
+    , policies : Maybe UserPoolPolicyType
+    , name : Maybe UserPoolNameType
+    , mfaConfiguration : Maybe UserPoolMfaType
+    , lastModifiedDate : Maybe DateType
+    , lambdaConfig : Maybe LambdaConfigType
+    , id : Maybe UserPoolIdType
+    , estimatedNumberOfUsers : Maybe Int
+    , emailVerificationSubject : Maybe EmailVerificationSubjectType
+    , emailVerificationMessage : Maybe EmailVerificationMessageType
+    , emailConfigurationFailure : Maybe String
+    , emailConfiguration : Maybe EmailConfigurationType
+    , domain : Maybe DomainType
+    , deviceConfiguration : Maybe DeviceConfigurationType
+    , customDomain : Maybe DomainType
+    , creationDate : Maybe DateType
+    , autoVerifiedAttributes : Maybe VerifiedAttributesListType
+    , arn : Maybe ArnType
+    , aliasAttributes : Maybe AliasAttributesListType
+    , adminCreateUserConfig : Maybe AdminCreateUserConfigType
     }
 
 
@@ -4806,13 +4840,13 @@ userStatusType =
 
 
 type alias UserType =
-    { username : UsernameType
-    , userStatus : UserStatusType
-    , userLastModifiedDate : DateType
-    , userCreateDate : DateType
-    , mfaoptions : MfaoptionListType
-    , enabled : Bool
-    , attributes : AttributeListType
+    { username : Maybe UsernameType
+    , userStatus : Maybe UserStatusType
+    , userLastModifiedDate : Maybe DateType
+    , userCreateDate : Maybe DateType
+    , mfaoptions : Maybe MfaoptionListType
+    , enabled : Maybe Bool
+    , attributes : Maybe AttributeListType
     }
 
 
@@ -4863,12 +4897,12 @@ type alias UsersListType =
 
 
 type alias VerificationMessageTemplateType =
-    { smsMessage : SmsVerificationMessageType
-    , emailSubjectByLink : EmailVerificationSubjectByLinkType
-    , emailSubject : EmailVerificationSubjectType
-    , emailMessageByLink : EmailVerificationMessageByLinkType
-    , emailMessage : EmailVerificationMessageType
-    , defaultEmailOption : DefaultEmailOptionType
+    { smsMessage : Maybe SmsVerificationMessageType
+    , emailSubjectByLink : Maybe EmailVerificationSubjectByLinkType
+    , emailSubject : Maybe EmailVerificationSubjectType
+    , emailMessageByLink : Maybe EmailVerificationMessageByLinkType
+    , emailMessage : Maybe EmailVerificationMessageType
+    , defaultEmailOption : Maybe DefaultEmailOptionType
     }
 
 
@@ -4897,14 +4931,14 @@ type alias VerifiedAttributesListType =
 
 type alias VerifySoftwareTokenRequest =
     { userCode : SoftwareTokenMfauserCodeType
-    , session : SessionType
-    , friendlyDeviceName : String
-    , accessToken : TokenModelType
+    , session : Maybe SessionType
+    , friendlyDeviceName : Maybe String
+    , accessToken : Maybe TokenModelType
     }
 
 
 type alias VerifySoftwareTokenResponse =
-    { status : VerifySoftwareTokenResponseType, session : SessionType }
+    { status : Maybe VerifySoftwareTokenResponseType, session : Maybe SessionType }
 
 
 type VerifySoftwareTokenResponseType
@@ -4960,8 +4994,8 @@ verifySoftwareTokenResponseTypeCodec =
 verifySoftwareTokenResponseCodec : Codec VerifySoftwareTokenResponse
 verifySoftwareTokenResponseCodec =
     Codec.object VerifySoftwareTokenResponse
-        |> Codec.field "Status" .status verifySoftwareTokenResponseTypeCodec
-        |> Codec.field "Session" .session sessionTypeCodec
+        |> Codec.optionalField "status" .status verifySoftwareTokenResponseTypeCodec
+        |> Codec.optionalField "session" .session sessionTypeCodec
         |> Codec.buildObject
 
 
@@ -4970,9 +5004,9 @@ verifySoftwareTokenRequestCodec : Codec VerifySoftwareTokenRequest
 verifySoftwareTokenRequestCodec =
     Codec.object VerifySoftwareTokenRequest
         |> Codec.field "UserCode" .userCode softwareTokenMfauserCodeTypeCodec
-        |> Codec.field "Session" .session sessionTypeCodec
-        |> Codec.field "FriendlyDeviceName" .friendlyDeviceName Codec.string
-        |> Codec.field "AccessToken" .accessToken tokenModelTypeCodec
+        |> Codec.optionalField "session" .session sessionTypeCodec
+        |> Codec.optionalField "friendlyDeviceName" .friendlyDeviceName Codec.string
+        |> Codec.optionalField "accessToken" .accessToken tokenModelTypeCodec
         |> Codec.buildObject
 
 
@@ -4992,12 +5026,12 @@ verifiedAttributeTypeCodec =
 verificationMessageTemplateTypeCodec : Codec VerificationMessageTemplateType
 verificationMessageTemplateTypeCodec =
     Codec.object VerificationMessageTemplateType
-        |> Codec.field "SmsMessage" .smsMessage smsVerificationMessageTypeCodec
-        |> Codec.field "EmailSubjectByLink" .emailSubjectByLink emailVerificationSubjectByLinkTypeCodec
-        |> Codec.field "EmailSubject" .emailSubject emailVerificationSubjectTypeCodec
-        |> Codec.field "EmailMessageByLink" .emailMessageByLink emailVerificationMessageByLinkTypeCodec
-        |> Codec.field "EmailMessage" .emailMessage emailVerificationMessageTypeCodec
-        |> Codec.field "DefaultEmailOption" .defaultEmailOption defaultEmailOptionTypeCodec
+        |> Codec.optionalField "smsMessage" .smsMessage smsVerificationMessageTypeCodec
+        |> Codec.optionalField "emailSubjectByLink" .emailSubjectByLink emailVerificationSubjectByLinkTypeCodec
+        |> Codec.optionalField "emailSubject" .emailSubject emailVerificationSubjectTypeCodec
+        |> Codec.optionalField "emailMessageByLink" .emailMessageByLink emailVerificationMessageByLinkTypeCodec
+        |> Codec.optionalField "emailMessage" .emailMessage emailVerificationMessageTypeCodec
+        |> Codec.optionalField "defaultEmailOption" .defaultEmailOption defaultEmailOptionTypeCodec
         |> Codec.buildObject
 
 
@@ -5029,13 +5063,13 @@ usernameAttributeTypeCodec =
 userTypeCodec : Codec UserType
 userTypeCodec =
     Codec.object UserType
-        |> Codec.field "Username" .username usernameTypeCodec
-        |> Codec.field "UserStatus" .userStatus userStatusTypeCodec
-        |> Codec.field "UserLastModifiedDate" .userLastModifiedDate dateTypeCodec
-        |> Codec.field "UserCreateDate" .userCreateDate dateTypeCodec
-        |> Codec.field "MFAOptions" .mfaoptions mfaoptionListTypeCodec
-        |> Codec.field "Enabled" .enabled Codec.bool
-        |> Codec.field "Attributes" .attributes attributeListTypeCodec
+        |> Codec.optionalField "username" .username usernameTypeCodec
+        |> Codec.optionalField "userStatus" .userStatus userStatusTypeCodec
+        |> Codec.optionalField "userLastModifiedDate" .userLastModifiedDate dateTypeCodec
+        |> Codec.optionalField "userCreateDate" .userCreateDate dateTypeCodec
+        |> Codec.optionalField "mfaoptions" .mfaoptions mfaoptionListTypeCodec
+        |> Codec.optionalField "enabled" .enabled Codec.bool
+        |> Codec.optionalField "attributes" .attributes attributeListTypeCodec
         |> Codec.buildObject
 
 
@@ -5049,35 +5083,38 @@ userStatusTypeCodec =
 userPoolTypeCodec : Codec UserPoolType
 userPoolTypeCodec =
     Codec.object UserPoolType
-        |> Codec.field "VerificationMessageTemplate" .verificationMessageTemplate verificationMessageTemplateTypeCodec
-        |> Codec.field "UsernameAttributes" .usernameAttributes usernameAttributesListTypeCodec
-        |> Codec.field "UserPoolTags" .userPoolTags userPoolTagsTypeCodec
-        |> Codec.field "UserPoolAddOns" .userPoolAddOns userPoolAddOnsTypeCodec
-        |> Codec.field "Status" .status statusTypeCodec
-        |> Codec.field "SmsVerificationMessage" .smsVerificationMessage smsVerificationMessageTypeCodec
-        |> Codec.field "SmsConfigurationFailure" .smsConfigurationFailure Codec.string
-        |> Codec.field "SmsConfiguration" .smsConfiguration smsConfigurationTypeCodec
-        |> Codec.field "SmsAuthenticationMessage" .smsAuthenticationMessage smsVerificationMessageTypeCodec
-        |> Codec.field "SchemaAttributes" .schemaAttributes schemaAttributesListTypeCodec
-        |> Codec.field "Policies" .policies userPoolPolicyTypeCodec
-        |> Codec.field "Name" .name userPoolNameTypeCodec
-        |> Codec.field "MfaConfiguration" .mfaConfiguration userPoolMfaTypeCodec
-        |> Codec.field "LastModifiedDate" .lastModifiedDate dateTypeCodec
-        |> Codec.field "LambdaConfig" .lambdaConfig lambdaConfigTypeCodec
-        |> Codec.field "Id" .id userPoolIdTypeCodec
-        |> Codec.field "EstimatedNumberOfUsers" .estimatedNumberOfUsers Codec.int
-        |> Codec.field "EmailVerificationSubject" .emailVerificationSubject emailVerificationSubjectTypeCodec
-        |> Codec.field "EmailVerificationMessage" .emailVerificationMessage emailVerificationMessageTypeCodec
-        |> Codec.field "EmailConfigurationFailure" .emailConfigurationFailure Codec.string
-        |> Codec.field "EmailConfiguration" .emailConfiguration emailConfigurationTypeCodec
-        |> Codec.field "Domain" .domain domainTypeCodec
-        |> Codec.field "DeviceConfiguration" .deviceConfiguration deviceConfigurationTypeCodec
-        |> Codec.field "CustomDomain" .customDomain domainTypeCodec
-        |> Codec.field "CreationDate" .creationDate dateTypeCodec
-        |> Codec.field "AutoVerifiedAttributes" .autoVerifiedAttributes verifiedAttributesListTypeCodec
-        |> Codec.field "Arn" .arn arnTypeCodec
-        |> Codec.field "AliasAttributes" .aliasAttributes aliasAttributesListTypeCodec
-        |> Codec.field "AdminCreateUserConfig" .adminCreateUserConfig adminCreateUserConfigTypeCodec
+        |> Codec.optionalField
+            "verificationMessageTemplate"
+            .verificationMessageTemplate
+            verificationMessageTemplateTypeCodec
+        |> Codec.optionalField "usernameAttributes" .usernameAttributes usernameAttributesListTypeCodec
+        |> Codec.optionalField "userPoolTags" .userPoolTags userPoolTagsTypeCodec
+        |> Codec.optionalField "userPoolAddOns" .userPoolAddOns userPoolAddOnsTypeCodec
+        |> Codec.optionalField "status" .status statusTypeCodec
+        |> Codec.optionalField "smsVerificationMessage" .smsVerificationMessage smsVerificationMessageTypeCodec
+        |> Codec.optionalField "smsConfigurationFailure" .smsConfigurationFailure Codec.string
+        |> Codec.optionalField "smsConfiguration" .smsConfiguration smsConfigurationTypeCodec
+        |> Codec.optionalField "smsAuthenticationMessage" .smsAuthenticationMessage smsVerificationMessageTypeCodec
+        |> Codec.optionalField "schemaAttributes" .schemaAttributes schemaAttributesListTypeCodec
+        |> Codec.optionalField "policies" .policies userPoolPolicyTypeCodec
+        |> Codec.optionalField "name" .name userPoolNameTypeCodec
+        |> Codec.optionalField "mfaConfiguration" .mfaConfiguration userPoolMfaTypeCodec
+        |> Codec.optionalField "lastModifiedDate" .lastModifiedDate dateTypeCodec
+        |> Codec.optionalField "lambdaConfig" .lambdaConfig lambdaConfigTypeCodec
+        |> Codec.optionalField "id" .id userPoolIdTypeCodec
+        |> Codec.optionalField "estimatedNumberOfUsers" .estimatedNumberOfUsers Codec.int
+        |> Codec.optionalField "emailVerificationSubject" .emailVerificationSubject emailVerificationSubjectTypeCodec
+        |> Codec.optionalField "emailVerificationMessage" .emailVerificationMessage emailVerificationMessageTypeCodec
+        |> Codec.optionalField "emailConfigurationFailure" .emailConfigurationFailure Codec.string
+        |> Codec.optionalField "emailConfiguration" .emailConfiguration emailConfigurationTypeCodec
+        |> Codec.optionalField "domain" .domain domainTypeCodec
+        |> Codec.optionalField "deviceConfiguration" .deviceConfiguration deviceConfigurationTypeCodec
+        |> Codec.optionalField "customDomain" .customDomain domainTypeCodec
+        |> Codec.optionalField "creationDate" .creationDate dateTypeCodec
+        |> Codec.optionalField "autoVerifiedAttributes" .autoVerifiedAttributes verifiedAttributesListTypeCodec
+        |> Codec.optionalField "arn" .arn arnTypeCodec
+        |> Codec.optionalField "aliasAttributes" .aliasAttributes aliasAttributesListTypeCodec
+        |> Codec.optionalField "adminCreateUserConfig" .adminCreateUserConfig adminCreateUserConfigTypeCodec
         |> Codec.buildObject
 
 
@@ -5099,7 +5136,7 @@ userPoolTagsListTypeCodec =
 userPoolPolicyTypeCodec : Codec UserPoolPolicyType
 userPoolPolicyTypeCodec =
     Codec.object UserPoolPolicyType
-        |> Codec.field "PasswordPolicy" .passwordPolicy passwordPolicyTypeCodec
+        |> Codec.optionalField "passwordPolicy" .passwordPolicy passwordPolicyTypeCodec
         |> Codec.buildObject
 
 
@@ -5131,12 +5168,12 @@ userPoolIdTypeCodec =
 userPoolDescriptionTypeCodec : Codec UserPoolDescriptionType
 userPoolDescriptionTypeCodec =
     Codec.object UserPoolDescriptionType
-        |> Codec.field "Status" .status statusTypeCodec
-        |> Codec.field "Name" .name userPoolNameTypeCodec
-        |> Codec.field "LastModifiedDate" .lastModifiedDate dateTypeCodec
-        |> Codec.field "LambdaConfig" .lambdaConfig lambdaConfigTypeCodec
-        |> Codec.field "Id" .id userPoolIdTypeCodec
-        |> Codec.field "CreationDate" .creationDate dateTypeCodec
+        |> Codec.optionalField "status" .status statusTypeCodec
+        |> Codec.optionalField "name" .name userPoolNameTypeCodec
+        |> Codec.optionalField "lastModifiedDate" .lastModifiedDate dateTypeCodec
+        |> Codec.optionalField "lambdaConfig" .lambdaConfig lambdaConfigTypeCodec
+        |> Codec.optionalField "id" .id userPoolIdTypeCodec
+        |> Codec.optionalField "creationDate" .creationDate dateTypeCodec
         |> Codec.buildObject
 
 
@@ -5144,24 +5181,27 @@ userPoolDescriptionTypeCodec =
 userPoolClientTypeCodec : Codec UserPoolClientType
 userPoolClientTypeCodec =
     Codec.object UserPoolClientType
-        |> Codec.field "WriteAttributes" .writeAttributes clientPermissionListTypeCodec
-        |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "SupportedIdentityProviders" .supportedIdentityProviders supportedIdentityProvidersListTypeCodec
-        |> Codec.field "RefreshTokenValidity" .refreshTokenValidity refreshTokenValidityTypeCodec
-        |> Codec.field "ReadAttributes" .readAttributes clientPermissionListTypeCodec
-        |> Codec.field "LogoutURLs" .logoutUrls logoutUrlsListTypeCodec
-        |> Codec.field "LastModifiedDate" .lastModifiedDate dateTypeCodec
-        |> Codec.field "ExplicitAuthFlows" .explicitAuthFlows explicitAuthFlowsListTypeCodec
-        |> Codec.field "DefaultRedirectURI" .defaultRedirectUri redirectUrlTypeCodec
-        |> Codec.field "CreationDate" .creationDate dateTypeCodec
-        |> Codec.field "ClientSecret" .clientSecret clientSecretTypeCodec
-        |> Codec.field "ClientName" .clientName clientNameTypeCodec
-        |> Codec.field "ClientId" .clientId clientIdTypeCodec
-        |> Codec.field "CallbackURLs" .callbackUrls callbackUrlsListTypeCodec
-        |> Codec.field "AnalyticsConfiguration" .analyticsConfiguration analyticsConfigurationTypeCodec
-        |> Codec.field "AllowedOAuthScopes" .allowedOauthScopes scopeListTypeCodec
-        |> Codec.field "AllowedOAuthFlowsUserPoolClient" .allowedOauthFlowsUserPoolClient Codec.bool
-        |> Codec.field "AllowedOAuthFlows" .allowedOauthFlows oauthFlowsTypeCodec
+        |> Codec.optionalField "writeAttributes" .writeAttributes clientPermissionListTypeCodec
+        |> Codec.optionalField "userPoolId" .userPoolId userPoolIdTypeCodec
+        |> Codec.optionalField
+            "supportedIdentityProviders"
+            .supportedIdentityProviders
+            supportedIdentityProvidersListTypeCodec
+        |> Codec.optionalField "refreshTokenValidity" .refreshTokenValidity refreshTokenValidityTypeCodec
+        |> Codec.optionalField "readAttributes" .readAttributes clientPermissionListTypeCodec
+        |> Codec.optionalField "logoutUrls" .logoutUrls logoutUrlsListTypeCodec
+        |> Codec.optionalField "lastModifiedDate" .lastModifiedDate dateTypeCodec
+        |> Codec.optionalField "explicitAuthFlows" .explicitAuthFlows explicitAuthFlowsListTypeCodec
+        |> Codec.optionalField "defaultRedirectUri" .defaultRedirectUri redirectUrlTypeCodec
+        |> Codec.optionalField "creationDate" .creationDate dateTypeCodec
+        |> Codec.optionalField "clientSecret" .clientSecret clientSecretTypeCodec
+        |> Codec.optionalField "clientName" .clientName clientNameTypeCodec
+        |> Codec.optionalField "clientId" .clientId clientIdTypeCodec
+        |> Codec.optionalField "callbackUrls" .callbackUrls callbackUrlsListTypeCodec
+        |> Codec.optionalField "analyticsConfiguration" .analyticsConfiguration analyticsConfigurationTypeCodec
+        |> Codec.optionalField "allowedOauthScopes" .allowedOauthScopes scopeListTypeCodec
+        |> Codec.optionalField "allowedOauthFlowsUserPoolClient" .allowedOauthFlowsUserPoolClient Codec.bool
+        |> Codec.optionalField "allowedOauthFlows" .allowedOauthFlows oauthFlowsTypeCodec
         |> Codec.buildObject
 
 
@@ -5175,9 +5215,9 @@ userPoolClientListTypeCodec =
 userPoolClientDescriptionCodec : Codec UserPoolClientDescription
 userPoolClientDescriptionCodec =
     Codec.object UserPoolClientDescription
-        |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "ClientName" .clientName clientNameTypeCodec
-        |> Codec.field "ClientId" .clientId clientIdTypeCodec
+        |> Codec.optionalField "userPoolId" .userPoolId userPoolIdTypeCodec
+        |> Codec.optionalField "clientName" .clientName clientNameTypeCodec
+        |> Codec.optionalField "clientId" .clientId clientIdTypeCodec
         |> Codec.buildObject
 
 
@@ -5205,19 +5245,19 @@ userImportJobsListTypeCodec =
 userImportJobTypeCodec : Codec UserImportJobType
 userImportJobTypeCodec =
     Codec.object UserImportJobType
-        |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "Status" .status userImportJobStatusTypeCodec
-        |> Codec.field "StartDate" .startDate dateTypeCodec
-        |> Codec.field "SkippedUsers" .skippedUsers Codec.int
-        |> Codec.field "PreSignedUrl" .preSignedUrl preSignedUrlTypeCodec
-        |> Codec.field "JobName" .jobName userImportJobNameTypeCodec
-        |> Codec.field "JobId" .jobId userImportJobIdTypeCodec
-        |> Codec.field "ImportedUsers" .importedUsers Codec.int
-        |> Codec.field "FailedUsers" .failedUsers Codec.int
-        |> Codec.field "CreationDate" .creationDate dateTypeCodec
-        |> Codec.field "CompletionMessage" .completionMessage completionMessageTypeCodec
-        |> Codec.field "CompletionDate" .completionDate dateTypeCodec
-        |> Codec.field "CloudWatchLogsRoleArn" .cloudWatchLogsRoleArn arnTypeCodec
+        |> Codec.optionalField "userPoolId" .userPoolId userPoolIdTypeCodec
+        |> Codec.optionalField "status" .status userImportJobStatusTypeCodec
+        |> Codec.optionalField "startDate" .startDate dateTypeCodec
+        |> Codec.optionalField "skippedUsers" .skippedUsers Codec.int
+        |> Codec.optionalField "preSignedUrl" .preSignedUrl preSignedUrlTypeCodec
+        |> Codec.optionalField "jobName" .jobName userImportJobNameTypeCodec
+        |> Codec.optionalField "jobId" .jobId userImportJobIdTypeCodec
+        |> Codec.optionalField "importedUsers" .importedUsers Codec.int
+        |> Codec.optionalField "failedUsers" .failedUsers Codec.int
+        |> Codec.optionalField "creationDate" .creationDate dateTypeCodec
+        |> Codec.optionalField "completionMessage" .completionMessage completionMessageTypeCodec
+        |> Codec.optionalField "completionDate" .completionDate dateTypeCodec
+        |> Codec.optionalField "cloudWatchLogsRoleArn" .cloudWatchLogsRoleArn arnTypeCodec
         |> Codec.buildObject
 
 
@@ -5248,7 +5288,7 @@ userFilterTypeCodec =
 {-| Codec for UserContextDataType. -}
 userContextDataTypeCodec : Codec UserContextDataType
 userContextDataTypeCodec =
-    Codec.object UserContextDataType |> Codec.field "EncodedData" .encodedData Codec.string |> Codec.buildObject
+    Codec.object UserContextDataType |> Codec.optionalField "encodedData" .encodedData Codec.string |> Codec.buildObject
 
 
 {-| Codec for UpdateUserPoolResponse. -}
@@ -5261,22 +5301,25 @@ updateUserPoolResponseCodec =
 updateUserPoolRequestCodec : Codec UpdateUserPoolRequest
 updateUserPoolRequestCodec =
     Codec.object UpdateUserPoolRequest
-        |> Codec.field "VerificationMessageTemplate" .verificationMessageTemplate verificationMessageTemplateTypeCodec
-        |> Codec.field "UserPoolTags" .userPoolTags userPoolTagsTypeCodec
+        |> Codec.optionalField
+            "verificationMessageTemplate"
+            .verificationMessageTemplate
+            verificationMessageTemplateTypeCodec
+        |> Codec.optionalField "userPoolTags" .userPoolTags userPoolTagsTypeCodec
         |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "UserPoolAddOns" .userPoolAddOns userPoolAddOnsTypeCodec
-        |> Codec.field "SmsVerificationMessage" .smsVerificationMessage smsVerificationMessageTypeCodec
-        |> Codec.field "SmsConfiguration" .smsConfiguration smsConfigurationTypeCodec
-        |> Codec.field "SmsAuthenticationMessage" .smsAuthenticationMessage smsVerificationMessageTypeCodec
-        |> Codec.field "Policies" .policies userPoolPolicyTypeCodec
-        |> Codec.field "MfaConfiguration" .mfaConfiguration userPoolMfaTypeCodec
-        |> Codec.field "LambdaConfig" .lambdaConfig lambdaConfigTypeCodec
-        |> Codec.field "EmailVerificationSubject" .emailVerificationSubject emailVerificationSubjectTypeCodec
-        |> Codec.field "EmailVerificationMessage" .emailVerificationMessage emailVerificationMessageTypeCodec
-        |> Codec.field "EmailConfiguration" .emailConfiguration emailConfigurationTypeCodec
-        |> Codec.field "DeviceConfiguration" .deviceConfiguration deviceConfigurationTypeCodec
-        |> Codec.field "AutoVerifiedAttributes" .autoVerifiedAttributes verifiedAttributesListTypeCodec
-        |> Codec.field "AdminCreateUserConfig" .adminCreateUserConfig adminCreateUserConfigTypeCodec
+        |> Codec.optionalField "userPoolAddOns" .userPoolAddOns userPoolAddOnsTypeCodec
+        |> Codec.optionalField "smsVerificationMessage" .smsVerificationMessage smsVerificationMessageTypeCodec
+        |> Codec.optionalField "smsConfiguration" .smsConfiguration smsConfigurationTypeCodec
+        |> Codec.optionalField "smsAuthenticationMessage" .smsAuthenticationMessage smsVerificationMessageTypeCodec
+        |> Codec.optionalField "policies" .policies userPoolPolicyTypeCodec
+        |> Codec.optionalField "mfaConfiguration" .mfaConfiguration userPoolMfaTypeCodec
+        |> Codec.optionalField "lambdaConfig" .lambdaConfig lambdaConfigTypeCodec
+        |> Codec.optionalField "emailVerificationSubject" .emailVerificationSubject emailVerificationSubjectTypeCodec
+        |> Codec.optionalField "emailVerificationMessage" .emailVerificationMessage emailVerificationMessageTypeCodec
+        |> Codec.optionalField "emailConfiguration" .emailConfiguration emailConfigurationTypeCodec
+        |> Codec.optionalField "deviceConfiguration" .deviceConfiguration deviceConfigurationTypeCodec
+        |> Codec.optionalField "autoVerifiedAttributes" .autoVerifiedAttributes verifiedAttributesListTypeCodec
+        |> Codec.optionalField "adminCreateUserConfig" .adminCreateUserConfig adminCreateUserConfigTypeCodec
         |> Codec.buildObject
 
 
@@ -5284,7 +5327,7 @@ updateUserPoolRequestCodec =
 updateUserPoolDomainResponseCodec : Codec UpdateUserPoolDomainResponse
 updateUserPoolDomainResponseCodec =
     Codec.object UpdateUserPoolDomainResponse
-        |> Codec.field "CloudFrontDomain" .cloudFrontDomain domainTypeCodec
+        |> Codec.optionalField "cloudFrontDomain" .cloudFrontDomain domainTypeCodec
         |> Codec.buildObject
 
 
@@ -5302,7 +5345,7 @@ updateUserPoolDomainRequestCodec =
 updateUserPoolClientResponseCodec : Codec UpdateUserPoolClientResponse
 updateUserPoolClientResponseCodec =
     Codec.object UpdateUserPoolClientResponse
-        |> Codec.field "UserPoolClient" .userPoolClient userPoolClientTypeCodec
+        |> Codec.optionalField "userPoolClient" .userPoolClient userPoolClientTypeCodec
         |> Codec.buildObject
 
 
@@ -5310,21 +5353,24 @@ updateUserPoolClientResponseCodec =
 updateUserPoolClientRequestCodec : Codec UpdateUserPoolClientRequest
 updateUserPoolClientRequestCodec =
     Codec.object UpdateUserPoolClientRequest
-        |> Codec.field "WriteAttributes" .writeAttributes clientPermissionListTypeCodec
+        |> Codec.optionalField "writeAttributes" .writeAttributes clientPermissionListTypeCodec
         |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "SupportedIdentityProviders" .supportedIdentityProviders supportedIdentityProvidersListTypeCodec
-        |> Codec.field "RefreshTokenValidity" .refreshTokenValidity refreshTokenValidityTypeCodec
-        |> Codec.field "ReadAttributes" .readAttributes clientPermissionListTypeCodec
-        |> Codec.field "LogoutURLs" .logoutUrls logoutUrlsListTypeCodec
-        |> Codec.field "ExplicitAuthFlows" .explicitAuthFlows explicitAuthFlowsListTypeCodec
-        |> Codec.field "DefaultRedirectURI" .defaultRedirectUri redirectUrlTypeCodec
-        |> Codec.field "ClientName" .clientName clientNameTypeCodec
+        |> Codec.optionalField
+            "supportedIdentityProviders"
+            .supportedIdentityProviders
+            supportedIdentityProvidersListTypeCodec
+        |> Codec.optionalField "refreshTokenValidity" .refreshTokenValidity refreshTokenValidityTypeCodec
+        |> Codec.optionalField "readAttributes" .readAttributes clientPermissionListTypeCodec
+        |> Codec.optionalField "logoutUrls" .logoutUrls logoutUrlsListTypeCodec
+        |> Codec.optionalField "explicitAuthFlows" .explicitAuthFlows explicitAuthFlowsListTypeCodec
+        |> Codec.optionalField "defaultRedirectUri" .defaultRedirectUri redirectUrlTypeCodec
+        |> Codec.optionalField "clientName" .clientName clientNameTypeCodec
         |> Codec.field "ClientId" .clientId clientIdTypeCodec
-        |> Codec.field "CallbackURLs" .callbackUrls callbackUrlsListTypeCodec
-        |> Codec.field "AnalyticsConfiguration" .analyticsConfiguration analyticsConfigurationTypeCodec
-        |> Codec.field "AllowedOAuthScopes" .allowedOauthScopes scopeListTypeCodec
-        |> Codec.field "AllowedOAuthFlowsUserPoolClient" .allowedOauthFlowsUserPoolClient Codec.bool
-        |> Codec.field "AllowedOAuthFlows" .allowedOauthFlows oauthFlowsTypeCodec
+        |> Codec.optionalField "callbackUrls" .callbackUrls callbackUrlsListTypeCodec
+        |> Codec.optionalField "analyticsConfiguration" .analyticsConfiguration analyticsConfigurationTypeCodec
+        |> Codec.optionalField "allowedOauthScopes" .allowedOauthScopes scopeListTypeCodec
+        |> Codec.optionalField "allowedOauthFlowsUserPoolClient" .allowedOauthFlowsUserPoolClient Codec.bool
+        |> Codec.optionalField "allowedOauthFlows" .allowedOauthFlows oauthFlowsTypeCodec
         |> Codec.buildObject
 
 
@@ -5332,7 +5378,7 @@ updateUserPoolClientRequestCodec =
 updateUserAttributesResponseCodec : Codec UpdateUserAttributesResponse
 updateUserAttributesResponseCodec =
     Codec.object UpdateUserAttributesResponse
-        |> Codec.field "CodeDeliveryDetailsList" .codeDeliveryDetailsList codeDeliveryDetailsListTypeCodec
+        |> Codec.optionalField "codeDeliveryDetailsList" .codeDeliveryDetailsList codeDeliveryDetailsListTypeCodec
         |> Codec.buildObject
 
 
@@ -5358,7 +5404,7 @@ updateResourceServerRequestCodec : Codec UpdateResourceServerRequest
 updateResourceServerRequestCodec =
     Codec.object UpdateResourceServerRequest
         |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "Scopes" .scopes resourceServerScopeListTypeCodec
+        |> Codec.optionalField "scopes" .scopes resourceServerScopeListTypeCodec
         |> Codec.field "Name" .name resourceServerNameTypeCodec
         |> Codec.field "Identifier" .identifier resourceServerIdentifierTypeCodec
         |> Codec.buildObject
@@ -5378,16 +5424,16 @@ updateIdentityProviderRequestCodec =
     Codec.object UpdateIdentityProviderRequest
         |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
         |> Codec.field "ProviderName" .providerName providerNameTypeCodec
-        |> Codec.field "ProviderDetails" .providerDetails providerDetailsTypeCodec
-        |> Codec.field "IdpIdentifiers" .idpIdentifiers idpIdentifiersListTypeCodec
-        |> Codec.field "AttributeMapping" .attributeMapping attributeMappingTypeCodec
+        |> Codec.optionalField "providerDetails" .providerDetails providerDetailsTypeCodec
+        |> Codec.optionalField "idpIdentifiers" .idpIdentifiers idpIdentifiersListTypeCodec
+        |> Codec.optionalField "attributeMapping" .attributeMapping attributeMappingTypeCodec
         |> Codec.buildObject
 
 
 {-| Codec for UpdateGroupResponse. -}
 updateGroupResponseCodec : Codec UpdateGroupResponse
 updateGroupResponseCodec =
-    Codec.object UpdateGroupResponse |> Codec.field "Group" .group groupTypeCodec |> Codec.buildObject
+    Codec.object UpdateGroupResponse |> Codec.optionalField "group" .group groupTypeCodec |> Codec.buildObject
 
 
 {-| Codec for UpdateGroupRequest. -}
@@ -5395,10 +5441,10 @@ updateGroupRequestCodec : Codec UpdateGroupRequest
 updateGroupRequestCodec =
     Codec.object UpdateGroupRequest
         |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "RoleArn" .roleArn arnTypeCodec
-        |> Codec.field "Precedence" .precedence precedenceTypeCodec
+        |> Codec.optionalField "roleArn" .roleArn arnTypeCodec
+        |> Codec.optionalField "precedence" .precedence precedenceTypeCodec
         |> Codec.field "GroupName" .groupName groupNameTypeCodec
-        |> Codec.field "Description" .description descriptionTypeCodec
+        |> Codec.optionalField "description" .description descriptionTypeCodec
         |> Codec.buildObject
 
 
@@ -5412,7 +5458,7 @@ updateDeviceStatusResponseCodec =
 updateDeviceStatusRequestCodec : Codec UpdateDeviceStatusRequest
 updateDeviceStatusRequestCodec =
     Codec.object UpdateDeviceStatusRequest
-        |> Codec.field "DeviceRememberedStatus" .deviceRememberedStatus deviceRememberedStatusTypeCodec
+        |> Codec.optionalField "deviceRememberedStatus" .deviceRememberedStatus deviceRememberedStatusTypeCodec
         |> Codec.field "DeviceKey" .deviceKey deviceKeyTypeCodec
         |> Codec.field "AccessToken" .accessToken tokenModelTypeCodec
         |> Codec.buildObject
@@ -5446,7 +5492,7 @@ untagResourceResponseCodec =
 untagResourceRequestCodec : Codec UntagResourceRequest
 untagResourceRequestCodec =
     Codec.object UntagResourceRequest
-        |> Codec.field "TagKeys" .tagKeys userPoolTagsListTypeCodec
+        |> Codec.optionalField "tagKeys" .tagKeys userPoolTagsListTypeCodec
         |> Codec.field "ResourceArn" .resourceArn arnTypeCodec
         |> Codec.buildObject
 
@@ -5455,13 +5501,13 @@ untagResourceRequestCodec =
 uicustomizationTypeCodec : Codec UicustomizationType
 uicustomizationTypeCodec =
     Codec.object UicustomizationType
-        |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "LastModifiedDate" .lastModifiedDate dateTypeCodec
-        |> Codec.field "ImageUrl" .imageUrl Codec.string
-        |> Codec.field "CreationDate" .creationDate dateTypeCodec
-        |> Codec.field "ClientId" .clientId clientIdTypeCodec
-        |> Codec.field "CSSVersion" .cssversion Codec.string
-        |> Codec.field "CSS" .css Codec.string
+        |> Codec.optionalField "userPoolId" .userPoolId userPoolIdTypeCodec
+        |> Codec.optionalField "lastModifiedDate" .lastModifiedDate dateTypeCodec
+        |> Codec.optionalField "imageUrl" .imageUrl Codec.string
+        |> Codec.optionalField "creationDate" .creationDate dateTypeCodec
+        |> Codec.optionalField "clientId" .clientId clientIdTypeCodec
+        |> Codec.optionalField "cssversion" .cssversion Codec.string
+        |> Codec.optionalField "css" .css Codec.string
         |> Codec.buildObject
 
 
@@ -5493,7 +5539,7 @@ tagResourceResponseCodec =
 tagResourceRequestCodec : Codec TagResourceRequest
 tagResourceRequestCodec =
     Codec.object TagResourceRequest
-        |> Codec.field "Tags" .tags userPoolTagsTypeCodec
+        |> Codec.optionalField "tags" .tags userPoolTagsTypeCodec
         |> Codec.field "ResourceArn" .resourceArn arnTypeCodec
         |> Codec.buildObject
 
@@ -5520,8 +5566,8 @@ stringTypeCodec =
 stringAttributeConstraintsTypeCodec : Codec StringAttributeConstraintsType
 stringAttributeConstraintsTypeCodec =
     Codec.object StringAttributeConstraintsType
-        |> Codec.field "MinLength" .minLength Codec.string
-        |> Codec.field "MaxLength" .maxLength Codec.string
+        |> Codec.optionalField "minLength" .minLength Codec.string
+        |> Codec.optionalField "maxLength" .maxLength Codec.string
         |> Codec.buildObject
 
 
@@ -5529,7 +5575,7 @@ stringAttributeConstraintsTypeCodec =
 stopUserImportJobResponseCodec : Codec StopUserImportJobResponse
 stopUserImportJobResponseCodec =
     Codec.object StopUserImportJobResponse
-        |> Codec.field "UserImportJob" .userImportJob userImportJobTypeCodec
+        |> Codec.optionalField "userImportJob" .userImportJob userImportJobTypeCodec
         |> Codec.buildObject
 
 
@@ -5552,7 +5598,7 @@ statusTypeCodec =
 startUserImportJobResponseCodec : Codec StartUserImportJobResponse
 startUserImportJobResponseCodec =
     Codec.object StartUserImportJobResponse
-        |> Codec.field "UserImportJob" .userImportJob userImportJobTypeCodec
+        |> Codec.optionalField "userImportJob" .userImportJob userImportJobTypeCodec
         |> Codec.buildObject
 
 
@@ -5569,15 +5615,15 @@ startUserImportJobRequestCodec =
 softwareTokenMfaSettingsTypeCodec : Codec SoftwareTokenMfaSettingsType
 softwareTokenMfaSettingsTypeCodec =
     Codec.object SoftwareTokenMfaSettingsType
-        |> Codec.field "PreferredMfa" .preferredMfa Codec.bool
-        |> Codec.field "Enabled" .enabled Codec.bool
+        |> Codec.optionalField "preferredMfa" .preferredMfa Codec.bool
+        |> Codec.optionalField "enabled" .enabled Codec.bool
         |> Codec.buildObject
 
 
 {-| Codec for SoftwareTokenMfaConfigType. -}
 softwareTokenMfaConfigTypeCodec : Codec SoftwareTokenMfaConfigType
 softwareTokenMfaConfigTypeCodec =
-    Codec.object SoftwareTokenMfaConfigType |> Codec.field "Enabled" .enabled Codec.bool |> Codec.buildObject
+    Codec.object SoftwareTokenMfaConfigType |> Codec.optionalField "enabled" .enabled Codec.bool |> Codec.buildObject
 
 
 {-| Codec for SoftwareTokenMfauserCodeType. -}
@@ -5596,8 +5642,8 @@ smsVerificationMessageTypeCodec =
 smsMfaConfigTypeCodec : Codec SmsMfaConfigType
 smsMfaConfigTypeCodec =
     Codec.object SmsMfaConfigType
-        |> Codec.field "SmsConfiguration" .smsConfiguration smsConfigurationTypeCodec
-        |> Codec.field "SmsAuthenticationMessage" .smsAuthenticationMessage smsVerificationMessageTypeCodec
+        |> Codec.optionalField "smsConfiguration" .smsConfiguration smsConfigurationTypeCodec
+        |> Codec.optionalField "smsAuthenticationMessage" .smsAuthenticationMessage smsVerificationMessageTypeCodec
         |> Codec.buildObject
 
 
@@ -5606,7 +5652,7 @@ smsConfigurationTypeCodec : Codec SmsConfigurationType
 smsConfigurationTypeCodec =
     Codec.object SmsConfigurationType
         |> Codec.field "SnsCallerArn" .snsCallerArn arnTypeCodec
-        |> Codec.field "ExternalId" .externalId Codec.string
+        |> Codec.optionalField "externalId" .externalId Codec.string
         |> Codec.buildObject
 
 
@@ -5622,7 +5668,7 @@ signUpResponseCodec =
     Codec.object SignUpResponse
         |> Codec.field "UserSub" .userSub Codec.string
         |> Codec.field "UserConfirmed" .userConfirmed Codec.bool
-        |> Codec.field "CodeDeliveryDetails" .codeDeliveryDetails codeDeliveryDetailsTypeCodec
+        |> Codec.optionalField "codeDeliveryDetails" .codeDeliveryDetails codeDeliveryDetailsTypeCodec
         |> Codec.buildObject
 
 
@@ -5630,14 +5676,14 @@ signUpResponseCodec =
 signUpRequestCodec : Codec SignUpRequest
 signUpRequestCodec =
     Codec.object SignUpRequest
-        |> Codec.field "ValidationData" .validationData attributeListTypeCodec
+        |> Codec.optionalField "validationData" .validationData attributeListTypeCodec
         |> Codec.field "Username" .username usernameTypeCodec
-        |> Codec.field "UserContextData" .userContextData userContextDataTypeCodec
-        |> Codec.field "UserAttributes" .userAttributes attributeListTypeCodec
-        |> Codec.field "SecretHash" .secretHash secretHashTypeCodec
+        |> Codec.optionalField "userContextData" .userContextData userContextDataTypeCodec
+        |> Codec.optionalField "userAttributes" .userAttributes attributeListTypeCodec
+        |> Codec.optionalField "secretHash" .secretHash secretHashTypeCodec
         |> Codec.field "Password" .password passwordTypeCodec
         |> Codec.field "ClientId" .clientId clientIdTypeCodec
-        |> Codec.field "AnalyticsMetadata" .analyticsMetadata analyticsMetadataTypeCodec
+        |> Codec.optionalField "analyticsMetadata" .analyticsMetadata analyticsMetadataTypeCodec
         |> Codec.buildObject
 
 
@@ -5660,9 +5706,12 @@ setUserSettingsRequestCodec =
 setUserPoolMfaConfigResponseCodec : Codec SetUserPoolMfaConfigResponse
 setUserPoolMfaConfigResponseCodec =
     Codec.object SetUserPoolMfaConfigResponse
-        |> Codec.field "SoftwareTokenMfaConfiguration" .softwareTokenMfaConfiguration softwareTokenMfaConfigTypeCodec
-        |> Codec.field "SmsMfaConfiguration" .smsMfaConfiguration smsMfaConfigTypeCodec
-        |> Codec.field "MfaConfiguration" .mfaConfiguration userPoolMfaTypeCodec
+        |> Codec.optionalField
+            "softwareTokenMfaConfiguration"
+            .softwareTokenMfaConfiguration
+            softwareTokenMfaConfigTypeCodec
+        |> Codec.optionalField "smsMfaConfiguration" .smsMfaConfiguration smsMfaConfigTypeCodec
+        |> Codec.optionalField "mfaConfiguration" .mfaConfiguration userPoolMfaTypeCodec
         |> Codec.buildObject
 
 
@@ -5671,9 +5720,12 @@ setUserPoolMfaConfigRequestCodec : Codec SetUserPoolMfaConfigRequest
 setUserPoolMfaConfigRequestCodec =
     Codec.object SetUserPoolMfaConfigRequest
         |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "SoftwareTokenMfaConfiguration" .softwareTokenMfaConfiguration softwareTokenMfaConfigTypeCodec
-        |> Codec.field "SmsMfaConfiguration" .smsMfaConfiguration smsMfaConfigTypeCodec
-        |> Codec.field "MfaConfiguration" .mfaConfiguration userPoolMfaTypeCodec
+        |> Codec.optionalField
+            "softwareTokenMfaConfiguration"
+            .softwareTokenMfaConfiguration
+            softwareTokenMfaConfigTypeCodec
+        |> Codec.optionalField "smsMfaConfiguration" .smsMfaConfiguration smsMfaConfigTypeCodec
+        |> Codec.optionalField "mfaConfiguration" .mfaConfiguration userPoolMfaTypeCodec
         |> Codec.buildObject
 
 
@@ -5687,8 +5739,8 @@ setUserMfapreferenceResponseCodec =
 setUserMfapreferenceRequestCodec : Codec SetUserMfapreferenceRequest
 setUserMfapreferenceRequestCodec =
     Codec.object SetUserMfapreferenceRequest
-        |> Codec.field "SoftwareTokenMfaSettings" .softwareTokenMfaSettings softwareTokenMfaSettingsTypeCodec
-        |> Codec.field "SMSMfaSettings" .smsmfaSettings smsmfaSettingsTypeCodec
+        |> Codec.optionalField "softwareTokenMfaSettings" .softwareTokenMfaSettings softwareTokenMfaSettingsTypeCodec
+        |> Codec.optionalField "smsmfaSettings" .smsmfaSettings smsmfaSettingsTypeCodec
         |> Codec.field "AccessToken" .accessToken tokenModelTypeCodec
         |> Codec.buildObject
 
@@ -5706,9 +5758,9 @@ setUicustomizationRequestCodec : Codec SetUicustomizationRequest
 setUicustomizationRequestCodec =
     Codec.object SetUicustomizationRequest
         |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "ImageFile" .imageFile Codec.string
-        |> Codec.field "ClientId" .clientId clientIdTypeCodec
-        |> Codec.field "CSS" .css Codec.string
+        |> Codec.optionalField "imageFile" .imageFile Codec.string
+        |> Codec.optionalField "clientId" .clientId clientIdTypeCodec
+        |> Codec.optionalField "css" .css Codec.string
         |> Codec.buildObject
 
 
@@ -5725,14 +5777,17 @@ setRiskConfigurationRequestCodec : Codec SetRiskConfigurationRequest
 setRiskConfigurationRequestCodec =
     Codec.object SetRiskConfigurationRequest
         |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "RiskExceptionConfiguration" .riskExceptionConfiguration riskExceptionConfigurationTypeCodec
-        |> Codec.field
-            "CompromisedCredentialsRiskConfiguration"
+        |> Codec.optionalField
+            "riskExceptionConfiguration"
+            .riskExceptionConfiguration
+            riskExceptionConfigurationTypeCodec
+        |> Codec.optionalField
+            "compromisedCredentialsRiskConfiguration"
             .compromisedCredentialsRiskConfiguration
             compromisedCredentialsRiskConfigurationTypeCodec
-        |> Codec.field "ClientId" .clientId clientIdTypeCodec
-        |> Codec.field
-            "AccountTakeoverRiskConfiguration"
+        |> Codec.optionalField "clientId" .clientId clientIdTypeCodec
+        |> Codec.optionalField
+            "accountTakeoverRiskConfiguration"
             .accountTakeoverRiskConfiguration
             accountTakeoverRiskConfigurationTypeCodec
         |> Codec.buildObject
@@ -5790,13 +5845,19 @@ schemaAttributesListTypeCodec =
 schemaAttributeTypeCodec : Codec SchemaAttributeType
 schemaAttributeTypeCodec =
     Codec.object SchemaAttributeType
-        |> Codec.field "StringAttributeConstraints" .stringAttributeConstraints stringAttributeConstraintsTypeCodec
-        |> Codec.field "Required" .required Codec.bool
-        |> Codec.field "NumberAttributeConstraints" .numberAttributeConstraints numberAttributeConstraintsTypeCodec
-        |> Codec.field "Name" .name customAttributeNameTypeCodec
-        |> Codec.field "Mutable" .mutable Codec.bool
-        |> Codec.field "DeveloperOnlyAttribute" .developerOnlyAttribute Codec.bool
-        |> Codec.field "AttributeDataType" .attributeDataType attributeDataTypeCodec
+        |> Codec.optionalField
+            "stringAttributeConstraints"
+            .stringAttributeConstraints
+            stringAttributeConstraintsTypeCodec
+        |> Codec.optionalField "required" .required Codec.bool
+        |> Codec.optionalField
+            "numberAttributeConstraints"
+            .numberAttributeConstraints
+            numberAttributeConstraintsTypeCodec
+        |> Codec.optionalField "name" .name customAttributeNameTypeCodec
+        |> Codec.optionalField "mutable" .mutable Codec.bool
+        |> Codec.optionalField "developerOnlyAttribute" .developerOnlyAttribute Codec.bool
+        |> Codec.optionalField "attributeDataType" .attributeDataType attributeDataTypeCodec
         |> Codec.buildObject
 
 
@@ -5804,8 +5865,8 @@ schemaAttributeTypeCodec =
 smsmfaSettingsTypeCodec : Codec SmsmfaSettingsType
 smsmfaSettingsTypeCodec =
     Codec.object SmsmfaSettingsType
-        |> Codec.field "PreferredMfa" .preferredMfa Codec.bool
-        |> Codec.field "Enabled" .enabled Codec.bool
+        |> Codec.optionalField "preferredMfa" .preferredMfa Codec.bool
+        |> Codec.optionalField "enabled" .enabled Codec.bool
         |> Codec.buildObject
 
 
@@ -5825,8 +5886,8 @@ riskLevelTypeCodec =
 riskExceptionConfigurationTypeCodec : Codec RiskExceptionConfigurationType
 riskExceptionConfigurationTypeCodec =
     Codec.object RiskExceptionConfigurationType
-        |> Codec.field "SkippedIPRangeList" .skippedIprangeList skippedIprangeListTypeCodec
-        |> Codec.field "BlockedIPRangeList" .blockedIprangeList blockedIprangeListTypeCodec
+        |> Codec.optionalField "skippedIprangeList" .skippedIprangeList skippedIprangeListTypeCodec
+        |> Codec.optionalField "blockedIprangeList" .blockedIprangeList blockedIprangeListTypeCodec
         |> Codec.buildObject
 
 
@@ -5840,16 +5901,19 @@ riskDecisionTypeCodec =
 riskConfigurationTypeCodec : Codec RiskConfigurationType
 riskConfigurationTypeCodec =
     Codec.object RiskConfigurationType
-        |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "RiskExceptionConfiguration" .riskExceptionConfiguration riskExceptionConfigurationTypeCodec
-        |> Codec.field "LastModifiedDate" .lastModifiedDate dateTypeCodec
-        |> Codec.field
-            "CompromisedCredentialsRiskConfiguration"
+        |> Codec.optionalField "userPoolId" .userPoolId userPoolIdTypeCodec
+        |> Codec.optionalField
+            "riskExceptionConfiguration"
+            .riskExceptionConfiguration
+            riskExceptionConfigurationTypeCodec
+        |> Codec.optionalField "lastModifiedDate" .lastModifiedDate dateTypeCodec
+        |> Codec.optionalField
+            "compromisedCredentialsRiskConfiguration"
             .compromisedCredentialsRiskConfiguration
             compromisedCredentialsRiskConfigurationTypeCodec
-        |> Codec.field "ClientId" .clientId clientIdTypeCodec
-        |> Codec.field
-            "AccountTakeoverRiskConfiguration"
+        |> Codec.optionalField "clientId" .clientId clientIdTypeCodec
+        |> Codec.optionalField
+            "accountTakeoverRiskConfiguration"
             .accountTakeoverRiskConfiguration
             accountTakeoverRiskConfigurationTypeCodec
         |> Codec.buildObject
@@ -5859,10 +5923,10 @@ riskConfigurationTypeCodec =
 respondToAuthChallengeResponseCodec : Codec RespondToAuthChallengeResponse
 respondToAuthChallengeResponseCodec =
     Codec.object RespondToAuthChallengeResponse
-        |> Codec.field "Session" .session sessionTypeCodec
-        |> Codec.field "ChallengeParameters" .challengeParameters challengeParametersTypeCodec
-        |> Codec.field "ChallengeName" .challengeName challengeNameTypeCodec
-        |> Codec.field "AuthenticationResult" .authenticationResult authenticationResultTypeCodec
+        |> Codec.optionalField "session" .session sessionTypeCodec
+        |> Codec.optionalField "challengeParameters" .challengeParameters challengeParametersTypeCodec
+        |> Codec.optionalField "challengeName" .challengeName challengeNameTypeCodec
+        |> Codec.optionalField "authenticationResult" .authenticationResult authenticationResultTypeCodec
         |> Codec.buildObject
 
 
@@ -5870,12 +5934,12 @@ respondToAuthChallengeResponseCodec =
 respondToAuthChallengeRequestCodec : Codec RespondToAuthChallengeRequest
 respondToAuthChallengeRequestCodec =
     Codec.object RespondToAuthChallengeRequest
-        |> Codec.field "UserContextData" .userContextData userContextDataTypeCodec
-        |> Codec.field "Session" .session sessionTypeCodec
+        |> Codec.optionalField "userContextData" .userContextData userContextDataTypeCodec
+        |> Codec.optionalField "session" .session sessionTypeCodec
         |> Codec.field "ClientId" .clientId clientIdTypeCodec
-        |> Codec.field "ChallengeResponses" .challengeResponses challengeResponsesTypeCodec
+        |> Codec.optionalField "challengeResponses" .challengeResponses challengeResponsesTypeCodec
         |> Codec.field "ChallengeName" .challengeName challengeNameTypeCodec
-        |> Codec.field "AnalyticsMetadata" .analyticsMetadata analyticsMetadataTypeCodec
+        |> Codec.optionalField "analyticsMetadata" .analyticsMetadata analyticsMetadataTypeCodec
         |> Codec.buildObject
 
 
@@ -5889,10 +5953,10 @@ resourceServersListTypeCodec =
 resourceServerTypeCodec : Codec ResourceServerType
 resourceServerTypeCodec =
     Codec.object ResourceServerType
-        |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "Scopes" .scopes resourceServerScopeListTypeCodec
-        |> Codec.field "Name" .name resourceServerNameTypeCodec
-        |> Codec.field "Identifier" .identifier resourceServerIdentifierTypeCodec
+        |> Codec.optionalField "userPoolId" .userPoolId userPoolIdTypeCodec
+        |> Codec.optionalField "scopes" .scopes resourceServerScopeListTypeCodec
+        |> Codec.optionalField "name" .name resourceServerNameTypeCodec
+        |> Codec.optionalField "identifier" .identifier resourceServerIdentifierTypeCodec
         |> Codec.buildObject
 
 
@@ -5941,7 +6005,7 @@ resourceServerIdentifierTypeCodec =
 resendConfirmationCodeResponseCodec : Codec ResendConfirmationCodeResponse
 resendConfirmationCodeResponseCodec =
     Codec.object ResendConfirmationCodeResponse
-        |> Codec.field "CodeDeliveryDetails" .codeDeliveryDetails codeDeliveryDetailsTypeCodec
+        |> Codec.optionalField "codeDeliveryDetails" .codeDeliveryDetails codeDeliveryDetailsTypeCodec
         |> Codec.buildObject
 
 
@@ -5950,10 +6014,10 @@ resendConfirmationCodeRequestCodec : Codec ResendConfirmationCodeRequest
 resendConfirmationCodeRequestCodec =
     Codec.object ResendConfirmationCodeRequest
         |> Codec.field "Username" .username usernameTypeCodec
-        |> Codec.field "UserContextData" .userContextData userContextDataTypeCodec
-        |> Codec.field "SecretHash" .secretHash secretHashTypeCodec
+        |> Codec.optionalField "userContextData" .userContextData userContextDataTypeCodec
+        |> Codec.optionalField "secretHash" .secretHash secretHashTypeCodec
         |> Codec.field "ClientId" .clientId clientIdTypeCodec
-        |> Codec.field "AnalyticsMetadata" .analyticsMetadata analyticsMetadataTypeCodec
+        |> Codec.optionalField "analyticsMetadata" .analyticsMetadata analyticsMetadataTypeCodec
         |> Codec.buildObject
 
 
@@ -5991,9 +6055,9 @@ providersListTypeCodec =
 providerUserIdentifierTypeCodec : Codec ProviderUserIdentifierType
 providerUserIdentifierTypeCodec =
     Codec.object ProviderUserIdentifierType
-        |> Codec.field "ProviderName" .providerName providerNameTypeCodec
-        |> Codec.field "ProviderAttributeValue" .providerAttributeValue Codec.string
-        |> Codec.field "ProviderAttributeName" .providerAttributeName Codec.string
+        |> Codec.optionalField "providerName" .providerName providerNameTypeCodec
+        |> Codec.optionalField "providerAttributeValue" .providerAttributeValue Codec.string
+        |> Codec.optionalField "providerAttributeName" .providerAttributeName Codec.string
         |> Codec.buildObject
 
 
@@ -6019,10 +6083,10 @@ providerDetailsTypeCodec =
 providerDescriptionCodec : Codec ProviderDescription
 providerDescriptionCodec =
     Codec.object ProviderDescription
-        |> Codec.field "ProviderType" .providerType identityProviderTypeTypeCodec
-        |> Codec.field "ProviderName" .providerName providerNameTypeCodec
-        |> Codec.field "LastModifiedDate" .lastModifiedDate dateTypeCodec
-        |> Codec.field "CreationDate" .creationDate dateTypeCodec
+        |> Codec.optionalField "providerType" .providerType identityProviderTypeTypeCodec
+        |> Codec.optionalField "providerName" .providerName providerNameTypeCodec
+        |> Codec.optionalField "lastModifiedDate" .lastModifiedDate dateTypeCodec
+        |> Codec.optionalField "creationDate" .creationDate dateTypeCodec
         |> Codec.buildObject
 
 
@@ -6054,15 +6118,15 @@ passwordTypeCodec =
 passwordPolicyTypeCodec : Codec PasswordPolicyType
 passwordPolicyTypeCodec =
     Codec.object PasswordPolicyType
-        |> Codec.field
-            "TemporaryPasswordValidityDays"
+        |> Codec.optionalField
+            "temporaryPasswordValidityDays"
             .temporaryPasswordValidityDays
             temporaryPasswordValidityDaysTypeCodec
-        |> Codec.field "RequireUppercase" .requireUppercase Codec.bool
-        |> Codec.field "RequireSymbols" .requireSymbols Codec.bool
-        |> Codec.field "RequireNumbers" .requireNumbers Codec.bool
-        |> Codec.field "RequireLowercase" .requireLowercase Codec.bool
-        |> Codec.field "MinimumLength" .minimumLength passwordPolicyMinLengthTypeCodec
+        |> Codec.optionalField "requireUppercase" .requireUppercase Codec.bool
+        |> Codec.optionalField "requireSymbols" .requireSymbols Codec.bool
+        |> Codec.optionalField "requireNumbers" .requireNumbers Codec.bool
+        |> Codec.optionalField "requireLowercase" .requireLowercase Codec.bool
+        |> Codec.optionalField "minimumLength" .minimumLength passwordPolicyMinLengthTypeCodec
         |> Codec.buildObject
 
 
@@ -6100,8 +6164,8 @@ oauthFlowTypeCodec =
 numberAttributeConstraintsTypeCodec : Codec NumberAttributeConstraintsType
 numberAttributeConstraintsTypeCodec =
     Codec.object NumberAttributeConstraintsType
-        |> Codec.field "MinValue" .minValue Codec.string
-        |> Codec.field "MaxValue" .maxValue Codec.string
+        |> Codec.optionalField "minValue" .minValue Codec.string
+        |> Codec.optionalField "maxValue" .maxValue Codec.string
         |> Codec.buildObject
 
 
@@ -6109,9 +6173,9 @@ numberAttributeConstraintsTypeCodec =
 notifyEmailTypeCodec : Codec NotifyEmailType
 notifyEmailTypeCodec =
     Codec.object NotifyEmailType
-        |> Codec.field "TextBody" .textBody emailNotificationBodyTypeCodec
+        |> Codec.optionalField "textBody" .textBody emailNotificationBodyTypeCodec
         |> Codec.field "Subject" .subject emailNotificationSubjectTypeCodec
-        |> Codec.field "HtmlBody" .htmlBody emailNotificationBodyTypeCodec
+        |> Codec.optionalField "htmlBody" .htmlBody emailNotificationBodyTypeCodec
         |> Codec.buildObject
 
 
@@ -6120,11 +6184,11 @@ notifyConfigurationTypeCodec : Codec NotifyConfigurationType
 notifyConfigurationTypeCodec =
     Codec.object NotifyConfigurationType
         |> Codec.field "SourceArn" .sourceArn arnTypeCodec
-        |> Codec.field "ReplyTo" .replyTo Codec.string
-        |> Codec.field "NoActionEmail" .noActionEmail notifyEmailTypeCodec
-        |> Codec.field "MfaEmail" .mfaEmail notifyEmailTypeCodec
-        |> Codec.field "From" .from Codec.string
-        |> Codec.field "BlockEmail" .blockEmail notifyEmailTypeCodec
+        |> Codec.optionalField "replyTo" .replyTo Codec.string
+        |> Codec.optionalField "noActionEmail" .noActionEmail notifyEmailTypeCodec
+        |> Codec.optionalField "mfaEmail" .mfaEmail notifyEmailTypeCodec
+        |> Codec.optionalField "from" .from Codec.string
+        |> Codec.optionalField "blockEmail" .blockEmail notifyEmailTypeCodec
         |> Codec.buildObject
 
 
@@ -6132,8 +6196,8 @@ notifyConfigurationTypeCodec =
 newDeviceMetadataTypeCodec : Codec NewDeviceMetadataType
 newDeviceMetadataTypeCodec =
     Codec.object NewDeviceMetadataType
-        |> Codec.field "DeviceKey" .deviceKey deviceKeyTypeCodec
-        |> Codec.field "DeviceGroupKey" .deviceGroupKey Codec.string
+        |> Codec.optionalField "deviceKey" .deviceKey deviceKeyTypeCodec
+        |> Codec.optionalField "deviceGroupKey" .deviceGroupKey Codec.string
         |> Codec.buildObject
 
 
@@ -6141,9 +6205,9 @@ newDeviceMetadataTypeCodec =
 messageTemplateTypeCodec : Codec MessageTemplateType
 messageTemplateTypeCodec =
     Codec.object MessageTemplateType
-        |> Codec.field "SMSMessage" .smsmessage smsVerificationMessageTypeCodec
-        |> Codec.field "EmailSubject" .emailSubject emailVerificationSubjectTypeCodec
-        |> Codec.field "EmailMessage" .emailMessage emailVerificationMessageTypeCodec
+        |> Codec.optionalField "smsmessage" .smsmessage smsVerificationMessageTypeCodec
+        |> Codec.optionalField "emailSubject" .emailSubject emailVerificationSubjectTypeCodec
+        |> Codec.optionalField "emailMessage" .emailMessage emailVerificationMessageTypeCodec
         |> Codec.buildObject
 
 
@@ -6157,8 +6221,8 @@ messageActionTypeCodec =
 mfaoptionTypeCodec : Codec MfaoptionType
 mfaoptionTypeCodec =
     Codec.object MfaoptionType
-        |> Codec.field "DeliveryMedium" .deliveryMedium deliveryMediumTypeCodec
-        |> Codec.field "AttributeName" .attributeName attributeNameTypeCodec
+        |> Codec.optionalField "deliveryMedium" .deliveryMedium deliveryMediumTypeCodec
+        |> Codec.optionalField "attributeName" .attributeName attributeNameTypeCodec
         |> Codec.buildObject
 
 
@@ -6184,8 +6248,8 @@ logoutUrlsListTypeCodec =
 listUsersResponseCodec : Codec ListUsersResponse
 listUsersResponseCodec =
     Codec.object ListUsersResponse
-        |> Codec.field "Users" .users usersListTypeCodec
-        |> Codec.field "PaginationToken" .paginationToken searchPaginationTokenTypeCodec
+        |> Codec.optionalField "users" .users usersListTypeCodec
+        |> Codec.optionalField "paginationToken" .paginationToken searchPaginationTokenTypeCodec
         |> Codec.buildObject
 
 
@@ -6194,10 +6258,10 @@ listUsersRequestCodec : Codec ListUsersRequest
 listUsersRequestCodec =
     Codec.object ListUsersRequest
         |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "PaginationToken" .paginationToken searchPaginationTokenTypeCodec
-        |> Codec.field "Limit" .limit queryLimitTypeCodec
-        |> Codec.field "Filter" .filter userFilterTypeCodec
-        |> Codec.field "AttributesToGet" .attributesToGet searchedAttributeNamesListTypeCodec
+        |> Codec.optionalField "paginationToken" .paginationToken searchPaginationTokenTypeCodec
+        |> Codec.optionalField "limit" .limit queryLimitTypeCodec
+        |> Codec.optionalField "filter" .filter userFilterTypeCodec
+        |> Codec.optionalField "attributesToGet" .attributesToGet searchedAttributeNamesListTypeCodec
         |> Codec.buildObject
 
 
@@ -6205,8 +6269,8 @@ listUsersRequestCodec =
 listUsersInGroupResponseCodec : Codec ListUsersInGroupResponse
 listUsersInGroupResponseCodec =
     Codec.object ListUsersInGroupResponse
-        |> Codec.field "Users" .users usersListTypeCodec
-        |> Codec.field "NextToken" .nextToken paginationKeyCodec
+        |> Codec.optionalField "users" .users usersListTypeCodec
+        |> Codec.optionalField "nextToken" .nextToken paginationKeyCodec
         |> Codec.buildObject
 
 
@@ -6215,8 +6279,8 @@ listUsersInGroupRequestCodec : Codec ListUsersInGroupRequest
 listUsersInGroupRequestCodec =
     Codec.object ListUsersInGroupRequest
         |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "NextToken" .nextToken paginationKeyCodec
-        |> Codec.field "Limit" .limit queryLimitTypeCodec
+        |> Codec.optionalField "nextToken" .nextToken paginationKeyCodec
+        |> Codec.optionalField "limit" .limit queryLimitTypeCodec
         |> Codec.field "GroupName" .groupName groupNameTypeCodec
         |> Codec.buildObject
 
@@ -6225,8 +6289,8 @@ listUsersInGroupRequestCodec =
 listUserPoolsResponseCodec : Codec ListUserPoolsResponse
 listUserPoolsResponseCodec =
     Codec.object ListUserPoolsResponse
-        |> Codec.field "UserPools" .userPools userPoolListTypeCodec
-        |> Codec.field "NextToken" .nextToken paginationKeyTypeCodec
+        |> Codec.optionalField "userPools" .userPools userPoolListTypeCodec
+        |> Codec.optionalField "nextToken" .nextToken paginationKeyTypeCodec
         |> Codec.buildObject
 
 
@@ -6234,7 +6298,7 @@ listUserPoolsResponseCodec =
 listUserPoolsRequestCodec : Codec ListUserPoolsRequest
 listUserPoolsRequestCodec =
     Codec.object ListUserPoolsRequest
-        |> Codec.field "NextToken" .nextToken paginationKeyTypeCodec
+        |> Codec.optionalField "nextToken" .nextToken paginationKeyTypeCodec
         |> Codec.field "MaxResults" .maxResults poolQueryLimitTypeCodec
         |> Codec.buildObject
 
@@ -6243,8 +6307,8 @@ listUserPoolsRequestCodec =
 listUserPoolClientsResponseCodec : Codec ListUserPoolClientsResponse
 listUserPoolClientsResponseCodec =
     Codec.object ListUserPoolClientsResponse
-        |> Codec.field "UserPoolClients" .userPoolClients userPoolClientListTypeCodec
-        |> Codec.field "NextToken" .nextToken paginationKeyCodec
+        |> Codec.optionalField "userPoolClients" .userPoolClients userPoolClientListTypeCodec
+        |> Codec.optionalField "nextToken" .nextToken paginationKeyCodec
         |> Codec.buildObject
 
 
@@ -6253,8 +6317,8 @@ listUserPoolClientsRequestCodec : Codec ListUserPoolClientsRequest
 listUserPoolClientsRequestCodec =
     Codec.object ListUserPoolClientsRequest
         |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "NextToken" .nextToken paginationKeyCodec
-        |> Codec.field "MaxResults" .maxResults queryLimitCodec
+        |> Codec.optionalField "nextToken" .nextToken paginationKeyCodec
+        |> Codec.optionalField "maxResults" .maxResults queryLimitCodec
         |> Codec.buildObject
 
 
@@ -6262,8 +6326,8 @@ listUserPoolClientsRequestCodec =
 listUserImportJobsResponseCodec : Codec ListUserImportJobsResponse
 listUserImportJobsResponseCodec =
     Codec.object ListUserImportJobsResponse
-        |> Codec.field "UserImportJobs" .userImportJobs userImportJobsListTypeCodec
-        |> Codec.field "PaginationToken" .paginationToken paginationKeyTypeCodec
+        |> Codec.optionalField "userImportJobs" .userImportJobs userImportJobsListTypeCodec
+        |> Codec.optionalField "paginationToken" .paginationToken paginationKeyTypeCodec
         |> Codec.buildObject
 
 
@@ -6272,7 +6336,7 @@ listUserImportJobsRequestCodec : Codec ListUserImportJobsRequest
 listUserImportJobsRequestCodec =
     Codec.object ListUserImportJobsRequest
         |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "PaginationToken" .paginationToken paginationKeyTypeCodec
+        |> Codec.optionalField "paginationToken" .paginationToken paginationKeyTypeCodec
         |> Codec.field "MaxResults" .maxResults poolQueryLimitTypeCodec
         |> Codec.buildObject
 
@@ -6280,7 +6344,9 @@ listUserImportJobsRequestCodec =
 {-| Codec for ListTagsForResourceResponse. -}
 listTagsForResourceResponseCodec : Codec ListTagsForResourceResponse
 listTagsForResourceResponseCodec =
-    Codec.object ListTagsForResourceResponse |> Codec.field "Tags" .tags userPoolTagsTypeCodec |> Codec.buildObject
+    Codec.object ListTagsForResourceResponse
+        |> Codec.optionalField "tags" .tags userPoolTagsTypeCodec
+        |> Codec.buildObject
 
 
 {-| Codec for ListTagsForResourceRequest. -}
@@ -6294,7 +6360,7 @@ listResourceServersResponseCodec : Codec ListResourceServersResponse
 listResourceServersResponseCodec =
     Codec.object ListResourceServersResponse
         |> Codec.field "ResourceServers" .resourceServers resourceServersListTypeCodec
-        |> Codec.field "NextToken" .nextToken paginationKeyTypeCodec
+        |> Codec.optionalField "nextToken" .nextToken paginationKeyTypeCodec
         |> Codec.buildObject
 
 
@@ -6303,8 +6369,8 @@ listResourceServersRequestCodec : Codec ListResourceServersRequest
 listResourceServersRequestCodec =
     Codec.object ListResourceServersRequest
         |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "NextToken" .nextToken paginationKeyTypeCodec
-        |> Codec.field "MaxResults" .maxResults listResourceServersLimitTypeCodec
+        |> Codec.optionalField "nextToken" .nextToken paginationKeyTypeCodec
+        |> Codec.optionalField "maxResults" .maxResults listResourceServersLimitTypeCodec
         |> Codec.buildObject
 
 
@@ -6331,7 +6397,7 @@ listIdentityProvidersResponseCodec : Codec ListIdentityProvidersResponse
 listIdentityProvidersResponseCodec =
     Codec.object ListIdentityProvidersResponse
         |> Codec.field "Providers" .providers providersListTypeCodec
-        |> Codec.field "NextToken" .nextToken paginationKeyTypeCodec
+        |> Codec.optionalField "nextToken" .nextToken paginationKeyTypeCodec
         |> Codec.buildObject
 
 
@@ -6340,8 +6406,8 @@ listIdentityProvidersRequestCodec : Codec ListIdentityProvidersRequest
 listIdentityProvidersRequestCodec =
     Codec.object ListIdentityProvidersRequest
         |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "NextToken" .nextToken paginationKeyTypeCodec
-        |> Codec.field "MaxResults" .maxResults listProvidersLimitTypeCodec
+        |> Codec.optionalField "nextToken" .nextToken paginationKeyTypeCodec
+        |> Codec.optionalField "maxResults" .maxResults listProvidersLimitTypeCodec
         |> Codec.buildObject
 
 
@@ -6349,8 +6415,8 @@ listIdentityProvidersRequestCodec =
 listGroupsResponseCodec : Codec ListGroupsResponse
 listGroupsResponseCodec =
     Codec.object ListGroupsResponse
-        |> Codec.field "NextToken" .nextToken paginationKeyCodec
-        |> Codec.field "Groups" .groups groupListTypeCodec
+        |> Codec.optionalField "nextToken" .nextToken paginationKeyCodec
+        |> Codec.optionalField "groups" .groups groupListTypeCodec
         |> Codec.buildObject
 
 
@@ -6359,8 +6425,8 @@ listGroupsRequestCodec : Codec ListGroupsRequest
 listGroupsRequestCodec =
     Codec.object ListGroupsRequest
         |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "NextToken" .nextToken paginationKeyCodec
-        |> Codec.field "Limit" .limit queryLimitTypeCodec
+        |> Codec.optionalField "nextToken" .nextToken paginationKeyCodec
+        |> Codec.optionalField "limit" .limit queryLimitTypeCodec
         |> Codec.buildObject
 
 
@@ -6368,8 +6434,8 @@ listGroupsRequestCodec =
 listDevicesResponseCodec : Codec ListDevicesResponse
 listDevicesResponseCodec =
     Codec.object ListDevicesResponse
-        |> Codec.field "PaginationToken" .paginationToken searchPaginationTokenTypeCodec
-        |> Codec.field "Devices" .devices deviceListTypeCodec
+        |> Codec.optionalField "paginationToken" .paginationToken searchPaginationTokenTypeCodec
+        |> Codec.optionalField "devices" .devices deviceListTypeCodec
         |> Codec.buildObject
 
 
@@ -6377,8 +6443,8 @@ listDevicesResponseCodec =
 listDevicesRequestCodec : Codec ListDevicesRequest
 listDevicesRequestCodec =
     Codec.object ListDevicesRequest
-        |> Codec.field "PaginationToken" .paginationToken searchPaginationTokenTypeCodec
-        |> Codec.field "Limit" .limit queryLimitTypeCodec
+        |> Codec.optionalField "paginationToken" .paginationToken searchPaginationTokenTypeCodec
+        |> Codec.optionalField "limit" .limit queryLimitTypeCodec
         |> Codec.field "AccessToken" .accessToken tokenModelTypeCodec
         |> Codec.buildObject
 
@@ -6387,16 +6453,16 @@ listDevicesRequestCodec =
 lambdaConfigTypeCodec : Codec LambdaConfigType
 lambdaConfigTypeCodec =
     Codec.object LambdaConfigType
-        |> Codec.field "VerifyAuthChallengeResponse" .verifyAuthChallengeResponse arnTypeCodec
-        |> Codec.field "UserMigration" .userMigration arnTypeCodec
-        |> Codec.field "PreTokenGeneration" .preTokenGeneration arnTypeCodec
-        |> Codec.field "PreSignUp" .preSignUp arnTypeCodec
-        |> Codec.field "PreAuthentication" .preAuthentication arnTypeCodec
-        |> Codec.field "PostConfirmation" .postConfirmation arnTypeCodec
-        |> Codec.field "PostAuthentication" .postAuthentication arnTypeCodec
-        |> Codec.field "DefineAuthChallenge" .defineAuthChallenge arnTypeCodec
-        |> Codec.field "CustomMessage" .customMessage arnTypeCodec
-        |> Codec.field "CreateAuthChallenge" .createAuthChallenge arnTypeCodec
+        |> Codec.optionalField "verifyAuthChallengeResponse" .verifyAuthChallengeResponse arnTypeCodec
+        |> Codec.optionalField "userMigration" .userMigration arnTypeCodec
+        |> Codec.optionalField "preTokenGeneration" .preTokenGeneration arnTypeCodec
+        |> Codec.optionalField "preSignUp" .preSignUp arnTypeCodec
+        |> Codec.optionalField "preAuthentication" .preAuthentication arnTypeCodec
+        |> Codec.optionalField "postConfirmation" .postConfirmation arnTypeCodec
+        |> Codec.optionalField "postAuthentication" .postAuthentication arnTypeCodec
+        |> Codec.optionalField "defineAuthChallenge" .defineAuthChallenge arnTypeCodec
+        |> Codec.optionalField "customMessage" .customMessage arnTypeCodec
+        |> Codec.optionalField "createAuthChallenge" .createAuthChallenge arnTypeCodec
         |> Codec.buildObject
 
 
@@ -6410,10 +6476,10 @@ integerTypeCodec =
 initiateAuthResponseCodec : Codec InitiateAuthResponse
 initiateAuthResponseCodec =
     Codec.object InitiateAuthResponse
-        |> Codec.field "Session" .session sessionTypeCodec
-        |> Codec.field "ChallengeParameters" .challengeParameters challengeParametersTypeCodec
-        |> Codec.field "ChallengeName" .challengeName challengeNameTypeCodec
-        |> Codec.field "AuthenticationResult" .authenticationResult authenticationResultTypeCodec
+        |> Codec.optionalField "session" .session sessionTypeCodec
+        |> Codec.optionalField "challengeParameters" .challengeParameters challengeParametersTypeCodec
+        |> Codec.optionalField "challengeName" .challengeName challengeNameTypeCodec
+        |> Codec.optionalField "authenticationResult" .authenticationResult authenticationResultTypeCodec
         |> Codec.buildObject
 
 
@@ -6421,12 +6487,12 @@ initiateAuthResponseCodec =
 initiateAuthRequestCodec : Codec InitiateAuthRequest
 initiateAuthRequestCodec =
     Codec.object InitiateAuthRequest
-        |> Codec.field "UserContextData" .userContextData userContextDataTypeCodec
-        |> Codec.field "ClientMetadata" .clientMetadata clientMetadataTypeCodec
+        |> Codec.optionalField "userContextData" .userContextData userContextDataTypeCodec
+        |> Codec.optionalField "clientMetadata" .clientMetadata clientMetadataTypeCodec
         |> Codec.field "ClientId" .clientId clientIdTypeCodec
-        |> Codec.field "AuthParameters" .authParameters authParametersTypeCodec
+        |> Codec.optionalField "authParameters" .authParameters authParametersTypeCodec
         |> Codec.field "AuthFlow" .authFlow authFlowTypeCodec
-        |> Codec.field "AnalyticsMetadata" .analyticsMetadata analyticsMetadataTypeCodec
+        |> Codec.optionalField "analyticsMetadata" .analyticsMetadata analyticsMetadataTypeCodec
         |> Codec.buildObject
 
 
@@ -6464,14 +6530,14 @@ identityProviderTypeTypeCodec =
 identityProviderTypeCodec : Codec IdentityProviderType
 identityProviderTypeCodec =
     Codec.object IdentityProviderType
-        |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "ProviderType" .providerType identityProviderTypeTypeCodec
-        |> Codec.field "ProviderName" .providerName providerNameTypeCodec
-        |> Codec.field "ProviderDetails" .providerDetails providerDetailsTypeCodec
-        |> Codec.field "LastModifiedDate" .lastModifiedDate dateTypeCodec
-        |> Codec.field "IdpIdentifiers" .idpIdentifiers idpIdentifiersListTypeCodec
-        |> Codec.field "CreationDate" .creationDate dateTypeCodec
-        |> Codec.field "AttributeMapping" .attributeMapping attributeMappingTypeCodec
+        |> Codec.optionalField "userPoolId" .userPoolId userPoolIdTypeCodec
+        |> Codec.optionalField "providerType" .providerType identityProviderTypeTypeCodec
+        |> Codec.optionalField "providerName" .providerName providerNameTypeCodec
+        |> Codec.optionalField "providerDetails" .providerDetails providerDetailsTypeCodec
+        |> Codec.optionalField "lastModifiedDate" .lastModifiedDate dateTypeCodec
+        |> Codec.optionalField "idpIdentifiers" .idpIdentifiers idpIdentifiersListTypeCodec
+        |> Codec.optionalField "creationDate" .creationDate dateTypeCodec
+        |> Codec.optionalField "attributeMapping" .attributeMapping attributeMappingTypeCodec
         |> Codec.buildObject
 
 
@@ -6485,8 +6551,8 @@ httpHeaderListCodec =
 httpHeaderCodec : Codec HttpHeader
 httpHeaderCodec =
     Codec.object HttpHeader
-        |> Codec.field "headerValue" .headerValue Codec.string
-        |> Codec.field "headerName" .headerName Codec.string
+        |> Codec.optionalField "headerValue" .headerValue Codec.string
+        |> Codec.optionalField "headerName" .headerName Codec.string
         |> Codec.buildObject
 
 
@@ -6500,13 +6566,13 @@ hexStringTypeCodec =
 groupTypeCodec : Codec GroupType
 groupTypeCodec =
     Codec.object GroupType
-        |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "RoleArn" .roleArn arnTypeCodec
-        |> Codec.field "Precedence" .precedence precedenceTypeCodec
-        |> Codec.field "LastModifiedDate" .lastModifiedDate dateTypeCodec
-        |> Codec.field "GroupName" .groupName groupNameTypeCodec
-        |> Codec.field "Description" .description descriptionTypeCodec
-        |> Codec.field "CreationDate" .creationDate dateTypeCodec
+        |> Codec.optionalField "userPoolId" .userPoolId userPoolIdTypeCodec
+        |> Codec.optionalField "roleArn" .roleArn arnTypeCodec
+        |> Codec.optionalField "precedence" .precedence precedenceTypeCodec
+        |> Codec.optionalField "lastModifiedDate" .lastModifiedDate dateTypeCodec
+        |> Codec.optionalField "groupName" .groupName groupNameTypeCodec
+        |> Codec.optionalField "description" .description descriptionTypeCodec
+        |> Codec.optionalField "creationDate" .creationDate dateTypeCodec
         |> Codec.buildObject
 
 
@@ -6539,10 +6605,10 @@ getUserResponseCodec : Codec GetUserResponse
 getUserResponseCodec =
     Codec.object GetUserResponse
         |> Codec.field "Username" .username usernameTypeCodec
-        |> Codec.field "UserMFASettingList" .userMfasettingList userMfasettingListTypeCodec
+        |> Codec.optionalField "userMfasettingList" .userMfasettingList userMfasettingListTypeCodec
         |> Codec.field "UserAttributes" .userAttributes attributeListTypeCodec
-        |> Codec.field "PreferredMfaSetting" .preferredMfaSetting Codec.string
-        |> Codec.field "MFAOptions" .mfaoptions mfaoptionListTypeCodec
+        |> Codec.optionalField "preferredMfaSetting" .preferredMfaSetting Codec.string
+        |> Codec.optionalField "mfaoptions" .mfaoptions mfaoptionListTypeCodec
         |> Codec.buildObject
 
 
@@ -6556,9 +6622,12 @@ getUserRequestCodec =
 getUserPoolMfaConfigResponseCodec : Codec GetUserPoolMfaConfigResponse
 getUserPoolMfaConfigResponseCodec =
     Codec.object GetUserPoolMfaConfigResponse
-        |> Codec.field "SoftwareTokenMfaConfiguration" .softwareTokenMfaConfiguration softwareTokenMfaConfigTypeCodec
-        |> Codec.field "SmsMfaConfiguration" .smsMfaConfiguration smsMfaConfigTypeCodec
-        |> Codec.field "MfaConfiguration" .mfaConfiguration userPoolMfaTypeCodec
+        |> Codec.optionalField
+            "softwareTokenMfaConfiguration"
+            .softwareTokenMfaConfiguration
+            softwareTokenMfaConfigTypeCodec
+        |> Codec.optionalField "smsMfaConfiguration" .smsMfaConfiguration smsMfaConfigTypeCodec
+        |> Codec.optionalField "mfaConfiguration" .mfaConfiguration userPoolMfaTypeCodec
         |> Codec.buildObject
 
 
@@ -6574,7 +6643,7 @@ getUserPoolMfaConfigRequestCodec =
 getUserAttributeVerificationCodeResponseCodec : Codec GetUserAttributeVerificationCodeResponse
 getUserAttributeVerificationCodeResponseCodec =
     Codec.object GetUserAttributeVerificationCodeResponse
-        |> Codec.field "CodeDeliveryDetails" .codeDeliveryDetails codeDeliveryDetailsTypeCodec
+        |> Codec.optionalField "codeDeliveryDetails" .codeDeliveryDetails codeDeliveryDetailsTypeCodec
         |> Codec.buildObject
 
 
@@ -6600,7 +6669,7 @@ getUicustomizationRequestCodec : Codec GetUicustomizationRequest
 getUicustomizationRequestCodec =
     Codec.object GetUicustomizationRequest
         |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "ClientId" .clientId clientIdTypeCodec
+        |> Codec.optionalField "clientId" .clientId clientIdTypeCodec
         |> Codec.buildObject
 
 
@@ -6608,7 +6677,7 @@ getUicustomizationRequestCodec =
 getSigningCertificateResponseCodec : Codec GetSigningCertificateResponse
 getSigningCertificateResponseCodec =
     Codec.object GetSigningCertificateResponse
-        |> Codec.field "Certificate" .certificate Codec.string
+        |> Codec.optionalField "certificate" .certificate Codec.string
         |> Codec.buildObject
 
 
@@ -6640,7 +6709,7 @@ getIdentityProviderByIdentifierRequestCodec =
 {-| Codec for GetGroupResponse. -}
 getGroupResponseCodec : Codec GetGroupResponse
 getGroupResponseCodec =
-    Codec.object GetGroupResponse |> Codec.field "Group" .group groupTypeCodec |> Codec.buildObject
+    Codec.object GetGroupResponse |> Codec.optionalField "group" .group groupTypeCodec |> Codec.buildObject
 
 
 {-| Codec for GetGroupRequest. -}
@@ -6663,7 +6732,7 @@ getDeviceRequestCodec : Codec GetDeviceRequest
 getDeviceRequestCodec =
     Codec.object GetDeviceRequest
         |> Codec.field "DeviceKey" .deviceKey deviceKeyTypeCodec
-        |> Codec.field "AccessToken" .accessToken tokenModelTypeCodec
+        |> Codec.optionalField "accessToken" .accessToken tokenModelTypeCodec
         |> Codec.buildObject
 
 
@@ -6671,8 +6740,8 @@ getDeviceRequestCodec =
 getCsvheaderResponseCodec : Codec GetCsvheaderResponse
 getCsvheaderResponseCodec =
     Codec.object GetCsvheaderResponse
-        |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "CSVHeader" .csvheader listOfStringTypesCodec
+        |> Codec.optionalField "userPoolId" .userPoolId userPoolIdTypeCodec
+        |> Codec.optionalField "csvheader" .csvheader listOfStringTypesCodec
         |> Codec.buildObject
 
 
@@ -6692,7 +6761,7 @@ generateSecretCodec =
 forgotPasswordResponseCodec : Codec ForgotPasswordResponse
 forgotPasswordResponseCodec =
     Codec.object ForgotPasswordResponse
-        |> Codec.field "CodeDeliveryDetails" .codeDeliveryDetails codeDeliveryDetailsTypeCodec
+        |> Codec.optionalField "codeDeliveryDetails" .codeDeliveryDetails codeDeliveryDetailsTypeCodec
         |> Codec.buildObject
 
 
@@ -6701,10 +6770,10 @@ forgotPasswordRequestCodec : Codec ForgotPasswordRequest
 forgotPasswordRequestCodec =
     Codec.object ForgotPasswordRequest
         |> Codec.field "Username" .username usernameTypeCodec
-        |> Codec.field "UserContextData" .userContextData userContextDataTypeCodec
-        |> Codec.field "SecretHash" .secretHash secretHashTypeCodec
+        |> Codec.optionalField "userContextData" .userContextData userContextDataTypeCodec
+        |> Codec.optionalField "secretHash" .secretHash secretHashTypeCodec
         |> Codec.field "ClientId" .clientId clientIdTypeCodec
-        |> Codec.field "AnalyticsMetadata" .analyticsMetadata analyticsMetadataTypeCodec
+        |> Codec.optionalField "analyticsMetadata" .analyticsMetadata analyticsMetadataTypeCodec
         |> Codec.buildObject
 
 
@@ -6713,7 +6782,7 @@ forgetDeviceRequestCodec : Codec ForgetDeviceRequest
 forgetDeviceRequestCodec =
     Codec.object ForgetDeviceRequest
         |> Codec.field "DeviceKey" .deviceKey deviceKeyTypeCodec
-        |> Codec.field "AccessToken" .accessToken tokenModelTypeCodec
+        |> Codec.optionalField "accessToken" .accessToken tokenModelTypeCodec
         |> Codec.buildObject
 
 
@@ -6751,8 +6820,8 @@ eventTypeCodec =
 eventRiskTypeCodec : Codec EventRiskType
 eventRiskTypeCodec =
     Codec.object EventRiskType
-        |> Codec.field "RiskLevel" .riskLevel riskLevelTypeCodec
-        |> Codec.field "RiskDecision" .riskDecision riskDecisionTypeCodec
+        |> Codec.optionalField "riskLevel" .riskLevel riskLevelTypeCodec
+        |> Codec.optionalField "riskDecision" .riskDecision riskDecisionTypeCodec
         |> Codec.buildObject
 
 
@@ -6786,7 +6855,7 @@ eventFeedbackTypeCodec =
     Codec.object EventFeedbackType
         |> Codec.field "Provider" .provider Codec.string
         |> Codec.field "FeedbackValue" .feedbackValue feedbackValueTypeCodec
-        |> Codec.field "FeedbackDate" .feedbackDate dateTypeCodec
+        |> Codec.optionalField "feedbackDate" .feedbackDate dateTypeCodec
         |> Codec.buildObject
 
 
@@ -6794,11 +6863,11 @@ eventFeedbackTypeCodec =
 eventContextDataTypeCodec : Codec EventContextDataType
 eventContextDataTypeCodec =
     Codec.object EventContextDataType
-        |> Codec.field "Timezone" .timezone Codec.string
-        |> Codec.field "IpAddress" .ipAddress Codec.string
-        |> Codec.field "DeviceName" .deviceName Codec.string
-        |> Codec.field "Country" .country Codec.string
-        |> Codec.field "City" .city Codec.string
+        |> Codec.optionalField "timezone" .timezone Codec.string
+        |> Codec.optionalField "ipAddress" .ipAddress Codec.string
+        |> Codec.optionalField "deviceName" .deviceName Codec.string
+        |> Codec.optionalField "country" .country Codec.string
+        |> Codec.optionalField "city" .city Codec.string
         |> Codec.buildObject
 
 
@@ -6852,9 +6921,9 @@ emailNotificationBodyTypeCodec =
 emailConfigurationTypeCodec : Codec EmailConfigurationType
 emailConfigurationTypeCodec =
     Codec.object EmailConfigurationType
-        |> Codec.field "SourceArn" .sourceArn arnTypeCodec
-        |> Codec.field "ReplyToEmailAddress" .replyToEmailAddress emailAddressTypeCodec
-        |> Codec.field "EmailSendingAccount" .emailSendingAccount emailSendingAccountTypeCodec
+        |> Codec.optionalField "sourceArn" .sourceArn arnTypeCodec
+        |> Codec.optionalField "replyToEmailAddress" .replyToEmailAddress emailAddressTypeCodec
+        |> Codec.optionalField "emailSendingAccount" .emailSendingAccount emailSendingAccountTypeCodec
         |> Codec.buildObject
 
 
@@ -6886,14 +6955,14 @@ domainStatusTypeCodec =
 domainDescriptionTypeCodec : Codec DomainDescriptionType
 domainDescriptionTypeCodec =
     Codec.object DomainDescriptionType
-        |> Codec.field "Version" .version domainVersionTypeCodec
-        |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "Status" .status domainStatusTypeCodec
-        |> Codec.field "S3Bucket" .s3Bucket s3BucketTypeCodec
-        |> Codec.field "Domain" .domain domainTypeCodec
-        |> Codec.field "CustomDomainConfig" .customDomainConfig customDomainConfigTypeCodec
-        |> Codec.field "CloudFrontDistribution" .cloudFrontDistribution Codec.string
-        |> Codec.field "AWSAccountId" .awsaccountId Codec.string
+        |> Codec.optionalField "version" .version domainVersionTypeCodec
+        |> Codec.optionalField "userPoolId" .userPoolId userPoolIdTypeCodec
+        |> Codec.optionalField "status" .status domainStatusTypeCodec
+        |> Codec.optionalField "s3Bucket" .s3Bucket s3BucketTypeCodec
+        |> Codec.optionalField "domain" .domain domainTypeCodec
+        |> Codec.optionalField "customDomainConfig" .customDomainConfig customDomainConfigTypeCodec
+        |> Codec.optionalField "cloudFrontDistribution" .cloudFrontDistribution Codec.string
+        |> Codec.optionalField "awsaccountId" .awsaccountId Codec.string
         |> Codec.buildObject
 
 
@@ -6901,11 +6970,11 @@ domainDescriptionTypeCodec =
 deviceTypeCodec : Codec DeviceType
 deviceTypeCodec =
     Codec.object DeviceType
-        |> Codec.field "DeviceLastModifiedDate" .deviceLastModifiedDate dateTypeCodec
-        |> Codec.field "DeviceLastAuthenticatedDate" .deviceLastAuthenticatedDate dateTypeCodec
-        |> Codec.field "DeviceKey" .deviceKey deviceKeyTypeCodec
-        |> Codec.field "DeviceCreateDate" .deviceCreateDate dateTypeCodec
-        |> Codec.field "DeviceAttributes" .deviceAttributes attributeListTypeCodec
+        |> Codec.optionalField "deviceLastModifiedDate" .deviceLastModifiedDate dateTypeCodec
+        |> Codec.optionalField "deviceLastAuthenticatedDate" .deviceLastAuthenticatedDate dateTypeCodec
+        |> Codec.optionalField "deviceKey" .deviceKey deviceKeyTypeCodec
+        |> Codec.optionalField "deviceCreateDate" .deviceCreateDate dateTypeCodec
+        |> Codec.optionalField "deviceAttributes" .deviceAttributes attributeListTypeCodec
         |> Codec.buildObject
 
 
@@ -6913,8 +6982,8 @@ deviceTypeCodec =
 deviceSecretVerifierConfigTypeCodec : Codec DeviceSecretVerifierConfigType
 deviceSecretVerifierConfigTypeCodec =
     Codec.object DeviceSecretVerifierConfigType
-        |> Codec.field "Salt" .salt Codec.string
-        |> Codec.field "PasswordVerifier" .passwordVerifier Codec.string
+        |> Codec.optionalField "salt" .salt Codec.string
+        |> Codec.optionalField "passwordVerifier" .passwordVerifier Codec.string
         |> Codec.buildObject
 
 
@@ -6946,8 +7015,8 @@ deviceKeyTypeCodec =
 deviceConfigurationTypeCodec : Codec DeviceConfigurationType
 deviceConfigurationTypeCodec =
     Codec.object DeviceConfigurationType
-        |> Codec.field "DeviceOnlyRememberedOnUserPrompt" .deviceOnlyRememberedOnUserPrompt Codec.bool
-        |> Codec.field "ChallengeRequiredOnNewDevice" .challengeRequiredOnNewDevice Codec.bool
+        |> Codec.optionalField "deviceOnlyRememberedOnUserPrompt" .deviceOnlyRememberedOnUserPrompt Codec.bool
+        |> Codec.optionalField "challengeRequiredOnNewDevice" .challengeRequiredOnNewDevice Codec.bool
         |> Codec.buildObject
 
 
@@ -6960,7 +7029,9 @@ descriptionTypeCodec =
 {-| Codec for DescribeUserPoolResponse. -}
 describeUserPoolResponseCodec : Codec DescribeUserPoolResponse
 describeUserPoolResponseCodec =
-    Codec.object DescribeUserPoolResponse |> Codec.field "UserPool" .userPool userPoolTypeCodec |> Codec.buildObject
+    Codec.object DescribeUserPoolResponse
+        |> Codec.optionalField "userPool" .userPool userPoolTypeCodec
+        |> Codec.buildObject
 
 
 {-| Codec for DescribeUserPoolRequest. -}
@@ -6975,7 +7046,7 @@ describeUserPoolRequestCodec =
 describeUserPoolDomainResponseCodec : Codec DescribeUserPoolDomainResponse
 describeUserPoolDomainResponseCodec =
     Codec.object DescribeUserPoolDomainResponse
-        |> Codec.field "DomainDescription" .domainDescription domainDescriptionTypeCodec
+        |> Codec.optionalField "domainDescription" .domainDescription domainDescriptionTypeCodec
         |> Codec.buildObject
 
 
@@ -6989,7 +7060,7 @@ describeUserPoolDomainRequestCodec =
 describeUserPoolClientResponseCodec : Codec DescribeUserPoolClientResponse
 describeUserPoolClientResponseCodec =
     Codec.object DescribeUserPoolClientResponse
-        |> Codec.field "UserPoolClient" .userPoolClient userPoolClientTypeCodec
+        |> Codec.optionalField "userPoolClient" .userPoolClient userPoolClientTypeCodec
         |> Codec.buildObject
 
 
@@ -7006,7 +7077,7 @@ describeUserPoolClientRequestCodec =
 describeUserImportJobResponseCodec : Codec DescribeUserImportJobResponse
 describeUserImportJobResponseCodec =
     Codec.object DescribeUserImportJobResponse
-        |> Codec.field "UserImportJob" .userImportJob userImportJobTypeCodec
+        |> Codec.optionalField "userImportJob" .userImportJob userImportJobTypeCodec
         |> Codec.buildObject
 
 
@@ -7032,7 +7103,7 @@ describeRiskConfigurationRequestCodec : Codec DescribeRiskConfigurationRequest
 describeRiskConfigurationRequestCodec =
     Codec.object DescribeRiskConfigurationRequest
         |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "ClientId" .clientId clientIdTypeCodec
+        |> Codec.optionalField "clientId" .clientId clientIdTypeCodec
         |> Codec.buildObject
 
 
@@ -7195,32 +7266,37 @@ customAttributeNameTypeCodec =
 {-| Codec for CreateUserPoolResponse. -}
 createUserPoolResponseCodec : Codec CreateUserPoolResponse
 createUserPoolResponseCodec =
-    Codec.object CreateUserPoolResponse |> Codec.field "UserPool" .userPool userPoolTypeCodec |> Codec.buildObject
+    Codec.object CreateUserPoolResponse
+        |> Codec.optionalField "userPool" .userPool userPoolTypeCodec
+        |> Codec.buildObject
 
 
 {-| Codec for CreateUserPoolRequest. -}
 createUserPoolRequestCodec : Codec CreateUserPoolRequest
 createUserPoolRequestCodec =
     Codec.object CreateUserPoolRequest
-        |> Codec.field "VerificationMessageTemplate" .verificationMessageTemplate verificationMessageTemplateTypeCodec
-        |> Codec.field "UsernameAttributes" .usernameAttributes usernameAttributesListTypeCodec
-        |> Codec.field "UserPoolTags" .userPoolTags userPoolTagsTypeCodec
-        |> Codec.field "UserPoolAddOns" .userPoolAddOns userPoolAddOnsTypeCodec
-        |> Codec.field "SmsVerificationMessage" .smsVerificationMessage smsVerificationMessageTypeCodec
-        |> Codec.field "SmsConfiguration" .smsConfiguration smsConfigurationTypeCodec
-        |> Codec.field "SmsAuthenticationMessage" .smsAuthenticationMessage smsVerificationMessageTypeCodec
-        |> Codec.field "Schema" .schema schemaAttributesListTypeCodec
+        |> Codec.optionalField
+            "verificationMessageTemplate"
+            .verificationMessageTemplate
+            verificationMessageTemplateTypeCodec
+        |> Codec.optionalField "usernameAttributes" .usernameAttributes usernameAttributesListTypeCodec
+        |> Codec.optionalField "userPoolTags" .userPoolTags userPoolTagsTypeCodec
+        |> Codec.optionalField "userPoolAddOns" .userPoolAddOns userPoolAddOnsTypeCodec
+        |> Codec.optionalField "smsVerificationMessage" .smsVerificationMessage smsVerificationMessageTypeCodec
+        |> Codec.optionalField "smsConfiguration" .smsConfiguration smsConfigurationTypeCodec
+        |> Codec.optionalField "smsAuthenticationMessage" .smsAuthenticationMessage smsVerificationMessageTypeCodec
+        |> Codec.optionalField "schema" .schema schemaAttributesListTypeCodec
         |> Codec.field "PoolName" .poolName userPoolNameTypeCodec
-        |> Codec.field "Policies" .policies userPoolPolicyTypeCodec
-        |> Codec.field "MfaConfiguration" .mfaConfiguration userPoolMfaTypeCodec
-        |> Codec.field "LambdaConfig" .lambdaConfig lambdaConfigTypeCodec
-        |> Codec.field "EmailVerificationSubject" .emailVerificationSubject emailVerificationSubjectTypeCodec
-        |> Codec.field "EmailVerificationMessage" .emailVerificationMessage emailVerificationMessageTypeCodec
-        |> Codec.field "EmailConfiguration" .emailConfiguration emailConfigurationTypeCodec
-        |> Codec.field "DeviceConfiguration" .deviceConfiguration deviceConfigurationTypeCodec
-        |> Codec.field "AutoVerifiedAttributes" .autoVerifiedAttributes verifiedAttributesListTypeCodec
-        |> Codec.field "AliasAttributes" .aliasAttributes aliasAttributesListTypeCodec
-        |> Codec.field "AdminCreateUserConfig" .adminCreateUserConfig adminCreateUserConfigTypeCodec
+        |> Codec.optionalField "policies" .policies userPoolPolicyTypeCodec
+        |> Codec.optionalField "mfaConfiguration" .mfaConfiguration userPoolMfaTypeCodec
+        |> Codec.optionalField "lambdaConfig" .lambdaConfig lambdaConfigTypeCodec
+        |> Codec.optionalField "emailVerificationSubject" .emailVerificationSubject emailVerificationSubjectTypeCodec
+        |> Codec.optionalField "emailVerificationMessage" .emailVerificationMessage emailVerificationMessageTypeCodec
+        |> Codec.optionalField "emailConfiguration" .emailConfiguration emailConfigurationTypeCodec
+        |> Codec.optionalField "deviceConfiguration" .deviceConfiguration deviceConfigurationTypeCodec
+        |> Codec.optionalField "autoVerifiedAttributes" .autoVerifiedAttributes verifiedAttributesListTypeCodec
+        |> Codec.optionalField "aliasAttributes" .aliasAttributes aliasAttributesListTypeCodec
+        |> Codec.optionalField "adminCreateUserConfig" .adminCreateUserConfig adminCreateUserConfigTypeCodec
         |> Codec.buildObject
 
 
@@ -7228,7 +7304,7 @@ createUserPoolRequestCodec =
 createUserPoolDomainResponseCodec : Codec CreateUserPoolDomainResponse
 createUserPoolDomainResponseCodec =
     Codec.object CreateUserPoolDomainResponse
-        |> Codec.field "CloudFrontDomain" .cloudFrontDomain domainTypeCodec
+        |> Codec.optionalField "cloudFrontDomain" .cloudFrontDomain domainTypeCodec
         |> Codec.buildObject
 
 
@@ -7238,7 +7314,7 @@ createUserPoolDomainRequestCodec =
     Codec.object CreateUserPoolDomainRequest
         |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
         |> Codec.field "Domain" .domain domainTypeCodec
-        |> Codec.field "CustomDomainConfig" .customDomainConfig customDomainConfigTypeCodec
+        |> Codec.optionalField "customDomainConfig" .customDomainConfig customDomainConfigTypeCodec
         |> Codec.buildObject
 
 
@@ -7246,7 +7322,7 @@ createUserPoolDomainRequestCodec =
 createUserPoolClientResponseCodec : Codec CreateUserPoolClientResponse
 createUserPoolClientResponseCodec =
     Codec.object CreateUserPoolClientResponse
-        |> Codec.field "UserPoolClient" .userPoolClient userPoolClientTypeCodec
+        |> Codec.optionalField "userPoolClient" .userPoolClient userPoolClientTypeCodec
         |> Codec.buildObject
 
 
@@ -7254,21 +7330,24 @@ createUserPoolClientResponseCodec =
 createUserPoolClientRequestCodec : Codec CreateUserPoolClientRequest
 createUserPoolClientRequestCodec =
     Codec.object CreateUserPoolClientRequest
-        |> Codec.field "WriteAttributes" .writeAttributes clientPermissionListTypeCodec
+        |> Codec.optionalField "writeAttributes" .writeAttributes clientPermissionListTypeCodec
         |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "SupportedIdentityProviders" .supportedIdentityProviders supportedIdentityProvidersListTypeCodec
-        |> Codec.field "RefreshTokenValidity" .refreshTokenValidity refreshTokenValidityTypeCodec
-        |> Codec.field "ReadAttributes" .readAttributes clientPermissionListTypeCodec
-        |> Codec.field "LogoutURLs" .logoutUrls logoutUrlsListTypeCodec
-        |> Codec.field "GenerateSecret" .generateSecret Codec.bool
-        |> Codec.field "ExplicitAuthFlows" .explicitAuthFlows explicitAuthFlowsListTypeCodec
-        |> Codec.field "DefaultRedirectURI" .defaultRedirectUri redirectUrlTypeCodec
+        |> Codec.optionalField
+            "supportedIdentityProviders"
+            .supportedIdentityProviders
+            supportedIdentityProvidersListTypeCodec
+        |> Codec.optionalField "refreshTokenValidity" .refreshTokenValidity refreshTokenValidityTypeCodec
+        |> Codec.optionalField "readAttributes" .readAttributes clientPermissionListTypeCodec
+        |> Codec.optionalField "logoutUrls" .logoutUrls logoutUrlsListTypeCodec
+        |> Codec.optionalField "generateSecret" .generateSecret Codec.bool
+        |> Codec.optionalField "explicitAuthFlows" .explicitAuthFlows explicitAuthFlowsListTypeCodec
+        |> Codec.optionalField "defaultRedirectUri" .defaultRedirectUri redirectUrlTypeCodec
         |> Codec.field "ClientName" .clientName clientNameTypeCodec
-        |> Codec.field "CallbackURLs" .callbackUrls callbackUrlsListTypeCodec
-        |> Codec.field "AnalyticsConfiguration" .analyticsConfiguration analyticsConfigurationTypeCodec
-        |> Codec.field "AllowedOAuthScopes" .allowedOauthScopes scopeListTypeCodec
-        |> Codec.field "AllowedOAuthFlowsUserPoolClient" .allowedOauthFlowsUserPoolClient Codec.bool
-        |> Codec.field "AllowedOAuthFlows" .allowedOauthFlows oauthFlowsTypeCodec
+        |> Codec.optionalField "callbackUrls" .callbackUrls callbackUrlsListTypeCodec
+        |> Codec.optionalField "analyticsConfiguration" .analyticsConfiguration analyticsConfigurationTypeCodec
+        |> Codec.optionalField "allowedOauthScopes" .allowedOauthScopes scopeListTypeCodec
+        |> Codec.optionalField "allowedOauthFlowsUserPoolClient" .allowedOauthFlowsUserPoolClient Codec.bool
+        |> Codec.optionalField "allowedOauthFlows" .allowedOauthFlows oauthFlowsTypeCodec
         |> Codec.buildObject
 
 
@@ -7276,7 +7355,7 @@ createUserPoolClientRequestCodec =
 createUserImportJobResponseCodec : Codec CreateUserImportJobResponse
 createUserImportJobResponseCodec =
     Codec.object CreateUserImportJobResponse
-        |> Codec.field "UserImportJob" .userImportJob userImportJobTypeCodec
+        |> Codec.optionalField "userImportJob" .userImportJob userImportJobTypeCodec
         |> Codec.buildObject
 
 
@@ -7303,7 +7382,7 @@ createResourceServerRequestCodec : Codec CreateResourceServerRequest
 createResourceServerRequestCodec =
     Codec.object CreateResourceServerRequest
         |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "Scopes" .scopes resourceServerScopeListTypeCodec
+        |> Codec.optionalField "scopes" .scopes resourceServerScopeListTypeCodec
         |> Codec.field "Name" .name resourceServerNameTypeCodec
         |> Codec.field "Identifier" .identifier resourceServerIdentifierTypeCodec
         |> Codec.buildObject
@@ -7325,15 +7404,15 @@ createIdentityProviderRequestCodec =
         |> Codec.field "ProviderType" .providerType identityProviderTypeTypeCodec
         |> Codec.field "ProviderName" .providerName providerNameTypeV1Codec
         |> Codec.field "ProviderDetails" .providerDetails providerDetailsTypeCodec
-        |> Codec.field "IdpIdentifiers" .idpIdentifiers idpIdentifiersListTypeCodec
-        |> Codec.field "AttributeMapping" .attributeMapping attributeMappingTypeCodec
+        |> Codec.optionalField "idpIdentifiers" .idpIdentifiers idpIdentifiersListTypeCodec
+        |> Codec.optionalField "attributeMapping" .attributeMapping attributeMappingTypeCodec
         |> Codec.buildObject
 
 
 {-| Codec for CreateGroupResponse. -}
 createGroupResponseCodec : Codec CreateGroupResponse
 createGroupResponseCodec =
-    Codec.object CreateGroupResponse |> Codec.field "Group" .group groupTypeCodec |> Codec.buildObject
+    Codec.object CreateGroupResponse |> Codec.optionalField "group" .group groupTypeCodec |> Codec.buildObject
 
 
 {-| Codec for CreateGroupRequest. -}
@@ -7341,10 +7420,10 @@ createGroupRequestCodec : Codec CreateGroupRequest
 createGroupRequestCodec =
     Codec.object CreateGroupRequest
         |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "RoleArn" .roleArn arnTypeCodec
-        |> Codec.field "Precedence" .precedence precedenceTypeCodec
+        |> Codec.optionalField "roleArn" .roleArn arnTypeCodec
+        |> Codec.optionalField "precedence" .precedence precedenceTypeCodec
         |> Codec.field "GroupName" .groupName groupNameTypeCodec
-        |> Codec.field "Description" .description descriptionTypeCodec
+        |> Codec.optionalField "description" .description descriptionTypeCodec
         |> Codec.buildObject
 
 
@@ -7356,7 +7435,7 @@ contextDataTypeCodec =
         |> Codec.field "ServerName" .serverName Codec.string
         |> Codec.field "IpAddress" .ipAddress Codec.string
         |> Codec.field "HttpHeaders" .httpHeaders httpHeaderListCodec
-        |> Codec.field "EncodedData" .encodedData Codec.string
+        |> Codec.optionalField "encodedData" .encodedData Codec.string
         |> Codec.buildObject
 
 
@@ -7377,12 +7456,12 @@ confirmSignUpRequestCodec : Codec ConfirmSignUpRequest
 confirmSignUpRequestCodec =
     Codec.object ConfirmSignUpRequest
         |> Codec.field "Username" .username usernameTypeCodec
-        |> Codec.field "UserContextData" .userContextData userContextDataTypeCodec
-        |> Codec.field "SecretHash" .secretHash secretHashTypeCodec
-        |> Codec.field "ForceAliasCreation" .forceAliasCreation Codec.bool
+        |> Codec.optionalField "userContextData" .userContextData userContextDataTypeCodec
+        |> Codec.optionalField "secretHash" .secretHash secretHashTypeCodec
+        |> Codec.optionalField "forceAliasCreation" .forceAliasCreation Codec.bool
         |> Codec.field "ConfirmationCode" .confirmationCode confirmationCodeTypeCodec
         |> Codec.field "ClientId" .clientId clientIdTypeCodec
-        |> Codec.field "AnalyticsMetadata" .analyticsMetadata analyticsMetadataTypeCodec
+        |> Codec.optionalField "analyticsMetadata" .analyticsMetadata analyticsMetadataTypeCodec
         |> Codec.buildObject
 
 
@@ -7397,12 +7476,12 @@ confirmForgotPasswordRequestCodec : Codec ConfirmForgotPasswordRequest
 confirmForgotPasswordRequestCodec =
     Codec.object ConfirmForgotPasswordRequest
         |> Codec.field "Username" .username usernameTypeCodec
-        |> Codec.field "UserContextData" .userContextData userContextDataTypeCodec
-        |> Codec.field "SecretHash" .secretHash secretHashTypeCodec
+        |> Codec.optionalField "userContextData" .userContextData userContextDataTypeCodec
+        |> Codec.optionalField "secretHash" .secretHash secretHashTypeCodec
         |> Codec.field "Password" .password passwordTypeCodec
         |> Codec.field "ConfirmationCode" .confirmationCode confirmationCodeTypeCodec
         |> Codec.field "ClientId" .clientId clientIdTypeCodec
-        |> Codec.field "AnalyticsMetadata" .analyticsMetadata analyticsMetadataTypeCodec
+        |> Codec.optionalField "analyticsMetadata" .analyticsMetadata analyticsMetadataTypeCodec
         |> Codec.buildObject
 
 
@@ -7410,7 +7489,7 @@ confirmForgotPasswordRequestCodec =
 confirmDeviceResponseCodec : Codec ConfirmDeviceResponse
 confirmDeviceResponseCodec =
     Codec.object ConfirmDeviceResponse
-        |> Codec.field "UserConfirmationNecessary" .userConfirmationNecessary Codec.bool
+        |> Codec.optionalField "userConfirmationNecessary" .userConfirmationNecessary Codec.bool
         |> Codec.buildObject
 
 
@@ -7418,8 +7497,11 @@ confirmDeviceResponseCodec =
 confirmDeviceRequestCodec : Codec ConfirmDeviceRequest
 confirmDeviceRequestCodec =
     Codec.object ConfirmDeviceRequest
-        |> Codec.field "DeviceSecretVerifierConfig" .deviceSecretVerifierConfig deviceSecretVerifierConfigTypeCodec
-        |> Codec.field "DeviceName" .deviceName deviceNameTypeCodec
+        |> Codec.optionalField
+            "deviceSecretVerifierConfig"
+            .deviceSecretVerifierConfig
+            deviceSecretVerifierConfigTypeCodec
+        |> Codec.optionalField "deviceName" .deviceName deviceNameTypeCodec
         |> Codec.field "DeviceKey" .deviceKey deviceKeyTypeCodec
         |> Codec.field "AccessToken" .accessToken tokenModelTypeCodec
         |> Codec.buildObject
@@ -7429,7 +7511,7 @@ confirmDeviceRequestCodec =
 compromisedCredentialsRiskConfigurationTypeCodec : Codec CompromisedCredentialsRiskConfigurationType
 compromisedCredentialsRiskConfigurationTypeCodec =
     Codec.object CompromisedCredentialsRiskConfigurationType
-        |> Codec.field "EventFilter" .eventFilter eventFiltersTypeCodec
+        |> Codec.optionalField "eventFilter" .eventFilter eventFiltersTypeCodec
         |> Codec.field "Actions" .actions compromisedCredentialsActionsTypeCodec
         |> Codec.buildObject
 
@@ -7460,9 +7542,9 @@ completionMessageTypeCodec =
 codeDeliveryDetailsTypeCodec : Codec CodeDeliveryDetailsType
 codeDeliveryDetailsTypeCodec =
     Codec.object CodeDeliveryDetailsType
-        |> Codec.field "Destination" .destination Codec.string
-        |> Codec.field "DeliveryMedium" .deliveryMedium deliveryMediumTypeCodec
-        |> Codec.field "AttributeName" .attributeName attributeNameTypeCodec
+        |> Codec.optionalField "destination" .destination Codec.string
+        |> Codec.optionalField "deliveryMedium" .deliveryMedium deliveryMediumTypeCodec
+        |> Codec.optionalField "attributeName" .attributeName attributeNameTypeCodec
         |> Codec.buildObject
 
 
@@ -7534,8 +7616,8 @@ challengeResponsesTypeCodec =
 challengeResponseTypeCodec : Codec ChallengeResponseType
 challengeResponseTypeCodec =
     Codec.object ChallengeResponseType
-        |> Codec.field "ChallengeResponse" .challengeResponse challengeResponseCodec
-        |> Codec.field "ChallengeName" .challengeName challengeNameCodec
+        |> Codec.optionalField "challengeResponse" .challengeResponse challengeResponseCodec
+        |> Codec.optionalField "challengeName" .challengeName challengeNameCodec
         |> Codec.buildObject
 
 
@@ -7603,12 +7685,12 @@ blockedIprangeListTypeCodec =
 authenticationResultTypeCodec : Codec AuthenticationResultType
 authenticationResultTypeCodec =
     Codec.object AuthenticationResultType
-        |> Codec.field "TokenType" .tokenType Codec.string
-        |> Codec.field "RefreshToken" .refreshToken tokenModelTypeCodec
-        |> Codec.field "NewDeviceMetadata" .newDeviceMetadata newDeviceMetadataTypeCodec
-        |> Codec.field "IdToken" .idToken tokenModelTypeCodec
-        |> Codec.field "ExpiresIn" .expiresIn Codec.int
-        |> Codec.field "AccessToken" .accessToken tokenModelTypeCodec
+        |> Codec.optionalField "tokenType" .tokenType Codec.string
+        |> Codec.optionalField "refreshToken" .refreshToken tokenModelTypeCodec
+        |> Codec.optionalField "newDeviceMetadata" .newDeviceMetadata newDeviceMetadataTypeCodec
+        |> Codec.optionalField "idToken" .idToken tokenModelTypeCodec
+        |> Codec.optionalField "expiresIn" .expiresIn Codec.int
+        |> Codec.optionalField "accessToken" .accessToken tokenModelTypeCodec
         |> Codec.buildObject
 
 
@@ -7634,14 +7716,14 @@ authEventsTypeCodec =
 authEventTypeCodec : Codec AuthEventType
 authEventTypeCodec =
     Codec.object AuthEventType
-        |> Codec.field "EventType" .eventType eventTypeCodec
-        |> Codec.field "EventRisk" .eventRisk eventRiskTypeCodec
-        |> Codec.field "EventResponse" .eventResponse eventResponseTypeCodec
-        |> Codec.field "EventId" .eventId Codec.string
-        |> Codec.field "EventFeedback" .eventFeedback eventFeedbackTypeCodec
-        |> Codec.field "EventContextData" .eventContextData eventContextDataTypeCodec
-        |> Codec.field "CreationDate" .creationDate dateTypeCodec
-        |> Codec.field "ChallengeResponses" .challengeResponses challengeResponseListTypeCodec
+        |> Codec.optionalField "eventType" .eventType eventTypeCodec
+        |> Codec.optionalField "eventRisk" .eventRisk eventRiskTypeCodec
+        |> Codec.optionalField "eventResponse" .eventResponse eventResponseTypeCodec
+        |> Codec.optionalField "eventId" .eventId Codec.string
+        |> Codec.optionalField "eventFeedback" .eventFeedback eventFeedbackTypeCodec
+        |> Codec.optionalField "eventContextData" .eventContextData eventContextDataTypeCodec
+        |> Codec.optionalField "creationDate" .creationDate dateTypeCodec
+        |> Codec.optionalField "challengeResponses" .challengeResponses challengeResponseListTypeCodec
         |> Codec.buildObject
 
 
@@ -7655,7 +7737,7 @@ attributeValueTypeCodec =
 attributeTypeCodec : Codec AttributeType
 attributeTypeCodec =
     Codec.object AttributeType
-        |> Codec.field "Value" .value attributeValueTypeCodec
+        |> Codec.optionalField "value" .value attributeValueTypeCodec
         |> Codec.field "Name" .name attributeNameTypeCodec
         |> Codec.buildObject
 
@@ -7702,8 +7784,8 @@ attributeDataTypeCodec =
 associateSoftwareTokenResponseCodec : Codec AssociateSoftwareTokenResponse
 associateSoftwareTokenResponseCodec =
     Codec.object AssociateSoftwareTokenResponse
-        |> Codec.field "Session" .session sessionTypeCodec
-        |> Codec.field "SecretCode" .secretCode secretCodeTypeCodec
+        |> Codec.optionalField "session" .session sessionTypeCodec
+        |> Codec.optionalField "secretCode" .secretCode secretCodeTypeCodec
         |> Codec.buildObject
 
 
@@ -7711,8 +7793,8 @@ associateSoftwareTokenResponseCodec =
 associateSoftwareTokenRequestCodec : Codec AssociateSoftwareTokenRequest
 associateSoftwareTokenRequestCodec =
     Codec.object AssociateSoftwareTokenRequest
-        |> Codec.field "Session" .session sessionTypeCodec
-        |> Codec.field "AccessToken" .accessToken tokenModelTypeCodec
+        |> Codec.optionalField "session" .session sessionTypeCodec
+        |> Codec.optionalField "accessToken" .accessToken tokenModelTypeCodec
         |> Codec.buildObject
 
 
@@ -7726,7 +7808,7 @@ arnTypeCodec =
 analyticsMetadataTypeCodec : Codec AnalyticsMetadataType
 analyticsMetadataTypeCodec =
     Codec.object AnalyticsMetadataType
-        |> Codec.field "AnalyticsEndpointId" .analyticsEndpointId Codec.string
+        |> Codec.optionalField "analyticsEndpointId" .analyticsEndpointId Codec.string
         |> Codec.buildObject
 
 
@@ -7734,7 +7816,7 @@ analyticsMetadataTypeCodec =
 analyticsConfigurationTypeCodec : Codec AnalyticsConfigurationType
 analyticsConfigurationTypeCodec =
     Codec.object AnalyticsConfigurationType
-        |> Codec.field "UserDataShared" .userDataShared Codec.bool
+        |> Codec.optionalField "userDataShared" .userDataShared Codec.bool
         |> Codec.field "RoleArn" .roleArn arnTypeCodec
         |> Codec.field "ExternalId" .externalId Codec.string
         |> Codec.field "ApplicationId" .applicationId hexStringTypeCodec
@@ -7802,7 +7884,7 @@ adminUpdateDeviceStatusRequestCodec =
     Codec.object AdminUpdateDeviceStatusRequest
         |> Codec.field "Username" .username usernameTypeCodec
         |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "DeviceRememberedStatus" .deviceRememberedStatus deviceRememberedStatusTypeCodec
+        |> Codec.optionalField "deviceRememberedStatus" .deviceRememberedStatus deviceRememberedStatusTypeCodec
         |> Codec.field "DeviceKey" .deviceKey deviceKeyTypeCodec
         |> Codec.buildObject
 
@@ -7852,7 +7934,7 @@ adminSetUserPasswordRequestCodec =
     Codec.object AdminSetUserPasswordRequest
         |> Codec.field "Username" .username usernameTypeCodec
         |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "Permanent" .permanent Codec.bool
+        |> Codec.optionalField "permanent" .permanent Codec.bool
         |> Codec.field "Password" .password passwordTypeCodec
         |> Codec.buildObject
 
@@ -7869,8 +7951,8 @@ adminSetUserMfapreferenceRequestCodec =
     Codec.object AdminSetUserMfapreferenceRequest
         |> Codec.field "Username" .username usernameTypeCodec
         |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "SoftwareTokenMfaSettings" .softwareTokenMfaSettings softwareTokenMfaSettingsTypeCodec
-        |> Codec.field "SMSMfaSettings" .smsmfaSettings smsmfaSettingsTypeCodec
+        |> Codec.optionalField "softwareTokenMfaSettings" .softwareTokenMfaSettings softwareTokenMfaSettingsTypeCodec
+        |> Codec.optionalField "smsmfaSettings" .smsmfaSettings smsmfaSettingsTypeCodec
         |> Codec.buildObject
 
 
@@ -7878,10 +7960,10 @@ adminSetUserMfapreferenceRequestCodec =
 adminRespondToAuthChallengeResponseCodec : Codec AdminRespondToAuthChallengeResponse
 adminRespondToAuthChallengeResponseCodec =
     Codec.object AdminRespondToAuthChallengeResponse
-        |> Codec.field "Session" .session sessionTypeCodec
-        |> Codec.field "ChallengeParameters" .challengeParameters challengeParametersTypeCodec
-        |> Codec.field "ChallengeName" .challengeName challengeNameTypeCodec
-        |> Codec.field "AuthenticationResult" .authenticationResult authenticationResultTypeCodec
+        |> Codec.optionalField "session" .session sessionTypeCodec
+        |> Codec.optionalField "challengeParameters" .challengeParameters challengeParametersTypeCodec
+        |> Codec.optionalField "challengeName" .challengeName challengeNameTypeCodec
+        |> Codec.optionalField "authenticationResult" .authenticationResult authenticationResultTypeCodec
         |> Codec.buildObject
 
 
@@ -7890,12 +7972,12 @@ adminRespondToAuthChallengeRequestCodec : Codec AdminRespondToAuthChallengeReque
 adminRespondToAuthChallengeRequestCodec =
     Codec.object AdminRespondToAuthChallengeRequest
         |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "Session" .session sessionTypeCodec
-        |> Codec.field "ContextData" .contextData contextDataTypeCodec
+        |> Codec.optionalField "session" .session sessionTypeCodec
+        |> Codec.optionalField "contextData" .contextData contextDataTypeCodec
         |> Codec.field "ClientId" .clientId clientIdTypeCodec
-        |> Codec.field "ChallengeResponses" .challengeResponses challengeResponsesTypeCodec
+        |> Codec.optionalField "challengeResponses" .challengeResponses challengeResponsesTypeCodec
         |> Codec.field "ChallengeName" .challengeName challengeNameTypeCodec
-        |> Codec.field "AnalyticsMetadata" .analyticsMetadata analyticsMetadataTypeCodec
+        |> Codec.optionalField "analyticsMetadata" .analyticsMetadata analyticsMetadataTypeCodec
         |> Codec.buildObject
 
 
@@ -7928,8 +8010,8 @@ adminRemoveUserFromGroupRequestCodec =
 adminListUserAuthEventsResponseCodec : Codec AdminListUserAuthEventsResponse
 adminListUserAuthEventsResponseCodec =
     Codec.object AdminListUserAuthEventsResponse
-        |> Codec.field "NextToken" .nextToken paginationKeyCodec
-        |> Codec.field "AuthEvents" .authEvents authEventsTypeCodec
+        |> Codec.optionalField "nextToken" .nextToken paginationKeyCodec
+        |> Codec.optionalField "authEvents" .authEvents authEventsTypeCodec
         |> Codec.buildObject
 
 
@@ -7939,8 +8021,8 @@ adminListUserAuthEventsRequestCodec =
     Codec.object AdminListUserAuthEventsRequest
         |> Codec.field "Username" .username usernameTypeCodec
         |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "NextToken" .nextToken paginationKeyCodec
-        |> Codec.field "MaxResults" .maxResults queryLimitTypeCodec
+        |> Codec.optionalField "nextToken" .nextToken paginationKeyCodec
+        |> Codec.optionalField "maxResults" .maxResults queryLimitTypeCodec
         |> Codec.buildObject
 
 
@@ -7948,8 +8030,8 @@ adminListUserAuthEventsRequestCodec =
 adminListGroupsForUserResponseCodec : Codec AdminListGroupsForUserResponse
 adminListGroupsForUserResponseCodec =
     Codec.object AdminListGroupsForUserResponse
-        |> Codec.field "NextToken" .nextToken paginationKeyCodec
-        |> Codec.field "Groups" .groups groupListTypeCodec
+        |> Codec.optionalField "nextToken" .nextToken paginationKeyCodec
+        |> Codec.optionalField "groups" .groups groupListTypeCodec
         |> Codec.buildObject
 
 
@@ -7959,8 +8041,8 @@ adminListGroupsForUserRequestCodec =
     Codec.object AdminListGroupsForUserRequest
         |> Codec.field "Username" .username usernameTypeCodec
         |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "NextToken" .nextToken paginationKeyCodec
-        |> Codec.field "Limit" .limit queryLimitTypeCodec
+        |> Codec.optionalField "nextToken" .nextToken paginationKeyCodec
+        |> Codec.optionalField "limit" .limit queryLimitTypeCodec
         |> Codec.buildObject
 
 
@@ -7968,8 +8050,8 @@ adminListGroupsForUserRequestCodec =
 adminListDevicesResponseCodec : Codec AdminListDevicesResponse
 adminListDevicesResponseCodec =
     Codec.object AdminListDevicesResponse
-        |> Codec.field "PaginationToken" .paginationToken searchPaginationTokenTypeCodec
-        |> Codec.field "Devices" .devices deviceListTypeCodec
+        |> Codec.optionalField "paginationToken" .paginationToken searchPaginationTokenTypeCodec
+        |> Codec.optionalField "devices" .devices deviceListTypeCodec
         |> Codec.buildObject
 
 
@@ -7979,8 +8061,8 @@ adminListDevicesRequestCodec =
     Codec.object AdminListDevicesRequest
         |> Codec.field "Username" .username usernameTypeCodec
         |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "PaginationToken" .paginationToken searchPaginationTokenTypeCodec
-        |> Codec.field "Limit" .limit queryLimitTypeCodec
+        |> Codec.optionalField "paginationToken" .paginationToken searchPaginationTokenTypeCodec
+        |> Codec.optionalField "limit" .limit queryLimitTypeCodec
         |> Codec.buildObject
 
 
@@ -8004,10 +8086,10 @@ adminLinkProviderForUserRequestCodec =
 adminInitiateAuthResponseCodec : Codec AdminInitiateAuthResponse
 adminInitiateAuthResponseCodec =
     Codec.object AdminInitiateAuthResponse
-        |> Codec.field "Session" .session sessionTypeCodec
-        |> Codec.field "ChallengeParameters" .challengeParameters challengeParametersTypeCodec
-        |> Codec.field "ChallengeName" .challengeName challengeNameTypeCodec
-        |> Codec.field "AuthenticationResult" .authenticationResult authenticationResultTypeCodec
+        |> Codec.optionalField "session" .session sessionTypeCodec
+        |> Codec.optionalField "challengeParameters" .challengeParameters challengeParametersTypeCodec
+        |> Codec.optionalField "challengeName" .challengeName challengeNameTypeCodec
+        |> Codec.optionalField "authenticationResult" .authenticationResult authenticationResultTypeCodec
         |> Codec.buildObject
 
 
@@ -8016,12 +8098,12 @@ adminInitiateAuthRequestCodec : Codec AdminInitiateAuthRequest
 adminInitiateAuthRequestCodec =
     Codec.object AdminInitiateAuthRequest
         |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "ContextData" .contextData contextDataTypeCodec
-        |> Codec.field "ClientMetadata" .clientMetadata clientMetadataTypeCodec
+        |> Codec.optionalField "contextData" .contextData contextDataTypeCodec
+        |> Codec.optionalField "clientMetadata" .clientMetadata clientMetadataTypeCodec
         |> Codec.field "ClientId" .clientId clientIdTypeCodec
-        |> Codec.field "AuthParameters" .authParameters authParametersTypeCodec
+        |> Codec.optionalField "authParameters" .authParameters authParametersTypeCodec
         |> Codec.field "AuthFlow" .authFlow authFlowTypeCodec
-        |> Codec.field "AnalyticsMetadata" .analyticsMetadata analyticsMetadataTypeCodec
+        |> Codec.optionalField "analyticsMetadata" .analyticsMetadata analyticsMetadataTypeCodec
         |> Codec.buildObject
 
 
@@ -8030,14 +8112,14 @@ adminGetUserResponseCodec : Codec AdminGetUserResponse
 adminGetUserResponseCodec =
     Codec.object AdminGetUserResponse
         |> Codec.field "Username" .username usernameTypeCodec
-        |> Codec.field "UserStatus" .userStatus userStatusTypeCodec
-        |> Codec.field "UserMFASettingList" .userMfasettingList userMfasettingListTypeCodec
-        |> Codec.field "UserLastModifiedDate" .userLastModifiedDate dateTypeCodec
-        |> Codec.field "UserCreateDate" .userCreateDate dateTypeCodec
-        |> Codec.field "UserAttributes" .userAttributes attributeListTypeCodec
-        |> Codec.field "PreferredMfaSetting" .preferredMfaSetting Codec.string
-        |> Codec.field "MFAOptions" .mfaoptions mfaoptionListTypeCodec
-        |> Codec.field "Enabled" .enabled Codec.bool
+        |> Codec.optionalField "userStatus" .userStatus userStatusTypeCodec
+        |> Codec.optionalField "userMfasettingList" .userMfasettingList userMfasettingListTypeCodec
+        |> Codec.optionalField "userLastModifiedDate" .userLastModifiedDate dateTypeCodec
+        |> Codec.optionalField "userCreateDate" .userCreateDate dateTypeCodec
+        |> Codec.optionalField "userAttributes" .userAttributes attributeListTypeCodec
+        |> Codec.optionalField "preferredMfaSetting" .preferredMfaSetting Codec.string
+        |> Codec.optionalField "mfaoptions" .mfaoptions mfaoptionListTypeCodec
+        |> Codec.optionalField "enabled" .enabled Codec.bool
         |> Codec.buildObject
 
 
@@ -8157,21 +8239,21 @@ adminCreateUserUnusedAccountValidityDaysTypeCodec =
 {-| Codec for AdminCreateUserResponse. -}
 adminCreateUserResponseCodec : Codec AdminCreateUserResponse
 adminCreateUserResponseCodec =
-    Codec.object AdminCreateUserResponse |> Codec.field "User" .user userTypeCodec |> Codec.buildObject
+    Codec.object AdminCreateUserResponse |> Codec.optionalField "user" .user userTypeCodec |> Codec.buildObject
 
 
 {-| Codec for AdminCreateUserRequest. -}
 adminCreateUserRequestCodec : Codec AdminCreateUserRequest
 adminCreateUserRequestCodec =
     Codec.object AdminCreateUserRequest
-        |> Codec.field "ValidationData" .validationData attributeListTypeCodec
+        |> Codec.optionalField "validationData" .validationData attributeListTypeCodec
         |> Codec.field "Username" .username usernameTypeCodec
         |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec
-        |> Codec.field "UserAttributes" .userAttributes attributeListTypeCodec
-        |> Codec.field "TemporaryPassword" .temporaryPassword passwordTypeCodec
-        |> Codec.field "MessageAction" .messageAction messageActionTypeCodec
-        |> Codec.field "ForceAliasCreation" .forceAliasCreation Codec.bool
-        |> Codec.field "DesiredDeliveryMediums" .desiredDeliveryMediums deliveryMediumListTypeCodec
+        |> Codec.optionalField "userAttributes" .userAttributes attributeListTypeCodec
+        |> Codec.optionalField "temporaryPassword" .temporaryPassword passwordTypeCodec
+        |> Codec.optionalField "messageAction" .messageAction messageActionTypeCodec
+        |> Codec.optionalField "forceAliasCreation" .forceAliasCreation Codec.bool
+        |> Codec.optionalField "desiredDeliveryMediums" .desiredDeliveryMediums deliveryMediumListTypeCodec
         |> Codec.buildObject
 
 
@@ -8179,12 +8261,12 @@ adminCreateUserRequestCodec =
 adminCreateUserConfigTypeCodec : Codec AdminCreateUserConfigType
 adminCreateUserConfigTypeCodec =
     Codec.object AdminCreateUserConfigType
-        |> Codec.field
-            "UnusedAccountValidityDays"
+        |> Codec.optionalField
+            "unusedAccountValidityDays"
             .unusedAccountValidityDays
             adminCreateUserUnusedAccountValidityDaysTypeCodec
-        |> Codec.field "InviteMessageTemplate" .inviteMessageTemplate messageTemplateTypeCodec
-        |> Codec.field "AllowAdminCreateUserOnly" .allowAdminCreateUserOnly Codec.bool
+        |> Codec.optionalField "inviteMessageTemplate" .inviteMessageTemplate messageTemplateTypeCodec
+        |> Codec.optionalField "allowAdminCreateUserOnly" .allowAdminCreateUserOnly Codec.bool
         |> Codec.buildObject
 
 
@@ -8232,7 +8314,7 @@ addCustomAttributesRequestCodec =
 accountTakeoverRiskConfigurationTypeCodec : Codec AccountTakeoverRiskConfigurationType
 accountTakeoverRiskConfigurationTypeCodec =
     Codec.object AccountTakeoverRiskConfigurationType
-        |> Codec.field "NotifyConfiguration" .notifyConfiguration notifyConfigurationTypeCodec
+        |> Codec.optionalField "notifyConfiguration" .notifyConfiguration notifyConfigurationTypeCodec
         |> Codec.field "Actions" .actions accountTakeoverActionsTypeCodec
         |> Codec.buildObject
 
@@ -8247,9 +8329,9 @@ accountTakeoverEventActionTypeCodec =
 accountTakeoverActionsTypeCodec : Codec AccountTakeoverActionsType
 accountTakeoverActionsTypeCodec =
     Codec.object AccountTakeoverActionsType
-        |> Codec.field "MediumAction" .mediumAction accountTakeoverActionTypeCodec
-        |> Codec.field "LowAction" .lowAction accountTakeoverActionTypeCodec
-        |> Codec.field "HighAction" .highAction accountTakeoverActionTypeCodec
+        |> Codec.optionalField "mediumAction" .mediumAction accountTakeoverActionTypeCodec
+        |> Codec.optionalField "lowAction" .lowAction accountTakeoverActionTypeCodec
+        |> Codec.optionalField "highAction" .highAction accountTakeoverActionTypeCodec
         |> Codec.buildObject
 
 
