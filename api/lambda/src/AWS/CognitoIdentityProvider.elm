@@ -1,5 +1,10 @@
 module AWS.CognitoIdentityProvider exposing (AccountTakeoverActionNotifyType, AccountTakeoverActionType, AccountTakeoverActionsType, AccountTakeoverEventActionType(..), AccountTakeoverRiskConfigurationType, AddCustomAttributesRequest, AddCustomAttributesResponse, AdminAddUserToGroupRequest, AdminConfirmSignUpRequest, AdminConfirmSignUpResponse, AdminCreateUserConfigType, AdminCreateUserRequest, AdminCreateUserResponse, AdminDeleteUserAttributesRequest, AdminDeleteUserAttributesResponse, AdminDeleteUserRequest, AdminDisableProviderForUserRequest, AdminDisableProviderForUserResponse, AdminDisableUserRequest, AdminDisableUserResponse, AdminEnableUserRequest, AdminEnableUserResponse, AdminForgetDeviceRequest, AdminGetDeviceRequest, AdminGetDeviceResponse, AdminGetUserRequest, AdminGetUserResponse, AdminInitiateAuthRequest, AdminInitiateAuthResponse, AdminLinkProviderForUserRequest, AdminLinkProviderForUserResponse, AdminListDevicesRequest, AdminListDevicesResponse, AdminListGroupsForUserRequest, AdminListGroupsForUserResponse, AdminListUserAuthEventsRequest, AdminListUserAuthEventsResponse, AdminRemoveUserFromGroupRequest, AdminResetUserPasswordRequest, AdminResetUserPasswordResponse, AdminRespondToAuthChallengeRequest, AdminRespondToAuthChallengeResponse, AdminSetUserMfapreferenceRequest, AdminSetUserMfapreferenceResponse, AdminSetUserPasswordRequest, AdminSetUserPasswordResponse, AdminSetUserSettingsRequest, AdminSetUserSettingsResponse, AdminUpdateAuthEventFeedbackRequest, AdminUpdateAuthEventFeedbackResponse, AdminUpdateDeviceStatusRequest, AdminUpdateDeviceStatusResponse, AdminUpdateUserAttributesRequest, AdminUpdateUserAttributesResponse, AdminUserGlobalSignOutRequest, AdminUserGlobalSignOutResponse, AdvancedSecurityModeType(..), AliasAttributeType(..), AliasAttributesListType, AnalyticsConfigurationType, AnalyticsMetadataType, AssociateSoftwareTokenRequest, AssociateSoftwareTokenResponse, AttributeDataType(..), AttributeListType, AttributeMappingType, AttributeNameListType, AttributeType, AuthEventType, AuthEventsType, AuthFlowType(..), AuthParametersType, AuthenticationResultType, AwsaccountIdType, BlockedIprangeListType, BooleanType, CallbackUrlsListType, ChallengeName(..), ChallengeNameType(..), ChallengeParametersType, ChallengeResponse(..), ChallengeResponseListType, ChallengeResponseType, ChallengeResponsesType, ChangePasswordRequest, ChangePasswordResponse, ClientMetadataType, ClientPermissionListType, CodeDeliveryDetailsListType, CodeDeliveryDetailsType, CompromisedCredentialsActionsType, CompromisedCredentialsEventActionType(..), CompromisedCredentialsRiskConfigurationType, ConfirmDeviceRequest, ConfirmDeviceResponse, ConfirmForgotPasswordRequest, ConfirmForgotPasswordResponse, ConfirmSignUpRequest, ConfirmSignUpResponse, ContextDataType, CreateGroupRequest, CreateGroupResponse, CreateIdentityProviderRequest, CreateIdentityProviderResponse, CreateResourceServerRequest, CreateResourceServerResponse, CreateUserImportJobRequest, CreateUserImportJobResponse, CreateUserPoolClientRequest, CreateUserPoolClientResponse, CreateUserPoolDomainRequest, CreateUserPoolDomainResponse, CreateUserPoolRequest, CreateUserPoolResponse, Csstype, CssversionType, CustomAttributesListType, CustomDomainConfigType, DateType, DefaultEmailOptionType(..), DeleteGroupRequest, DeleteIdentityProviderRequest, DeleteResourceServerRequest, DeleteUserAttributesRequest, DeleteUserAttributesResponse, DeleteUserPoolClientRequest, DeleteUserPoolDomainRequest, DeleteUserPoolDomainResponse, DeleteUserPoolRequest, DeleteUserRequest, DeliveryMediumListType, DeliveryMediumType(..), DescribeIdentityProviderRequest, DescribeIdentityProviderResponse, DescribeResourceServerRequest, DescribeResourceServerResponse, DescribeRiskConfigurationRequest, DescribeRiskConfigurationResponse, DescribeUserImportJobRequest, DescribeUserImportJobResponse, DescribeUserPoolClientRequest, DescribeUserPoolClientResponse, DescribeUserPoolDomainRequest, DescribeUserPoolDomainResponse, DescribeUserPoolRequest, DescribeUserPoolResponse, DeviceConfigurationType, DeviceListType, DeviceRememberedStatusType(..), DeviceSecretVerifierConfigType, DeviceType, DomainDescriptionType, DomainStatusType(..), EmailConfigurationType, EmailSendingAccountType(..), EventContextDataType, EventFeedbackType, EventFilterType(..), EventFiltersType, EventResponseType(..), EventRiskType, EventType(..), ExplicitAuthFlowsListType, ExplicitAuthFlowsType(..), FeedbackValueType(..), ForceAliasCreation, ForgetDeviceRequest, ForgotPasswordRequest, ForgotPasswordResponse, GenerateSecret, GetCsvheaderRequest, GetCsvheaderResponse, GetDeviceRequest, GetDeviceResponse, GetGroupRequest, GetGroupResponse, GetIdentityProviderByIdentifierRequest, GetIdentityProviderByIdentifierResponse, GetSigningCertificateRequest, GetSigningCertificateResponse, GetUicustomizationRequest, GetUicustomizationResponse, GetUserAttributeVerificationCodeRequest, GetUserAttributeVerificationCodeResponse, GetUserPoolMfaConfigRequest, GetUserPoolMfaConfigResponse, GetUserRequest, GetUserResponse, GlobalSignOutRequest, GlobalSignOutResponse, GroupListType, GroupType, HttpHeader, HttpHeaderList, IdentityProviderType, IdentityProviderTypeType(..), IdpIdentifiersListType, ImageFileType, ImageUrlType, InitiateAuthRequest, InitiateAuthResponse, IntegerType, LambdaConfigType, ListDevicesRequest, ListDevicesResponse, ListGroupsRequest, ListGroupsResponse, ListIdentityProvidersRequest, ListIdentityProvidersResponse, ListOfStringTypes, ListResourceServersRequest, ListResourceServersResponse, ListTagsForResourceRequest, ListTagsForResourceResponse, ListUserImportJobsRequest, ListUserImportJobsResponse, ListUserPoolClientsRequest, ListUserPoolClientsResponse, ListUserPoolsRequest, ListUserPoolsResponse, ListUsersInGroupRequest, ListUsersInGroupResponse, ListUsersRequest, ListUsersResponse, LogoutUrlsListType, LongType, MessageActionType(..), MessageTemplateType, MfaoptionListType, MfaoptionType, NewDeviceMetadataType, NotifyConfigurationType, NotifyEmailType, NumberAttributeConstraintsType, OauthFlowType(..), OauthFlowsType, PasswordPolicyType, ProviderDescription, ProviderDetailsType, ProviderUserIdentifierType, ProvidersListType, ResendConfirmationCodeRequest, ResendConfirmationCodeResponse, ResourceServerScopeListType, ResourceServerScopeType, ResourceServerType, ResourceServersListType, RespondToAuthChallengeRequest, RespondToAuthChallengeResponse, RiskConfigurationType, RiskDecisionType(..), RiskExceptionConfigurationType, RiskLevelType(..), SchemaAttributeType, SchemaAttributesListType, ScopeListType, SearchedAttributeNamesListType, SetRiskConfigurationRequest, SetRiskConfigurationResponse, SetUicustomizationRequest, SetUicustomizationResponse, SetUserMfapreferenceRequest, SetUserMfapreferenceResponse, SetUserPoolMfaConfigRequest, SetUserPoolMfaConfigResponse, SetUserSettingsRequest, SetUserSettingsResponse, SignUpRequest, SignUpResponse, SkippedIprangeListType, SmsConfigurationType, SmsMfaConfigType, SmsmfaSettingsType, SoftwareTokenMfaConfigType, SoftwareTokenMfaSettingsType, StartUserImportJobRequest, StartUserImportJobResponse, StatusType(..), StopUserImportJobRequest, StopUserImportJobResponse, StringAttributeConstraintsType, StringType, SupportedIdentityProvidersListType, TagResourceRequest, TagResourceResponse, UicustomizationType, UntagResourceRequest, UntagResourceResponse, UpdateAuthEventFeedbackRequest, UpdateAuthEventFeedbackResponse, UpdateDeviceStatusRequest, UpdateDeviceStatusResponse, UpdateGroupRequest, UpdateGroupResponse, UpdateIdentityProviderRequest, UpdateIdentityProviderResponse, UpdateResourceServerRequest, UpdateResourceServerResponse, UpdateUserAttributesRequest, UpdateUserAttributesResponse, UpdateUserPoolClientRequest, UpdateUserPoolClientResponse, UpdateUserPoolDomainRequest, UpdateUserPoolDomainResponse, UpdateUserPoolRequest, UpdateUserPoolResponse, UserContextDataType, UserImportJobStatusType(..), UserImportJobType, UserImportJobsListType, UserMfasettingListType, UserPoolAddOnsType, UserPoolClientDescription, UserPoolClientListType, UserPoolClientType, UserPoolDescriptionType, UserPoolListType, UserPoolMfaType(..), UserPoolPolicyType, UserPoolTagsListType, UserPoolTagsType, UserPoolType, UserStatusType(..), UserType, UsernameAttributeType(..), UsernameAttributesListType, UsersListType, VerificationMessageTemplateType, VerifiedAttributeType(..), VerifiedAttributesListType, VerifySoftwareTokenRequest, VerifySoftwareTokenResponse, VerifySoftwareTokenResponseType(..), VerifyUserAttributeRequest, VerifyUserAttributeResponse, accountTakeoverActionNotifyTypeCodec, accountTakeoverActionTypeCodec, accountTakeoverActionsTypeCodec, accountTakeoverEventActionType, accountTakeoverEventActionTypeCodec, accountTakeoverRiskConfigurationTypeCodec, addCustomAttributes, addCustomAttributesRequestCodec, addCustomAttributesResponseCodec, adminAddUserToGroup, adminAddUserToGroupRequestCodec, adminConfirmSignUp, adminConfirmSignUpRequestCodec, adminConfirmSignUpResponseCodec, adminCreateUser, adminCreateUserConfigTypeCodec, adminCreateUserRequestCodec, adminCreateUserResponseCodec, adminCreateUserUnusedAccountValidityDaysType, adminCreateUserUnusedAccountValidityDaysTypeCodec, adminDeleteUser, adminDeleteUserAttributes, adminDeleteUserAttributesRequestCodec, adminDeleteUserAttributesResponseCodec, adminDeleteUserRequestCodec, adminDisableProviderForUser, adminDisableProviderForUserRequestCodec, adminDisableProviderForUserResponseCodec, adminDisableUser, adminDisableUserRequestCodec, adminDisableUserResponseCodec, adminEnableUser, adminEnableUserRequestCodec, adminEnableUserResponseCodec, adminForgetDevice, adminForgetDeviceRequestCodec, adminGetDevice, adminGetDeviceRequestCodec, adminGetDeviceResponseCodec, adminGetUser, adminGetUserRequestCodec, adminGetUserResponseCodec, adminInitiateAuth, adminInitiateAuthRequestCodec, adminInitiateAuthResponseCodec, adminLinkProviderForUser, adminLinkProviderForUserRequestCodec, adminLinkProviderForUserResponseCodec, adminListDevices, adminListDevicesRequestCodec, adminListDevicesResponseCodec, adminListGroupsForUser, adminListGroupsForUserRequestCodec, adminListGroupsForUserResponseCodec, adminListUserAuthEvents, adminListUserAuthEventsRequestCodec, adminListUserAuthEventsResponseCodec, adminRemoveUserFromGroup, adminRemoveUserFromGroupRequestCodec, adminResetUserPassword, adminResetUserPasswordRequestCodec, adminResetUserPasswordResponseCodec, adminRespondToAuthChallenge, adminRespondToAuthChallengeRequestCodec, adminRespondToAuthChallengeResponseCodec, adminSetUserMfapreference, adminSetUserMfapreferenceRequestCodec, adminSetUserMfapreferenceResponseCodec, adminSetUserPassword, adminSetUserPasswordRequestCodec, adminSetUserPasswordResponseCodec, adminSetUserSettings, adminSetUserSettingsRequestCodec, adminSetUserSettingsResponseCodec, adminUpdateAuthEventFeedback, adminUpdateAuthEventFeedbackRequestCodec, adminUpdateAuthEventFeedbackResponseCodec, adminUpdateDeviceStatus, adminUpdateDeviceStatusRequestCodec, adminUpdateDeviceStatusResponseCodec, adminUpdateUserAttributes, adminUpdateUserAttributesRequestCodec, adminUpdateUserAttributesResponseCodec, adminUserGlobalSignOut, adminUserGlobalSignOutRequestCodec, adminUserGlobalSignOutResponseCodec, advancedSecurityModeType, advancedSecurityModeTypeCodec, aliasAttributeType, aliasAttributeTypeCodec, aliasAttributesListTypeCodec, analyticsConfigurationTypeCodec, analyticsMetadataTypeCodec, arnType, arnTypeCodec, associateSoftwareToken, associateSoftwareTokenRequestCodec, associateSoftwareTokenResponseCodec, attributeDataType, attributeDataTypeCodec, attributeListTypeCodec, attributeMappingKeyType, attributeMappingKeyTypeCodec, attributeMappingTypeCodec, attributeNameListTypeCodec, attributeNameType, attributeNameTypeCodec, attributeTypeCodec, attributeValueType, attributeValueTypeCodec, authEventTypeCodec, authEventsTypeCodec, authFlowType, authFlowTypeCodec, authParametersTypeCodec, authenticationResultTypeCodec, awsaccountIdTypeCodec, blockedIprangeListTypeCodec, booleanTypeCodec, callbackUrlsListTypeCodec, challengeName, challengeNameCodec, challengeNameType, challengeNameTypeCodec, challengeParametersTypeCodec, challengeResponse, challengeResponseCodec, challengeResponseListTypeCodec, challengeResponseTypeCodec, challengeResponsesTypeCodec, changePassword, changePasswordRequestCodec, changePasswordResponseCodec, clientIdType, clientIdTypeCodec, clientMetadataTypeCodec, clientNameType, clientNameTypeCodec, clientPermissionListTypeCodec, clientPermissionType, clientPermissionTypeCodec, clientSecretType, clientSecretTypeCodec, codeDeliveryDetailsListTypeCodec, codeDeliveryDetailsTypeCodec, completionMessageType, completionMessageTypeCodec, compromisedCredentialsActionsTypeCodec, compromisedCredentialsEventActionType, compromisedCredentialsEventActionTypeCodec, compromisedCredentialsRiskConfigurationTypeCodec, confirmDevice, confirmDeviceRequestCodec, confirmDeviceResponseCodec, confirmForgotPassword, confirmForgotPasswordRequestCodec, confirmForgotPasswordResponseCodec, confirmSignUp, confirmSignUpRequestCodec, confirmSignUpResponseCodec, confirmationCodeType, confirmationCodeTypeCodec, contextDataTypeCodec, createGroup, createGroupRequestCodec, createGroupResponseCodec, createIdentityProvider, createIdentityProviderRequestCodec, createIdentityProviderResponseCodec, createResourceServer, createResourceServerRequestCodec, createResourceServerResponseCodec, createUserImportJob, createUserImportJobRequestCodec, createUserImportJobResponseCodec, createUserPool, createUserPoolClient, createUserPoolClientRequestCodec, createUserPoolClientResponseCodec, createUserPoolDomain, createUserPoolDomainRequestCodec, createUserPoolDomainResponseCodec, createUserPoolRequestCodec, createUserPoolResponseCodec, csstypeCodec, cssversionTypeCodec, customAttributeNameType, customAttributeNameTypeCodec, customAttributesListTypeCodec, customDomainConfigTypeCodec, dateTypeCodec, defaultEmailOptionType, defaultEmailOptionTypeCodec, deleteGroup, deleteGroupRequestCodec, deleteIdentityProvider, deleteIdentityProviderRequestCodec, deleteResourceServer, deleteResourceServerRequestCodec, deleteUser, deleteUserAttributes, deleteUserAttributesRequestCodec, deleteUserAttributesResponseCodec, deleteUserPool, deleteUserPoolClient, deleteUserPoolClientRequestCodec, deleteUserPoolDomain, deleteUserPoolDomainRequestCodec, deleteUserPoolDomainResponseCodec, deleteUserPoolRequestCodec, deleteUserRequestCodec, deliveryMediumListTypeCodec, deliveryMediumType, deliveryMediumTypeCodec, describeIdentityProvider, describeIdentityProviderRequestCodec, describeIdentityProviderResponseCodec, describeResourceServer, describeResourceServerRequestCodec, describeResourceServerResponseCodec, describeRiskConfiguration, describeRiskConfigurationRequestCodec, describeRiskConfigurationResponseCodec, describeUserImportJob, describeUserImportJobRequestCodec, describeUserImportJobResponseCodec, describeUserPool, describeUserPoolClient, describeUserPoolClientRequestCodec, describeUserPoolClientResponseCodec, describeUserPoolDomain, describeUserPoolDomainRequestCodec, describeUserPoolDomainResponseCodec, describeUserPoolRequestCodec, describeUserPoolResponseCodec, descriptionType, descriptionTypeCodec, deviceConfigurationTypeCodec, deviceKeyType, deviceKeyTypeCodec, deviceListTypeCodec, deviceNameType, deviceNameTypeCodec, deviceRememberedStatusType, deviceRememberedStatusTypeCodec, deviceSecretVerifierConfigTypeCodec, deviceTypeCodec, domainDescriptionTypeCodec, domainStatusType, domainStatusTypeCodec, domainType, domainTypeCodec, domainVersionType, domainVersionTypeCodec, emailAddressType, emailAddressTypeCodec, emailConfigurationTypeCodec, emailNotificationBodyType, emailNotificationBodyTypeCodec, emailNotificationSubjectType, emailNotificationSubjectTypeCodec, emailSendingAccountType, emailSendingAccountTypeCodec, emailVerificationMessageByLinkType, emailVerificationMessageByLinkTypeCodec, emailVerificationMessageType, emailVerificationMessageTypeCodec, emailVerificationSubjectByLinkType, emailVerificationSubjectByLinkTypeCodec, emailVerificationSubjectType, emailVerificationSubjectTypeCodec, eventContextDataTypeCodec, eventFeedbackTypeCodec, eventFilterType, eventFilterTypeCodec, eventFiltersTypeCodec, eventIdType, eventIdTypeCodec, eventResponseType, eventResponseTypeCodec, eventRiskTypeCodec, eventType, eventTypeCodec, explicitAuthFlowsListTypeCodec, explicitAuthFlowsType, explicitAuthFlowsTypeCodec, feedbackValueType, feedbackValueTypeCodec, forceAliasCreationCodec, forgetDevice, forgetDeviceRequestCodec, forgotPassword, forgotPasswordRequestCodec, forgotPasswordResponseCodec, generateSecretCodec, getCsvheader, getCsvheaderRequestCodec, getCsvheaderResponseCodec, getDevice, getDeviceRequestCodec, getDeviceResponseCodec, getGroup, getGroupRequestCodec, getGroupResponseCodec, getIdentityProviderByIdentifier, getIdentityProviderByIdentifierRequestCodec, getIdentityProviderByIdentifierResponseCodec, getSigningCertificate, getSigningCertificateRequestCodec, getSigningCertificateResponseCodec, getUicustomization, getUicustomizationRequestCodec, getUicustomizationResponseCodec, getUser, getUserAttributeVerificationCode, getUserAttributeVerificationCodeRequestCodec, getUserAttributeVerificationCodeResponseCodec, getUserPoolMfaConfig, getUserPoolMfaConfigRequestCodec, getUserPoolMfaConfigResponseCodec, getUserRequestCodec, getUserResponseCodec, globalSignOut, globalSignOutRequestCodec, globalSignOutResponseCodec, groupListTypeCodec, groupNameType, groupNameTypeCodec, groupTypeCodec, hexStringType, hexStringTypeCodec, httpHeaderCodec, httpHeaderListCodec, identityProviderTypeCodec, identityProviderTypeType, identityProviderTypeTypeCodec, idpIdentifierType, idpIdentifierTypeCodec, idpIdentifiersListTypeCodec, imageFileTypeCodec, imageUrlTypeCodec, initiateAuth, initiateAuthRequestCodec, initiateAuthResponseCodec, integerTypeCodec, lambdaConfigTypeCodec, listDevices, listDevicesRequestCodec, listDevicesResponseCodec, listGroups, listGroupsRequestCodec, listGroupsResponseCodec, listIdentityProviders, listIdentityProvidersRequestCodec, listIdentityProvidersResponseCodec, listOfStringTypesCodec, listProvidersLimitType, listProvidersLimitTypeCodec, listResourceServers, listResourceServersLimitType, listResourceServersLimitTypeCodec, listResourceServersRequestCodec, listResourceServersResponseCodec, listTagsForResource, listTagsForResourceRequestCodec, listTagsForResourceResponseCodec, listUserImportJobs, listUserImportJobsRequestCodec, listUserImportJobsResponseCodec, listUserPoolClients, listUserPoolClientsRequestCodec, listUserPoolClientsResponseCodec, listUserPools, listUserPoolsRequestCodec, listUserPoolsResponseCodec, listUsers, listUsersInGroup, listUsersInGroupRequestCodec, listUsersInGroupResponseCodec, listUsersRequestCodec, listUsersResponseCodec, logoutUrlsListTypeCodec, longTypeCodec, messageActionType, messageActionTypeCodec, messageTemplateTypeCodec, mfaoptionListTypeCodec, mfaoptionTypeCodec, newDeviceMetadataTypeCodec, notifyConfigurationTypeCodec, notifyEmailTypeCodec, numberAttributeConstraintsTypeCodec, oauthFlowType, oauthFlowTypeCodec, oauthFlowsTypeCodec, paginationKey, paginationKeyCodec, paginationKeyType, paginationKeyTypeCodec, passwordPolicyMinLengthType, passwordPolicyMinLengthTypeCodec, passwordPolicyTypeCodec, passwordType, passwordTypeCodec, poolQueryLimitType, poolQueryLimitTypeCodec, preSignedUrlType, preSignedUrlTypeCodec, precedenceType, precedenceTypeCodec, providerDescriptionCodec, providerDetailsTypeCodec, providerNameType, providerNameTypeCodec, providerNameTypeV1, providerNameTypeV1Codec, providerUserIdentifierTypeCodec, providersListTypeCodec, queryLimit, queryLimitCodec, queryLimitType, queryLimitTypeCodec, redirectUrlType, redirectUrlTypeCodec, refreshTokenValidityType, refreshTokenValidityTypeCodec, resendConfirmationCode, resendConfirmationCodeRequestCodec, resendConfirmationCodeResponseCodec, resourceServerIdentifierType, resourceServerIdentifierTypeCodec, resourceServerNameType, resourceServerNameTypeCodec, resourceServerScopeDescriptionType, resourceServerScopeDescriptionTypeCodec, resourceServerScopeListTypeCodec, resourceServerScopeNameType, resourceServerScopeNameTypeCodec, resourceServerScopeTypeCodec, resourceServerTypeCodec, resourceServersListTypeCodec, respondToAuthChallenge, respondToAuthChallengeRequestCodec, respondToAuthChallengeResponseCodec, riskConfigurationTypeCodec, riskDecisionType, riskDecisionTypeCodec, riskExceptionConfigurationTypeCodec, riskLevelType, riskLevelTypeCodec, s3BucketType, s3BucketTypeCodec, schemaAttributeTypeCodec, schemaAttributesListTypeCodec, scopeListTypeCodec, scopeType, scopeTypeCodec, searchPaginationTokenType, searchPaginationTokenTypeCodec, searchedAttributeNamesListTypeCodec, secretCodeType, secretCodeTypeCodec, secretHashType, secretHashTypeCodec, service, sessionType, sessionTypeCodec, setRiskConfiguration, setRiskConfigurationRequestCodec, setRiskConfigurationResponseCodec, setUicustomization, setUicustomizationRequestCodec, setUicustomizationResponseCodec, setUserMfapreference, setUserMfapreferenceRequestCodec, setUserMfapreferenceResponseCodec, setUserPoolMfaConfig, setUserPoolMfaConfigRequestCodec, setUserPoolMfaConfigResponseCodec, setUserSettings, setUserSettingsRequestCodec, setUserSettingsResponseCodec, signUp, signUpRequestCodec, signUpResponseCodec, skippedIprangeListTypeCodec, smsConfigurationTypeCodec, smsMfaConfigTypeCodec, smsVerificationMessageType, smsVerificationMessageTypeCodec, smsmfaSettingsTypeCodec, softwareTokenMfaConfigTypeCodec, softwareTokenMfaSettingsTypeCodec, softwareTokenMfauserCodeType, softwareTokenMfauserCodeTypeCodec, startUserImportJob, startUserImportJobRequestCodec, startUserImportJobResponseCodec, statusType, statusTypeCodec, stopUserImportJob, stopUserImportJobRequestCodec, stopUserImportJobResponseCodec, stringAttributeConstraintsTypeCodec, stringTypeCodec, supportedIdentityProvidersListTypeCodec, tagKeysType, tagKeysTypeCodec, tagResource, tagResourceRequestCodec, tagResourceResponseCodec, tagValueType, tagValueTypeCodec, temporaryPasswordValidityDaysType, temporaryPasswordValidityDaysTypeCodec, tokenModelType, tokenModelTypeCodec, uicustomizationTypeCodec, untagResource, untagResourceRequestCodec, untagResourceResponseCodec, updateAuthEventFeedback, updateAuthEventFeedbackRequestCodec, updateAuthEventFeedbackResponseCodec, updateDeviceStatus, updateDeviceStatusRequestCodec, updateDeviceStatusResponseCodec, updateGroup, updateGroupRequestCodec, updateGroupResponseCodec, updateIdentityProvider, updateIdentityProviderRequestCodec, updateIdentityProviderResponseCodec, updateResourceServer, updateResourceServerRequestCodec, updateResourceServerResponseCodec, updateUserAttributes, updateUserAttributesRequestCodec, updateUserAttributesResponseCodec, updateUserPool, updateUserPoolClient, updateUserPoolClientRequestCodec, updateUserPoolClientResponseCodec, updateUserPoolDomain, updateUserPoolDomainRequestCodec, updateUserPoolDomainResponseCodec, updateUserPoolRequestCodec, updateUserPoolResponseCodec, userContextDataTypeCodec, userFilterType, userFilterTypeCodec, userImportJobIdType, userImportJobIdTypeCodec, userImportJobNameType, userImportJobNameTypeCodec, userImportJobStatusType, userImportJobStatusTypeCodec, userImportJobTypeCodec, userImportJobsListTypeCodec, userMfasettingListTypeCodec, userPoolAddOnsTypeCodec, userPoolClientDescriptionCodec, userPoolClientListTypeCodec, userPoolClientTypeCodec, userPoolDescriptionTypeCodec, userPoolIdType, userPoolIdTypeCodec, userPoolListTypeCodec, userPoolMfaType, userPoolMfaTypeCodec, userPoolNameType, userPoolNameTypeCodec, userPoolPolicyTypeCodec, userPoolTagsListTypeCodec, userPoolTagsTypeCodec, userPoolTypeCodec, userStatusType, userStatusTypeCodec, userTypeCodec, usernameAttributeType, usernameAttributeTypeCodec, usernameAttributesListTypeCodec, usernameType, usernameTypeCodec, usersListTypeCodec, verificationMessageTemplateTypeCodec, verifiedAttributeType, verifiedAttributeTypeCodec, verifiedAttributesListTypeCodec, verifySoftwareToken, verifySoftwareTokenRequestCodec, verifySoftwareTokenResponseCodec, verifySoftwareTokenResponseType, verifySoftwareTokenResponseTypeCodec, verifyUserAttribute, verifyUserAttributeRequestCodec, verifyUserAttributeResponseCodec)
 
+{-| AWS Stubs.
+fun x = blah
+@doc one, two, three
+-}
+
 import AWS.Core.Decode
 import AWS.Core.Http
 import AWS.Core.Service
@@ -12,7 +17,8 @@ import Json.Encode exposing (Value)
 import Refined exposing (IntError, Refined, StringError)
 
 
-{-| Configuration for this service. -}
+{-| Configuration for this service.
+-}
 service : AWS.Core.Service.Region -> AWS.Core.Service.Service
 service =
     let
@@ -23,7 +29,8 @@ service =
     AWS.Core.Service.defineRegional "cognito-idp" "2016-04-18" AWS.Core.Service.JSON AWS.Core.Service.SignV4 optionsFn
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 verifyUserAttribute : VerifyUserAttributeRequest -> AWS.Core.Http.Request VerifyUserAttributeResponse
 verifyUserAttribute req =
     let
@@ -36,7 +43,8 @@ verifyUserAttribute req =
     AWS.Core.Http.request "VerifyUserAttribute" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 verifySoftwareToken : VerifySoftwareTokenRequest -> AWS.Core.Http.Request VerifySoftwareTokenResponse
 verifySoftwareToken req =
     let
@@ -49,7 +57,8 @@ verifySoftwareToken req =
     AWS.Core.Http.request "VerifySoftwareToken" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 updateUserPoolDomain : UpdateUserPoolDomainRequest -> AWS.Core.Http.Request UpdateUserPoolDomainResponse
 updateUserPoolDomain req =
     let
@@ -62,7 +71,8 @@ updateUserPoolDomain req =
     AWS.Core.Http.request "UpdateUserPoolDomain" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 updateUserPoolClient : UpdateUserPoolClientRequest -> AWS.Core.Http.Request UpdateUserPoolClientResponse
 updateUserPoolClient req =
     let
@@ -75,7 +85,8 @@ updateUserPoolClient req =
     AWS.Core.Http.request "UpdateUserPoolClient" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 updateUserPool : UpdateUserPoolRequest -> AWS.Core.Http.Request UpdateUserPoolResponse
 updateUserPool req =
     let
@@ -88,7 +99,8 @@ updateUserPool req =
     AWS.Core.Http.request "UpdateUserPool" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 updateUserAttributes : UpdateUserAttributesRequest -> AWS.Core.Http.Request UpdateUserAttributesResponse
 updateUserAttributes req =
     let
@@ -101,7 +113,8 @@ updateUserAttributes req =
     AWS.Core.Http.request "UpdateUserAttributes" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 updateResourceServer : UpdateResourceServerRequest -> AWS.Core.Http.Request UpdateResourceServerResponse
 updateResourceServer req =
     let
@@ -114,7 +127,8 @@ updateResourceServer req =
     AWS.Core.Http.request "UpdateResourceServer" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 updateIdentityProvider : UpdateIdentityProviderRequest -> AWS.Core.Http.Request UpdateIdentityProviderResponse
 updateIdentityProvider req =
     let
@@ -127,7 +141,8 @@ updateIdentityProvider req =
     AWS.Core.Http.request "UpdateIdentityProvider" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 updateGroup : UpdateGroupRequest -> AWS.Core.Http.Request UpdateGroupResponse
 updateGroup req =
     let
@@ -140,7 +155,8 @@ updateGroup req =
     AWS.Core.Http.request "UpdateGroup" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 updateDeviceStatus : UpdateDeviceStatusRequest -> AWS.Core.Http.Request UpdateDeviceStatusResponse
 updateDeviceStatus req =
     let
@@ -153,7 +169,8 @@ updateDeviceStatus req =
     AWS.Core.Http.request "UpdateDeviceStatus" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 updateAuthEventFeedback : UpdateAuthEventFeedbackRequest -> AWS.Core.Http.Request UpdateAuthEventFeedbackResponse
 updateAuthEventFeedback req =
     let
@@ -166,7 +183,8 @@ updateAuthEventFeedback req =
     AWS.Core.Http.request "UpdateAuthEventFeedback" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 untagResource : UntagResourceRequest -> AWS.Core.Http.Request UntagResourceResponse
 untagResource req =
     let
@@ -179,7 +197,8 @@ untagResource req =
     AWS.Core.Http.request "UntagResource" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 tagResource : TagResourceRequest -> AWS.Core.Http.Request TagResourceResponse
 tagResource req =
     let
@@ -192,7 +211,8 @@ tagResource req =
     AWS.Core.Http.request "TagResource" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 stopUserImportJob : StopUserImportJobRequest -> AWS.Core.Http.Request StopUserImportJobResponse
 stopUserImportJob req =
     let
@@ -205,7 +225,8 @@ stopUserImportJob req =
     AWS.Core.Http.request "StopUserImportJob" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 startUserImportJob : StartUserImportJobRequest -> AWS.Core.Http.Request StartUserImportJobResponse
 startUserImportJob req =
     let
@@ -218,7 +239,8 @@ startUserImportJob req =
     AWS.Core.Http.request "StartUserImportJob" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 signUp : SignUpRequest -> AWS.Core.Http.Request SignUpResponse
 signUp req =
     let
@@ -231,7 +253,8 @@ signUp req =
     AWS.Core.Http.request "SignUp" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 setUserSettings : SetUserSettingsRequest -> AWS.Core.Http.Request SetUserSettingsResponse
 setUserSettings req =
     let
@@ -244,7 +267,8 @@ setUserSettings req =
     AWS.Core.Http.request "SetUserSettings" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 setUserPoolMfaConfig : SetUserPoolMfaConfigRequest -> AWS.Core.Http.Request SetUserPoolMfaConfigResponse
 setUserPoolMfaConfig req =
     let
@@ -257,7 +281,8 @@ setUserPoolMfaConfig req =
     AWS.Core.Http.request "SetUserPoolMfaConfig" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 setUserMfapreference : SetUserMfapreferenceRequest -> AWS.Core.Http.Request SetUserMfapreferenceResponse
 setUserMfapreference req =
     let
@@ -270,7 +295,8 @@ setUserMfapreference req =
     AWS.Core.Http.request "SetUserMfapreference" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 setUicustomization : SetUicustomizationRequest -> AWS.Core.Http.Request SetUicustomizationResponse
 setUicustomization req =
     let
@@ -283,7 +309,8 @@ setUicustomization req =
     AWS.Core.Http.request "SetUicustomization" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 setRiskConfiguration : SetRiskConfigurationRequest -> AWS.Core.Http.Request SetRiskConfigurationResponse
 setRiskConfiguration req =
     let
@@ -296,7 +323,8 @@ setRiskConfiguration req =
     AWS.Core.Http.request "SetRiskConfiguration" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 respondToAuthChallenge : RespondToAuthChallengeRequest -> AWS.Core.Http.Request RespondToAuthChallengeResponse
 respondToAuthChallenge req =
     let
@@ -309,7 +337,8 @@ respondToAuthChallenge req =
     AWS.Core.Http.request "RespondToAuthChallenge" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 resendConfirmationCode : ResendConfirmationCodeRequest -> AWS.Core.Http.Request ResendConfirmationCodeResponse
 resendConfirmationCode req =
     let
@@ -322,7 +351,8 @@ resendConfirmationCode req =
     AWS.Core.Http.request "ResendConfirmationCode" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 listUsersInGroup : ListUsersInGroupRequest -> AWS.Core.Http.Request ListUsersInGroupResponse
 listUsersInGroup req =
     let
@@ -335,7 +365,8 @@ listUsersInGroup req =
     AWS.Core.Http.request "ListUsersInGroup" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 listUsers : ListUsersRequest -> AWS.Core.Http.Request ListUsersResponse
 listUsers req =
     let
@@ -348,7 +379,8 @@ listUsers req =
     AWS.Core.Http.request "ListUsers" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 listUserPools : ListUserPoolsRequest -> AWS.Core.Http.Request ListUserPoolsResponse
 listUserPools req =
     let
@@ -361,7 +393,8 @@ listUserPools req =
     AWS.Core.Http.request "ListUserPools" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 listUserPoolClients : ListUserPoolClientsRequest -> AWS.Core.Http.Request ListUserPoolClientsResponse
 listUserPoolClients req =
     let
@@ -374,7 +407,8 @@ listUserPoolClients req =
     AWS.Core.Http.request "ListUserPoolClients" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 listUserImportJobs : ListUserImportJobsRequest -> AWS.Core.Http.Request ListUserImportJobsResponse
 listUserImportJobs req =
     let
@@ -387,7 +421,8 @@ listUserImportJobs req =
     AWS.Core.Http.request "ListUserImportJobs" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 listTagsForResource : ListTagsForResourceRequest -> AWS.Core.Http.Request ListTagsForResourceResponse
 listTagsForResource req =
     let
@@ -400,7 +435,8 @@ listTagsForResource req =
     AWS.Core.Http.request "ListTagsForResource" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 listResourceServers : ListResourceServersRequest -> AWS.Core.Http.Request ListResourceServersResponse
 listResourceServers req =
     let
@@ -413,7 +449,8 @@ listResourceServers req =
     AWS.Core.Http.request "ListResourceServers" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 listIdentityProviders : ListIdentityProvidersRequest -> AWS.Core.Http.Request ListIdentityProvidersResponse
 listIdentityProviders req =
     let
@@ -426,7 +463,8 @@ listIdentityProviders req =
     AWS.Core.Http.request "ListIdentityProviders" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 listGroups : ListGroupsRequest -> AWS.Core.Http.Request ListGroupsResponse
 listGroups req =
     let
@@ -439,7 +477,8 @@ listGroups req =
     AWS.Core.Http.request "ListGroups" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 listDevices : ListDevicesRequest -> AWS.Core.Http.Request ListDevicesResponse
 listDevices req =
     let
@@ -452,7 +491,8 @@ listDevices req =
     AWS.Core.Http.request "ListDevices" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 initiateAuth : InitiateAuthRequest -> AWS.Core.Http.Request InitiateAuthResponse
 initiateAuth req =
     let
@@ -465,7 +505,8 @@ initiateAuth req =
     AWS.Core.Http.request "InitiateAuth" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 globalSignOut : GlobalSignOutRequest -> AWS.Core.Http.Request GlobalSignOutResponse
 globalSignOut req =
     let
@@ -478,7 +519,8 @@ globalSignOut req =
     AWS.Core.Http.request "GlobalSignOut" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 getUserPoolMfaConfig : GetUserPoolMfaConfigRequest -> AWS.Core.Http.Request GetUserPoolMfaConfigResponse
 getUserPoolMfaConfig req =
     let
@@ -491,9 +533,9 @@ getUserPoolMfaConfig req =
     AWS.Core.Http.request "GetUserPoolMfaConfig" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
-getUserAttributeVerificationCode :
-    GetUserAttributeVerificationCodeRequest -> AWS.Core.Http.Request GetUserAttributeVerificationCodeResponse
+{-| AWS Endpoint.
+-}
+getUserAttributeVerificationCode : GetUserAttributeVerificationCodeRequest -> AWS.Core.Http.Request GetUserAttributeVerificationCodeResponse
 getUserAttributeVerificationCode req =
     let
         jsonBody =
@@ -505,7 +547,8 @@ getUserAttributeVerificationCode req =
     AWS.Core.Http.request "GetUserAttributeVerificationCode" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 getUser : GetUserRequest -> AWS.Core.Http.Request GetUserResponse
 getUser req =
     let
@@ -518,7 +561,8 @@ getUser req =
     AWS.Core.Http.request "GetUser" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 getUicustomization : GetUicustomizationRequest -> AWS.Core.Http.Request GetUicustomizationResponse
 getUicustomization req =
     let
@@ -531,7 +575,8 @@ getUicustomization req =
     AWS.Core.Http.request "GetUicustomization" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 getSigningCertificate : GetSigningCertificateRequest -> AWS.Core.Http.Request GetSigningCertificateResponse
 getSigningCertificate req =
     let
@@ -544,9 +589,9 @@ getSigningCertificate req =
     AWS.Core.Http.request "GetSigningCertificate" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
-getIdentityProviderByIdentifier :
-    GetIdentityProviderByIdentifierRequest -> AWS.Core.Http.Request GetIdentityProviderByIdentifierResponse
+{-| AWS Endpoint.
+-}
+getIdentityProviderByIdentifier : GetIdentityProviderByIdentifierRequest -> AWS.Core.Http.Request GetIdentityProviderByIdentifierResponse
 getIdentityProviderByIdentifier req =
     let
         jsonBody =
@@ -558,7 +603,8 @@ getIdentityProviderByIdentifier req =
     AWS.Core.Http.request "GetIdentityProviderByIdentifier" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 getGroup : GetGroupRequest -> AWS.Core.Http.Request GetGroupResponse
 getGroup req =
     let
@@ -571,7 +617,8 @@ getGroup req =
     AWS.Core.Http.request "GetGroup" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 getDevice : GetDeviceRequest -> AWS.Core.Http.Request GetDeviceResponse
 getDevice req =
     let
@@ -584,7 +631,8 @@ getDevice req =
     AWS.Core.Http.request "GetDevice" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 getCsvheader : GetCsvheaderRequest -> AWS.Core.Http.Request GetCsvheaderResponse
 getCsvheader req =
     let
@@ -597,7 +645,8 @@ getCsvheader req =
     AWS.Core.Http.request "GetCsvheader" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 forgotPassword : ForgotPasswordRequest -> AWS.Core.Http.Request ForgotPasswordResponse
 forgotPassword req =
     let
@@ -610,7 +659,8 @@ forgotPassword req =
     AWS.Core.Http.request "ForgotPassword" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 forgetDevice : ForgetDeviceRequest -> AWS.Core.Http.Request ()
 forgetDevice req =
     let
@@ -623,7 +673,8 @@ forgetDevice req =
     AWS.Core.Http.request "ForgetDevice" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 describeUserPoolDomain : DescribeUserPoolDomainRequest -> AWS.Core.Http.Request DescribeUserPoolDomainResponse
 describeUserPoolDomain req =
     let
@@ -636,7 +687,8 @@ describeUserPoolDomain req =
     AWS.Core.Http.request "DescribeUserPoolDomain" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 describeUserPoolClient : DescribeUserPoolClientRequest -> AWS.Core.Http.Request DescribeUserPoolClientResponse
 describeUserPoolClient req =
     let
@@ -649,7 +701,8 @@ describeUserPoolClient req =
     AWS.Core.Http.request "DescribeUserPoolClient" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 describeUserPool : DescribeUserPoolRequest -> AWS.Core.Http.Request DescribeUserPoolResponse
 describeUserPool req =
     let
@@ -662,7 +715,8 @@ describeUserPool req =
     AWS.Core.Http.request "DescribeUserPool" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 describeUserImportJob : DescribeUserImportJobRequest -> AWS.Core.Http.Request DescribeUserImportJobResponse
 describeUserImportJob req =
     let
@@ -675,7 +729,8 @@ describeUserImportJob req =
     AWS.Core.Http.request "DescribeUserImportJob" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 describeRiskConfiguration : DescribeRiskConfigurationRequest -> AWS.Core.Http.Request DescribeRiskConfigurationResponse
 describeRiskConfiguration req =
     let
@@ -688,7 +743,8 @@ describeRiskConfiguration req =
     AWS.Core.Http.request "DescribeRiskConfiguration" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 describeResourceServer : DescribeResourceServerRequest -> AWS.Core.Http.Request DescribeResourceServerResponse
 describeResourceServer req =
     let
@@ -701,7 +757,8 @@ describeResourceServer req =
     AWS.Core.Http.request "DescribeResourceServer" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 describeIdentityProvider : DescribeIdentityProviderRequest -> AWS.Core.Http.Request DescribeIdentityProviderResponse
 describeIdentityProvider req =
     let
@@ -714,7 +771,8 @@ describeIdentityProvider req =
     AWS.Core.Http.request "DescribeIdentityProvider" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 deleteUserPoolDomain : DeleteUserPoolDomainRequest -> AWS.Core.Http.Request DeleteUserPoolDomainResponse
 deleteUserPoolDomain req =
     let
@@ -727,7 +785,8 @@ deleteUserPoolDomain req =
     AWS.Core.Http.request "DeleteUserPoolDomain" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 deleteUserPoolClient : DeleteUserPoolClientRequest -> AWS.Core.Http.Request ()
 deleteUserPoolClient req =
     let
@@ -740,7 +799,8 @@ deleteUserPoolClient req =
     AWS.Core.Http.request "DeleteUserPoolClient" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 deleteUserPool : DeleteUserPoolRequest -> AWS.Core.Http.Request ()
 deleteUserPool req =
     let
@@ -753,7 +813,8 @@ deleteUserPool req =
     AWS.Core.Http.request "DeleteUserPool" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 deleteUserAttributes : DeleteUserAttributesRequest -> AWS.Core.Http.Request DeleteUserAttributesResponse
 deleteUserAttributes req =
     let
@@ -766,7 +827,8 @@ deleteUserAttributes req =
     AWS.Core.Http.request "DeleteUserAttributes" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 deleteUser : DeleteUserRequest -> AWS.Core.Http.Request ()
 deleteUser req =
     let
@@ -779,7 +841,8 @@ deleteUser req =
     AWS.Core.Http.request "DeleteUser" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 deleteResourceServer : DeleteResourceServerRequest -> AWS.Core.Http.Request ()
 deleteResourceServer req =
     let
@@ -792,7 +855,8 @@ deleteResourceServer req =
     AWS.Core.Http.request "DeleteResourceServer" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 deleteIdentityProvider : DeleteIdentityProviderRequest -> AWS.Core.Http.Request ()
 deleteIdentityProvider req =
     let
@@ -805,7 +869,8 @@ deleteIdentityProvider req =
     AWS.Core.Http.request "DeleteIdentityProvider" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 deleteGroup : DeleteGroupRequest -> AWS.Core.Http.Request ()
 deleteGroup req =
     let
@@ -818,7 +883,8 @@ deleteGroup req =
     AWS.Core.Http.request "DeleteGroup" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 createUserPoolDomain : CreateUserPoolDomainRequest -> AWS.Core.Http.Request CreateUserPoolDomainResponse
 createUserPoolDomain req =
     let
@@ -831,7 +897,8 @@ createUserPoolDomain req =
     AWS.Core.Http.request "CreateUserPoolDomain" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 createUserPoolClient : CreateUserPoolClientRequest -> AWS.Core.Http.Request CreateUserPoolClientResponse
 createUserPoolClient req =
     let
@@ -844,7 +911,8 @@ createUserPoolClient req =
     AWS.Core.Http.request "CreateUserPoolClient" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 createUserPool : CreateUserPoolRequest -> AWS.Core.Http.Request CreateUserPoolResponse
 createUserPool req =
     let
@@ -857,7 +925,8 @@ createUserPool req =
     AWS.Core.Http.request "CreateUserPool" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 createUserImportJob : CreateUserImportJobRequest -> AWS.Core.Http.Request CreateUserImportJobResponse
 createUserImportJob req =
     let
@@ -870,7 +939,8 @@ createUserImportJob req =
     AWS.Core.Http.request "CreateUserImportJob" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 createResourceServer : CreateResourceServerRequest -> AWS.Core.Http.Request CreateResourceServerResponse
 createResourceServer req =
     let
@@ -883,7 +953,8 @@ createResourceServer req =
     AWS.Core.Http.request "CreateResourceServer" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 createIdentityProvider : CreateIdentityProviderRequest -> AWS.Core.Http.Request CreateIdentityProviderResponse
 createIdentityProvider req =
     let
@@ -896,7 +967,8 @@ createIdentityProvider req =
     AWS.Core.Http.request "CreateIdentityProvider" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 createGroup : CreateGroupRequest -> AWS.Core.Http.Request CreateGroupResponse
 createGroup req =
     let
@@ -909,7 +981,8 @@ createGroup req =
     AWS.Core.Http.request "CreateGroup" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 confirmSignUp : ConfirmSignUpRequest -> AWS.Core.Http.Request ConfirmSignUpResponse
 confirmSignUp req =
     let
@@ -922,7 +995,8 @@ confirmSignUp req =
     AWS.Core.Http.request "ConfirmSignUp" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 confirmForgotPassword : ConfirmForgotPasswordRequest -> AWS.Core.Http.Request ConfirmForgotPasswordResponse
 confirmForgotPassword req =
     let
@@ -935,7 +1009,8 @@ confirmForgotPassword req =
     AWS.Core.Http.request "ConfirmForgotPassword" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 confirmDevice : ConfirmDeviceRequest -> AWS.Core.Http.Request ConfirmDeviceResponse
 confirmDevice req =
     let
@@ -948,7 +1023,8 @@ confirmDevice req =
     AWS.Core.Http.request "ConfirmDevice" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 changePassword : ChangePasswordRequest -> AWS.Core.Http.Request ChangePasswordResponse
 changePassword req =
     let
@@ -961,7 +1037,8 @@ changePassword req =
     AWS.Core.Http.request "ChangePassword" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 associateSoftwareToken : AssociateSoftwareTokenRequest -> AWS.Core.Http.Request AssociateSoftwareTokenResponse
 associateSoftwareToken req =
     let
@@ -974,7 +1051,8 @@ associateSoftwareToken req =
     AWS.Core.Http.request "AssociateSoftwareToken" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 adminUserGlobalSignOut : AdminUserGlobalSignOutRequest -> AWS.Core.Http.Request AdminUserGlobalSignOutResponse
 adminUserGlobalSignOut req =
     let
@@ -987,7 +1065,8 @@ adminUserGlobalSignOut req =
     AWS.Core.Http.request "AdminUserGlobalSignOut" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 adminUpdateUserAttributes : AdminUpdateUserAttributesRequest -> AWS.Core.Http.Request AdminUpdateUserAttributesResponse
 adminUpdateUserAttributes req =
     let
@@ -1000,7 +1079,8 @@ adminUpdateUserAttributes req =
     AWS.Core.Http.request "AdminUpdateUserAttributes" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 adminUpdateDeviceStatus : AdminUpdateDeviceStatusRequest -> AWS.Core.Http.Request AdminUpdateDeviceStatusResponse
 adminUpdateDeviceStatus req =
     let
@@ -1013,9 +1093,9 @@ adminUpdateDeviceStatus req =
     AWS.Core.Http.request "AdminUpdateDeviceStatus" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
-adminUpdateAuthEventFeedback :
-    AdminUpdateAuthEventFeedbackRequest -> AWS.Core.Http.Request AdminUpdateAuthEventFeedbackResponse
+{-| AWS Endpoint.
+-}
+adminUpdateAuthEventFeedback : AdminUpdateAuthEventFeedbackRequest -> AWS.Core.Http.Request AdminUpdateAuthEventFeedbackResponse
 adminUpdateAuthEventFeedback req =
     let
         jsonBody =
@@ -1027,7 +1107,8 @@ adminUpdateAuthEventFeedback req =
     AWS.Core.Http.request "AdminUpdateAuthEventFeedback" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 adminSetUserSettings : AdminSetUserSettingsRequest -> AWS.Core.Http.Request AdminSetUserSettingsResponse
 adminSetUserSettings req =
     let
@@ -1040,7 +1121,8 @@ adminSetUserSettings req =
     AWS.Core.Http.request "AdminSetUserSettings" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 adminSetUserPassword : AdminSetUserPasswordRequest -> AWS.Core.Http.Request AdminSetUserPasswordResponse
 adminSetUserPassword req =
     let
@@ -1053,7 +1135,8 @@ adminSetUserPassword req =
     AWS.Core.Http.request "AdminSetUserPassword" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 adminSetUserMfapreference : AdminSetUserMfapreferenceRequest -> AWS.Core.Http.Request AdminSetUserMfapreferenceResponse
 adminSetUserMfapreference req =
     let
@@ -1066,9 +1149,9 @@ adminSetUserMfapreference req =
     AWS.Core.Http.request "AdminSetUserMfapreference" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
-adminRespondToAuthChallenge :
-    AdminRespondToAuthChallengeRequest -> AWS.Core.Http.Request AdminRespondToAuthChallengeResponse
+{-| AWS Endpoint.
+-}
+adminRespondToAuthChallenge : AdminRespondToAuthChallengeRequest -> AWS.Core.Http.Request AdminRespondToAuthChallengeResponse
 adminRespondToAuthChallenge req =
     let
         jsonBody =
@@ -1080,7 +1163,8 @@ adminRespondToAuthChallenge req =
     AWS.Core.Http.request "AdminRespondToAuthChallenge" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 adminResetUserPassword : AdminResetUserPasswordRequest -> AWS.Core.Http.Request AdminResetUserPasswordResponse
 adminResetUserPassword req =
     let
@@ -1093,7 +1177,8 @@ adminResetUserPassword req =
     AWS.Core.Http.request "AdminResetUserPassword" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 adminRemoveUserFromGroup : AdminRemoveUserFromGroupRequest -> AWS.Core.Http.Request ()
 adminRemoveUserFromGroup req =
     let
@@ -1106,7 +1191,8 @@ adminRemoveUserFromGroup req =
     AWS.Core.Http.request "AdminRemoveUserFromGroup" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 adminListUserAuthEvents : AdminListUserAuthEventsRequest -> AWS.Core.Http.Request AdminListUserAuthEventsResponse
 adminListUserAuthEvents req =
     let
@@ -1119,7 +1205,8 @@ adminListUserAuthEvents req =
     AWS.Core.Http.request "AdminListUserAuthEvents" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 adminListGroupsForUser : AdminListGroupsForUserRequest -> AWS.Core.Http.Request AdminListGroupsForUserResponse
 adminListGroupsForUser req =
     let
@@ -1132,7 +1219,8 @@ adminListGroupsForUser req =
     AWS.Core.Http.request "AdminListGroupsForUser" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 adminListDevices : AdminListDevicesRequest -> AWS.Core.Http.Request AdminListDevicesResponse
 adminListDevices req =
     let
@@ -1145,7 +1233,8 @@ adminListDevices req =
     AWS.Core.Http.request "AdminListDevices" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 adminLinkProviderForUser : AdminLinkProviderForUserRequest -> AWS.Core.Http.Request AdminLinkProviderForUserResponse
 adminLinkProviderForUser req =
     let
@@ -1158,7 +1247,8 @@ adminLinkProviderForUser req =
     AWS.Core.Http.request "AdminLinkProviderForUser" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 adminInitiateAuth : AdminInitiateAuthRequest -> AWS.Core.Http.Request AdminInitiateAuthResponse
 adminInitiateAuth req =
     let
@@ -1171,7 +1261,8 @@ adminInitiateAuth req =
     AWS.Core.Http.request "AdminInitiateAuth" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 adminGetUser : AdminGetUserRequest -> AWS.Core.Http.Request AdminGetUserResponse
 adminGetUser req =
     let
@@ -1184,7 +1275,8 @@ adminGetUser req =
     AWS.Core.Http.request "AdminGetUser" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 adminGetDevice : AdminGetDeviceRequest -> AWS.Core.Http.Request AdminGetDeviceResponse
 adminGetDevice req =
     let
@@ -1197,7 +1289,8 @@ adminGetDevice req =
     AWS.Core.Http.request "AdminGetDevice" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 adminForgetDevice : AdminForgetDeviceRequest -> AWS.Core.Http.Request ()
 adminForgetDevice req =
     let
@@ -1210,7 +1303,8 @@ adminForgetDevice req =
     AWS.Core.Http.request "AdminForgetDevice" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 adminEnableUser : AdminEnableUserRequest -> AWS.Core.Http.Request AdminEnableUserResponse
 adminEnableUser req =
     let
@@ -1223,7 +1317,8 @@ adminEnableUser req =
     AWS.Core.Http.request "AdminEnableUser" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 adminDisableUser : AdminDisableUserRequest -> AWS.Core.Http.Request AdminDisableUserResponse
 adminDisableUser req =
     let
@@ -1236,9 +1331,9 @@ adminDisableUser req =
     AWS.Core.Http.request "AdminDisableUser" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
-adminDisableProviderForUser :
-    AdminDisableProviderForUserRequest -> AWS.Core.Http.Request AdminDisableProviderForUserResponse
+{-| AWS Endpoint.
+-}
+adminDisableProviderForUser : AdminDisableProviderForUserRequest -> AWS.Core.Http.Request AdminDisableProviderForUserResponse
 adminDisableProviderForUser req =
     let
         jsonBody =
@@ -1250,7 +1345,8 @@ adminDisableProviderForUser req =
     AWS.Core.Http.request "AdminDisableProviderForUser" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 adminDeleteUserAttributes : AdminDeleteUserAttributesRequest -> AWS.Core.Http.Request AdminDeleteUserAttributesResponse
 adminDeleteUserAttributes req =
     let
@@ -1263,7 +1359,8 @@ adminDeleteUserAttributes req =
     AWS.Core.Http.request "AdminDeleteUserAttributes" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 adminDeleteUser : AdminDeleteUserRequest -> AWS.Core.Http.Request ()
 adminDeleteUser req =
     let
@@ -1276,7 +1373,8 @@ adminDeleteUser req =
     AWS.Core.Http.request "AdminDeleteUser" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 adminCreateUser : AdminCreateUserRequest -> AWS.Core.Http.Request AdminCreateUserResponse
 adminCreateUser req =
     let
@@ -1289,7 +1387,8 @@ adminCreateUser req =
     AWS.Core.Http.request "AdminCreateUser" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 adminConfirmSignUp : AdminConfirmSignUpRequest -> AWS.Core.Http.Request AdminConfirmSignUpResponse
 adminConfirmSignUp req =
     let
@@ -1302,7 +1401,8 @@ adminConfirmSignUp req =
     AWS.Core.Http.request "AdminConfirmSignUp" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 adminAddUserToGroup : AdminAddUserToGroupRequest -> AWS.Core.Http.Request ()
 adminAddUserToGroup req =
     let
@@ -1315,7 +1415,8 @@ adminAddUserToGroup req =
     AWS.Core.Http.request "AdminAddUserToGroup" AWS.Core.Http.POST "/" jsonBody decoder
 
 
-{-| AWS Endpoint. -}
+{-| AWS Endpoint.
+-}
 addCustomAttributes : AddCustomAttributesRequest -> AWS.Core.Http.Request AddCustomAttributesResponse
 addCustomAttributes req =
     let
@@ -4968,13 +5069,15 @@ type alias VerifyUserAttributeResponse =
     {}
 
 
-{-| Codec for VerifyUserAttributeResponse. -}
+{-| Codec for VerifyUserAttributeResponse.
+-}
 verifyUserAttributeResponseCodec : Codec VerifyUserAttributeResponse
 verifyUserAttributeResponseCodec =
     Codec.object VerifyUserAttributeResponse |> Codec.buildObject
 
 
-{-| Codec for VerifyUserAttributeRequest. -}
+{-| Codec for VerifyUserAttributeRequest.
+-}
 verifyUserAttributeRequestCodec : Codec VerifyUserAttributeRequest
 verifyUserAttributeRequestCodec =
     Codec.object VerifyUserAttributeRequest
@@ -4984,13 +5087,15 @@ verifyUserAttributeRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for VerifySoftwareTokenResponseType. -}
+{-| Codec for VerifySoftwareTokenResponseType.
+-}
 verifySoftwareTokenResponseTypeCodec : Codec VerifySoftwareTokenResponseType
 verifySoftwareTokenResponseTypeCodec =
     Codec.build (Enum.encoder verifySoftwareTokenResponseType) (Enum.decoder verifySoftwareTokenResponseType)
 
 
-{-| Codec for VerifySoftwareTokenResponse. -}
+{-| Codec for VerifySoftwareTokenResponse.
+-}
 verifySoftwareTokenResponseCodec : Codec VerifySoftwareTokenResponse
 verifySoftwareTokenResponseCodec =
     Codec.object VerifySoftwareTokenResponse
@@ -4999,7 +5104,8 @@ verifySoftwareTokenResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for VerifySoftwareTokenRequest. -}
+{-| Codec for VerifySoftwareTokenRequest.
+-}
 verifySoftwareTokenRequestCodec : Codec VerifySoftwareTokenRequest
 verifySoftwareTokenRequestCodec =
     Codec.object VerifySoftwareTokenRequest
@@ -5010,19 +5116,22 @@ verifySoftwareTokenRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for VerifiedAttributesListType. -}
+{-| Codec for VerifiedAttributesListType.
+-}
 verifiedAttributesListTypeCodec : Codec VerifiedAttributesListType
 verifiedAttributesListTypeCodec =
     Codec.list verifiedAttributeTypeCodec
 
 
-{-| Codec for VerifiedAttributeType. -}
+{-| Codec for VerifiedAttributeType.
+-}
 verifiedAttributeTypeCodec : Codec VerifiedAttributeType
 verifiedAttributeTypeCodec =
     Codec.build (Enum.encoder verifiedAttributeType) (Enum.decoder verifiedAttributeType)
 
 
-{-| Codec for VerificationMessageTemplateType. -}
+{-| Codec for VerificationMessageTemplateType.
+-}
 verificationMessageTemplateTypeCodec : Codec VerificationMessageTemplateType
 verificationMessageTemplateTypeCodec =
     Codec.object VerificationMessageTemplateType
@@ -5035,31 +5144,36 @@ verificationMessageTemplateTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for UsersListType. -}
+{-| Codec for UsersListType.
+-}
 usersListTypeCodec : Codec UsersListType
 usersListTypeCodec =
     Codec.list userTypeCodec
 
 
-{-| Codec for UsernameType. -}
+{-| Codec for UsernameType.
+-}
 usernameTypeCodec : Codec UsernameType
 usernameTypeCodec =
     Codec.build (Refined.encoder usernameType) (Refined.decoder usernameType)
 
 
-{-| Codec for UsernameAttributesListType. -}
+{-| Codec for UsernameAttributesListType.
+-}
 usernameAttributesListTypeCodec : Codec UsernameAttributesListType
 usernameAttributesListTypeCodec =
     Codec.list usernameAttributeTypeCodec
 
 
-{-| Codec for UsernameAttributeType. -}
+{-| Codec for UsernameAttributeType.
+-}
 usernameAttributeTypeCodec : Codec UsernameAttributeType
 usernameAttributeTypeCodec =
     Codec.build (Enum.encoder usernameAttributeType) (Enum.decoder usernameAttributeType)
 
 
-{-| Codec for UserType. -}
+{-| Codec for UserType.
+-}
 userTypeCodec : Codec UserType
 userTypeCodec =
     Codec.object UserType
@@ -5073,13 +5187,15 @@ userTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for UserStatusType. -}
+{-| Codec for UserStatusType.
+-}
 userStatusTypeCodec : Codec UserStatusType
 userStatusTypeCodec =
     Codec.build (Enum.encoder userStatusType) (Enum.decoder userStatusType)
 
 
-{-| Codec for UserPoolType. -}
+{-| Codec for UserPoolType.
+-}
 userPoolTypeCodec : Codec UserPoolType
 userPoolTypeCodec =
     Codec.object UserPoolType
@@ -5118,7 +5234,8 @@ userPoolTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for UserPoolTagsType. -}
+{-| Codec for UserPoolTagsType.
+-}
 userPoolTagsTypeCodec : Codec UserPoolTagsType
 userPoolTagsTypeCodec =
     Codec.build
@@ -5126,13 +5243,15 @@ userPoolTagsTypeCodec =
         (Refined.dictDecoder tagKeysType (Codec.decoder tagValueTypeCodec))
 
 
-{-| Codec for UserPoolTagsListType. -}
+{-| Codec for UserPoolTagsListType.
+-}
 userPoolTagsListTypeCodec : Codec UserPoolTagsListType
 userPoolTagsListTypeCodec =
     Codec.list tagKeysTypeCodec
 
 
-{-| Codec for UserPoolPolicyType. -}
+{-| Codec for UserPoolPolicyType.
+-}
 userPoolPolicyTypeCodec : Codec UserPoolPolicyType
 userPoolPolicyTypeCodec =
     Codec.object UserPoolPolicyType
@@ -5140,31 +5259,36 @@ userPoolPolicyTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for UserPoolNameType. -}
+{-| Codec for UserPoolNameType.
+-}
 userPoolNameTypeCodec : Codec UserPoolNameType
 userPoolNameTypeCodec =
     Codec.build (Refined.encoder userPoolNameType) (Refined.decoder userPoolNameType)
 
 
-{-| Codec for UserPoolMfaType. -}
+{-| Codec for UserPoolMfaType.
+-}
 userPoolMfaTypeCodec : Codec UserPoolMfaType
 userPoolMfaTypeCodec =
     Codec.build (Enum.encoder userPoolMfaType) (Enum.decoder userPoolMfaType)
 
 
-{-| Codec for UserPoolListType. -}
+{-| Codec for UserPoolListType.
+-}
 userPoolListTypeCodec : Codec UserPoolListType
 userPoolListTypeCodec =
     Codec.list userPoolDescriptionTypeCodec
 
 
-{-| Codec for UserPoolIdType. -}
+{-| Codec for UserPoolIdType.
+-}
 userPoolIdTypeCodec : Codec UserPoolIdType
 userPoolIdTypeCodec =
     Codec.build (Refined.encoder userPoolIdType) (Refined.decoder userPoolIdType)
 
 
-{-| Codec for UserPoolDescriptionType. -}
+{-| Codec for UserPoolDescriptionType.
+-}
 userPoolDescriptionTypeCodec : Codec UserPoolDescriptionType
 userPoolDescriptionTypeCodec =
     Codec.object UserPoolDescriptionType
@@ -5177,7 +5301,8 @@ userPoolDescriptionTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for UserPoolClientType. -}
+{-| Codec for UserPoolClientType.
+-}
 userPoolClientTypeCodec : Codec UserPoolClientType
 userPoolClientTypeCodec =
     Codec.object UserPoolClientType
@@ -5205,13 +5330,15 @@ userPoolClientTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for UserPoolClientListType. -}
+{-| Codec for UserPoolClientListType.
+-}
 userPoolClientListTypeCodec : Codec UserPoolClientListType
 userPoolClientListTypeCodec =
     Codec.list userPoolClientDescriptionCodec
 
 
-{-| Codec for UserPoolClientDescription. -}
+{-| Codec for UserPoolClientDescription.
+-}
 userPoolClientDescriptionCodec : Codec UserPoolClientDescription
 userPoolClientDescriptionCodec =
     Codec.object UserPoolClientDescription
@@ -5221,7 +5348,8 @@ userPoolClientDescriptionCodec =
         |> Codec.buildObject
 
 
-{-| Codec for UserPoolAddOnsType. -}
+{-| Codec for UserPoolAddOnsType.
+-}
 userPoolAddOnsTypeCodec : Codec UserPoolAddOnsType
 userPoolAddOnsTypeCodec =
     Codec.object UserPoolAddOnsType
@@ -5229,19 +5357,22 @@ userPoolAddOnsTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for UserMfasettingListType. -}
+{-| Codec for UserMfasettingListType.
+-}
 userMfasettingListTypeCodec : Codec UserMfasettingListType
 userMfasettingListTypeCodec =
     Codec.list Codec.string
 
 
-{-| Codec for UserImportJobsListType. -}
+{-| Codec for UserImportJobsListType.
+-}
 userImportJobsListTypeCodec : Codec UserImportJobsListType
 userImportJobsListTypeCodec =
     Codec.list userImportJobTypeCodec
 
 
-{-| Codec for UserImportJobType. -}
+{-| Codec for UserImportJobType.
+-}
 userImportJobTypeCodec : Codec UserImportJobType
 userImportJobTypeCodec =
     Codec.object UserImportJobType
@@ -5261,43 +5392,50 @@ userImportJobTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for UserImportJobStatusType. -}
+{-| Codec for UserImportJobStatusType.
+-}
 userImportJobStatusTypeCodec : Codec UserImportJobStatusType
 userImportJobStatusTypeCodec =
     Codec.build (Enum.encoder userImportJobStatusType) (Enum.decoder userImportJobStatusType)
 
 
-{-| Codec for UserImportJobNameType. -}
+{-| Codec for UserImportJobNameType.
+-}
 userImportJobNameTypeCodec : Codec UserImportJobNameType
 userImportJobNameTypeCodec =
     Codec.build (Refined.encoder userImportJobNameType) (Refined.decoder userImportJobNameType)
 
 
-{-| Codec for UserImportJobIdType. -}
+{-| Codec for UserImportJobIdType.
+-}
 userImportJobIdTypeCodec : Codec UserImportJobIdType
 userImportJobIdTypeCodec =
     Codec.build (Refined.encoder userImportJobIdType) (Refined.decoder userImportJobIdType)
 
 
-{-| Codec for UserFilterType. -}
+{-| Codec for UserFilterType.
+-}
 userFilterTypeCodec : Codec UserFilterType
 userFilterTypeCodec =
     Codec.build (Refined.encoder userFilterType) (Refined.decoder userFilterType)
 
 
-{-| Codec for UserContextDataType. -}
+{-| Codec for UserContextDataType.
+-}
 userContextDataTypeCodec : Codec UserContextDataType
 userContextDataTypeCodec =
     Codec.object UserContextDataType |> Codec.optionalField "EncodedData" .encodedData Codec.string |> Codec.buildObject
 
 
-{-| Codec for UpdateUserPoolResponse. -}
+{-| Codec for UpdateUserPoolResponse.
+-}
 updateUserPoolResponseCodec : Codec UpdateUserPoolResponse
 updateUserPoolResponseCodec =
     Codec.object UpdateUserPoolResponse |> Codec.buildObject
 
 
-{-| Codec for UpdateUserPoolRequest. -}
+{-| Codec for UpdateUserPoolRequest.
+-}
 updateUserPoolRequestCodec : Codec UpdateUserPoolRequest
 updateUserPoolRequestCodec =
     Codec.object UpdateUserPoolRequest
@@ -5323,7 +5461,8 @@ updateUserPoolRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for UpdateUserPoolDomainResponse. -}
+{-| Codec for UpdateUserPoolDomainResponse.
+-}
 updateUserPoolDomainResponseCodec : Codec UpdateUserPoolDomainResponse
 updateUserPoolDomainResponseCodec =
     Codec.object UpdateUserPoolDomainResponse
@@ -5331,7 +5470,8 @@ updateUserPoolDomainResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for UpdateUserPoolDomainRequest. -}
+{-| Codec for UpdateUserPoolDomainRequest.
+-}
 updateUserPoolDomainRequestCodec : Codec UpdateUserPoolDomainRequest
 updateUserPoolDomainRequestCodec =
     Codec.object UpdateUserPoolDomainRequest
@@ -5341,7 +5481,8 @@ updateUserPoolDomainRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for UpdateUserPoolClientResponse. -}
+{-| Codec for UpdateUserPoolClientResponse.
+-}
 updateUserPoolClientResponseCodec : Codec UpdateUserPoolClientResponse
 updateUserPoolClientResponseCodec =
     Codec.object UpdateUserPoolClientResponse
@@ -5349,7 +5490,8 @@ updateUserPoolClientResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for UpdateUserPoolClientRequest. -}
+{-| Codec for UpdateUserPoolClientRequest.
+-}
 updateUserPoolClientRequestCodec : Codec UpdateUserPoolClientRequest
 updateUserPoolClientRequestCodec =
     Codec.object UpdateUserPoolClientRequest
@@ -5374,7 +5516,8 @@ updateUserPoolClientRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for UpdateUserAttributesResponse. -}
+{-| Codec for UpdateUserAttributesResponse.
+-}
 updateUserAttributesResponseCodec : Codec UpdateUserAttributesResponse
 updateUserAttributesResponseCodec =
     Codec.object UpdateUserAttributesResponse
@@ -5382,7 +5525,8 @@ updateUserAttributesResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for UpdateUserAttributesRequest. -}
+{-| Codec for UpdateUserAttributesRequest.
+-}
 updateUserAttributesRequestCodec : Codec UpdateUserAttributesRequest
 updateUserAttributesRequestCodec =
     Codec.object UpdateUserAttributesRequest
@@ -5391,7 +5535,8 @@ updateUserAttributesRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for UpdateResourceServerResponse. -}
+{-| Codec for UpdateResourceServerResponse.
+-}
 updateResourceServerResponseCodec : Codec UpdateResourceServerResponse
 updateResourceServerResponseCodec =
     Codec.object UpdateResourceServerResponse
@@ -5399,7 +5544,8 @@ updateResourceServerResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for UpdateResourceServerRequest. -}
+{-| Codec for UpdateResourceServerRequest.
+-}
 updateResourceServerRequestCodec : Codec UpdateResourceServerRequest
 updateResourceServerRequestCodec =
     Codec.object UpdateResourceServerRequest
@@ -5410,7 +5556,8 @@ updateResourceServerRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for UpdateIdentityProviderResponse. -}
+{-| Codec for UpdateIdentityProviderResponse.
+-}
 updateIdentityProviderResponseCodec : Codec UpdateIdentityProviderResponse
 updateIdentityProviderResponseCodec =
     Codec.object UpdateIdentityProviderResponse
@@ -5418,7 +5565,8 @@ updateIdentityProviderResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for UpdateIdentityProviderRequest. -}
+{-| Codec for UpdateIdentityProviderRequest.
+-}
 updateIdentityProviderRequestCodec : Codec UpdateIdentityProviderRequest
 updateIdentityProviderRequestCodec =
     Codec.object UpdateIdentityProviderRequest
@@ -5430,13 +5578,15 @@ updateIdentityProviderRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for UpdateGroupResponse. -}
+{-| Codec for UpdateGroupResponse.
+-}
 updateGroupResponseCodec : Codec UpdateGroupResponse
 updateGroupResponseCodec =
     Codec.object UpdateGroupResponse |> Codec.optionalField "Group" .group groupTypeCodec |> Codec.buildObject
 
 
-{-| Codec for UpdateGroupRequest. -}
+{-| Codec for UpdateGroupRequest.
+-}
 updateGroupRequestCodec : Codec UpdateGroupRequest
 updateGroupRequestCodec =
     Codec.object UpdateGroupRequest
@@ -5448,13 +5598,15 @@ updateGroupRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for UpdateDeviceStatusResponse. -}
+{-| Codec for UpdateDeviceStatusResponse.
+-}
 updateDeviceStatusResponseCodec : Codec UpdateDeviceStatusResponse
 updateDeviceStatusResponseCodec =
     Codec.object UpdateDeviceStatusResponse |> Codec.buildObject
 
 
-{-| Codec for UpdateDeviceStatusRequest. -}
+{-| Codec for UpdateDeviceStatusRequest.
+-}
 updateDeviceStatusRequestCodec : Codec UpdateDeviceStatusRequest
 updateDeviceStatusRequestCodec =
     Codec.object UpdateDeviceStatusRequest
@@ -5464,13 +5616,15 @@ updateDeviceStatusRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for UpdateAuthEventFeedbackResponse. -}
+{-| Codec for UpdateAuthEventFeedbackResponse.
+-}
 updateAuthEventFeedbackResponseCodec : Codec UpdateAuthEventFeedbackResponse
 updateAuthEventFeedbackResponseCodec =
     Codec.object UpdateAuthEventFeedbackResponse |> Codec.buildObject
 
 
-{-| Codec for UpdateAuthEventFeedbackRequest. -}
+{-| Codec for UpdateAuthEventFeedbackRequest.
+-}
 updateAuthEventFeedbackRequestCodec : Codec UpdateAuthEventFeedbackRequest
 updateAuthEventFeedbackRequestCodec =
     Codec.object UpdateAuthEventFeedbackRequest
@@ -5482,13 +5636,15 @@ updateAuthEventFeedbackRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for UntagResourceResponse. -}
+{-| Codec for UntagResourceResponse.
+-}
 untagResourceResponseCodec : Codec UntagResourceResponse
 untagResourceResponseCodec =
     Codec.object UntagResourceResponse |> Codec.buildObject
 
 
-{-| Codec for UntagResourceRequest. -}
+{-| Codec for UntagResourceRequest.
+-}
 untagResourceRequestCodec : Codec UntagResourceRequest
 untagResourceRequestCodec =
     Codec.object UntagResourceRequest
@@ -5497,7 +5653,8 @@ untagResourceRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for UicustomizationType. -}
+{-| Codec for UicustomizationType.
+-}
 uicustomizationTypeCodec : Codec UicustomizationType
 uicustomizationTypeCodec =
     Codec.object UicustomizationType
@@ -5511,31 +5668,36 @@ uicustomizationTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for TokenModelType. -}
+{-| Codec for TokenModelType.
+-}
 tokenModelTypeCodec : Codec TokenModelType
 tokenModelTypeCodec =
     Codec.build (Refined.encoder tokenModelType) (Refined.decoder tokenModelType)
 
 
-{-| Codec for TemporaryPasswordValidityDaysType. -}
+{-| Codec for TemporaryPasswordValidityDaysType.
+-}
 temporaryPasswordValidityDaysTypeCodec : Codec TemporaryPasswordValidityDaysType
 temporaryPasswordValidityDaysTypeCodec =
     Codec.build (Refined.encoder temporaryPasswordValidityDaysType) (Refined.decoder temporaryPasswordValidityDaysType)
 
 
-{-| Codec for TagValueType. -}
+{-| Codec for TagValueType.
+-}
 tagValueTypeCodec : Codec TagValueType
 tagValueTypeCodec =
     Codec.build (Refined.encoder tagValueType) (Refined.decoder tagValueType)
 
 
-{-| Codec for TagResourceResponse. -}
+{-| Codec for TagResourceResponse.
+-}
 tagResourceResponseCodec : Codec TagResourceResponse
 tagResourceResponseCodec =
     Codec.object TagResourceResponse |> Codec.buildObject
 
 
-{-| Codec for TagResourceRequest. -}
+{-| Codec for TagResourceRequest.
+-}
 tagResourceRequestCodec : Codec TagResourceRequest
 tagResourceRequestCodec =
     Codec.object TagResourceRequest
@@ -5544,25 +5706,29 @@ tagResourceRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for TagKeysType. -}
+{-| Codec for TagKeysType.
+-}
 tagKeysTypeCodec : Codec TagKeysType
 tagKeysTypeCodec =
     Codec.build (Refined.encoder tagKeysType) (Refined.decoder tagKeysType)
 
 
-{-| Codec for SupportedIdentityProvidersListType. -}
+{-| Codec for SupportedIdentityProvidersListType.
+-}
 supportedIdentityProvidersListTypeCodec : Codec SupportedIdentityProvidersListType
 supportedIdentityProvidersListTypeCodec =
     Codec.list providerNameTypeCodec
 
 
-{-| Codec for StringType. -}
+{-| Codec for StringType.
+-}
 stringTypeCodec : Codec StringType
 stringTypeCodec =
     Codec.string
 
 
-{-| Codec for StringAttributeConstraintsType. -}
+{-| Codec for StringAttributeConstraintsType.
+-}
 stringAttributeConstraintsTypeCodec : Codec StringAttributeConstraintsType
 stringAttributeConstraintsTypeCodec =
     Codec.object StringAttributeConstraintsType
@@ -5571,7 +5737,8 @@ stringAttributeConstraintsTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for StopUserImportJobResponse. -}
+{-| Codec for StopUserImportJobResponse.
+-}
 stopUserImportJobResponseCodec : Codec StopUserImportJobResponse
 stopUserImportJobResponseCodec =
     Codec.object StopUserImportJobResponse
@@ -5579,7 +5746,8 @@ stopUserImportJobResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for StopUserImportJobRequest. -}
+{-| Codec for StopUserImportJobRequest.
+-}
 stopUserImportJobRequestCodec : Codec StopUserImportJobRequest
 stopUserImportJobRequestCodec =
     Codec.object StopUserImportJobRequest
@@ -5588,13 +5756,15 @@ stopUserImportJobRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for StatusType. -}
+{-| Codec for StatusType.
+-}
 statusTypeCodec : Codec StatusType
 statusTypeCodec =
     Codec.build (Enum.encoder statusType) (Enum.decoder statusType)
 
 
-{-| Codec for StartUserImportJobResponse. -}
+{-| Codec for StartUserImportJobResponse.
+-}
 startUserImportJobResponseCodec : Codec StartUserImportJobResponse
 startUserImportJobResponseCodec =
     Codec.object StartUserImportJobResponse
@@ -5602,7 +5772,8 @@ startUserImportJobResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for StartUserImportJobRequest. -}
+{-| Codec for StartUserImportJobRequest.
+-}
 startUserImportJobRequestCodec : Codec StartUserImportJobRequest
 startUserImportJobRequestCodec =
     Codec.object StartUserImportJobRequest
@@ -5611,7 +5782,8 @@ startUserImportJobRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for SoftwareTokenMfaSettingsType. -}
+{-| Codec for SoftwareTokenMfaSettingsType.
+-}
 softwareTokenMfaSettingsTypeCodec : Codec SoftwareTokenMfaSettingsType
 softwareTokenMfaSettingsTypeCodec =
     Codec.object SoftwareTokenMfaSettingsType
@@ -5620,25 +5792,29 @@ softwareTokenMfaSettingsTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for SoftwareTokenMfaConfigType. -}
+{-| Codec for SoftwareTokenMfaConfigType.
+-}
 softwareTokenMfaConfigTypeCodec : Codec SoftwareTokenMfaConfigType
 softwareTokenMfaConfigTypeCodec =
     Codec.object SoftwareTokenMfaConfigType |> Codec.optionalField "Enabled" .enabled Codec.bool |> Codec.buildObject
 
 
-{-| Codec for SoftwareTokenMfauserCodeType. -}
+{-| Codec for SoftwareTokenMfauserCodeType.
+-}
 softwareTokenMfauserCodeTypeCodec : Codec SoftwareTokenMfauserCodeType
 softwareTokenMfauserCodeTypeCodec =
     Codec.build (Refined.encoder softwareTokenMfauserCodeType) (Refined.decoder softwareTokenMfauserCodeType)
 
 
-{-| Codec for SmsVerificationMessageType. -}
+{-| Codec for SmsVerificationMessageType.
+-}
 smsVerificationMessageTypeCodec : Codec SmsVerificationMessageType
 smsVerificationMessageTypeCodec =
     Codec.build (Refined.encoder smsVerificationMessageType) (Refined.decoder smsVerificationMessageType)
 
 
-{-| Codec for SmsMfaConfigType. -}
+{-| Codec for SmsMfaConfigType.
+-}
 smsMfaConfigTypeCodec : Codec SmsMfaConfigType
 smsMfaConfigTypeCodec =
     Codec.object SmsMfaConfigType
@@ -5647,7 +5823,8 @@ smsMfaConfigTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for SmsConfigurationType. -}
+{-| Codec for SmsConfigurationType.
+-}
 smsConfigurationTypeCodec : Codec SmsConfigurationType
 smsConfigurationTypeCodec =
     Codec.object SmsConfigurationType
@@ -5656,13 +5833,15 @@ smsConfigurationTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for SkippedIprangeListType. -}
+{-| Codec for SkippedIprangeListType.
+-}
 skippedIprangeListTypeCodec : Codec SkippedIprangeListType
 skippedIprangeListTypeCodec =
     Codec.list Codec.string
 
 
-{-| Codec for SignUpResponse. -}
+{-| Codec for SignUpResponse.
+-}
 signUpResponseCodec : Codec SignUpResponse
 signUpResponseCodec =
     Codec.object SignUpResponse
@@ -5672,7 +5851,8 @@ signUpResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for SignUpRequest. -}
+{-| Codec for SignUpRequest.
+-}
 signUpRequestCodec : Codec SignUpRequest
 signUpRequestCodec =
     Codec.object SignUpRequest
@@ -5687,13 +5867,15 @@ signUpRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for SetUserSettingsResponse. -}
+{-| Codec for SetUserSettingsResponse.
+-}
 setUserSettingsResponseCodec : Codec SetUserSettingsResponse
 setUserSettingsResponseCodec =
     Codec.object SetUserSettingsResponse |> Codec.buildObject
 
 
-{-| Codec for SetUserSettingsRequest. -}
+{-| Codec for SetUserSettingsRequest.
+-}
 setUserSettingsRequestCodec : Codec SetUserSettingsRequest
 setUserSettingsRequestCodec =
     Codec.object SetUserSettingsRequest
@@ -5702,7 +5884,8 @@ setUserSettingsRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for SetUserPoolMfaConfigResponse. -}
+{-| Codec for SetUserPoolMfaConfigResponse.
+-}
 setUserPoolMfaConfigResponseCodec : Codec SetUserPoolMfaConfigResponse
 setUserPoolMfaConfigResponseCodec =
     Codec.object SetUserPoolMfaConfigResponse
@@ -5715,7 +5898,8 @@ setUserPoolMfaConfigResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for SetUserPoolMfaConfigRequest. -}
+{-| Codec for SetUserPoolMfaConfigRequest.
+-}
 setUserPoolMfaConfigRequestCodec : Codec SetUserPoolMfaConfigRequest
 setUserPoolMfaConfigRequestCodec =
     Codec.object SetUserPoolMfaConfigRequest
@@ -5729,13 +5913,15 @@ setUserPoolMfaConfigRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for SetUserMfapreferenceResponse. -}
+{-| Codec for SetUserMfapreferenceResponse.
+-}
 setUserMfapreferenceResponseCodec : Codec SetUserMfapreferenceResponse
 setUserMfapreferenceResponseCodec =
     Codec.object SetUserMfapreferenceResponse |> Codec.buildObject
 
 
-{-| Codec for SetUserMfapreferenceRequest. -}
+{-| Codec for SetUserMfapreferenceRequest.
+-}
 setUserMfapreferenceRequestCodec : Codec SetUserMfapreferenceRequest
 setUserMfapreferenceRequestCodec =
     Codec.object SetUserMfapreferenceRequest
@@ -5745,7 +5931,8 @@ setUserMfapreferenceRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for SetUicustomizationResponse. -}
+{-| Codec for SetUicustomizationResponse.
+-}
 setUicustomizationResponseCodec : Codec SetUicustomizationResponse
 setUicustomizationResponseCodec =
     Codec.object SetUicustomizationResponse
@@ -5753,7 +5940,8 @@ setUicustomizationResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for SetUicustomizationRequest. -}
+{-| Codec for SetUicustomizationRequest.
+-}
 setUicustomizationRequestCodec : Codec SetUicustomizationRequest
 setUicustomizationRequestCodec =
     Codec.object SetUicustomizationRequest
@@ -5764,7 +5952,8 @@ setUicustomizationRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for SetRiskConfigurationResponse. -}
+{-| Codec for SetRiskConfigurationResponse.
+-}
 setRiskConfigurationResponseCodec : Codec SetRiskConfigurationResponse
 setRiskConfigurationResponseCodec =
     Codec.object SetRiskConfigurationResponse
@@ -5772,7 +5961,8 @@ setRiskConfigurationResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for SetRiskConfigurationRequest. -}
+{-| Codec for SetRiskConfigurationRequest.
+-}
 setRiskConfigurationRequestCodec : Codec SetRiskConfigurationRequest
 setRiskConfigurationRequestCodec =
     Codec.object SetRiskConfigurationRequest
@@ -5793,55 +5983,64 @@ setRiskConfigurationRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for SessionType. -}
+{-| Codec for SessionType.
+-}
 sessionTypeCodec : Codec SessionType
 sessionTypeCodec =
     Codec.build (Refined.encoder sessionType) (Refined.decoder sessionType)
 
 
-{-| Codec for SecretHashType. -}
+{-| Codec for SecretHashType.
+-}
 secretHashTypeCodec : Codec SecretHashType
 secretHashTypeCodec =
     Codec.build (Refined.encoder secretHashType) (Refined.decoder secretHashType)
 
 
-{-| Codec for SecretCodeType. -}
+{-| Codec for SecretCodeType.
+-}
 secretCodeTypeCodec : Codec SecretCodeType
 secretCodeTypeCodec =
     Codec.build (Refined.encoder secretCodeType) (Refined.decoder secretCodeType)
 
 
-{-| Codec for SearchedAttributeNamesListType. -}
+{-| Codec for SearchedAttributeNamesListType.
+-}
 searchedAttributeNamesListTypeCodec : Codec SearchedAttributeNamesListType
 searchedAttributeNamesListTypeCodec =
     Codec.list attributeNameTypeCodec
 
 
-{-| Codec for SearchPaginationTokenType. -}
+{-| Codec for SearchPaginationTokenType.
+-}
 searchPaginationTokenTypeCodec : Codec SearchPaginationTokenType
 searchPaginationTokenTypeCodec =
     Codec.build (Refined.encoder searchPaginationTokenType) (Refined.decoder searchPaginationTokenType)
 
 
-{-| Codec for ScopeType. -}
+{-| Codec for ScopeType.
+-}
 scopeTypeCodec : Codec ScopeType
 scopeTypeCodec =
     Codec.build (Refined.encoder scopeType) (Refined.decoder scopeType)
 
 
-{-| Codec for ScopeListType. -}
+{-| Codec for ScopeListType.
+-}
 scopeListTypeCodec : Codec ScopeListType
 scopeListTypeCodec =
     Codec.list scopeTypeCodec
 
 
-{-| Codec for SchemaAttributesListType. -}
+{-| Codec for SchemaAttributesListType.
+-}
 schemaAttributesListTypeCodec : Codec SchemaAttributesListType
 schemaAttributesListTypeCodec =
     Codec.list schemaAttributeTypeCodec
 
 
-{-| Codec for SchemaAttributeType. -}
+{-| Codec for SchemaAttributeType.
+-}
 schemaAttributeTypeCodec : Codec SchemaAttributeType
 schemaAttributeTypeCodec =
     Codec.object SchemaAttributeType
@@ -5861,7 +6060,8 @@ schemaAttributeTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for SmsmfaSettingsType. -}
+{-| Codec for SmsmfaSettingsType.
+-}
 smsmfaSettingsTypeCodec : Codec SmsmfaSettingsType
 smsmfaSettingsTypeCodec =
     Codec.object SmsmfaSettingsType
@@ -5870,19 +6070,22 @@ smsmfaSettingsTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for S3BucketType. -}
+{-| Codec for S3BucketType.
+-}
 s3BucketTypeCodec : Codec S3BucketType
 s3BucketTypeCodec =
     Codec.build (Refined.encoder s3BucketType) (Refined.decoder s3BucketType)
 
 
-{-| Codec for RiskLevelType. -}
+{-| Codec for RiskLevelType.
+-}
 riskLevelTypeCodec : Codec RiskLevelType
 riskLevelTypeCodec =
     Codec.build (Enum.encoder riskLevelType) (Enum.decoder riskLevelType)
 
 
-{-| Codec for RiskExceptionConfigurationType. -}
+{-| Codec for RiskExceptionConfigurationType.
+-}
 riskExceptionConfigurationTypeCodec : Codec RiskExceptionConfigurationType
 riskExceptionConfigurationTypeCodec =
     Codec.object RiskExceptionConfigurationType
@@ -5891,13 +6094,15 @@ riskExceptionConfigurationTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for RiskDecisionType. -}
+{-| Codec for RiskDecisionType.
+-}
 riskDecisionTypeCodec : Codec RiskDecisionType
 riskDecisionTypeCodec =
     Codec.build (Enum.encoder riskDecisionType) (Enum.decoder riskDecisionType)
 
 
-{-| Codec for RiskConfigurationType. -}
+{-| Codec for RiskConfigurationType.
+-}
 riskConfigurationTypeCodec : Codec RiskConfigurationType
 riskConfigurationTypeCodec =
     Codec.object RiskConfigurationType
@@ -5919,7 +6124,8 @@ riskConfigurationTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for RespondToAuthChallengeResponse. -}
+{-| Codec for RespondToAuthChallengeResponse.
+-}
 respondToAuthChallengeResponseCodec : Codec RespondToAuthChallengeResponse
 respondToAuthChallengeResponseCodec =
     Codec.object RespondToAuthChallengeResponse
@@ -5930,7 +6136,8 @@ respondToAuthChallengeResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for RespondToAuthChallengeRequest. -}
+{-| Codec for RespondToAuthChallengeRequest.
+-}
 respondToAuthChallengeRequestCodec : Codec RespondToAuthChallengeRequest
 respondToAuthChallengeRequestCodec =
     Codec.object RespondToAuthChallengeRequest
@@ -5943,13 +6150,15 @@ respondToAuthChallengeRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ResourceServersListType. -}
+{-| Codec for ResourceServersListType.
+-}
 resourceServersListTypeCodec : Codec ResourceServersListType
 resourceServersListTypeCodec =
     Codec.list resourceServerTypeCodec
 
 
-{-| Codec for ResourceServerType. -}
+{-| Codec for ResourceServerType.
+-}
 resourceServerTypeCodec : Codec ResourceServerType
 resourceServerTypeCodec =
     Codec.object ResourceServerType
@@ -5960,7 +6169,8 @@ resourceServerTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ResourceServerScopeType. -}
+{-| Codec for ResourceServerScopeType.
+-}
 resourceServerScopeTypeCodec : Codec ResourceServerScopeType
 resourceServerScopeTypeCodec =
     Codec.object ResourceServerScopeType
@@ -5969,19 +6179,22 @@ resourceServerScopeTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ResourceServerScopeNameType. -}
+{-| Codec for ResourceServerScopeNameType.
+-}
 resourceServerScopeNameTypeCodec : Codec ResourceServerScopeNameType
 resourceServerScopeNameTypeCodec =
     Codec.build (Refined.encoder resourceServerScopeNameType) (Refined.decoder resourceServerScopeNameType)
 
 
-{-| Codec for ResourceServerScopeListType. -}
+{-| Codec for ResourceServerScopeListType.
+-}
 resourceServerScopeListTypeCodec : Codec ResourceServerScopeListType
 resourceServerScopeListTypeCodec =
     Codec.list resourceServerScopeTypeCodec
 
 
-{-| Codec for ResourceServerScopeDescriptionType. -}
+{-| Codec for ResourceServerScopeDescriptionType.
+-}
 resourceServerScopeDescriptionTypeCodec : Codec ResourceServerScopeDescriptionType
 resourceServerScopeDescriptionTypeCodec =
     Codec.build
@@ -5989,19 +6202,22 @@ resourceServerScopeDescriptionTypeCodec =
         (Refined.decoder resourceServerScopeDescriptionType)
 
 
-{-| Codec for ResourceServerNameType. -}
+{-| Codec for ResourceServerNameType.
+-}
 resourceServerNameTypeCodec : Codec ResourceServerNameType
 resourceServerNameTypeCodec =
     Codec.build (Refined.encoder resourceServerNameType) (Refined.decoder resourceServerNameType)
 
 
-{-| Codec for ResourceServerIdentifierType. -}
+{-| Codec for ResourceServerIdentifierType.
+-}
 resourceServerIdentifierTypeCodec : Codec ResourceServerIdentifierType
 resourceServerIdentifierTypeCodec =
     Codec.build (Refined.encoder resourceServerIdentifierType) (Refined.decoder resourceServerIdentifierType)
 
 
-{-| Codec for ResendConfirmationCodeResponse. -}
+{-| Codec for ResendConfirmationCodeResponse.
+-}
 resendConfirmationCodeResponseCodec : Codec ResendConfirmationCodeResponse
 resendConfirmationCodeResponseCodec =
     Codec.object ResendConfirmationCodeResponse
@@ -6009,7 +6225,8 @@ resendConfirmationCodeResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ResendConfirmationCodeRequest. -}
+{-| Codec for ResendConfirmationCodeRequest.
+-}
 resendConfirmationCodeRequestCodec : Codec ResendConfirmationCodeRequest
 resendConfirmationCodeRequestCodec =
     Codec.object ResendConfirmationCodeRequest
@@ -6021,37 +6238,43 @@ resendConfirmationCodeRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for RefreshTokenValidityType. -}
+{-| Codec for RefreshTokenValidityType.
+-}
 refreshTokenValidityTypeCodec : Codec RefreshTokenValidityType
 refreshTokenValidityTypeCodec =
     Codec.build (Refined.encoder refreshTokenValidityType) (Refined.decoder refreshTokenValidityType)
 
 
-{-| Codec for RedirectUrlType. -}
+{-| Codec for RedirectUrlType.
+-}
 redirectUrlTypeCodec : Codec RedirectUrlType
 redirectUrlTypeCodec =
     Codec.build (Refined.encoder redirectUrlType) (Refined.decoder redirectUrlType)
 
 
-{-| Codec for QueryLimitType. -}
+{-| Codec for QueryLimitType.
+-}
 queryLimitTypeCodec : Codec QueryLimitType
 queryLimitTypeCodec =
     Codec.build (Refined.encoder queryLimitType) (Refined.decoder queryLimitType)
 
 
-{-| Codec for QueryLimit. -}
+{-| Codec for QueryLimit.
+-}
 queryLimitCodec : Codec QueryLimit
 queryLimitCodec =
     Codec.build (Refined.encoder queryLimit) (Refined.decoder queryLimit)
 
 
-{-| Codec for ProvidersListType. -}
+{-| Codec for ProvidersListType.
+-}
 providersListTypeCodec : Codec ProvidersListType
 providersListTypeCodec =
     Codec.list providerDescriptionCodec
 
 
-{-| Codec for ProviderUserIdentifierType. -}
+{-| Codec for ProviderUserIdentifierType.
+-}
 providerUserIdentifierTypeCodec : Codec ProviderUserIdentifierType
 providerUserIdentifierTypeCodec =
     Codec.object ProviderUserIdentifierType
@@ -6061,25 +6284,29 @@ providerUserIdentifierTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ProviderNameTypeV1. -}
+{-| Codec for ProviderNameTypeV1.
+-}
 providerNameTypeV1Codec : Codec ProviderNameTypeV1
 providerNameTypeV1Codec =
     Codec.build (Refined.encoder providerNameTypeV1) (Refined.decoder providerNameTypeV1)
 
 
-{-| Codec for ProviderNameType. -}
+{-| Codec for ProviderNameType.
+-}
 providerNameTypeCodec : Codec ProviderNameType
 providerNameTypeCodec =
     Codec.build (Refined.encoder providerNameType) (Refined.decoder providerNameType)
 
 
-{-| Codec for ProviderDetailsType. -}
+{-| Codec for ProviderDetailsType.
+-}
 providerDetailsTypeCodec : Codec ProviderDetailsType
 providerDetailsTypeCodec =
     Codec.dict Codec.string
 
 
-{-| Codec for ProviderDescription. -}
+{-| Codec for ProviderDescription.
+-}
 providerDescriptionCodec : Codec ProviderDescription
 providerDescriptionCodec =
     Codec.object ProviderDescription
@@ -6090,31 +6317,36 @@ providerDescriptionCodec =
         |> Codec.buildObject
 
 
-{-| Codec for PrecedenceType. -}
+{-| Codec for PrecedenceType.
+-}
 precedenceTypeCodec : Codec PrecedenceType
 precedenceTypeCodec =
     Codec.build (Refined.encoder precedenceType) (Refined.decoder precedenceType)
 
 
-{-| Codec for PreSignedUrlType. -}
+{-| Codec for PreSignedUrlType.
+-}
 preSignedUrlTypeCodec : Codec PreSignedUrlType
 preSignedUrlTypeCodec =
     Codec.build (Refined.encoder preSignedUrlType) (Refined.decoder preSignedUrlType)
 
 
-{-| Codec for PoolQueryLimitType. -}
+{-| Codec for PoolQueryLimitType.
+-}
 poolQueryLimitTypeCodec : Codec PoolQueryLimitType
 poolQueryLimitTypeCodec =
     Codec.build (Refined.encoder poolQueryLimitType) (Refined.decoder poolQueryLimitType)
 
 
-{-| Codec for PasswordType. -}
+{-| Codec for PasswordType.
+-}
 passwordTypeCodec : Codec PasswordType
 passwordTypeCodec =
     Codec.build (Refined.encoder passwordType) (Refined.decoder passwordType)
 
 
-{-| Codec for PasswordPolicyType. -}
+{-| Codec for PasswordPolicyType.
+-}
 passwordPolicyTypeCodec : Codec PasswordPolicyType
 passwordPolicyTypeCodec =
     Codec.object PasswordPolicyType
@@ -6130,37 +6362,43 @@ passwordPolicyTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for PasswordPolicyMinLengthType. -}
+{-| Codec for PasswordPolicyMinLengthType.
+-}
 passwordPolicyMinLengthTypeCodec : Codec PasswordPolicyMinLengthType
 passwordPolicyMinLengthTypeCodec =
     Codec.build (Refined.encoder passwordPolicyMinLengthType) (Refined.decoder passwordPolicyMinLengthType)
 
 
-{-| Codec for PaginationKeyType. -}
+{-| Codec for PaginationKeyType.
+-}
 paginationKeyTypeCodec : Codec PaginationKeyType
 paginationKeyTypeCodec =
     Codec.build (Refined.encoder paginationKeyType) (Refined.decoder paginationKeyType)
 
 
-{-| Codec for PaginationKey. -}
+{-| Codec for PaginationKey.
+-}
 paginationKeyCodec : Codec PaginationKey
 paginationKeyCodec =
     Codec.build (Refined.encoder paginationKey) (Refined.decoder paginationKey)
 
 
-{-| Codec for OauthFlowsType. -}
+{-| Codec for OauthFlowsType.
+-}
 oauthFlowsTypeCodec : Codec OauthFlowsType
 oauthFlowsTypeCodec =
     Codec.list oauthFlowTypeCodec
 
 
-{-| Codec for OauthFlowType. -}
+{-| Codec for OauthFlowType.
+-}
 oauthFlowTypeCodec : Codec OauthFlowType
 oauthFlowTypeCodec =
     Codec.build (Enum.encoder oauthFlowType) (Enum.decoder oauthFlowType)
 
 
-{-| Codec for NumberAttributeConstraintsType. -}
+{-| Codec for NumberAttributeConstraintsType.
+-}
 numberAttributeConstraintsTypeCodec : Codec NumberAttributeConstraintsType
 numberAttributeConstraintsTypeCodec =
     Codec.object NumberAttributeConstraintsType
@@ -6169,7 +6407,8 @@ numberAttributeConstraintsTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for NotifyEmailType. -}
+{-| Codec for NotifyEmailType.
+-}
 notifyEmailTypeCodec : Codec NotifyEmailType
 notifyEmailTypeCodec =
     Codec.object NotifyEmailType
@@ -6179,7 +6418,8 @@ notifyEmailTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for NotifyConfigurationType. -}
+{-| Codec for NotifyConfigurationType.
+-}
 notifyConfigurationTypeCodec : Codec NotifyConfigurationType
 notifyConfigurationTypeCodec =
     Codec.object NotifyConfigurationType
@@ -6192,7 +6432,8 @@ notifyConfigurationTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for NewDeviceMetadataType. -}
+{-| Codec for NewDeviceMetadataType.
+-}
 newDeviceMetadataTypeCodec : Codec NewDeviceMetadataType
 newDeviceMetadataTypeCodec =
     Codec.object NewDeviceMetadataType
@@ -6201,7 +6442,8 @@ newDeviceMetadataTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for MessageTemplateType. -}
+{-| Codec for MessageTemplateType.
+-}
 messageTemplateTypeCodec : Codec MessageTemplateType
 messageTemplateTypeCodec =
     Codec.object MessageTemplateType
@@ -6211,13 +6453,15 @@ messageTemplateTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for MessageActionType. -}
+{-| Codec for MessageActionType.
+-}
 messageActionTypeCodec : Codec MessageActionType
 messageActionTypeCodec =
     Codec.build (Enum.encoder messageActionType) (Enum.decoder messageActionType)
 
 
-{-| Codec for MfaoptionType. -}
+{-| Codec for MfaoptionType.
+-}
 mfaoptionTypeCodec : Codec MfaoptionType
 mfaoptionTypeCodec =
     Codec.object MfaoptionType
@@ -6226,25 +6470,29 @@ mfaoptionTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for MfaoptionListType. -}
+{-| Codec for MfaoptionListType.
+-}
 mfaoptionListTypeCodec : Codec MfaoptionListType
 mfaoptionListTypeCodec =
     Codec.list mfaoptionTypeCodec
 
 
-{-| Codec for LongType. -}
+{-| Codec for LongType.
+-}
 longTypeCodec : Codec LongType
 longTypeCodec =
     Codec.int
 
 
-{-| Codec for LogoutUrlsListType. -}
+{-| Codec for LogoutUrlsListType.
+-}
 logoutUrlsListTypeCodec : Codec LogoutUrlsListType
 logoutUrlsListTypeCodec =
     Codec.list redirectUrlTypeCodec
 
 
-{-| Codec for ListUsersResponse. -}
+{-| Codec for ListUsersResponse.
+-}
 listUsersResponseCodec : Codec ListUsersResponse
 listUsersResponseCodec =
     Codec.object ListUsersResponse
@@ -6253,7 +6501,8 @@ listUsersResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ListUsersRequest. -}
+{-| Codec for ListUsersRequest.
+-}
 listUsersRequestCodec : Codec ListUsersRequest
 listUsersRequestCodec =
     Codec.object ListUsersRequest
@@ -6265,7 +6514,8 @@ listUsersRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ListUsersInGroupResponse. -}
+{-| Codec for ListUsersInGroupResponse.
+-}
 listUsersInGroupResponseCodec : Codec ListUsersInGroupResponse
 listUsersInGroupResponseCodec =
     Codec.object ListUsersInGroupResponse
@@ -6274,7 +6524,8 @@ listUsersInGroupResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ListUsersInGroupRequest. -}
+{-| Codec for ListUsersInGroupRequest.
+-}
 listUsersInGroupRequestCodec : Codec ListUsersInGroupRequest
 listUsersInGroupRequestCodec =
     Codec.object ListUsersInGroupRequest
@@ -6285,7 +6536,8 @@ listUsersInGroupRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ListUserPoolsResponse. -}
+{-| Codec for ListUserPoolsResponse.
+-}
 listUserPoolsResponseCodec : Codec ListUserPoolsResponse
 listUserPoolsResponseCodec =
     Codec.object ListUserPoolsResponse
@@ -6294,7 +6546,8 @@ listUserPoolsResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ListUserPoolsRequest. -}
+{-| Codec for ListUserPoolsRequest.
+-}
 listUserPoolsRequestCodec : Codec ListUserPoolsRequest
 listUserPoolsRequestCodec =
     Codec.object ListUserPoolsRequest
@@ -6303,7 +6556,8 @@ listUserPoolsRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ListUserPoolClientsResponse. -}
+{-| Codec for ListUserPoolClientsResponse.
+-}
 listUserPoolClientsResponseCodec : Codec ListUserPoolClientsResponse
 listUserPoolClientsResponseCodec =
     Codec.object ListUserPoolClientsResponse
@@ -6312,7 +6566,8 @@ listUserPoolClientsResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ListUserPoolClientsRequest. -}
+{-| Codec for ListUserPoolClientsRequest.
+-}
 listUserPoolClientsRequestCodec : Codec ListUserPoolClientsRequest
 listUserPoolClientsRequestCodec =
     Codec.object ListUserPoolClientsRequest
@@ -6322,7 +6577,8 @@ listUserPoolClientsRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ListUserImportJobsResponse. -}
+{-| Codec for ListUserImportJobsResponse.
+-}
 listUserImportJobsResponseCodec : Codec ListUserImportJobsResponse
 listUserImportJobsResponseCodec =
     Codec.object ListUserImportJobsResponse
@@ -6331,7 +6587,8 @@ listUserImportJobsResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ListUserImportJobsRequest. -}
+{-| Codec for ListUserImportJobsRequest.
+-}
 listUserImportJobsRequestCodec : Codec ListUserImportJobsRequest
 listUserImportJobsRequestCodec =
     Codec.object ListUserImportJobsRequest
@@ -6341,7 +6598,8 @@ listUserImportJobsRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ListTagsForResourceResponse. -}
+{-| Codec for ListTagsForResourceResponse.
+-}
 listTagsForResourceResponseCodec : Codec ListTagsForResourceResponse
 listTagsForResourceResponseCodec =
     Codec.object ListTagsForResourceResponse
@@ -6349,13 +6607,15 @@ listTagsForResourceResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ListTagsForResourceRequest. -}
+{-| Codec for ListTagsForResourceRequest.
+-}
 listTagsForResourceRequestCodec : Codec ListTagsForResourceRequest
 listTagsForResourceRequestCodec =
     Codec.object ListTagsForResourceRequest |> Codec.field "ResourceArn" .resourceArn arnTypeCodec |> Codec.buildObject
 
 
-{-| Codec for ListResourceServersResponse. -}
+{-| Codec for ListResourceServersResponse.
+-}
 listResourceServersResponseCodec : Codec ListResourceServersResponse
 listResourceServersResponseCodec =
     Codec.object ListResourceServersResponse
@@ -6364,7 +6624,8 @@ listResourceServersResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ListResourceServersRequest. -}
+{-| Codec for ListResourceServersRequest.
+-}
 listResourceServersRequestCodec : Codec ListResourceServersRequest
 listResourceServersRequestCodec =
     Codec.object ListResourceServersRequest
@@ -6374,25 +6635,29 @@ listResourceServersRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ListResourceServersLimitType. -}
+{-| Codec for ListResourceServersLimitType.
+-}
 listResourceServersLimitTypeCodec : Codec ListResourceServersLimitType
 listResourceServersLimitTypeCodec =
     Codec.build (Refined.encoder listResourceServersLimitType) (Refined.decoder listResourceServersLimitType)
 
 
-{-| Codec for ListProvidersLimitType. -}
+{-| Codec for ListProvidersLimitType.
+-}
 listProvidersLimitTypeCodec : Codec ListProvidersLimitType
 listProvidersLimitTypeCodec =
     Codec.build (Refined.encoder listProvidersLimitType) (Refined.decoder listProvidersLimitType)
 
 
-{-| Codec for ListOfStringTypes. -}
+{-| Codec for ListOfStringTypes.
+-}
 listOfStringTypesCodec : Codec ListOfStringTypes
 listOfStringTypesCodec =
     Codec.list Codec.string
 
 
-{-| Codec for ListIdentityProvidersResponse. -}
+{-| Codec for ListIdentityProvidersResponse.
+-}
 listIdentityProvidersResponseCodec : Codec ListIdentityProvidersResponse
 listIdentityProvidersResponseCodec =
     Codec.object ListIdentityProvidersResponse
@@ -6401,7 +6666,8 @@ listIdentityProvidersResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ListIdentityProvidersRequest. -}
+{-| Codec for ListIdentityProvidersRequest.
+-}
 listIdentityProvidersRequestCodec : Codec ListIdentityProvidersRequest
 listIdentityProvidersRequestCodec =
     Codec.object ListIdentityProvidersRequest
@@ -6411,7 +6677,8 @@ listIdentityProvidersRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ListGroupsResponse. -}
+{-| Codec for ListGroupsResponse.
+-}
 listGroupsResponseCodec : Codec ListGroupsResponse
 listGroupsResponseCodec =
     Codec.object ListGroupsResponse
@@ -6420,7 +6687,8 @@ listGroupsResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ListGroupsRequest. -}
+{-| Codec for ListGroupsRequest.
+-}
 listGroupsRequestCodec : Codec ListGroupsRequest
 listGroupsRequestCodec =
     Codec.object ListGroupsRequest
@@ -6430,7 +6698,8 @@ listGroupsRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ListDevicesResponse. -}
+{-| Codec for ListDevicesResponse.
+-}
 listDevicesResponseCodec : Codec ListDevicesResponse
 listDevicesResponseCodec =
     Codec.object ListDevicesResponse
@@ -6439,7 +6708,8 @@ listDevicesResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ListDevicesRequest. -}
+{-| Codec for ListDevicesRequest.
+-}
 listDevicesRequestCodec : Codec ListDevicesRequest
 listDevicesRequestCodec =
     Codec.object ListDevicesRequest
@@ -6449,7 +6719,8 @@ listDevicesRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for LambdaConfigType. -}
+{-| Codec for LambdaConfigType.
+-}
 lambdaConfigTypeCodec : Codec LambdaConfigType
 lambdaConfigTypeCodec =
     Codec.object LambdaConfigType
@@ -6466,13 +6737,15 @@ lambdaConfigTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for IntegerType. -}
+{-| Codec for IntegerType.
+-}
 integerTypeCodec : Codec IntegerType
 integerTypeCodec =
     Codec.int
 
 
-{-| Codec for InitiateAuthResponse. -}
+{-| Codec for InitiateAuthResponse.
+-}
 initiateAuthResponseCodec : Codec InitiateAuthResponse
 initiateAuthResponseCodec =
     Codec.object InitiateAuthResponse
@@ -6483,7 +6756,8 @@ initiateAuthResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for InitiateAuthRequest. -}
+{-| Codec for InitiateAuthRequest.
+-}
 initiateAuthRequestCodec : Codec InitiateAuthRequest
 initiateAuthRequestCodec =
     Codec.object InitiateAuthRequest
@@ -6496,37 +6770,43 @@ initiateAuthRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ImageUrlType. -}
+{-| Codec for ImageUrlType.
+-}
 imageUrlTypeCodec : Codec ImageUrlType
 imageUrlTypeCodec =
     Codec.string
 
 
-{-| Codec for ImageFileType. -}
+{-| Codec for ImageFileType.
+-}
 imageFileTypeCodec : Codec ImageFileType
 imageFileTypeCodec =
     Codec.string
 
 
-{-| Codec for IdpIdentifiersListType. -}
+{-| Codec for IdpIdentifiersListType.
+-}
 idpIdentifiersListTypeCodec : Codec IdpIdentifiersListType
 idpIdentifiersListTypeCodec =
     Codec.list idpIdentifierTypeCodec
 
 
-{-| Codec for IdpIdentifierType. -}
+{-| Codec for IdpIdentifierType.
+-}
 idpIdentifierTypeCodec : Codec IdpIdentifierType
 idpIdentifierTypeCodec =
     Codec.build (Refined.encoder idpIdentifierType) (Refined.decoder idpIdentifierType)
 
 
-{-| Codec for IdentityProviderTypeType. -}
+{-| Codec for IdentityProviderTypeType.
+-}
 identityProviderTypeTypeCodec : Codec IdentityProviderTypeType
 identityProviderTypeTypeCodec =
     Codec.build (Enum.encoder identityProviderTypeType) (Enum.decoder identityProviderTypeType)
 
 
-{-| Codec for IdentityProviderType. -}
+{-| Codec for IdentityProviderType.
+-}
 identityProviderTypeCodec : Codec IdentityProviderType
 identityProviderTypeCodec =
     Codec.object IdentityProviderType
@@ -6541,13 +6821,15 @@ identityProviderTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for HttpHeaderList. -}
+{-| Codec for HttpHeaderList.
+-}
 httpHeaderListCodec : Codec HttpHeaderList
 httpHeaderListCodec =
     Codec.list httpHeaderCodec
 
 
-{-| Codec for HttpHeader. -}
+{-| Codec for HttpHeader.
+-}
 httpHeaderCodec : Codec HttpHeader
 httpHeaderCodec =
     Codec.object HttpHeader
@@ -6556,13 +6838,15 @@ httpHeaderCodec =
         |> Codec.buildObject
 
 
-{-| Codec for HexStringType. -}
+{-| Codec for HexStringType.
+-}
 hexStringTypeCodec : Codec HexStringType
 hexStringTypeCodec =
     Codec.build (Refined.encoder hexStringType) (Refined.decoder hexStringType)
 
 
-{-| Codec for GroupType. -}
+{-| Codec for GroupType.
+-}
 groupTypeCodec : Codec GroupType
 groupTypeCodec =
     Codec.object GroupType
@@ -6576,31 +6860,36 @@ groupTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for GroupNameType. -}
+{-| Codec for GroupNameType.
+-}
 groupNameTypeCodec : Codec GroupNameType
 groupNameTypeCodec =
     Codec.build (Refined.encoder groupNameType) (Refined.decoder groupNameType)
 
 
-{-| Codec for GroupListType. -}
+{-| Codec for GroupListType.
+-}
 groupListTypeCodec : Codec GroupListType
 groupListTypeCodec =
     Codec.list groupTypeCodec
 
 
-{-| Codec for GlobalSignOutResponse. -}
+{-| Codec for GlobalSignOutResponse.
+-}
 globalSignOutResponseCodec : Codec GlobalSignOutResponse
 globalSignOutResponseCodec =
     Codec.object GlobalSignOutResponse |> Codec.buildObject
 
 
-{-| Codec for GlobalSignOutRequest. -}
+{-| Codec for GlobalSignOutRequest.
+-}
 globalSignOutRequestCodec : Codec GlobalSignOutRequest
 globalSignOutRequestCodec =
     Codec.object GlobalSignOutRequest |> Codec.field "AccessToken" .accessToken tokenModelTypeCodec |> Codec.buildObject
 
 
-{-| Codec for GetUserResponse. -}
+{-| Codec for GetUserResponse.
+-}
 getUserResponseCodec : Codec GetUserResponse
 getUserResponseCodec =
     Codec.object GetUserResponse
@@ -6612,13 +6901,15 @@ getUserResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for GetUserRequest. -}
+{-| Codec for GetUserRequest.
+-}
 getUserRequestCodec : Codec GetUserRequest
 getUserRequestCodec =
     Codec.object GetUserRequest |> Codec.field "AccessToken" .accessToken tokenModelTypeCodec |> Codec.buildObject
 
 
-{-| Codec for GetUserPoolMfaConfigResponse. -}
+{-| Codec for GetUserPoolMfaConfigResponse.
+-}
 getUserPoolMfaConfigResponseCodec : Codec GetUserPoolMfaConfigResponse
 getUserPoolMfaConfigResponseCodec =
     Codec.object GetUserPoolMfaConfigResponse
@@ -6631,7 +6922,8 @@ getUserPoolMfaConfigResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for GetUserPoolMfaConfigRequest. -}
+{-| Codec for GetUserPoolMfaConfigRequest.
+-}
 getUserPoolMfaConfigRequestCodec : Codec GetUserPoolMfaConfigRequest
 getUserPoolMfaConfigRequestCodec =
     Codec.object GetUserPoolMfaConfigRequest
@@ -6639,7 +6931,8 @@ getUserPoolMfaConfigRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for GetUserAttributeVerificationCodeResponse. -}
+{-| Codec for GetUserAttributeVerificationCodeResponse.
+-}
 getUserAttributeVerificationCodeResponseCodec : Codec GetUserAttributeVerificationCodeResponse
 getUserAttributeVerificationCodeResponseCodec =
     Codec.object GetUserAttributeVerificationCodeResponse
@@ -6647,7 +6940,8 @@ getUserAttributeVerificationCodeResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for GetUserAttributeVerificationCodeRequest. -}
+{-| Codec for GetUserAttributeVerificationCodeRequest.
+-}
 getUserAttributeVerificationCodeRequestCodec : Codec GetUserAttributeVerificationCodeRequest
 getUserAttributeVerificationCodeRequestCodec =
     Codec.object GetUserAttributeVerificationCodeRequest
@@ -6656,7 +6950,8 @@ getUserAttributeVerificationCodeRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for GetUicustomizationResponse. -}
+{-| Codec for GetUicustomizationResponse.
+-}
 getUicustomizationResponseCodec : Codec GetUicustomizationResponse
 getUicustomizationResponseCodec =
     Codec.object GetUicustomizationResponse
@@ -6664,7 +6959,8 @@ getUicustomizationResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for GetUicustomizationRequest. -}
+{-| Codec for GetUicustomizationRequest.
+-}
 getUicustomizationRequestCodec : Codec GetUicustomizationRequest
 getUicustomizationRequestCodec =
     Codec.object GetUicustomizationRequest
@@ -6673,7 +6969,8 @@ getUicustomizationRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for GetSigningCertificateResponse. -}
+{-| Codec for GetSigningCertificateResponse.
+-}
 getSigningCertificateResponseCodec : Codec GetSigningCertificateResponse
 getSigningCertificateResponseCodec =
     Codec.object GetSigningCertificateResponse
@@ -6681,7 +6978,8 @@ getSigningCertificateResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for GetSigningCertificateRequest. -}
+{-| Codec for GetSigningCertificateRequest.
+-}
 getSigningCertificateRequestCodec : Codec GetSigningCertificateRequest
 getSigningCertificateRequestCodec =
     Codec.object GetSigningCertificateRequest
@@ -6689,7 +6987,8 @@ getSigningCertificateRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for GetIdentityProviderByIdentifierResponse. -}
+{-| Codec for GetIdentityProviderByIdentifierResponse.
+-}
 getIdentityProviderByIdentifierResponseCodec : Codec GetIdentityProviderByIdentifierResponse
 getIdentityProviderByIdentifierResponseCodec =
     Codec.object GetIdentityProviderByIdentifierResponse
@@ -6697,7 +6996,8 @@ getIdentityProviderByIdentifierResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for GetIdentityProviderByIdentifierRequest. -}
+{-| Codec for GetIdentityProviderByIdentifierRequest.
+-}
 getIdentityProviderByIdentifierRequestCodec : Codec GetIdentityProviderByIdentifierRequest
 getIdentityProviderByIdentifierRequestCodec =
     Codec.object GetIdentityProviderByIdentifierRequest
@@ -6706,13 +7006,15 @@ getIdentityProviderByIdentifierRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for GetGroupResponse. -}
+{-| Codec for GetGroupResponse.
+-}
 getGroupResponseCodec : Codec GetGroupResponse
 getGroupResponseCodec =
     Codec.object GetGroupResponse |> Codec.optionalField "Group" .group groupTypeCodec |> Codec.buildObject
 
 
-{-| Codec for GetGroupRequest. -}
+{-| Codec for GetGroupRequest.
+-}
 getGroupRequestCodec : Codec GetGroupRequest
 getGroupRequestCodec =
     Codec.object GetGroupRequest
@@ -6721,13 +7023,15 @@ getGroupRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for GetDeviceResponse. -}
+{-| Codec for GetDeviceResponse.
+-}
 getDeviceResponseCodec : Codec GetDeviceResponse
 getDeviceResponseCodec =
     Codec.object GetDeviceResponse |> Codec.field "Device" .device deviceTypeCodec |> Codec.buildObject
 
 
-{-| Codec for GetDeviceRequest. -}
+{-| Codec for GetDeviceRequest.
+-}
 getDeviceRequestCodec : Codec GetDeviceRequest
 getDeviceRequestCodec =
     Codec.object GetDeviceRequest
@@ -6736,7 +7040,8 @@ getDeviceRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for GetCsvheaderResponse. -}
+{-| Codec for GetCsvheaderResponse.
+-}
 getCsvheaderResponseCodec : Codec GetCsvheaderResponse
 getCsvheaderResponseCodec =
     Codec.object GetCsvheaderResponse
@@ -6745,19 +7050,22 @@ getCsvheaderResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for GetCsvheaderRequest. -}
+{-| Codec for GetCsvheaderRequest.
+-}
 getCsvheaderRequestCodec : Codec GetCsvheaderRequest
 getCsvheaderRequestCodec =
     Codec.object GetCsvheaderRequest |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec |> Codec.buildObject
 
 
-{-| Codec for GenerateSecret. -}
+{-| Codec for GenerateSecret.
+-}
 generateSecretCodec : Codec GenerateSecret
 generateSecretCodec =
     Codec.bool
 
 
-{-| Codec for ForgotPasswordResponse. -}
+{-| Codec for ForgotPasswordResponse.
+-}
 forgotPasswordResponseCodec : Codec ForgotPasswordResponse
 forgotPasswordResponseCodec =
     Codec.object ForgotPasswordResponse
@@ -6765,7 +7073,8 @@ forgotPasswordResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ForgotPasswordRequest. -}
+{-| Codec for ForgotPasswordRequest.
+-}
 forgotPasswordRequestCodec : Codec ForgotPasswordRequest
 forgotPasswordRequestCodec =
     Codec.object ForgotPasswordRequest
@@ -6777,7 +7086,8 @@ forgotPasswordRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ForgetDeviceRequest. -}
+{-| Codec for ForgetDeviceRequest.
+-}
 forgetDeviceRequestCodec : Codec ForgetDeviceRequest
 forgetDeviceRequestCodec =
     Codec.object ForgetDeviceRequest
@@ -6786,37 +7096,43 @@ forgetDeviceRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ForceAliasCreation. -}
+{-| Codec for ForceAliasCreation.
+-}
 forceAliasCreationCodec : Codec ForceAliasCreation
 forceAliasCreationCodec =
     Codec.bool
 
 
-{-| Codec for FeedbackValueType. -}
+{-| Codec for FeedbackValueType.
+-}
 feedbackValueTypeCodec : Codec FeedbackValueType
 feedbackValueTypeCodec =
     Codec.build (Enum.encoder feedbackValueType) (Enum.decoder feedbackValueType)
 
 
-{-| Codec for ExplicitAuthFlowsType. -}
+{-| Codec for ExplicitAuthFlowsType.
+-}
 explicitAuthFlowsTypeCodec : Codec ExplicitAuthFlowsType
 explicitAuthFlowsTypeCodec =
     Codec.build (Enum.encoder explicitAuthFlowsType) (Enum.decoder explicitAuthFlowsType)
 
 
-{-| Codec for ExplicitAuthFlowsListType. -}
+{-| Codec for ExplicitAuthFlowsListType.
+-}
 explicitAuthFlowsListTypeCodec : Codec ExplicitAuthFlowsListType
 explicitAuthFlowsListTypeCodec =
     Codec.list explicitAuthFlowsTypeCodec
 
 
-{-| Codec for EventType. -}
+{-| Codec for EventType.
+-}
 eventTypeCodec : Codec EventType
 eventTypeCodec =
     Codec.build (Enum.encoder eventType) (Enum.decoder eventType)
 
 
-{-| Codec for EventRiskType. -}
+{-| Codec for EventRiskType.
+-}
 eventRiskTypeCodec : Codec EventRiskType
 eventRiskTypeCodec =
     Codec.object EventRiskType
@@ -6825,31 +7141,36 @@ eventRiskTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for EventResponseType. -}
+{-| Codec for EventResponseType.
+-}
 eventResponseTypeCodec : Codec EventResponseType
 eventResponseTypeCodec =
     Codec.build (Enum.encoder eventResponseType) (Enum.decoder eventResponseType)
 
 
-{-| Codec for EventIdType. -}
+{-| Codec for EventIdType.
+-}
 eventIdTypeCodec : Codec EventIdType
 eventIdTypeCodec =
     Codec.build (Refined.encoder eventIdType) (Refined.decoder eventIdType)
 
 
-{-| Codec for EventFiltersType. -}
+{-| Codec for EventFiltersType.
+-}
 eventFiltersTypeCodec : Codec EventFiltersType
 eventFiltersTypeCodec =
     Codec.list eventFilterTypeCodec
 
 
-{-| Codec for EventFilterType. -}
+{-| Codec for EventFilterType.
+-}
 eventFilterTypeCodec : Codec EventFilterType
 eventFilterTypeCodec =
     Codec.build (Enum.encoder eventFilterType) (Enum.decoder eventFilterType)
 
 
-{-| Codec for EventFeedbackType. -}
+{-| Codec for EventFeedbackType.
+-}
 eventFeedbackTypeCodec : Codec EventFeedbackType
 eventFeedbackTypeCodec =
     Codec.object EventFeedbackType
@@ -6859,7 +7180,8 @@ eventFeedbackTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for EventContextDataType. -}
+{-| Codec for EventContextDataType.
+-}
 eventContextDataTypeCodec : Codec EventContextDataType
 eventContextDataTypeCodec =
     Codec.object EventContextDataType
@@ -6871,13 +7193,15 @@ eventContextDataTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for EmailVerificationSubjectType. -}
+{-| Codec for EmailVerificationSubjectType.
+-}
 emailVerificationSubjectTypeCodec : Codec EmailVerificationSubjectType
 emailVerificationSubjectTypeCodec =
     Codec.build (Refined.encoder emailVerificationSubjectType) (Refined.decoder emailVerificationSubjectType)
 
 
-{-| Codec for EmailVerificationSubjectByLinkType. -}
+{-| Codec for EmailVerificationSubjectByLinkType.
+-}
 emailVerificationSubjectByLinkTypeCodec : Codec EmailVerificationSubjectByLinkType
 emailVerificationSubjectByLinkTypeCodec =
     Codec.build
@@ -6885,13 +7209,15 @@ emailVerificationSubjectByLinkTypeCodec =
         (Refined.decoder emailVerificationSubjectByLinkType)
 
 
-{-| Codec for EmailVerificationMessageType. -}
+{-| Codec for EmailVerificationMessageType.
+-}
 emailVerificationMessageTypeCodec : Codec EmailVerificationMessageType
 emailVerificationMessageTypeCodec =
     Codec.build (Refined.encoder emailVerificationMessageType) (Refined.decoder emailVerificationMessageType)
 
 
-{-| Codec for EmailVerificationMessageByLinkType. -}
+{-| Codec for EmailVerificationMessageByLinkType.
+-}
 emailVerificationMessageByLinkTypeCodec : Codec EmailVerificationMessageByLinkType
 emailVerificationMessageByLinkTypeCodec =
     Codec.build
@@ -6899,25 +7225,29 @@ emailVerificationMessageByLinkTypeCodec =
         (Refined.decoder emailVerificationMessageByLinkType)
 
 
-{-| Codec for EmailSendingAccountType. -}
+{-| Codec for EmailSendingAccountType.
+-}
 emailSendingAccountTypeCodec : Codec EmailSendingAccountType
 emailSendingAccountTypeCodec =
     Codec.build (Enum.encoder emailSendingAccountType) (Enum.decoder emailSendingAccountType)
 
 
-{-| Codec for EmailNotificationSubjectType. -}
+{-| Codec for EmailNotificationSubjectType.
+-}
 emailNotificationSubjectTypeCodec : Codec EmailNotificationSubjectType
 emailNotificationSubjectTypeCodec =
     Codec.build (Refined.encoder emailNotificationSubjectType) (Refined.decoder emailNotificationSubjectType)
 
 
-{-| Codec for EmailNotificationBodyType. -}
+{-| Codec for EmailNotificationBodyType.
+-}
 emailNotificationBodyTypeCodec : Codec EmailNotificationBodyType
 emailNotificationBodyTypeCodec =
     Codec.build (Refined.encoder emailNotificationBodyType) (Refined.decoder emailNotificationBodyType)
 
 
-{-| Codec for EmailConfigurationType. -}
+{-| Codec for EmailConfigurationType.
+-}
 emailConfigurationTypeCodec : Codec EmailConfigurationType
 emailConfigurationTypeCodec =
     Codec.object EmailConfigurationType
@@ -6927,31 +7257,36 @@ emailConfigurationTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for EmailAddressType. -}
+{-| Codec for EmailAddressType.
+-}
 emailAddressTypeCodec : Codec EmailAddressType
 emailAddressTypeCodec =
     Codec.build (Refined.encoder emailAddressType) (Refined.decoder emailAddressType)
 
 
-{-| Codec for DomainVersionType. -}
+{-| Codec for DomainVersionType.
+-}
 domainVersionTypeCodec : Codec DomainVersionType
 domainVersionTypeCodec =
     Codec.build (Refined.encoder domainVersionType) (Refined.decoder domainVersionType)
 
 
-{-| Codec for DomainType. -}
+{-| Codec for DomainType.
+-}
 domainTypeCodec : Codec DomainType
 domainTypeCodec =
     Codec.build (Refined.encoder domainType) (Refined.decoder domainType)
 
 
-{-| Codec for DomainStatusType. -}
+{-| Codec for DomainStatusType.
+-}
 domainStatusTypeCodec : Codec DomainStatusType
 domainStatusTypeCodec =
     Codec.build (Enum.encoder domainStatusType) (Enum.decoder domainStatusType)
 
 
-{-| Codec for DomainDescriptionType. -}
+{-| Codec for DomainDescriptionType.
+-}
 domainDescriptionTypeCodec : Codec DomainDescriptionType
 domainDescriptionTypeCodec =
     Codec.object DomainDescriptionType
@@ -6966,7 +7301,8 @@ domainDescriptionTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for DeviceType. -}
+{-| Codec for DeviceType.
+-}
 deviceTypeCodec : Codec DeviceType
 deviceTypeCodec =
     Codec.object DeviceType
@@ -6978,7 +7314,8 @@ deviceTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for DeviceSecretVerifierConfigType. -}
+{-| Codec for DeviceSecretVerifierConfigType.
+-}
 deviceSecretVerifierConfigTypeCodec : Codec DeviceSecretVerifierConfigType
 deviceSecretVerifierConfigTypeCodec =
     Codec.object DeviceSecretVerifierConfigType
@@ -6987,31 +7324,36 @@ deviceSecretVerifierConfigTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for DeviceRememberedStatusType. -}
+{-| Codec for DeviceRememberedStatusType.
+-}
 deviceRememberedStatusTypeCodec : Codec DeviceRememberedStatusType
 deviceRememberedStatusTypeCodec =
     Codec.build (Enum.encoder deviceRememberedStatusType) (Enum.decoder deviceRememberedStatusType)
 
 
-{-| Codec for DeviceNameType. -}
+{-| Codec for DeviceNameType.
+-}
 deviceNameTypeCodec : Codec DeviceNameType
 deviceNameTypeCodec =
     Codec.build (Refined.encoder deviceNameType) (Refined.decoder deviceNameType)
 
 
-{-| Codec for DeviceListType. -}
+{-| Codec for DeviceListType.
+-}
 deviceListTypeCodec : Codec DeviceListType
 deviceListTypeCodec =
     Codec.list deviceTypeCodec
 
 
-{-| Codec for DeviceKeyType. -}
+{-| Codec for DeviceKeyType.
+-}
 deviceKeyTypeCodec : Codec DeviceKeyType
 deviceKeyTypeCodec =
     Codec.build (Refined.encoder deviceKeyType) (Refined.decoder deviceKeyType)
 
 
-{-| Codec for DeviceConfigurationType. -}
+{-| Codec for DeviceConfigurationType.
+-}
 deviceConfigurationTypeCodec : Codec DeviceConfigurationType
 deviceConfigurationTypeCodec =
     Codec.object DeviceConfigurationType
@@ -7020,13 +7362,15 @@ deviceConfigurationTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for DescriptionType. -}
+{-| Codec for DescriptionType.
+-}
 descriptionTypeCodec : Codec DescriptionType
 descriptionTypeCodec =
     Codec.build (Refined.encoder descriptionType) (Refined.decoder descriptionType)
 
 
-{-| Codec for DescribeUserPoolResponse. -}
+{-| Codec for DescribeUserPoolResponse.
+-}
 describeUserPoolResponseCodec : Codec DescribeUserPoolResponse
 describeUserPoolResponseCodec =
     Codec.object DescribeUserPoolResponse
@@ -7034,7 +7378,8 @@ describeUserPoolResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for DescribeUserPoolRequest. -}
+{-| Codec for DescribeUserPoolRequest.
+-}
 describeUserPoolRequestCodec : Codec DescribeUserPoolRequest
 describeUserPoolRequestCodec =
     Codec.object DescribeUserPoolRequest
@@ -7042,7 +7387,8 @@ describeUserPoolRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for DescribeUserPoolDomainResponse. -}
+{-| Codec for DescribeUserPoolDomainResponse.
+-}
 describeUserPoolDomainResponseCodec : Codec DescribeUserPoolDomainResponse
 describeUserPoolDomainResponseCodec =
     Codec.object DescribeUserPoolDomainResponse
@@ -7050,13 +7396,15 @@ describeUserPoolDomainResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for DescribeUserPoolDomainRequest. -}
+{-| Codec for DescribeUserPoolDomainRequest.
+-}
 describeUserPoolDomainRequestCodec : Codec DescribeUserPoolDomainRequest
 describeUserPoolDomainRequestCodec =
     Codec.object DescribeUserPoolDomainRequest |> Codec.field "Domain" .domain domainTypeCodec |> Codec.buildObject
 
 
-{-| Codec for DescribeUserPoolClientResponse. -}
+{-| Codec for DescribeUserPoolClientResponse.
+-}
 describeUserPoolClientResponseCodec : Codec DescribeUserPoolClientResponse
 describeUserPoolClientResponseCodec =
     Codec.object DescribeUserPoolClientResponse
@@ -7064,7 +7412,8 @@ describeUserPoolClientResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for DescribeUserPoolClientRequest. -}
+{-| Codec for DescribeUserPoolClientRequest.
+-}
 describeUserPoolClientRequestCodec : Codec DescribeUserPoolClientRequest
 describeUserPoolClientRequestCodec =
     Codec.object DescribeUserPoolClientRequest
@@ -7073,7 +7422,8 @@ describeUserPoolClientRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for DescribeUserImportJobResponse. -}
+{-| Codec for DescribeUserImportJobResponse.
+-}
 describeUserImportJobResponseCodec : Codec DescribeUserImportJobResponse
 describeUserImportJobResponseCodec =
     Codec.object DescribeUserImportJobResponse
@@ -7081,7 +7431,8 @@ describeUserImportJobResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for DescribeUserImportJobRequest. -}
+{-| Codec for DescribeUserImportJobRequest.
+-}
 describeUserImportJobRequestCodec : Codec DescribeUserImportJobRequest
 describeUserImportJobRequestCodec =
     Codec.object DescribeUserImportJobRequest
@@ -7090,7 +7441,8 @@ describeUserImportJobRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for DescribeRiskConfigurationResponse. -}
+{-| Codec for DescribeRiskConfigurationResponse.
+-}
 describeRiskConfigurationResponseCodec : Codec DescribeRiskConfigurationResponse
 describeRiskConfigurationResponseCodec =
     Codec.object DescribeRiskConfigurationResponse
@@ -7098,7 +7450,8 @@ describeRiskConfigurationResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for DescribeRiskConfigurationRequest. -}
+{-| Codec for DescribeRiskConfigurationRequest.
+-}
 describeRiskConfigurationRequestCodec : Codec DescribeRiskConfigurationRequest
 describeRiskConfigurationRequestCodec =
     Codec.object DescribeRiskConfigurationRequest
@@ -7107,7 +7460,8 @@ describeRiskConfigurationRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for DescribeResourceServerResponse. -}
+{-| Codec for DescribeResourceServerResponse.
+-}
 describeResourceServerResponseCodec : Codec DescribeResourceServerResponse
 describeResourceServerResponseCodec =
     Codec.object DescribeResourceServerResponse
@@ -7115,7 +7469,8 @@ describeResourceServerResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for DescribeResourceServerRequest. -}
+{-| Codec for DescribeResourceServerRequest.
+-}
 describeResourceServerRequestCodec : Codec DescribeResourceServerRequest
 describeResourceServerRequestCodec =
     Codec.object DescribeResourceServerRequest
@@ -7124,7 +7479,8 @@ describeResourceServerRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for DescribeIdentityProviderResponse. -}
+{-| Codec for DescribeIdentityProviderResponse.
+-}
 describeIdentityProviderResponseCodec : Codec DescribeIdentityProviderResponse
 describeIdentityProviderResponseCodec =
     Codec.object DescribeIdentityProviderResponse
@@ -7132,7 +7488,8 @@ describeIdentityProviderResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for DescribeIdentityProviderRequest. -}
+{-| Codec for DescribeIdentityProviderRequest.
+-}
 describeIdentityProviderRequestCodec : Codec DescribeIdentityProviderRequest
 describeIdentityProviderRequestCodec =
     Codec.object DescribeIdentityProviderRequest
@@ -7141,37 +7498,43 @@ describeIdentityProviderRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for DeliveryMediumType. -}
+{-| Codec for DeliveryMediumType.
+-}
 deliveryMediumTypeCodec : Codec DeliveryMediumType
 deliveryMediumTypeCodec =
     Codec.build (Enum.encoder deliveryMediumType) (Enum.decoder deliveryMediumType)
 
 
-{-| Codec for DeliveryMediumListType. -}
+{-| Codec for DeliveryMediumListType.
+-}
 deliveryMediumListTypeCodec : Codec DeliveryMediumListType
 deliveryMediumListTypeCodec =
     Codec.list deliveryMediumTypeCodec
 
 
-{-| Codec for DeleteUserRequest. -}
+{-| Codec for DeleteUserRequest.
+-}
 deleteUserRequestCodec : Codec DeleteUserRequest
 deleteUserRequestCodec =
     Codec.object DeleteUserRequest |> Codec.field "AccessToken" .accessToken tokenModelTypeCodec |> Codec.buildObject
 
 
-{-| Codec for DeleteUserPoolRequest. -}
+{-| Codec for DeleteUserPoolRequest.
+-}
 deleteUserPoolRequestCodec : Codec DeleteUserPoolRequest
 deleteUserPoolRequestCodec =
     Codec.object DeleteUserPoolRequest |> Codec.field "UserPoolId" .userPoolId userPoolIdTypeCodec |> Codec.buildObject
 
 
-{-| Codec for DeleteUserPoolDomainResponse. -}
+{-| Codec for DeleteUserPoolDomainResponse.
+-}
 deleteUserPoolDomainResponseCodec : Codec DeleteUserPoolDomainResponse
 deleteUserPoolDomainResponseCodec =
     Codec.object DeleteUserPoolDomainResponse |> Codec.buildObject
 
 
-{-| Codec for DeleteUserPoolDomainRequest. -}
+{-| Codec for DeleteUserPoolDomainRequest.
+-}
 deleteUserPoolDomainRequestCodec : Codec DeleteUserPoolDomainRequest
 deleteUserPoolDomainRequestCodec =
     Codec.object DeleteUserPoolDomainRequest
@@ -7180,7 +7543,8 @@ deleteUserPoolDomainRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for DeleteUserPoolClientRequest. -}
+{-| Codec for DeleteUserPoolClientRequest.
+-}
 deleteUserPoolClientRequestCodec : Codec DeleteUserPoolClientRequest
 deleteUserPoolClientRequestCodec =
     Codec.object DeleteUserPoolClientRequest
@@ -7189,13 +7553,15 @@ deleteUserPoolClientRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for DeleteUserAttributesResponse. -}
+{-| Codec for DeleteUserAttributesResponse.
+-}
 deleteUserAttributesResponseCodec : Codec DeleteUserAttributesResponse
 deleteUserAttributesResponseCodec =
     Codec.object DeleteUserAttributesResponse |> Codec.buildObject
 
 
-{-| Codec for DeleteUserAttributesRequest. -}
+{-| Codec for DeleteUserAttributesRequest.
+-}
 deleteUserAttributesRequestCodec : Codec DeleteUserAttributesRequest
 deleteUserAttributesRequestCodec =
     Codec.object DeleteUserAttributesRequest
@@ -7204,7 +7570,8 @@ deleteUserAttributesRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for DeleteResourceServerRequest. -}
+{-| Codec for DeleteResourceServerRequest.
+-}
 deleteResourceServerRequestCodec : Codec DeleteResourceServerRequest
 deleteResourceServerRequestCodec =
     Codec.object DeleteResourceServerRequest
@@ -7213,7 +7580,8 @@ deleteResourceServerRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for DeleteIdentityProviderRequest. -}
+{-| Codec for DeleteIdentityProviderRequest.
+-}
 deleteIdentityProviderRequestCodec : Codec DeleteIdentityProviderRequest
 deleteIdentityProviderRequestCodec =
     Codec.object DeleteIdentityProviderRequest
@@ -7222,7 +7590,8 @@ deleteIdentityProviderRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for DeleteGroupRequest. -}
+{-| Codec for DeleteGroupRequest.
+-}
 deleteGroupRequestCodec : Codec DeleteGroupRequest
 deleteGroupRequestCodec =
     Codec.object DeleteGroupRequest
@@ -7231,19 +7600,22 @@ deleteGroupRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for DefaultEmailOptionType. -}
+{-| Codec for DefaultEmailOptionType.
+-}
 defaultEmailOptionTypeCodec : Codec DefaultEmailOptionType
 defaultEmailOptionTypeCodec =
     Codec.build (Enum.encoder defaultEmailOptionType) (Enum.decoder defaultEmailOptionType)
 
 
-{-| Codec for DateType. -}
+{-| Codec for DateType.
+-}
 dateTypeCodec : Codec DateType
 dateTypeCodec =
     Codec.string
 
 
-{-| Codec for CustomDomainConfigType. -}
+{-| Codec for CustomDomainConfigType.
+-}
 customDomainConfigTypeCodec : Codec CustomDomainConfigType
 customDomainConfigTypeCodec =
     Codec.object CustomDomainConfigType
@@ -7251,19 +7623,22 @@ customDomainConfigTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for CustomAttributesListType. -}
+{-| Codec for CustomAttributesListType.
+-}
 customAttributesListTypeCodec : Codec CustomAttributesListType
 customAttributesListTypeCodec =
     Codec.list schemaAttributeTypeCodec
 
 
-{-| Codec for CustomAttributeNameType. -}
+{-| Codec for CustomAttributeNameType.
+-}
 customAttributeNameTypeCodec : Codec CustomAttributeNameType
 customAttributeNameTypeCodec =
     Codec.build (Refined.encoder customAttributeNameType) (Refined.decoder customAttributeNameType)
 
 
-{-| Codec for CreateUserPoolResponse. -}
+{-| Codec for CreateUserPoolResponse.
+-}
 createUserPoolResponseCodec : Codec CreateUserPoolResponse
 createUserPoolResponseCodec =
     Codec.object CreateUserPoolResponse
@@ -7271,7 +7646,8 @@ createUserPoolResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for CreateUserPoolRequest. -}
+{-| Codec for CreateUserPoolRequest.
+-}
 createUserPoolRequestCodec : Codec CreateUserPoolRequest
 createUserPoolRequestCodec =
     Codec.object CreateUserPoolRequest
@@ -7300,7 +7676,8 @@ createUserPoolRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for CreateUserPoolDomainResponse. -}
+{-| Codec for CreateUserPoolDomainResponse.
+-}
 createUserPoolDomainResponseCodec : Codec CreateUserPoolDomainResponse
 createUserPoolDomainResponseCodec =
     Codec.object CreateUserPoolDomainResponse
@@ -7308,7 +7685,8 @@ createUserPoolDomainResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for CreateUserPoolDomainRequest. -}
+{-| Codec for CreateUserPoolDomainRequest.
+-}
 createUserPoolDomainRequestCodec : Codec CreateUserPoolDomainRequest
 createUserPoolDomainRequestCodec =
     Codec.object CreateUserPoolDomainRequest
@@ -7318,7 +7696,8 @@ createUserPoolDomainRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for CreateUserPoolClientResponse. -}
+{-| Codec for CreateUserPoolClientResponse.
+-}
 createUserPoolClientResponseCodec : Codec CreateUserPoolClientResponse
 createUserPoolClientResponseCodec =
     Codec.object CreateUserPoolClientResponse
@@ -7326,7 +7705,8 @@ createUserPoolClientResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for CreateUserPoolClientRequest. -}
+{-| Codec for CreateUserPoolClientRequest.
+-}
 createUserPoolClientRequestCodec : Codec CreateUserPoolClientRequest
 createUserPoolClientRequestCodec =
     Codec.object CreateUserPoolClientRequest
@@ -7351,7 +7731,8 @@ createUserPoolClientRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for CreateUserImportJobResponse. -}
+{-| Codec for CreateUserImportJobResponse.
+-}
 createUserImportJobResponseCodec : Codec CreateUserImportJobResponse
 createUserImportJobResponseCodec =
     Codec.object CreateUserImportJobResponse
@@ -7359,7 +7740,8 @@ createUserImportJobResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for CreateUserImportJobRequest. -}
+{-| Codec for CreateUserImportJobRequest.
+-}
 createUserImportJobRequestCodec : Codec CreateUserImportJobRequest
 createUserImportJobRequestCodec =
     Codec.object CreateUserImportJobRequest
@@ -7369,7 +7751,8 @@ createUserImportJobRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for CreateResourceServerResponse. -}
+{-| Codec for CreateResourceServerResponse.
+-}
 createResourceServerResponseCodec : Codec CreateResourceServerResponse
 createResourceServerResponseCodec =
     Codec.object CreateResourceServerResponse
@@ -7377,7 +7760,8 @@ createResourceServerResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for CreateResourceServerRequest. -}
+{-| Codec for CreateResourceServerRequest.
+-}
 createResourceServerRequestCodec : Codec CreateResourceServerRequest
 createResourceServerRequestCodec =
     Codec.object CreateResourceServerRequest
@@ -7388,7 +7772,8 @@ createResourceServerRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for CreateIdentityProviderResponse. -}
+{-| Codec for CreateIdentityProviderResponse.
+-}
 createIdentityProviderResponseCodec : Codec CreateIdentityProviderResponse
 createIdentityProviderResponseCodec =
     Codec.object CreateIdentityProviderResponse
@@ -7396,7 +7781,8 @@ createIdentityProviderResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for CreateIdentityProviderRequest. -}
+{-| Codec for CreateIdentityProviderRequest.
+-}
 createIdentityProviderRequestCodec : Codec CreateIdentityProviderRequest
 createIdentityProviderRequestCodec =
     Codec.object CreateIdentityProviderRequest
@@ -7409,13 +7795,15 @@ createIdentityProviderRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for CreateGroupResponse. -}
+{-| Codec for CreateGroupResponse.
+-}
 createGroupResponseCodec : Codec CreateGroupResponse
 createGroupResponseCodec =
     Codec.object CreateGroupResponse |> Codec.optionalField "Group" .group groupTypeCodec |> Codec.buildObject
 
 
-{-| Codec for CreateGroupRequest. -}
+{-| Codec for CreateGroupRequest.
+-}
 createGroupRequestCodec : Codec CreateGroupRequest
 createGroupRequestCodec =
     Codec.object CreateGroupRequest
@@ -7427,7 +7815,8 @@ createGroupRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ContextDataType. -}
+{-| Codec for ContextDataType.
+-}
 contextDataTypeCodec : Codec ContextDataType
 contextDataTypeCodec =
     Codec.object ContextDataType
@@ -7439,19 +7828,22 @@ contextDataTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ConfirmationCodeType. -}
+{-| Codec for ConfirmationCodeType.
+-}
 confirmationCodeTypeCodec : Codec ConfirmationCodeType
 confirmationCodeTypeCodec =
     Codec.build (Refined.encoder confirmationCodeType) (Refined.decoder confirmationCodeType)
 
 
-{-| Codec for ConfirmSignUpResponse. -}
+{-| Codec for ConfirmSignUpResponse.
+-}
 confirmSignUpResponseCodec : Codec ConfirmSignUpResponse
 confirmSignUpResponseCodec =
     Codec.object ConfirmSignUpResponse |> Codec.buildObject
 
 
-{-| Codec for ConfirmSignUpRequest. -}
+{-| Codec for ConfirmSignUpRequest.
+-}
 confirmSignUpRequestCodec : Codec ConfirmSignUpRequest
 confirmSignUpRequestCodec =
     Codec.object ConfirmSignUpRequest
@@ -7465,13 +7857,15 @@ confirmSignUpRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ConfirmForgotPasswordResponse. -}
+{-| Codec for ConfirmForgotPasswordResponse.
+-}
 confirmForgotPasswordResponseCodec : Codec ConfirmForgotPasswordResponse
 confirmForgotPasswordResponseCodec =
     Codec.object ConfirmForgotPasswordResponse |> Codec.buildObject
 
 
-{-| Codec for ConfirmForgotPasswordRequest. -}
+{-| Codec for ConfirmForgotPasswordRequest.
+-}
 confirmForgotPasswordRequestCodec : Codec ConfirmForgotPasswordRequest
 confirmForgotPasswordRequestCodec =
     Codec.object ConfirmForgotPasswordRequest
@@ -7485,7 +7879,8 @@ confirmForgotPasswordRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ConfirmDeviceResponse. -}
+{-| Codec for ConfirmDeviceResponse.
+-}
 confirmDeviceResponseCodec : Codec ConfirmDeviceResponse
 confirmDeviceResponseCodec =
     Codec.object ConfirmDeviceResponse
@@ -7493,7 +7888,8 @@ confirmDeviceResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ConfirmDeviceRequest. -}
+{-| Codec for ConfirmDeviceRequest.
+-}
 confirmDeviceRequestCodec : Codec ConfirmDeviceRequest
 confirmDeviceRequestCodec =
     Codec.object ConfirmDeviceRequest
@@ -7507,7 +7903,8 @@ confirmDeviceRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for CompromisedCredentialsRiskConfigurationType. -}
+{-| Codec for CompromisedCredentialsRiskConfigurationType.
+-}
 compromisedCredentialsRiskConfigurationTypeCodec : Codec CompromisedCredentialsRiskConfigurationType
 compromisedCredentialsRiskConfigurationTypeCodec =
     Codec.object CompromisedCredentialsRiskConfigurationType
@@ -7516,7 +7913,8 @@ compromisedCredentialsRiskConfigurationTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for CompromisedCredentialsEventActionType. -}
+{-| Codec for CompromisedCredentialsEventActionType.
+-}
 compromisedCredentialsEventActionTypeCodec : Codec CompromisedCredentialsEventActionType
 compromisedCredentialsEventActionTypeCodec =
     Codec.build
@@ -7524,7 +7922,8 @@ compromisedCredentialsEventActionTypeCodec =
         (Enum.decoder compromisedCredentialsEventActionType)
 
 
-{-| Codec for CompromisedCredentialsActionsType. -}
+{-| Codec for CompromisedCredentialsActionsType.
+-}
 compromisedCredentialsActionsTypeCodec : Codec CompromisedCredentialsActionsType
 compromisedCredentialsActionsTypeCodec =
     Codec.object CompromisedCredentialsActionsType
@@ -7532,13 +7931,15 @@ compromisedCredentialsActionsTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for CompletionMessageType. -}
+{-| Codec for CompletionMessageType.
+-}
 completionMessageTypeCodec : Codec CompletionMessageType
 completionMessageTypeCodec =
     Codec.build (Refined.encoder completionMessageType) (Refined.decoder completionMessageType)
 
 
-{-| Codec for CodeDeliveryDetailsType. -}
+{-| Codec for CodeDeliveryDetailsType.
+-}
 codeDeliveryDetailsTypeCodec : Codec CodeDeliveryDetailsType
 codeDeliveryDetailsTypeCodec =
     Codec.object CodeDeliveryDetailsType
@@ -7548,55 +7949,64 @@ codeDeliveryDetailsTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for CodeDeliveryDetailsListType. -}
+{-| Codec for CodeDeliveryDetailsListType.
+-}
 codeDeliveryDetailsListTypeCodec : Codec CodeDeliveryDetailsListType
 codeDeliveryDetailsListTypeCodec =
     Codec.list codeDeliveryDetailsTypeCodec
 
 
-{-| Codec for ClientSecretType. -}
+{-| Codec for ClientSecretType.
+-}
 clientSecretTypeCodec : Codec ClientSecretType
 clientSecretTypeCodec =
     Codec.build (Refined.encoder clientSecretType) (Refined.decoder clientSecretType)
 
 
-{-| Codec for ClientPermissionType. -}
+{-| Codec for ClientPermissionType.
+-}
 clientPermissionTypeCodec : Codec ClientPermissionType
 clientPermissionTypeCodec =
     Codec.build (Refined.encoder clientPermissionType) (Refined.decoder clientPermissionType)
 
 
-{-| Codec for ClientPermissionListType. -}
+{-| Codec for ClientPermissionListType.
+-}
 clientPermissionListTypeCodec : Codec ClientPermissionListType
 clientPermissionListTypeCodec =
     Codec.list clientPermissionTypeCodec
 
 
-{-| Codec for ClientNameType. -}
+{-| Codec for ClientNameType.
+-}
 clientNameTypeCodec : Codec ClientNameType
 clientNameTypeCodec =
     Codec.build (Refined.encoder clientNameType) (Refined.decoder clientNameType)
 
 
-{-| Codec for ClientMetadataType. -}
+{-| Codec for ClientMetadataType.
+-}
 clientMetadataTypeCodec : Codec ClientMetadataType
 clientMetadataTypeCodec =
     Codec.dict Codec.string
 
 
-{-| Codec for ClientIdType. -}
+{-| Codec for ClientIdType.
+-}
 clientIdTypeCodec : Codec ClientIdType
 clientIdTypeCodec =
     Codec.build (Refined.encoder clientIdType) (Refined.decoder clientIdType)
 
 
-{-| Codec for ChangePasswordResponse. -}
+{-| Codec for ChangePasswordResponse.
+-}
 changePasswordResponseCodec : Codec ChangePasswordResponse
 changePasswordResponseCodec =
     Codec.object ChangePasswordResponse |> Codec.buildObject
 
 
-{-| Codec for ChangePasswordRequest. -}
+{-| Codec for ChangePasswordRequest.
+-}
 changePasswordRequestCodec : Codec ChangePasswordRequest
 changePasswordRequestCodec =
     Codec.object ChangePasswordRequest
@@ -7606,13 +8016,15 @@ changePasswordRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ChallengeResponsesType. -}
+{-| Codec for ChallengeResponsesType.
+-}
 challengeResponsesTypeCodec : Codec ChallengeResponsesType
 challengeResponsesTypeCodec =
     Codec.dict Codec.string
 
 
-{-| Codec for ChallengeResponseType. -}
+{-| Codec for ChallengeResponseType.
+-}
 challengeResponseTypeCodec : Codec ChallengeResponseType
 challengeResponseTypeCodec =
     Codec.object ChallengeResponseType
@@ -7621,67 +8033,78 @@ challengeResponseTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ChallengeResponseListType. -}
+{-| Codec for ChallengeResponseListType.
+-}
 challengeResponseListTypeCodec : Codec ChallengeResponseListType
 challengeResponseListTypeCodec =
     Codec.list challengeResponseTypeCodec
 
 
-{-| Codec for ChallengeResponse. -}
+{-| Codec for ChallengeResponse.
+-}
 challengeResponseCodec : Codec ChallengeResponse
 challengeResponseCodec =
     Codec.build (Enum.encoder challengeResponse) (Enum.decoder challengeResponse)
 
 
-{-| Codec for ChallengeParametersType. -}
+{-| Codec for ChallengeParametersType.
+-}
 challengeParametersTypeCodec : Codec ChallengeParametersType
 challengeParametersTypeCodec =
     Codec.dict Codec.string
 
 
-{-| Codec for ChallengeNameType. -}
+{-| Codec for ChallengeNameType.
+-}
 challengeNameTypeCodec : Codec ChallengeNameType
 challengeNameTypeCodec =
     Codec.build (Enum.encoder challengeNameType) (Enum.decoder challengeNameType)
 
 
-{-| Codec for ChallengeName. -}
+{-| Codec for ChallengeName.
+-}
 challengeNameCodec : Codec ChallengeName
 challengeNameCodec =
     Codec.build (Enum.encoder challengeName) (Enum.decoder challengeName)
 
 
-{-| Codec for CallbackUrlsListType. -}
+{-| Codec for CallbackUrlsListType.
+-}
 callbackUrlsListTypeCodec : Codec CallbackUrlsListType
 callbackUrlsListTypeCodec =
     Codec.list redirectUrlTypeCodec
 
 
-{-| Codec for CssversionType. -}
+{-| Codec for CssversionType.
+-}
 cssversionTypeCodec : Codec CssversionType
 cssversionTypeCodec =
     Codec.string
 
 
-{-| Codec for Csstype. -}
+{-| Codec for Csstype.
+-}
 csstypeCodec : Codec Csstype
 csstypeCodec =
     Codec.string
 
 
-{-| Codec for BooleanType. -}
+{-| Codec for BooleanType.
+-}
 booleanTypeCodec : Codec BooleanType
 booleanTypeCodec =
     Codec.bool
 
 
-{-| Codec for BlockedIprangeListType. -}
+{-| Codec for BlockedIprangeListType.
+-}
 blockedIprangeListTypeCodec : Codec BlockedIprangeListType
 blockedIprangeListTypeCodec =
     Codec.list Codec.string
 
 
-{-| Codec for AuthenticationResultType. -}
+{-| Codec for AuthenticationResultType.
+-}
 authenticationResultTypeCodec : Codec AuthenticationResultType
 authenticationResultTypeCodec =
     Codec.object AuthenticationResultType
@@ -7694,25 +8117,29 @@ authenticationResultTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AuthParametersType. -}
+{-| Codec for AuthParametersType.
+-}
 authParametersTypeCodec : Codec AuthParametersType
 authParametersTypeCodec =
     Codec.dict Codec.string
 
 
-{-| Codec for AuthFlowType. -}
+{-| Codec for AuthFlowType.
+-}
 authFlowTypeCodec : Codec AuthFlowType
 authFlowTypeCodec =
     Codec.build (Enum.encoder authFlowType) (Enum.decoder authFlowType)
 
 
-{-| Codec for AuthEventsType. -}
+{-| Codec for AuthEventsType.
+-}
 authEventsTypeCodec : Codec AuthEventsType
 authEventsTypeCodec =
     Codec.list authEventTypeCodec
 
 
-{-| Codec for AuthEventType. -}
+{-| Codec for AuthEventType.
+-}
 authEventTypeCodec : Codec AuthEventType
 authEventTypeCodec =
     Codec.object AuthEventType
@@ -7727,13 +8154,15 @@ authEventTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AttributeValueType. -}
+{-| Codec for AttributeValueType.
+-}
 attributeValueTypeCodec : Codec AttributeValueType
 attributeValueTypeCodec =
     Codec.build (Refined.encoder attributeValueType) (Refined.decoder attributeValueType)
 
 
-{-| Codec for AttributeType. -}
+{-| Codec for AttributeType.
+-}
 attributeTypeCodec : Codec AttributeType
 attributeTypeCodec =
     Codec.object AttributeType
@@ -7742,19 +8171,22 @@ attributeTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AttributeNameType. -}
+{-| Codec for AttributeNameType.
+-}
 attributeNameTypeCodec : Codec AttributeNameType
 attributeNameTypeCodec =
     Codec.build (Refined.encoder attributeNameType) (Refined.decoder attributeNameType)
 
 
-{-| Codec for AttributeNameListType. -}
+{-| Codec for AttributeNameListType.
+-}
 attributeNameListTypeCodec : Codec AttributeNameListType
 attributeNameListTypeCodec =
     Codec.list attributeNameTypeCodec
 
 
-{-| Codec for AttributeMappingType. -}
+{-| Codec for AttributeMappingType.
+-}
 attributeMappingTypeCodec : Codec AttributeMappingType
 attributeMappingTypeCodec =
     Codec.build
@@ -7762,25 +8194,29 @@ attributeMappingTypeCodec =
         (Refined.dictDecoder attributeMappingKeyType (Codec.decoder Codec.string))
 
 
-{-| Codec for AttributeMappingKeyType. -}
+{-| Codec for AttributeMappingKeyType.
+-}
 attributeMappingKeyTypeCodec : Codec AttributeMappingKeyType
 attributeMappingKeyTypeCodec =
     Codec.build (Refined.encoder attributeMappingKeyType) (Refined.decoder attributeMappingKeyType)
 
 
-{-| Codec for AttributeListType. -}
+{-| Codec for AttributeListType.
+-}
 attributeListTypeCodec : Codec AttributeListType
 attributeListTypeCodec =
     Codec.list attributeTypeCodec
 
 
-{-| Codec for AttributeDataType. -}
+{-| Codec for AttributeDataType.
+-}
 attributeDataTypeCodec : Codec AttributeDataType
 attributeDataTypeCodec =
     Codec.build (Enum.encoder attributeDataType) (Enum.decoder attributeDataType)
 
 
-{-| Codec for AssociateSoftwareTokenResponse. -}
+{-| Codec for AssociateSoftwareTokenResponse.
+-}
 associateSoftwareTokenResponseCodec : Codec AssociateSoftwareTokenResponse
 associateSoftwareTokenResponseCodec =
     Codec.object AssociateSoftwareTokenResponse
@@ -7789,7 +8225,8 @@ associateSoftwareTokenResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AssociateSoftwareTokenRequest. -}
+{-| Codec for AssociateSoftwareTokenRequest.
+-}
 associateSoftwareTokenRequestCodec : Codec AssociateSoftwareTokenRequest
 associateSoftwareTokenRequestCodec =
     Codec.object AssociateSoftwareTokenRequest
@@ -7798,13 +8235,15 @@ associateSoftwareTokenRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for ArnType. -}
+{-| Codec for ArnType.
+-}
 arnTypeCodec : Codec ArnType
 arnTypeCodec =
     Codec.build (Refined.encoder arnType) (Refined.decoder arnType)
 
 
-{-| Codec for AnalyticsMetadataType. -}
+{-| Codec for AnalyticsMetadataType.
+-}
 analyticsMetadataTypeCodec : Codec AnalyticsMetadataType
 analyticsMetadataTypeCodec =
     Codec.object AnalyticsMetadataType
@@ -7812,7 +8251,8 @@ analyticsMetadataTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AnalyticsConfigurationType. -}
+{-| Codec for AnalyticsConfigurationType.
+-}
 analyticsConfigurationTypeCodec : Codec AnalyticsConfigurationType
 analyticsConfigurationTypeCodec =
     Codec.object AnalyticsConfigurationType
@@ -7823,31 +8263,36 @@ analyticsConfigurationTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AliasAttributesListType. -}
+{-| Codec for AliasAttributesListType.
+-}
 aliasAttributesListTypeCodec : Codec AliasAttributesListType
 aliasAttributesListTypeCodec =
     Codec.list aliasAttributeTypeCodec
 
 
-{-| Codec for AliasAttributeType. -}
+{-| Codec for AliasAttributeType.
+-}
 aliasAttributeTypeCodec : Codec AliasAttributeType
 aliasAttributeTypeCodec =
     Codec.build (Enum.encoder aliasAttributeType) (Enum.decoder aliasAttributeType)
 
 
-{-| Codec for AdvancedSecurityModeType. -}
+{-| Codec for AdvancedSecurityModeType.
+-}
 advancedSecurityModeTypeCodec : Codec AdvancedSecurityModeType
 advancedSecurityModeTypeCodec =
     Codec.build (Enum.encoder advancedSecurityModeType) (Enum.decoder advancedSecurityModeType)
 
 
-{-| Codec for AdminUserGlobalSignOutResponse. -}
+{-| Codec for AdminUserGlobalSignOutResponse.
+-}
 adminUserGlobalSignOutResponseCodec : Codec AdminUserGlobalSignOutResponse
 adminUserGlobalSignOutResponseCodec =
     Codec.object AdminUserGlobalSignOutResponse |> Codec.buildObject
 
 
-{-| Codec for AdminUserGlobalSignOutRequest. -}
+{-| Codec for AdminUserGlobalSignOutRequest.
+-}
 adminUserGlobalSignOutRequestCodec : Codec AdminUserGlobalSignOutRequest
 adminUserGlobalSignOutRequestCodec =
     Codec.object AdminUserGlobalSignOutRequest
@@ -7856,13 +8301,15 @@ adminUserGlobalSignOutRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminUpdateUserAttributesResponse. -}
+{-| Codec for AdminUpdateUserAttributesResponse.
+-}
 adminUpdateUserAttributesResponseCodec : Codec AdminUpdateUserAttributesResponse
 adminUpdateUserAttributesResponseCodec =
     Codec.object AdminUpdateUserAttributesResponse |> Codec.buildObject
 
 
-{-| Codec for AdminUpdateUserAttributesRequest. -}
+{-| Codec for AdminUpdateUserAttributesRequest.
+-}
 adminUpdateUserAttributesRequestCodec : Codec AdminUpdateUserAttributesRequest
 adminUpdateUserAttributesRequestCodec =
     Codec.object AdminUpdateUserAttributesRequest
@@ -7872,13 +8319,15 @@ adminUpdateUserAttributesRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminUpdateDeviceStatusResponse. -}
+{-| Codec for AdminUpdateDeviceStatusResponse.
+-}
 adminUpdateDeviceStatusResponseCodec : Codec AdminUpdateDeviceStatusResponse
 adminUpdateDeviceStatusResponseCodec =
     Codec.object AdminUpdateDeviceStatusResponse |> Codec.buildObject
 
 
-{-| Codec for AdminUpdateDeviceStatusRequest. -}
+{-| Codec for AdminUpdateDeviceStatusRequest.
+-}
 adminUpdateDeviceStatusRequestCodec : Codec AdminUpdateDeviceStatusRequest
 adminUpdateDeviceStatusRequestCodec =
     Codec.object AdminUpdateDeviceStatusRequest
@@ -7889,13 +8338,15 @@ adminUpdateDeviceStatusRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminUpdateAuthEventFeedbackResponse. -}
+{-| Codec for AdminUpdateAuthEventFeedbackResponse.
+-}
 adminUpdateAuthEventFeedbackResponseCodec : Codec AdminUpdateAuthEventFeedbackResponse
 adminUpdateAuthEventFeedbackResponseCodec =
     Codec.object AdminUpdateAuthEventFeedbackResponse |> Codec.buildObject
 
 
-{-| Codec for AdminUpdateAuthEventFeedbackRequest. -}
+{-| Codec for AdminUpdateAuthEventFeedbackRequest.
+-}
 adminUpdateAuthEventFeedbackRequestCodec : Codec AdminUpdateAuthEventFeedbackRequest
 adminUpdateAuthEventFeedbackRequestCodec =
     Codec.object AdminUpdateAuthEventFeedbackRequest
@@ -7906,13 +8357,15 @@ adminUpdateAuthEventFeedbackRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminSetUserSettingsResponse. -}
+{-| Codec for AdminSetUserSettingsResponse.
+-}
 adminSetUserSettingsResponseCodec : Codec AdminSetUserSettingsResponse
 adminSetUserSettingsResponseCodec =
     Codec.object AdminSetUserSettingsResponse |> Codec.buildObject
 
 
-{-| Codec for AdminSetUserSettingsRequest. -}
+{-| Codec for AdminSetUserSettingsRequest.
+-}
 adminSetUserSettingsRequestCodec : Codec AdminSetUserSettingsRequest
 adminSetUserSettingsRequestCodec =
     Codec.object AdminSetUserSettingsRequest
@@ -7922,13 +8375,15 @@ adminSetUserSettingsRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminSetUserPasswordResponse. -}
+{-| Codec for AdminSetUserPasswordResponse.
+-}
 adminSetUserPasswordResponseCodec : Codec AdminSetUserPasswordResponse
 adminSetUserPasswordResponseCodec =
     Codec.object AdminSetUserPasswordResponse |> Codec.buildObject
 
 
-{-| Codec for AdminSetUserPasswordRequest. -}
+{-| Codec for AdminSetUserPasswordRequest.
+-}
 adminSetUserPasswordRequestCodec : Codec AdminSetUserPasswordRequest
 adminSetUserPasswordRequestCodec =
     Codec.object AdminSetUserPasswordRequest
@@ -7939,13 +8394,15 @@ adminSetUserPasswordRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminSetUserMfapreferenceResponse. -}
+{-| Codec for AdminSetUserMfapreferenceResponse.
+-}
 adminSetUserMfapreferenceResponseCodec : Codec AdminSetUserMfapreferenceResponse
 adminSetUserMfapreferenceResponseCodec =
     Codec.object AdminSetUserMfapreferenceResponse |> Codec.buildObject
 
 
-{-| Codec for AdminSetUserMfapreferenceRequest. -}
+{-| Codec for AdminSetUserMfapreferenceRequest.
+-}
 adminSetUserMfapreferenceRequestCodec : Codec AdminSetUserMfapreferenceRequest
 adminSetUserMfapreferenceRequestCodec =
     Codec.object AdminSetUserMfapreferenceRequest
@@ -7956,7 +8413,8 @@ adminSetUserMfapreferenceRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminRespondToAuthChallengeResponse. -}
+{-| Codec for AdminRespondToAuthChallengeResponse.
+-}
 adminRespondToAuthChallengeResponseCodec : Codec AdminRespondToAuthChallengeResponse
 adminRespondToAuthChallengeResponseCodec =
     Codec.object AdminRespondToAuthChallengeResponse
@@ -7967,7 +8425,8 @@ adminRespondToAuthChallengeResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminRespondToAuthChallengeRequest. -}
+{-| Codec for AdminRespondToAuthChallengeRequest.
+-}
 adminRespondToAuthChallengeRequestCodec : Codec AdminRespondToAuthChallengeRequest
 adminRespondToAuthChallengeRequestCodec =
     Codec.object AdminRespondToAuthChallengeRequest
@@ -7981,13 +8440,15 @@ adminRespondToAuthChallengeRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminResetUserPasswordResponse. -}
+{-| Codec for AdminResetUserPasswordResponse.
+-}
 adminResetUserPasswordResponseCodec : Codec AdminResetUserPasswordResponse
 adminResetUserPasswordResponseCodec =
     Codec.object AdminResetUserPasswordResponse |> Codec.buildObject
 
 
-{-| Codec for AdminResetUserPasswordRequest. -}
+{-| Codec for AdminResetUserPasswordRequest.
+-}
 adminResetUserPasswordRequestCodec : Codec AdminResetUserPasswordRequest
 adminResetUserPasswordRequestCodec =
     Codec.object AdminResetUserPasswordRequest
@@ -7996,7 +8457,8 @@ adminResetUserPasswordRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminRemoveUserFromGroupRequest. -}
+{-| Codec for AdminRemoveUserFromGroupRequest.
+-}
 adminRemoveUserFromGroupRequestCodec : Codec AdminRemoveUserFromGroupRequest
 adminRemoveUserFromGroupRequestCodec =
     Codec.object AdminRemoveUserFromGroupRequest
@@ -8006,7 +8468,8 @@ adminRemoveUserFromGroupRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminListUserAuthEventsResponse. -}
+{-| Codec for AdminListUserAuthEventsResponse.
+-}
 adminListUserAuthEventsResponseCodec : Codec AdminListUserAuthEventsResponse
 adminListUserAuthEventsResponseCodec =
     Codec.object AdminListUserAuthEventsResponse
@@ -8015,7 +8478,8 @@ adminListUserAuthEventsResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminListUserAuthEventsRequest. -}
+{-| Codec for AdminListUserAuthEventsRequest.
+-}
 adminListUserAuthEventsRequestCodec : Codec AdminListUserAuthEventsRequest
 adminListUserAuthEventsRequestCodec =
     Codec.object AdminListUserAuthEventsRequest
@@ -8026,7 +8490,8 @@ adminListUserAuthEventsRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminListGroupsForUserResponse. -}
+{-| Codec for AdminListGroupsForUserResponse.
+-}
 adminListGroupsForUserResponseCodec : Codec AdminListGroupsForUserResponse
 adminListGroupsForUserResponseCodec =
     Codec.object AdminListGroupsForUserResponse
@@ -8035,7 +8500,8 @@ adminListGroupsForUserResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminListGroupsForUserRequest. -}
+{-| Codec for AdminListGroupsForUserRequest.
+-}
 adminListGroupsForUserRequestCodec : Codec AdminListGroupsForUserRequest
 adminListGroupsForUserRequestCodec =
     Codec.object AdminListGroupsForUserRequest
@@ -8046,7 +8512,8 @@ adminListGroupsForUserRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminListDevicesResponse. -}
+{-| Codec for AdminListDevicesResponse.
+-}
 adminListDevicesResponseCodec : Codec AdminListDevicesResponse
 adminListDevicesResponseCodec =
     Codec.object AdminListDevicesResponse
@@ -8055,7 +8522,8 @@ adminListDevicesResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminListDevicesRequest. -}
+{-| Codec for AdminListDevicesRequest.
+-}
 adminListDevicesRequestCodec : Codec AdminListDevicesRequest
 adminListDevicesRequestCodec =
     Codec.object AdminListDevicesRequest
@@ -8066,13 +8534,15 @@ adminListDevicesRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminLinkProviderForUserResponse. -}
+{-| Codec for AdminLinkProviderForUserResponse.
+-}
 adminLinkProviderForUserResponseCodec : Codec AdminLinkProviderForUserResponse
 adminLinkProviderForUserResponseCodec =
     Codec.object AdminLinkProviderForUserResponse |> Codec.buildObject
 
 
-{-| Codec for AdminLinkProviderForUserRequest. -}
+{-| Codec for AdminLinkProviderForUserRequest.
+-}
 adminLinkProviderForUserRequestCodec : Codec AdminLinkProviderForUserRequest
 adminLinkProviderForUserRequestCodec =
     Codec.object AdminLinkProviderForUserRequest
@@ -8082,7 +8552,8 @@ adminLinkProviderForUserRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminInitiateAuthResponse. -}
+{-| Codec for AdminInitiateAuthResponse.
+-}
 adminInitiateAuthResponseCodec : Codec AdminInitiateAuthResponse
 adminInitiateAuthResponseCodec =
     Codec.object AdminInitiateAuthResponse
@@ -8093,7 +8564,8 @@ adminInitiateAuthResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminInitiateAuthRequest. -}
+{-| Codec for AdminInitiateAuthRequest.
+-}
 adminInitiateAuthRequestCodec : Codec AdminInitiateAuthRequest
 adminInitiateAuthRequestCodec =
     Codec.object AdminInitiateAuthRequest
@@ -8107,7 +8579,8 @@ adminInitiateAuthRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminGetUserResponse. -}
+{-| Codec for AdminGetUserResponse.
+-}
 adminGetUserResponseCodec : Codec AdminGetUserResponse
 adminGetUserResponseCodec =
     Codec.object AdminGetUserResponse
@@ -8123,7 +8596,8 @@ adminGetUserResponseCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminGetUserRequest. -}
+{-| Codec for AdminGetUserRequest.
+-}
 adminGetUserRequestCodec : Codec AdminGetUserRequest
 adminGetUserRequestCodec =
     Codec.object AdminGetUserRequest
@@ -8132,13 +8606,15 @@ adminGetUserRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminGetDeviceResponse. -}
+{-| Codec for AdminGetDeviceResponse.
+-}
 adminGetDeviceResponseCodec : Codec AdminGetDeviceResponse
 adminGetDeviceResponseCodec =
     Codec.object AdminGetDeviceResponse |> Codec.field "Device" .device deviceTypeCodec |> Codec.buildObject
 
 
-{-| Codec for AdminGetDeviceRequest. -}
+{-| Codec for AdminGetDeviceRequest.
+-}
 adminGetDeviceRequestCodec : Codec AdminGetDeviceRequest
 adminGetDeviceRequestCodec =
     Codec.object AdminGetDeviceRequest
@@ -8148,7 +8624,8 @@ adminGetDeviceRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminForgetDeviceRequest. -}
+{-| Codec for AdminForgetDeviceRequest.
+-}
 adminForgetDeviceRequestCodec : Codec AdminForgetDeviceRequest
 adminForgetDeviceRequestCodec =
     Codec.object AdminForgetDeviceRequest
@@ -8158,13 +8635,15 @@ adminForgetDeviceRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminEnableUserResponse. -}
+{-| Codec for AdminEnableUserResponse.
+-}
 adminEnableUserResponseCodec : Codec AdminEnableUserResponse
 adminEnableUserResponseCodec =
     Codec.object AdminEnableUserResponse |> Codec.buildObject
 
 
-{-| Codec for AdminEnableUserRequest. -}
+{-| Codec for AdminEnableUserRequest.
+-}
 adminEnableUserRequestCodec : Codec AdminEnableUserRequest
 adminEnableUserRequestCodec =
     Codec.object AdminEnableUserRequest
@@ -8173,13 +8652,15 @@ adminEnableUserRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminDisableUserResponse. -}
+{-| Codec for AdminDisableUserResponse.
+-}
 adminDisableUserResponseCodec : Codec AdminDisableUserResponse
 adminDisableUserResponseCodec =
     Codec.object AdminDisableUserResponse |> Codec.buildObject
 
 
-{-| Codec for AdminDisableUserRequest. -}
+{-| Codec for AdminDisableUserRequest.
+-}
 adminDisableUserRequestCodec : Codec AdminDisableUserRequest
 adminDisableUserRequestCodec =
     Codec.object AdminDisableUserRequest
@@ -8188,13 +8669,15 @@ adminDisableUserRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminDisableProviderForUserResponse. -}
+{-| Codec for AdminDisableProviderForUserResponse.
+-}
 adminDisableProviderForUserResponseCodec : Codec AdminDisableProviderForUserResponse
 adminDisableProviderForUserResponseCodec =
     Codec.object AdminDisableProviderForUserResponse |> Codec.buildObject
 
 
-{-| Codec for AdminDisableProviderForUserRequest. -}
+{-| Codec for AdminDisableProviderForUserRequest.
+-}
 adminDisableProviderForUserRequestCodec : Codec AdminDisableProviderForUserRequest
 adminDisableProviderForUserRequestCodec =
     Codec.object AdminDisableProviderForUserRequest
@@ -8203,7 +8686,8 @@ adminDisableProviderForUserRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminDeleteUserRequest. -}
+{-| Codec for AdminDeleteUserRequest.
+-}
 adminDeleteUserRequestCodec : Codec AdminDeleteUserRequest
 adminDeleteUserRequestCodec =
     Codec.object AdminDeleteUserRequest
@@ -8212,13 +8696,15 @@ adminDeleteUserRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminDeleteUserAttributesResponse. -}
+{-| Codec for AdminDeleteUserAttributesResponse.
+-}
 adminDeleteUserAttributesResponseCodec : Codec AdminDeleteUserAttributesResponse
 adminDeleteUserAttributesResponseCodec =
     Codec.object AdminDeleteUserAttributesResponse |> Codec.buildObject
 
 
-{-| Codec for AdminDeleteUserAttributesRequest. -}
+{-| Codec for AdminDeleteUserAttributesRequest.
+-}
 adminDeleteUserAttributesRequestCodec : Codec AdminDeleteUserAttributesRequest
 adminDeleteUserAttributesRequestCodec =
     Codec.object AdminDeleteUserAttributesRequest
@@ -8228,7 +8714,8 @@ adminDeleteUserAttributesRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminCreateUserUnusedAccountValidityDaysType. -}
+{-| Codec for AdminCreateUserUnusedAccountValidityDaysType.
+-}
 adminCreateUserUnusedAccountValidityDaysTypeCodec : Codec AdminCreateUserUnusedAccountValidityDaysType
 adminCreateUserUnusedAccountValidityDaysTypeCodec =
     Codec.build
@@ -8236,13 +8723,15 @@ adminCreateUserUnusedAccountValidityDaysTypeCodec =
         (Refined.decoder adminCreateUserUnusedAccountValidityDaysType)
 
 
-{-| Codec for AdminCreateUserResponse. -}
+{-| Codec for AdminCreateUserResponse.
+-}
 adminCreateUserResponseCodec : Codec AdminCreateUserResponse
 adminCreateUserResponseCodec =
     Codec.object AdminCreateUserResponse |> Codec.optionalField "User" .user userTypeCodec |> Codec.buildObject
 
 
-{-| Codec for AdminCreateUserRequest. -}
+{-| Codec for AdminCreateUserRequest.
+-}
 adminCreateUserRequestCodec : Codec AdminCreateUserRequest
 adminCreateUserRequestCodec =
     Codec.object AdminCreateUserRequest
@@ -8257,7 +8746,8 @@ adminCreateUserRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminCreateUserConfigType. -}
+{-| Codec for AdminCreateUserConfigType.
+-}
 adminCreateUserConfigTypeCodec : Codec AdminCreateUserConfigType
 adminCreateUserConfigTypeCodec =
     Codec.object AdminCreateUserConfigType
@@ -8270,13 +8760,15 @@ adminCreateUserConfigTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminConfirmSignUpResponse. -}
+{-| Codec for AdminConfirmSignUpResponse.
+-}
 adminConfirmSignUpResponseCodec : Codec AdminConfirmSignUpResponse
 adminConfirmSignUpResponseCodec =
     Codec.object AdminConfirmSignUpResponse |> Codec.buildObject
 
 
-{-| Codec for AdminConfirmSignUpRequest. -}
+{-| Codec for AdminConfirmSignUpRequest.
+-}
 adminConfirmSignUpRequestCodec : Codec AdminConfirmSignUpRequest
 adminConfirmSignUpRequestCodec =
     Codec.object AdminConfirmSignUpRequest
@@ -8285,7 +8777,8 @@ adminConfirmSignUpRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AdminAddUserToGroupRequest. -}
+{-| Codec for AdminAddUserToGroupRequest.
+-}
 adminAddUserToGroupRequestCodec : Codec AdminAddUserToGroupRequest
 adminAddUserToGroupRequestCodec =
     Codec.object AdminAddUserToGroupRequest
@@ -8295,13 +8788,15 @@ adminAddUserToGroupRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AddCustomAttributesResponse. -}
+{-| Codec for AddCustomAttributesResponse.
+-}
 addCustomAttributesResponseCodec : Codec AddCustomAttributesResponse
 addCustomAttributesResponseCodec =
     Codec.object AddCustomAttributesResponse |> Codec.buildObject
 
 
-{-| Codec for AddCustomAttributesRequest. -}
+{-| Codec for AddCustomAttributesRequest.
+-}
 addCustomAttributesRequestCodec : Codec AddCustomAttributesRequest
 addCustomAttributesRequestCodec =
     Codec.object AddCustomAttributesRequest
@@ -8310,7 +8805,8 @@ addCustomAttributesRequestCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AccountTakeoverRiskConfigurationType. -}
+{-| Codec for AccountTakeoverRiskConfigurationType.
+-}
 accountTakeoverRiskConfigurationTypeCodec : Codec AccountTakeoverRiskConfigurationType
 accountTakeoverRiskConfigurationTypeCodec =
     Codec.object AccountTakeoverRiskConfigurationType
@@ -8319,13 +8815,15 @@ accountTakeoverRiskConfigurationTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AccountTakeoverEventActionType. -}
+{-| Codec for AccountTakeoverEventActionType.
+-}
 accountTakeoverEventActionTypeCodec : Codec AccountTakeoverEventActionType
 accountTakeoverEventActionTypeCodec =
     Codec.build (Enum.encoder accountTakeoverEventActionType) (Enum.decoder accountTakeoverEventActionType)
 
 
-{-| Codec for AccountTakeoverActionsType. -}
+{-| Codec for AccountTakeoverActionsType.
+-}
 accountTakeoverActionsTypeCodec : Codec AccountTakeoverActionsType
 accountTakeoverActionsTypeCodec =
     Codec.object AccountTakeoverActionsType
@@ -8335,7 +8833,8 @@ accountTakeoverActionsTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AccountTakeoverActionType. -}
+{-| Codec for AccountTakeoverActionType.
+-}
 accountTakeoverActionTypeCodec : Codec AccountTakeoverActionType
 accountTakeoverActionTypeCodec =
     Codec.object AccountTakeoverActionType
@@ -8344,13 +8843,15 @@ accountTakeoverActionTypeCodec =
         |> Codec.buildObject
 
 
-{-| Codec for AccountTakeoverActionNotifyType. -}
+{-| Codec for AccountTakeoverActionNotifyType.
+-}
 accountTakeoverActionNotifyTypeCodec : Codec AccountTakeoverActionNotifyType
 accountTakeoverActionNotifyTypeCodec =
     Codec.bool
 
 
-{-| Codec for AwsaccountIdType. -}
+{-| Codec for AwsaccountIdType.
+-}
 awsaccountIdTypeCodec : Codec AwsaccountIdType
 awsaccountIdTypeCodec =
     Codec.string
